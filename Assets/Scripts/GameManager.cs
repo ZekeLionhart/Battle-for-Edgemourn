@@ -5,9 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private ShotController shot;
-    [SerializeField] private Transform spawn;
+    [SerializeField] private Transform aimingPoint;
     [SerializeField] private GameObject enemy;
+    private WaitForSeconds delay;
     private bool canSpawnEnemy = true;
+
+    private void Awake()
+    {
+        delay = new WaitForSeconds(2f);
+    }
 
     private void OnEnable()
     {
@@ -27,20 +33,22 @@ public class GameManager : MonoBehaviour
 
     private void Shoot(float speed, float angle)
     {
-        spawn.rotation = Quaternion.identity;
-        spawn.Rotate(0, 0, angle);
+        aimingPoint.rotation = Quaternion.identity;
+        aimingPoint.Rotate(0, 0, angle);
+
         speed *= 2;
         if (speed > 15)
             speed = 15;
         shot.speed = speed;
-        Instantiate(shot, spawn.position, spawn.rotation);
+
+        Instantiate(shot, aimingPoint.position, aimingPoint.rotation);
     }
 
     private IEnumerator SpawnEnemy()
     {
         canSpawnEnemy = false;
 
-        yield return new WaitForSeconds(2f);
+        yield return delay;
 
         Instantiate(enemy, new Vector3(10f, -2f, -1f), Quaternion.identity);
 

@@ -1029,7 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 1630199801917483144, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
-  spawn: {fileID: 289554156}
+  aimingPoint: {fileID: 289554156}
   enemy: {fileID: 4137500561695387344, guid: 2094d1e8b001a94438e4feea6b77329c, type: 3}
 --- !u!4 &1701909131
 Transform:

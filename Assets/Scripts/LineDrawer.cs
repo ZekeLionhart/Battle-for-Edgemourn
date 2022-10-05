@@ -6,8 +6,8 @@ using UnityEngine;
 public class LineDrawer : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRend;
-    private Vector2 startPos;
-    private Vector2 endPos;
+    private Vector3 startPos;
+    private Vector3 endPos;
 
     public static Action<float, float> OnMouseUp;
 
@@ -18,14 +18,24 @@ public class LineDrawer : MonoBehaviour
 
     void Update()
     {
+        DrawAimingLine();
+    }
+
+    private void DrawAimingLine()
+    {
         if (Input.GetButtonDown("Fire1"))
+        {
             startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            startPos.z = 0f;
+        }
 
         if (Input.GetButton("Fire1"))
         {
             endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            lineRend.SetPosition(0, new Vector3(startPos.x, startPos.y, 0f));
-            lineRend.SetPosition(1, new Vector3(endPos.x, endPos.y, 0f));
+            endPos.z = 0f;
+
+            lineRend.SetPosition(0, startPos);
+            lineRend.SetPosition(1, endPos);
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -39,25 +49,18 @@ public class LineDrawer : MonoBehaviour
 
     private float CalculateAngle()
     {
-        float angle = (Mathf.Abs(startPos.y - endPos.y) / Mathf.Abs(startPos.x - endPos.x));
+        float angle = Mathf.Abs(startPos.y - endPos.y) / Mathf.Abs(startPos.x - endPos.x);
+        angle = Mathf.Rad2Deg * Mathf.Atan(angle);
 
         if (startPos.y < endPos.y && startPos.x > endPos.x)
-        {
             angle *= -1;
-        }
 
         if (endPos.y < startPos.y && endPos.x > startPos.x)
-        {
             angle = 90f;
-        }
 
         if (startPos.y < endPos.y && endPos.x > startPos.x)
-        {
             angle = -90f;
-        }
 
-        angle = Mathf.Rad2Deg * Mathf.Atan(angle);
-        Debug.Log(angle);
         return angle;
     }
 }

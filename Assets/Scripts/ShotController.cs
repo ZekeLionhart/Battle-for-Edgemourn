@@ -12,7 +12,7 @@ public class ShotController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += transform.right * speed * Time.fixedDeltaTime;
+        transform.Translate(Time.fixedDeltaTime * speed * transform.right);
         speed -= drag;
         if (speed < 0)
             speed = 0;
@@ -20,7 +20,7 @@ public class ShotController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Enemy")
+        if (collision.collider.tag.Equals("Enemy"))
             OnEnemyHit(collision.collider.gameObject);
 
         Destroy(this.gameObject);

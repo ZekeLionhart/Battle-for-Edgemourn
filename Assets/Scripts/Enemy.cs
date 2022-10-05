@@ -18,12 +18,12 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position -= transform.right * speed * Time.fixedDeltaTime;
+        transform.position -= Time.fixedDeltaTime * speed * transform.right;
     }
 
     private void DestroySelf(GameObject target)
     {
-        if (target == this.gameObject)
-            Destroy(this.gameObject);
+        if (target == gameObject)
+            Destroy(gameObject);
     }
 }
