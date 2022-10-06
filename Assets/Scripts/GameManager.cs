@@ -6,13 +6,19 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private ShotController shot;
     [SerializeField] private Transform aimingPoint;
+    [SerializeField] private Transform enemySpawnPoint;
     [SerializeField] private GameObject enemy;
-    private WaitForSeconds delay;
+    [SerializeField] private float enemyDelay;
+    [SerializeField] private float shotDelay;
+    private WaitForSeconds enemyDelayWFS;
+    private WaitForSeconds shotDelayWFS;
     private bool canSpawnEnemy = true;
+    private bool canShoot = true;
 
     private void Awake()
     {
-        delay = new WaitForSeconds(2f);
+        enemyDelayWFS = new WaitForSeconds(enemyDelay);
+        shotDelayWFS = new WaitForSeconds(shotDelay);
     }
 
     private void OnEnable()
@@ -33,24 +39,34 @@ public class GameManager : MonoBehaviour
 
     private void Shoot(float speed, float angle)
     {
-        aimingPoint.rotation = Quaternion.identity;
-        aimingPoint.Rotate(0, 0, angle);
+        if (canShoot)
+        {
+            aimingPoint.rotation = Quaternion.identity;
+            aimingPoint.Rotate(0, 0, angle); 
+            
+            shot.speed = speed;
+            Instantiate(shot, aimingPoint.position, aimingPoint.rotation);
 
-        speed *= 2;
-        if (speed > 15)
-            speed = 15;
-        shot.speed = speed;
+            StartCoroutine(ShootDelay());
+        }
+    }
 
-        Instantiate(shot, aimingPoint.position, aimingPoint.rotation);
+    private IEnumerator ShootDelay()
+    {
+        canShoot = false;
+
+        yield return shotDelayWFS;
+
+        canShoot = true;
     }
 
     private IEnumerator SpawnEnemy()
     {
         canSpawnEnemy = false;
 
-        yield return delay;
+        yield return enemyDelayWFS;
 
-        Instantiate(enemy, new Vector3(10f, -2f, -1f), Quaternion.identity);
+        Instantiate(enemy, enemySpawnPoint.position, Quaternion.identity);
 
         canSpawnEnemy = true;
     }

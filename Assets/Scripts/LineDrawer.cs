@@ -40,10 +40,13 @@ public class LineDrawer : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
-            OnMouseUp((endPos - startPos).magnitude, CalculateAngle());
+            if (endPos - startPos != Vector3.zero)
+            {
+                OnMouseUp((endPos - startPos).magnitude, CalculateAngle());
 
-            lineRend.SetPosition(0, Vector3.zero);
-            lineRend.SetPosition(1, Vector3.zero);
+                lineRend.SetPosition(0, Vector3.zero);
+                lineRend.SetPosition(1, Vector3.zero);
+            }
         }
     }
 
