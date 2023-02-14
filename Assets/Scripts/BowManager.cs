@@ -11,7 +11,7 @@ public class BowManager : MonoBehaviour
     private bool canShoot = true;
     private WaitForSeconds shotDelayWFS;
 
-    public static Action<float> BowCooldown;
+    public static Action<float> OnBowShoot;
 
     private void Awake()
     {
@@ -21,18 +21,13 @@ public class BowManager : MonoBehaviour
     private void OnEnable()
     {
         LineDrawer.OnMouseUp += Shoot;
-        LineDrawer.UpdateAim += Aim;
+        LineDrawer.OnAimUpdate += Aim;
     }
 
     private void OnDisable()
     {
         LineDrawer.OnMouseUp -= Shoot;
-        LineDrawer.UpdateAim -= Aim;
-    }
-
-    void Update()
-    {
-        
+        LineDrawer.OnAimUpdate -= Aim;
     }
 
     private void Aim(float angle)
@@ -49,7 +44,7 @@ public class BowManager : MonoBehaviour
             Vector3 force = vector * arrowSpeed * -1f;
             shotRigid.velocity = force;
 
-            BowCooldown(cooldown);
+            OnBowShoot(cooldown);
             StartCoroutine(ShootDelay());
         }
     }

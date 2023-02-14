@@ -11,9 +11,9 @@ public class LineDrawer : MonoBehaviour
     [SerializeField] private float maxLength;
 
     public static Action<Vector3> OnMouseUp;
-    public static Action<float> UpdateAim;
+    public static Action<float> OnAimUpdate;
 
-    void Start()
+    private void Awake()
     {
         lineRend.positionCount = 2;
     }
@@ -42,7 +42,7 @@ public class LineDrawer : MonoBehaviour
             lineRend.SetPosition(1, endPos);
 
             if (startPos != endPos)
-                UpdateAim(CalculateAngle());
+                OnAimUpdate(CalculateAngle());
         }
 
         if (Input.GetButtonUp("Fire1"))

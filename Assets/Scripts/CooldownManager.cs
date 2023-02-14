@@ -10,19 +10,19 @@ public class CooldownManager : MonoBehaviour
     private float cooldownLength;
     private float startingHeight;
 
-    private void Start()
+    private void Awake()
     {
         startingHeight = overlay.rect.size.y;   
     }
 
     private void OnEnable()
     {
-        BowManager.BowCooldown += StartCooldown;
+        BowManager.OnBowShoot += StartCooldown;
     }
 
     private void OnDisable()
     {
-        BowManager.BowCooldown -= StartCooldown;
+        BowManager.OnBowShoot -= StartCooldown;
     }
 
     void Update()
