@@ -8,8 +8,10 @@ public class LineDrawer : MonoBehaviour
     [SerializeField] private LineRenderer lineRend;
     private Vector3 startPos;
     private Vector3 endPos;
+    [SerializeField] private float maxLength;
 
-    public static Action<float, float> OnMouseUp;
+    public static Action<Vector3> OnMouseUp;
+    public static Action<float> UpdateAim;
 
     void Start()
     {
@@ -34,15 +36,20 @@ public class LineDrawer : MonoBehaviour
             endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             endPos.z = 0f;
 
+            endPos = startPos + Vector3.ClampMagnitude(endPos - startPos, maxLength);
+
             lineRend.SetPosition(0, startPos);
             lineRend.SetPosition(1, endPos);
+
+            if (startPos != endPos)
+                UpdateAim(CalculateAngle());
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
             if (endPos - startPos != Vector3.zero)
             {
-                OnMouseUp((endPos - startPos).magnitude, CalculateAngle());
+                OnMouseUp(endPos - startPos);
 
                 lineRend.SetPosition(0, Vector3.zero);
                 lineRend.SetPosition(1, Vector3.zero);
@@ -56,13 +63,13 @@ public class LineDrawer : MonoBehaviour
         angle = Mathf.Rad2Deg * Mathf.Atan(angle);
 
         if (startPos.y < endPos.y && startPos.x > endPos.x)
-            angle *= -1;
+            angle = 360f - angle;
 
-        if (endPos.y < startPos.y && endPos.x > startPos.x)
-            angle = 90f;
+        if (startPos.y >= endPos.y && startPos.x < endPos.x)
+            angle = 180f - angle;
 
-        if (startPos.y < endPos.y && endPos.x > startPos.x)
-            angle = -90f;
+        if (startPos.y < endPos.y && startPos.x <= endPos.x)
+            angle = (180f + angle);
 
         return angle;
     }
