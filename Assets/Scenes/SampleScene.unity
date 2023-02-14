@@ -479,10 +479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfa4a24423b2c94b89056afc377813f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1630199801917483144, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
+  arrow: {fileID: 1630199801917483144, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
   arrowSpeed: 4
   aimingPoint: {fileID: 289554156}
-  shotDelay: 1
+  cooldown: 1
 --- !u!1 &306235051
 GameObject:
   m_ObjectHideFlags: 0
