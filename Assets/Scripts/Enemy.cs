@@ -9,10 +9,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int damage;
     [SerializeField] private int scoreValue;
-    private bool isColliding;
+    [SerializeField] private float attackCooldown;
+    private WaitForSeconds attackCooldownWFS;
+    private bool isColliding = false;
+    private bool canAttack = true;
 
     public static Action<int> OnDamageDealt;
     public static Action<int> OnEnemyDeath;
+
+    private void Awake()
+    {
+        attackCooldownWFS = new WaitForSeconds(attackCooldown);
+    }
 
     private void OnEnable()
     {
@@ -24,8 +32,11 @@ public class Enemy : MonoBehaviour
         ShotController.OnEnemyHit -= TakeDamage;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
+        if (canAttack && isColliding)
+            StartCoroutine(Attack());
+
         if (!isColliding)
             transform.position -= Time.fixedDeltaTime * speed * transform.right;
     }
@@ -35,7 +46,16 @@ public class Enemy : MonoBehaviour
         if (collision.collider.CompareTag("Tower"))
         {
             isColliding = true;
-            OnDamageDealt(damage);
+            canAttack = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Tower"))
+        {
+            isColliding = false;
+            canAttack = false;
         }
     }
 
@@ -52,5 +72,15 @@ public class Enemy : MonoBehaviour
     {
         OnEnemyDeath(scoreValue);
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator Attack()
+    {
+        canAttack = false;
+        OnDamageDealt(damage);
+
+        yield return attackCooldownWFS;
+
+        canAttack = true;
     }
 }

@@ -9,6 +9,8 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private int healthPoints;
 
+    public static Action OnZeroHealth;
+
     private void Awake()
     {
         healthText.text = healthPoints.ToString();
@@ -27,5 +29,8 @@ public class HealthManager : MonoBehaviour
     {
         healthPoints -= damage;
         healthText.text = healthPoints.ToString();
+
+        if (healthPoints <= 0)
+            OnZeroHealth();
     }
 }

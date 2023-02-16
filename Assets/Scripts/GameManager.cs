@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,10 +16,25 @@ public class GameManager : MonoBehaviour
         enemyDelayWFS = new WaitForSeconds(enemyDelay);
     }
 
+    private void OnEnable()
+    {
+        HealthManager.OnZeroHealth += FailGame;
+    }
+
+    private void OnDisable()
+    {
+        HealthManager.OnZeroHealth -= FailGame;
+    }
+
     private void Update()
     {
         if (canSpawnEnemy)
             StartCoroutine(SpawnEnemy());
+    }
+
+    private void FailGame()
+    {
+        SceneManager.LoadScene("GameOverScene");
     }
 
     private IEnumerator SpawnEnemy()
