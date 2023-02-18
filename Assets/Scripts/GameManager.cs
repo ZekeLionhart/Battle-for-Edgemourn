@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private List<PowerManager> powers = new();
     [SerializeField] private Transform enemySpawnPoint;
     [SerializeField] private GameObject enemy;
     [SerializeField] private float enemyDelay;
@@ -30,6 +31,19 @@ public class GameManager : MonoBehaviour
     {
         if (canSpawnEnemy)
             StartCoroutine(SpawnEnemy());
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            SwitchPowers(0);
+        if (Input.GetKeyDown(KeyCode.W))
+            SwitchPowers(1);
+    }
+
+    private void SwitchPowers(int index)
+    {
+        foreach (PowerManager power in powers)
+            power.gameObject.SetActive(false);
+
+        powers[index].gameObject.SetActive(true);
     }
 
     private void FailGame()

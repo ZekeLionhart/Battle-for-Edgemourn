@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CooldownManager : MonoBehaviour
 {
+    [SerializeField] private PowerManager power;
     [SerializeField] private RectTransform overlay;
     private bool cooldownStarted = true;
     private float cooldownLength;
@@ -17,12 +18,12 @@ public class CooldownManager : MonoBehaviour
 
     private void OnEnable()
     {
-        BowManager.OnBowShoot += StartCooldown;
+        PowerManager.OnPowerShoot += StartCooldown;
     }
 
     private void OnDisable()
     {
-        BowManager.OnBowShoot -= StartCooldown;
+        PowerManager.OnPowerShoot -= StartCooldown;
     }
 
     void Update()
@@ -48,9 +49,12 @@ public class CooldownManager : MonoBehaviour
 
     }
 
-    private void StartCooldown(float length)
+    private void StartCooldown(PowerManager power, float length)
     {
-        cooldownStarted = true;
-        cooldownLength = length;
+        if (power == this.power)
+        {
+            cooldownStarted = true;
+            cooldownLength = length;
+        }
     }
 }
