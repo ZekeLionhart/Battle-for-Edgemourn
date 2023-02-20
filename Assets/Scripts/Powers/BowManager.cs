@@ -14,7 +14,7 @@ public class BowManager : PowerManager
     {
         if (canShoot)
         {
-            CreateArrow(vector, arrow, aimingPoint.position);
+            CreateArrow(vector, shot, aimingPoint.position);
 
             OnPowerShoot(this,cooldown);
             canShoot = false;

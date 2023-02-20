@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ShotController : MonoBehaviour
+public class ArrowManager : MonoBehaviour
 {
     [SerializeField] private float damage;
     private bool canDamage = true;

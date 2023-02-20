@@ -24,12 +24,12 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        ShotController.OnEnemyHit += TakeDamage;
+        ArrowManager.OnEnemyHit += TakeDamage;
     }
 
     private void OnDisable()
     {
-        ShotController.OnEnemyHit -= TakeDamage;
+        ArrowManager.OnEnemyHit -= TakeDamage;
     }
 
     private void FixedUpdate()

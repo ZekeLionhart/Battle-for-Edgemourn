@@ -6,7 +6,7 @@ using Vector3 = UnityEngine.Vector3;
 public class PowerManager : MonoBehaviour
 {
     [SerializeField] protected Transform aimingPoint;
-    [SerializeField] protected Rigidbody2D arrow;
+    [SerializeField] protected Rigidbody2D shot;
     [SerializeField] protected float arrowSpeed;
     [SerializeField] protected float cooldown;
     protected bool isActive;

@@ -14,7 +14,7 @@ public class VolleyManager : PowerManager
         base.Awake();
         shotControllers = new Rigidbody2D[numOfArrows];
         for (int i = 0; i < numOfArrows; i++)
-            shotControllers[i] = arrow;
+            shotControllers[i] = shot;
     }
 
     protected override void Aim(float angle)
