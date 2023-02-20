@@ -7,6 +7,7 @@ public class PowerManager : MonoBehaviour
 {
     [SerializeField] protected Transform aimingPoint;
     [SerializeField] protected Rigidbody2D shot;
+    [SerializeField] protected float damage;
     [SerializeField] protected float arrowSpeed;
     [SerializeField] protected float cooldown;
     protected bool isActive;
@@ -14,6 +15,7 @@ public class PowerManager : MonoBehaviour
     protected WaitForSeconds shotDelayWFS;
 
     public static Action<PowerManager, float> OnPowerShoot;
+    public static Action<Rigidbody2D, float> OnShotInstantiated;
 
     protected virtual void Awake()
     {
@@ -49,6 +51,8 @@ public class PowerManager : MonoBehaviour
         Rigidbody2D shotRigid = Instantiate(arrow, position, aimingPoint.rotation);
         Vector3 force = vector * arrowSpeed * -1f;
         shotRigid.velocity = force;
+
+        OnShotInstantiated(shotRigid, damage);
     }
 
     protected void AllowShooting(PowerManager power)
