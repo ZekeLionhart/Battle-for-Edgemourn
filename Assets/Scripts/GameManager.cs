@@ -9,22 +9,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform enemySpawnPoint;
     [SerializeField] private GameObject enemy;
     [SerializeField] private float enemyDelay;
+    private List<bool> cooldowns = new();
     private WaitForSeconds enemyDelayWFS;
     private bool canSpawnEnemy = true;
 
     private void Awake()
     {
         enemyDelayWFS = new WaitForSeconds(enemyDelay);
+
+        for (int i = 0; i < powers.Count; i++)
+            cooldowns.Add(false);
     }
 
     private void OnEnable()
     {
         HealthManager.OnZeroHealth += FailGame;
+        PowerManager.OnPowerShoot += StartPowerCooldown;
+        CooldownManager.OnCooldownEnded += EndPowerCooldown;
     }
 
     private void OnDisable()
     {
         HealthManager.OnZeroHealth -= FailGame;
+        PowerManager.OnPowerShoot -= StartPowerCooldown;
+        CooldownManager.OnCooldownEnded -= EndPowerCooldown;
     }
 
     private void Update()
@@ -44,6 +52,33 @@ public class GameManager : MonoBehaviour
             power.gameObject.SetActive(false);
 
         powers[index].gameObject.SetActive(true);
+
+        if (!cooldowns[index])
+            CooldownManager.OnCooldownEnded(powers[index]);
+    }
+
+    private void StartPowerCooldown(PowerManager power, float cooldown)
+    {
+        for (int i = 0; i < powers.Count; i++)
+        {
+            if (power == powers[i])
+            {
+                cooldowns[i] = true;
+                break;
+            }
+        }
+    }
+
+    private void EndPowerCooldown(PowerManager power)
+    {
+        for (int i = 0; i < powers.Count; i++)
+        {
+            if (power == powers[i])
+            {
+                cooldowns[i] = false;
+                break;
+            }
+        }
     }
 
     private void FailGame()

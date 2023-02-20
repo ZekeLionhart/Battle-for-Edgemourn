@@ -17,7 +17,7 @@ public class BowManager : PowerManager
             CreateArrow(vector, arrow, aimingPoint.position);
 
             OnPowerShoot(this,cooldown);
-            StartCoroutine(ShotDelay());
+            canShoot = false;
         }
     }
 }

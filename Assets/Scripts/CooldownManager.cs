@@ -11,6 +11,8 @@ public class CooldownManager : MonoBehaviour
     private float cooldownLength;
     private float startingHeight;
 
+    public static Action<PowerManager> OnCooldownEnded;
+
     private void Awake()
     {
         startingHeight = overlay.rect.size.y;   
@@ -41,6 +43,7 @@ public class CooldownManager : MonoBehaviour
         {
             overlay.sizeDelta = new Vector2(x,0);
             cooldownStarted = false;
+            OnCooldownEnded(power);
         }
         else
         {

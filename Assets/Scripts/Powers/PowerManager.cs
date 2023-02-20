@@ -24,12 +24,14 @@ public class PowerManager : MonoBehaviour
     {
         LineDrawer.OnMouseUp += Shoot;
         LineDrawer.OnAimUpdate += Aim;
+        CooldownManager.OnCooldownEnded += AllowShooting;
     }
 
     private void OnDisable()
     {
         LineDrawer.OnMouseUp -= Shoot;
         LineDrawer.OnAimUpdate -= Aim;
+        CooldownManager.OnCooldownEnded -= AllowShooting;
     }
 
     protected virtual void Aim(float angle)
@@ -47,6 +49,12 @@ public class PowerManager : MonoBehaviour
         Rigidbody2D shotRigid = Instantiate(arrow, position, aimingPoint.rotation);
         Vector3 force = vector * arrowSpeed * -1f;
         shotRigid.velocity = force;
+    }
+
+    protected void AllowShooting(PowerManager power)
+    {
+        if (power == this)
+            canShoot = true;
     }
 
     protected IEnumerator ShotDelay()

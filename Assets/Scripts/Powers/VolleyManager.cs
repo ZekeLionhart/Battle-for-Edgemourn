@@ -31,7 +31,7 @@ public class VolleyManager : PowerManager
                 CreateArrow(vector, shotControllers[i], aimingPoint.position + Vector3.left * i * 0.3f);
 
             OnPowerShoot(this, cooldown);
-            StartCoroutine(ShotDelay());
+            canShoot = false;
         }
     }
 }
