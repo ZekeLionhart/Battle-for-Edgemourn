@@ -1,22 +1,9 @@
 using System;
 using UnityEngine;
 
-public class ArrowManager : MonoBehaviour
+public class ArrowManager : ProjectileManager
 {
-    private float damage;
     private bool canDamage = true;
-
-    public static Action<GameObject, float> OnEnemyHit;
-
-    private void OnEnable()
-    {
-        PowerController.OnShotInstantiated += SetDamage;
-    }
-
-    private void OnDisable()
-    {
-        PowerController.OnShotInstantiated -= SetDamage;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,11 +14,5 @@ public class ArrowManager : MonoBehaviour
         }
 
         Destroy(this.gameObject);
-    }
-
-    private void SetDamage(Rigidbody2D shot, float damage)
-    {
-        if (shot.gameObject == gameObject)
-            this.damage = damage;
     }
 }

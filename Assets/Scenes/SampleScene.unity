@@ -1097,7 +1097,7 @@ MonoBehaviour:
   aimingPoint: {fileID: 1898932313}
   shot: {fileID: 7169083511623344338, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
   damage: 10
-  cooldown: 2
+  cooldown: 15
   aimSpeed: 4
 --- !u!1 &519420028
 GameObject:

@@ -1,22 +1,8 @@
 using System;
 using UnityEngine;
 
-public class LightningManager : MonoBehaviour
+public class LightningManager : ProjectileManager
 {
-    private float damage;
-
-    public static Action<GameObject, float> OnEnemyHit;
-
-    private void OnEnable()
-    {
-        LightningController.OnLightningInstantiated += SetDamage;
-    }
-
-    private void OnDisable()
-    {
-        LightningController.OnLightningInstantiated -= SetDamage;
-    }
-
     private void Update()
     {
         transform.position += 20f * Time.deltaTime * Vector3.down;
@@ -32,11 +18,5 @@ public class LightningManager : MonoBehaviour
     {
         if (collision.CompareTag("Floor"))
             Destroy(gameObject);
-    }
-
-    private void SetDamage(Rigidbody2D shot, float damage)
-    {
-        if (shot.gameObject == gameObject)
-            this.damage = damage;
     }
 }
