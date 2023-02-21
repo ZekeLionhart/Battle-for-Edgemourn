@@ -26,11 +26,13 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         ArrowManager.OnEnemyHit += TakeDamage;
+        LightningManager.OnEnemyHit += TakeDamage;
     }
 
     private void OnDisable()
     {
         ArrowManager.OnEnemyHit -= TakeDamage;
+        LightningManager.OnEnemyHit -= TakeDamage;
     }
 
     private void FixedUpdate()
