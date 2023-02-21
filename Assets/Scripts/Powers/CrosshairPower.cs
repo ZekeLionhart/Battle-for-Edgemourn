@@ -35,10 +35,4 @@ public class CrosshairPower : PowerController
         if (aimingPoint.transform.position.x >= 5f || aimingPoint.transform.position.x <= -6f)
             directionMult *= -1;
     }
-
-    protected virtual void Shoot()
-    {
-        OnPowerShoot(this, cooldown);
-        canShoot = false;
-    }
 }

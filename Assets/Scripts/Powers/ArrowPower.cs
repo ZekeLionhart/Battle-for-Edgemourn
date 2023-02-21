@@ -34,6 +34,6 @@ public class ArrowPower : PowerController
         Vector3 force = -1f * arrowSpeed * vector;
         shotRigid.velocity = force;
 
-        OnShotInstantiated(shotRigid, damage);
+        OnShotInstantiated(shotRigid, damage, 0f);
     }
 }

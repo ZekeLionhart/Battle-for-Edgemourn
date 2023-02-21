@@ -13,7 +13,7 @@ public class PowerController : MonoBehaviour
     protected WaitForSeconds shotDelayWFS;
 
     public static Action<PowerController, float> OnPowerShoot;
-    public static Action<Rigidbody2D, float> OnShotInstantiated;
+    public static Action<Rigidbody2D, float, float> OnShotInstantiated;
 
     protected virtual void Awake()
     {
@@ -34,6 +34,12 @@ public class PowerController : MonoBehaviour
     {
         if (power == this)
             canShoot = true;
+    }
+
+    protected virtual void Shoot()
+    {
+        OnPowerShoot(this, cooldown);
+        canShoot = false;
     }
 
     protected IEnumerator ShotDelay()

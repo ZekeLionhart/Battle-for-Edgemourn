@@ -7,7 +7,7 @@ public class LightningController : CrosshairPower
         Rigidbody2D shotRigid = Instantiate(shot, new Vector2(aimingPoint.transform.position.x, 6f)
             , shot.transform.rotation);
 
-        OnShotInstantiated(shotRigid, damage);
+        OnShotInstantiated(shotRigid, damage, 0f);
         base.Shoot();
     }
 }
