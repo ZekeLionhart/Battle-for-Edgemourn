@@ -10,12 +10,12 @@ public class ArrowManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PowerManager.OnShotInstantiated += SetDamage;
+        PowerController.OnShotInstantiated += SetDamage;
     }
 
     private void OnDisable()
     {
-        PowerManager.OnShotInstantiated -= SetDamage;
+        PowerController.OnShotInstantiated -= SetDamage;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

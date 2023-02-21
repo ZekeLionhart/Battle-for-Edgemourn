@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class BowController : PowerController
+public class BowController : ArrowPower
 {
     protected override void Aim(float angle)
     {
