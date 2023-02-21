@@ -25,12 +25,15 @@ public class HealthManager : MonoBehaviour
         Enemy.OnDamageDealt -= SubtractHealth;
     }
 
-    private void SubtractHealth(int damage)
+    private void SubtractHealth(GameObject target, int damage)
     {
-        healthPoints -= damage;
-        healthText.text = healthPoints.ToString();
+        if (target.CompareTag("Tower"))
+        { 
+            healthPoints -= damage;
+            healthText.text = healthPoints.ToString();
 
-        if (healthPoints <= 0)
-            OnZeroHealth();
+            if (healthPoints <= 0)
+                OnZeroHealth();
+        }
     }
 }

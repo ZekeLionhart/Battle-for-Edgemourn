@@ -40,10 +40,18 @@ public class GameManager : MonoBehaviour
         if (canSpawnEnemy)
             StartCoroutine(SpawnEnemy());
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("Power1"))
             SwitchPowers(0);
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown("Power2"))
             SwitchPowers(1);
+        if (Input.GetButtonDown("Power3"))
+            SwitchPowers(2);
+        if (Input.GetButtonDown("Power4"))
+            SwitchPowers(3);
+        if (Input.GetButtonDown("Power5"))
+            SwitchPowers(4);
+        if (Input.GetButtonDown("Power6"))
+            SwitchPowers(5);
     }
 
     private void SwitchPowers(int index)

@@ -10,11 +10,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private int scoreValue;
     [SerializeField] private float attackCooldown;
+    private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private bool isColliding = false;
     private bool canAttack = true;
 
-    public static Action<int> OnDamageDealt;
+    public static Action<GameObject, int> OnDamageDealt;
     public static Action<int> OnEnemyDeath;
 
     private void Awake()
@@ -43,19 +44,21 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Tower"))
+        if (collision.collider.CompareTag("Tower") || collision.collider.CompareTag("Player"))
         {
             isColliding = true;
             canAttack = true;
+            target = collision.gameObject;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Tower"))
+        if (collision.collider.CompareTag("Tower") || collision.collider.CompareTag("Player"))
         {
             isColliding = false;
             canAttack = false;
+            target = null;
         }
     }
 
@@ -71,13 +74,13 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         OnEnemyDeath(scoreValue);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     private IEnumerator Attack()
     {
         canAttack = false;
-        OnDamageDealt(damage);
+        OnDamageDealt(target, damage);
 
         yield return attackCooldownWFS;
 

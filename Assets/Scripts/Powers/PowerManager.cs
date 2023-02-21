@@ -22,14 +22,14 @@ public class PowerManager : MonoBehaviour
         shotDelayWFS = new WaitForSeconds(cooldown);
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         LineDrawer.OnMouseUp += Shoot;
         LineDrawer.OnAimUpdate += Aim;
         CooldownManager.OnCooldownEnded += AllowShooting;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         LineDrawer.OnMouseUp -= Shoot;
         LineDrawer.OnAimUpdate -= Aim;
@@ -37,6 +37,11 @@ public class PowerManager : MonoBehaviour
     }
 
     protected virtual void Aim(float angle)
+    {
+
+    }
+
+    protected virtual void Shoot()
     {
 
     }
@@ -49,7 +54,7 @@ public class PowerManager : MonoBehaviour
     protected void CreateArrow(Vector3 vector, Rigidbody2D arrow, Vector3 position)
     {
         Rigidbody2D shotRigid = Instantiate(arrow, position, aimingPoint.rotation);
-        Vector3 force = vector * arrowSpeed * -1f;
+        Vector3 force = -1f * arrowSpeed * vector;
         shotRigid.velocity = force;
 
         OnShotInstantiated(shotRigid, damage);

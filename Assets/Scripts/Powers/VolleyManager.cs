@@ -7,14 +7,15 @@ using UnityEngine;
 public class VolleyManager : PowerManager
 {
     [SerializeField] private int numOfArrows;
-    private Rigidbody2D[] shotControllers;
+    [SerializeField] private float spreadMultiplier;
+    private Rigidbody2D[] arrows;
 
     protected override void Awake()
     {
         base.Awake();
-        shotControllers = new Rigidbody2D[numOfArrows];
+        arrows = new Rigidbody2D[numOfArrows];
         for (int i = 0; i < numOfArrows; i++)
-            shotControllers[i] = shot;
+            arrows[i] = shot;
     }
 
     protected override void Aim(float angle)
@@ -28,7 +29,7 @@ public class VolleyManager : PowerManager
         if (canShoot)
         {
             for (int i = 0; i < numOfArrows; i++)
-                CreateArrow(vector, shotControllers[i], aimingPoint.position + Vector3.left * i * 0.3f);
+                CreateArrow(vector, arrows[i], aimingPoint.position + Vector3.left * i * spreadMultiplier);
 
             OnPowerShoot(this, cooldown);
             canShoot = false;
