@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CooldownManager : MonoBehaviour
 {
     [SerializeField] private PowerController power;
     [SerializeField] private RectTransform overlay;
+    [SerializeField] private GameObject border;
     private bool cooldownStarted = true;
     private float cooldownLength;
     private float startingHeight;
@@ -21,17 +20,27 @@ public class CooldownManager : MonoBehaviour
     private void OnEnable()
     {
         PowerController.OnPowerShoot += StartCooldown;
+        GameManager.OnSwitchPowers += ActivateBorder;
     }
 
     private void OnDisable()
     {
         PowerController.OnPowerShoot -= StartCooldown;
+        GameManager.OnSwitchPowers -= ActivateBorder;
     }
 
     void Update()
     {
         if (cooldownStarted)
             RunCooldown();
+    }
+
+    private void ActivateBorder(PowerController power)
+    {
+        if (power == this.power)
+            border.SetActive(true);
+        else
+            border.SetActive(false);
     }
 
     private void RunCooldown()

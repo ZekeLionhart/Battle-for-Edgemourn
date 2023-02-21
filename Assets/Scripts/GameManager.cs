@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private float enemyDelay;
     private List<bool> cooldowns = new();
+    private PowerController activePower;
     private WaitForSeconds enemyDelayWFS;
     private bool canSpawnEnemy = true;
+
+    public static Action<PowerController> OnSwitchPowers;
 
     private void Awake()
     {
         enemyDelayWFS = new WaitForSeconds(enemyDelay);
+        activePower = powers[0];
 
         for (int i = 0; i < powers.Count; i++)
             cooldowns.Add(false);
@@ -56,10 +61,12 @@ public class GameManager : MonoBehaviour
 
     private void SwitchPowers(int index)
     {
-        foreach (PowerController power in powers)
-            power.gameObject.SetActive(false);
+        powers[powers.IndexOf(activePower)].gameObject.SetActive(false);
 
         powers[index].gameObject.SetActive(true);
+        activePower = powers[index];
+
+        OnSwitchPowers(activePower);
 
         if (!cooldowns[index])
             CooldownManager.OnCooldownEnded(powers[index]);
