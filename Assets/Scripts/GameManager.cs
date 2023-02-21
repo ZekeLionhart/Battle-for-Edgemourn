@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private List<PowerManager> powers = new();
+    [SerializeField] private List<PowerController> powers = new();
     [SerializeField] private Transform enemySpawnPoint;
     [SerializeField] private GameObject enemy;
     [SerializeField] private float enemyDelay;
@@ -24,14 +24,14 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         HealthManager.OnZeroHealth += FailGame;
-        PowerManager.OnPowerShoot += StartPowerCooldown;
+        PowerController.OnPowerShoot += StartPowerCooldown;
         CooldownManager.OnCooldownEnded += EndPowerCooldown;
     }
 
     private void OnDisable()
     {
         HealthManager.OnZeroHealth -= FailGame;
-        PowerManager.OnPowerShoot -= StartPowerCooldown;
+        PowerController.OnPowerShoot -= StartPowerCooldown;
         CooldownManager.OnCooldownEnded -= EndPowerCooldown;
     }
 
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     private void SwitchPowers(int index)
     {
-        foreach (PowerManager power in powers)
+        foreach (PowerController power in powers)
             power.gameObject.SetActive(false);
 
         powers[index].gameObject.SetActive(true);
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
             CooldownManager.OnCooldownEnded(powers[index]);
     }
 
-    private void StartPowerCooldown(PowerManager power, float cooldown)
+    private void StartPowerCooldown(PowerController power, float cooldown)
     {
         for (int i = 0; i < powers.Count; i++)
         {
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void EndPowerCooldown(PowerManager power)
+    private void EndPowerCooldown(PowerController power)
     {
         for (int i = 0; i < powers.Count; i++)
         {

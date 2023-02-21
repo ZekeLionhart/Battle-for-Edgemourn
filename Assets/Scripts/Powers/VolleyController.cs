@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class VolleyManager : PowerManager
+public class VolleyController : PowerController
 {
     [SerializeField] private int numOfArrows;
     [SerializeField] private float spreadMultiplier;

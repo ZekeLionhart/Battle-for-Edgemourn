@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class PowerManager : MonoBehaviour
+public class PowerController : MonoBehaviour
 {
     [SerializeField] protected Transform aimingPoint;
     [SerializeField] protected Rigidbody2D shot;
@@ -14,7 +14,7 @@ public class PowerManager : MonoBehaviour
     protected bool canShoot = true;
     protected WaitForSeconds shotDelayWFS;
 
-    public static Action<PowerManager, float> OnPowerShoot;
+    public static Action<PowerController, float> OnPowerShoot;
     public static Action<Rigidbody2D, float> OnShotInstantiated;
 
     protected virtual void Awake()
@@ -60,7 +60,7 @@ public class PowerManager : MonoBehaviour
         OnShotInstantiated(shotRigid, damage);
     }
 
-    protected void AllowShooting(PowerManager power)
+    protected void AllowShooting(PowerController power)
     {
         if (power == this)
             canShoot = true;
