@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CrosshairPower : PowerController
 {
@@ -18,7 +19,7 @@ public class CrosshairPower : PowerController
         aimingPoint.transform.position = startingPos;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         HandleAimMovement();
 
@@ -33,6 +34,14 @@ public class CrosshairPower : PowerController
         aimingPoint.transform.position += new Vector3(directionMult * aimSpeed * Time.deltaTime, 0f);
 
         if (aimingPoint.transform.position.x >= 5f || aimingPoint.transform.position.x <= -6f)
+            directionMult *= -1;
+    }
+
+    protected virtual void HandleAimRotation()
+    {
+        aimingPoint.transform.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
+
+        if (aimingPoint.transform.rotation.z >= -0.1f || aimingPoint.transform.rotation.z <= -0.5f)
             directionMult *= -1;
     }
 }
