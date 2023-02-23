@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VolleyController : ArrowPower
+public class VolleyController : BowController
 {
     [SerializeField] private int numOfArrows;
     [SerializeField] private float spreadMultiplier;
@@ -14,21 +14,10 @@ public class VolleyController : ArrowPower
             arrows[i] = shot;
     }
 
-    protected override void Aim(float angle)
-    {
-        aimingPoint.rotation = Quaternion.identity;
-        aimingPoint.Rotate(0, 0, angle);
-    }
-
     protected override void Shoot(Vector3 vector)
     {
         if (canShoot)
-        {
             for (int i = 0; i < numOfArrows; i++)
-                CreateArrow(vector, arrows[i], aimingPoint.position + Vector3.left * i * spreadMultiplier);
-
-            OnPowerShoot(this, cooldown);
-            canShoot = false;
-        }
+                CreateArrow(vector, arrows[i], aimingPoint.position + i * spreadMultiplier * Vector3.left);
     }
 }

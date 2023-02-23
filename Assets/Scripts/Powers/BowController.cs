@@ -1,21 +1,43 @@
 using UnityEngine;
 
-public class BowController : ArrowPower
+public class BowController : PowerController
 {
-    protected override void Aim(float angle)
+    [SerializeField] protected float arrowSpeed;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        LineDrawer.OnMouseUp += Shoot;
+        LineDrawer.OnAimUpdate += Aim;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        LineDrawer.OnMouseUp -= Shoot;
+        LineDrawer.OnAimUpdate -= Aim;
+    }
+
+    private void Aim(float angle)
     {
         aimingPoint.rotation = Quaternion.identity;
         aimingPoint.Rotate(0, 0, angle);
     }
 
-    protected override void Shoot(Vector3 vector)
+    protected virtual void Shoot(Vector3 vector)
     {
         if (canShoot)
-        {
             CreateArrow(vector, shot, aimingPoint.position);
+    }
 
-            OnPowerShoot(this,cooldown);
-            canShoot = false;
-        }
+    protected void CreateArrow(Vector3 vector, Rigidbody2D arrow, Vector3 position)
+    {
+        Rigidbody2D shotRigid = Instantiate(arrow, position, aimingPoint.rotation);
+        Vector3 force = -1f * arrowSpeed * vector;
+        shotRigid.velocity = force;
+
+        OnShotInstantiated(shotRigid, damage, 0f);
+        OnPowerShoot(this, cooldown);
+        canShoot = false;
     }
 }
