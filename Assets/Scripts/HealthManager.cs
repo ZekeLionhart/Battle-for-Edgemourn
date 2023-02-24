@@ -16,11 +16,11 @@ public class HealthManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Enemy.OnDamageDealt += SubtractHealth;
+        EnemyBase.OnDamageDealt += SubtractHealth;
     }
     private void OnDisable()
     {
-        Enemy.OnDamageDealt -= SubtractHealth;
+        EnemyBase.OnDamageDealt -= SubtractHealth;
     }
 
     private void SubtractHealth(GameObject target, int damage)

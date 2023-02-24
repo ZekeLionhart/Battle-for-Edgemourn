@@ -14,11 +14,11 @@ public class ScoreManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Enemy.OnEnemyDeath += AddScore;
+        EnemyBase.OnEnemyDeath += AddScore;
     }
     private void OnDisable()
     {
-        Enemy.OnEnemyDeath += AddScore;
+        EnemyBase.OnEnemyDeath += AddScore;
     }
 
     private void AddScore(int points)

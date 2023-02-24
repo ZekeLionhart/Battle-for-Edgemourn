@@ -13,13 +13,13 @@ public class WallManager : MonoBehaviour
     private void OnEnable()
     {
         StoneWallController.OnWallSummon += SetHitpoints;
-        Enemy.OnDamageDealt += TakeDamage;
+        EnemyBase.OnDamageDealt += TakeDamage;
     }
 
     private void OnDisable()
     {
         StoneWallController.OnWallSummon -= SetHitpoints;
-        Enemy.OnDamageDealt -= TakeDamage;
+        EnemyBase.OnDamageDealt -= TakeDamage;
     }
 
     private void Update()

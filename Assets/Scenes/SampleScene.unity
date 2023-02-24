@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 289554157}
   - component: {fileID: 289554159}
   - component: {fileID: 289554158}
-  - component: {fileID: 289554160}
+  - component: {fileID: 289554161}
   m_Layer: 6
   m_Name: WarBow
   m_TagString: Untagged
@@ -1072,7 +1072,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &289554160
+--- !u!114 &289554161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 289554155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcfa4a24423b2c94b89056afc377813f, type: 3}
+  m_Script: {fileID: 11500000, guid: acd7693f52f31fe49a0fcc9809d5aefc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 289554156}
@@ -3048,7 +3048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6483906032d37b4db3836d57faa0d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: {fileID: 289554160}
+  power: {fileID: 289554161}
   overlay: {fileID: 1220971337}
   border: {fileID: 413304747}
 --- !u!1 &992238175
@@ -4648,7 +4648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powers:
-  - {fileID: 289554160}
+  - {fileID: 289554161}
   - {fileID: 862489348}
   - {fileID: 1539855757}
   - {fileID: 512616661}

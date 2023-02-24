@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class CrosshairPower : PowerController
 {
@@ -24,9 +23,7 @@ public class CrosshairPower : PowerController
         HandleAimMovement();
 
         if (Input.GetButtonDown("Fire1") && canShoot)
-        {
             Shoot();
-        }
     }
 
     protected virtual void HandleAimMovement()

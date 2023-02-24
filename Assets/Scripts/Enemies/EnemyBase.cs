@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyBase : MonoBehaviour
 {
-    [SerializeField] private float health;
+    [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
     [SerializeField] private int damage;
-    [SerializeField] private int scoreValue;
     [SerializeField] private float attackCooldown;
+    [SerializeField] private int scoreValue;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private bool isColliding = false;
@@ -64,9 +64,9 @@ public class Enemy : MonoBehaviour
     private void TakeDamage(GameObject target, float damageReceived)
     {
         if (target == gameObject)
-            health -= damageReceived;
+            hitpoints -= damageReceived;
 
-        if (health <= 0)
+        if (hitpoints <= 0)
             Die();
     }
 

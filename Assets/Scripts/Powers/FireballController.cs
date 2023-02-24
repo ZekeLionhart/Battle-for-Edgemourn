@@ -8,12 +8,9 @@ public class FireballController : CrosshairPower
     protected override void Update()
     {
         HandleAimRotation();
-        Debug.Log(direction.position);
 
         if (Input.GetButtonDown("Fire1") && canShoot)
-        {
             Shoot();
-        }
     }
 
     protected override void Shoot()
