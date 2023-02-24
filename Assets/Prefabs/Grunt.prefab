@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4137500561695387349}
   - component: {fileID: 4137500561695387346}
   - component: {fileID: 4137500561695387347}
+  - component: {fileID: 6057173843168479271}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Grunt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,3 +152,23 @@ MonoBehaviour:
   damage: 1
   attackCooldown: 1
   scoreValue: 100
+--- !u!95 &6057173843168479271
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137500561695387344}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd3a51d30dda86847b858f1446fd769f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

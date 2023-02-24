@@ -37,8 +37,7 @@ public class EnemyBase : MonoBehaviour
         if (canAttack && isColliding)
             StartCoroutine(Attack());
 
-        if (!isColliding)
-            transform.position -= Time.fixedDeltaTime * speed * transform.right;
+        //WalkForwards();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,15 +64,11 @@ public class EnemyBase : MonoBehaviour
     {
         if (target == gameObject)
             hitpoints -= damageReceived;
-
-        if (hitpoints <= 0)
-            Die();
     }
 
-    private void Die()
+    private void WalkForwards()
     {
-        OnEnemyDeath(scoreValue);
-        Destroy(gameObject);
+        transform.position -= Time.fixedDeltaTime * speed * transform.right;
     }
 
     private IEnumerator Attack()
@@ -84,5 +79,11 @@ public class EnemyBase : MonoBehaviour
         yield return attackCooldownWFS;
 
         canAttack = true;
+    }
+
+    private void Die()
+    {
+        OnEnemyDeath(scoreValue);
+        Destroy(gameObject);
     }
 }

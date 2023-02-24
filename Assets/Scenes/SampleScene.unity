@@ -1113,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306235051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: -2, z: 0}
+  m_LocalPosition: {x: 5.35, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3885,7 +3885,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -4655,7 +4655,7 @@ MonoBehaviour:
   - {fileID: 1612007640}
   - {fileID: 520569540}
   enemySpawnPoint: {fileID: 306235052}
-  enemy: {fileID: 4137500561695387344, guid: 2094d1e8b001a94438e4feea6b77329c, type: 3}
+  enemy: {fileID: 4137500561695387344, guid: a31d71eb24225ac44aab3c073a9e067f, type: 3}
   enemyDelay: 3
 --- !u!4 &1701909131
 Transform:
