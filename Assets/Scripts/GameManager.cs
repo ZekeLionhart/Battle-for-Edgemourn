@@ -109,6 +109,6 @@ public class GameManager : MonoBehaviour
 
         Instantiate(enemy, enemySpawnPoint.position, Quaternion.identity);
 
-        canSpawnEnemy = true;
+        //canSpawnEnemy = true;
     }
 }

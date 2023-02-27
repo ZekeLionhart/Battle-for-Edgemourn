@@ -10,7 +10,7 @@ public class BoilingOilManager : ProjectileManager
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Enemy"))
-            OnEnemyHit(collision.collider.gameObject, damage);
+            OnEnemyHit(collision.collider.gameObject, damageType, damage);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

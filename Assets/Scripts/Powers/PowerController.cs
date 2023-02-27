@@ -6,6 +6,7 @@ public class PowerController : MonoBehaviour
 {
     [SerializeField] protected Transform aimingPoint;
     [SerializeField] protected Rigidbody2D shot;
+    [SerializeField] protected string damageType;
     [SerializeField] protected float damage;
     [SerializeField] protected float cooldown;
     protected bool isActive;
@@ -13,7 +14,7 @@ public class PowerController : MonoBehaviour
     protected WaitForSeconds shotDelayWFS;
 
     public static Action<PowerController, float> OnPowerShoot;
-    public static Action<Rigidbody2D, float, float> OnShotInstantiated;
+    public static Action<Rigidbody2D, string, float, float> OnShotInstantiated;
 
     protected virtual void Awake()
     {

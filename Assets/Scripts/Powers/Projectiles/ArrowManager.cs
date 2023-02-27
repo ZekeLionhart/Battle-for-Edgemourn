@@ -8,7 +8,7 @@ public class ArrowManager : ProjectileManager
     {
         if (collision.collider.CompareTag("Enemy") && canDamage)
         {
-            OnEnemyHit(collision.collider.gameObject, damage);
+            OnEnemyHit(collision.collider.gameObject, damageType, damage);
             canDamage = false;
         }
 

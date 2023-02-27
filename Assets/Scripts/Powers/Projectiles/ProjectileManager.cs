@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {
+    protected string damageType;
     protected float damage;
     protected float speed;
 
-    public static Action<GameObject, float> OnEnemyHit;
+    public static Action<GameObject, string, float> OnEnemyHit;
     
     protected virtual void OnEnable()
     {
@@ -18,10 +19,11 @@ public class ProjectileManager : MonoBehaviour
         PowerController.OnShotInstantiated -= SetVariables;
     }
 
-    private void SetVariables(Rigidbody2D shot, float damage, float speed)
+    private void SetVariables(Rigidbody2D shot, string damageType, float damage, float speed)
     {
         if (shot.gameObject == gameObject)
         {
+            this.damageType = damageType;
             this.damage = damage;
             this.speed = speed;
         }

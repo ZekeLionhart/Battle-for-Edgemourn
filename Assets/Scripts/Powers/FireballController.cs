@@ -20,7 +20,7 @@ public class FireballController : CrosshairPower
         Vector3 force = speed * (direction.position - aimingPoint.position);
         shotRigid.velocity = force;
 
-        OnShotInstantiated(shotRigid, damage, speed);
+        OnShotInstantiated(shotRigid, damageType, damage, speed);
         base.Shoot();
     }
 }

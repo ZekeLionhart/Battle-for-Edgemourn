@@ -49,7 +49,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void TakeDamage(GameObject target, float damageReceived)
+    protected virtual void TakeDamage(GameObject target, string damageType, float damageReceived)
     {
         if (target == gameObject)
             hitpoints -= damageReceived;
