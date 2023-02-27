@@ -10,6 +10,10 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float attackCooldown;
     [SerializeField] private int scoreValue;
+    [SerializeField] protected float arrowMultiplier;
+    [SerializeField] protected float fireMultiplier;
+    [SerializeField] protected float thunderMultiplier;
+    [SerializeField] protected float earthMultiplier;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
 
@@ -49,8 +53,37 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    protected virtual float MultiplyDamage(DamageTypes damageType, float damageReceived)
+    {
+        switch (damageType)
+        {
+            case DamageTypes.Pierce:
+                damageReceived *= arrowMultiplier;
+                break;
+
+            case DamageTypes.Fire:
+                damageReceived *= fireMultiplier;
+                break;
+
+            case DamageTypes.Thunder:
+                damageReceived *= thunderMultiplier;
+                break;
+
+            case DamageTypes.Earth:
+                damageReceived *= earthMultiplier;
+                break;
+
+            default:
+                break;
+        }
+
+        return damageReceived;
+    }
+
     protected virtual void TakeDamage(GameObject target, DamageTypes damageType, float damageReceived)
     {
+        damageReceived = MultiplyDamage(damageType, damageReceived);
+
         if (target == gameObject)
             hitpoints -= damageReceived;
 

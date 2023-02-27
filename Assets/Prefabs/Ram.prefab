@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4137500561695387349}
   - component: {fileID: 4137500561695387346}
   - component: {fileID: 6057173843168479271}
-  - component: {fileID: -1981789691644692529}
+  - component: {fileID: -6790633900081757478}
   m_Layer: 7
-  m_Name: Shielder
+  m_Name: Ram
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4137500561695387344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 15
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+  m_Color: {r: 0.4901961, g: 0.34509805, b: 0.14117648, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -155,7 +155,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-1981789691644692529
+--- !u!114 &-6790633900081757478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,16 +164,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4137500561695387344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c05a54363341a469983cef80e9de5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a58a5824e84624489b77570f2d04129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6057173843168479271}
-  hitpoints: 1
-  speed: 0.8
-  damage: 1
-  attackCooldown: 2
-  scoreValue: 300
-  arrowMultiplier: 0.8
-  fireMultiplier: 1
+  hitpoints: 15
+  speed: 0.5
+  damage: 12
+  attackCooldown: 3
+  scoreValue: 500
+  arrowMultiplier: 0.5
+  fireMultiplier: 2
   thunderMultiplier: 1
   earthMultiplier: 1
