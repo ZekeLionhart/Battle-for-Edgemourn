@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 289554156}
   shot: {fileID: 5205078567594977183, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
-  damageType: Pierce
+  damageType: 0
   damage: 1
   cooldown: 1
   arrowSpeed: 2.75
@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 1898932313}
   shot: {fileID: 7169083511623344338, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
-  damageType: Thunder
+  damageType: 2
   damage: 10
   cooldown: 15
   aimSpeed: 4
@@ -1845,7 +1845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 520569539}
   shot: {fileID: 7169083511623344338, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
-  damageType: Fire
+  damageType: 1
   damage: 10
   cooldown: 30
   speed: 3
@@ -2633,7 +2633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 862489347}
   shot: {fileID: 5205078567594977183, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
-  damageType: Pierce
+  damageType: 0
   damage: 0.5
   cooldown: 10
   arrowSpeed: 2.75
@@ -4026,7 +4026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 1808682841}
   shot: {fileID: 5205078567594977183, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
-  damageType: Fire
+  damageType: 1
   damage: 5
   cooldown: 15
   aimSpeed: 25
@@ -4132,7 +4132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 884464502}
   shot: {fileID: 7169083511623344338, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
-  damageType: Earth
+  damageType: 3
   damage: 5
   cooldown: 15
   aimSpeed: 5
