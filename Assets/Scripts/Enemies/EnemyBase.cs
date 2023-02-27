@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
     [SerializeField] private int damage;
@@ -11,8 +12,6 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private int scoreValue;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
-    private bool isColliding = false;
-    private bool canAttack = true;
 
     public static Action<GameObject, int> OnDamageDealt;
     public static Action<int> OnEnemyDeath;
@@ -32,20 +31,11 @@ public class EnemyBase : MonoBehaviour
         ProjectileManager.OnEnemyHit -= TakeDamage;
     }
 
-    private void FixedUpdate()
-    {
-        if (canAttack && isColliding)
-            StartCoroutine(Attack());
-
-        //WalkForwards();
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Tower") || collision.collider.CompareTag("Player"))
         {
-            isColliding = true;
-            canAttack = true;
+            animator.SetBool("IsColliding", true);
             target = collision.gameObject;
         }
     }
@@ -54,8 +44,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (collision.collider.CompareTag("Tower") || collision.collider.CompareTag("Player"))
         {
-            isColliding = false;
-            canAttack = false;
+            animator.SetBool("IsColliding", false);
             target = null;
         }
     }
@@ -64,21 +53,30 @@ public class EnemyBase : MonoBehaviour
     {
         if (target == gameObject)
             hitpoints -= damageReceived;
+
+        if (hitpoints <= 0)
+            animator.SetTrigger("OnHpEmpty");
     }
 
     private void WalkForwards()
     {
+        animator.ResetTrigger("OnAttackCldwn");
+
         transform.position -= Time.fixedDeltaTime * speed * transform.right;
     }
 
-    private IEnumerator Attack()
+    private void Attack()
     {
-        canAttack = false;
         OnDamageDealt(target, damage);
 
+        StartCoroutine(AttackCooldown());
+    }
+
+    private IEnumerator AttackCooldown()
+    {
         yield return attackCooldownWFS;
 
-        canAttack = true;
+        animator.SetTrigger("OnAttackCldwn");
     }
 
     private void Die()
