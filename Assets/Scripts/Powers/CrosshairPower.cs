@@ -30,7 +30,7 @@ public class CrosshairPower : PowerController
     {
         aimingPoint.transform.position += new Vector3(directionMult * aimSpeed * Time.deltaTime, 0f);
 
-        if (aimingPoint.transform.position.x >= 5f || aimingPoint.transform.position.x <= -6f)
+        if (aimingPoint.transform.position.x >= 8f || aimingPoint.transform.position.x <= -6f)
             directionMult *= -1;
     }
 

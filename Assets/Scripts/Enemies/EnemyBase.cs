@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [SerializeField] protected Animator animator;
     [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
-    [SerializeField] private int damage;
+    [SerializeField] protected int damage;
     [SerializeField] private float attackCooldown;
     [SerializeField] private int scoreValue;
     [SerializeField] protected float arrowMultiplier;
@@ -16,6 +16,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float earthMultiplier;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
+    private bool canAttack = true;
 
     public static Action<GameObject, int> OnDamageDealt;
     public static Action<int> OnEnemyDeath;
@@ -98,18 +99,21 @@ public class EnemyBase : MonoBehaviour
         transform.position -= Time.fixedDeltaTime * speed * transform.right;
     }
 
-    private void Attack()
+    protected virtual void Attack()
     {
         OnDamageDealt(target, damage);
-
-        StartCoroutine(AttackCooldown());
     }
 
-    private IEnumerator AttackCooldown()
+    protected IEnumerator AttackCooldown()
     {
-        yield return attackCooldownWFS;
+        if (canAttack)
+        {
+            canAttack = false;
+            yield return attackCooldownWFS;
 
-        animator.SetTrigger("OnAttackCldwn");
+            animator.SetTrigger("OnAttackCldwn");
+            canAttack = true;
+        }
     }
 
     private void Die()

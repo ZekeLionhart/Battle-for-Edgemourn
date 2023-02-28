@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Tower
   - Floor
+  - TrebLimit
   layers:
   - Default
   - TransparentFX

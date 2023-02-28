@@ -12,6 +12,6 @@ public class ArrowManager : ProjectileManager
             canDamage = false;
         }
 
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
