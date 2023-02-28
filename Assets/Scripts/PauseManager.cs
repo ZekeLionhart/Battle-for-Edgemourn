@@ -6,7 +6,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     public static bool isPaused;
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Pause"))
         {
