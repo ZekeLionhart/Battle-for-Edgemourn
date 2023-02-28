@@ -38,6 +38,7 @@ public class PauseManager : MonoBehaviour
 
     public void QuitToMenu()
     {
+        Resume();
         SceneManager.LoadScene("MenuScene");
     }
 }
