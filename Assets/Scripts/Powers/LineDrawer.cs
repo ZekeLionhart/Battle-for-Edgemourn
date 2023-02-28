@@ -18,7 +18,8 @@ public class LineDrawer : MonoBehaviour
 
     void Update()
     {
-        DrawAimingLine();
+        if (!PauseManager.isPaused)
+            DrawAimingLine();
     }
 
     private void DrawAimingLine()

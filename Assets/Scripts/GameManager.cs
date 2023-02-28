@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (canSpawnEnemy)
+        if (canSpawnEnemy && !PauseManager.isPaused)
             StartCoroutine(SpawnEnemy());
 
         if (Input.GetButtonDown("Power1"))
