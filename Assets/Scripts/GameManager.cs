@@ -7,19 +7,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<PowerController> powers = new();
-    [SerializeField] private Transform enemySpawnPoint;
-    [SerializeField] private GameObject enemy;
-    [SerializeField] private float enemyDelay;
     private List<bool> cooldowns = new();
     private PowerController activePower;
-    private WaitForSeconds enemyDelayWFS;
-    private bool canSpawnEnemy = true;
 
     public static Action<PowerController> OnSwitchPowers;
 
     private void Awake()
     {
-        enemyDelayWFS = new WaitForSeconds(enemyDelay);
         activePower = powers[0];
 
         for (int i = 0; i < powers.Count; i++)
@@ -42,9 +36,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (canSpawnEnemy && !PauseManager.isPaused)
-            StartCoroutine(SpawnEnemy());
-
         if (Input.GetButtonDown("Power1"))
             SwitchPowers(0);
         if (Input.GetButtonDown("Power2"))
@@ -99,16 +90,5 @@ public class GameManager : MonoBehaviour
     private void FailGame()
     {
         SceneManager.LoadScene("GameOverScene");
-    }
-
-    private IEnumerator SpawnEnemy()
-    {
-        canSpawnEnemy = false;
-
-        yield return enemyDelayWFS;
-
-        Instantiate(enemy, enemySpawnPoint.position, Quaternion.identity);
-
-        //canSpawnEnemy = true;
     }
 }
