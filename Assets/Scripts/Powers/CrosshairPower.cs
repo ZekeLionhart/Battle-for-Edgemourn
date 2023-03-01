@@ -3,19 +3,21 @@ using UnityEngine;
 public class CrosshairPower : PowerController
 {
     [SerializeField] private float aimSpeed;
+    [SerializeField] private Transform leftLimit;
+    [SerializeField] private Transform rightLimit;
     private Vector2 startingPos;
     private int directionMult = 1;
 
     protected override void Awake()
     {
         base.Awake();
-        startingPos = new Vector2(aimingPoint.transform.position.x, aimingPoint.transform.position.y);
+        startingPos = new Vector2(aimingPoint.position.x, aimingPoint.position.y);
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        aimingPoint.transform.position = startingPos;
+        aimingPoint.position = startingPos;
     }
 
     protected virtual void Update()
@@ -28,17 +30,17 @@ public class CrosshairPower : PowerController
 
     protected virtual void HandleAimMovement()
     {
-        aimingPoint.transform.position += new Vector3(directionMult * aimSpeed * Time.deltaTime, 0f);
+        aimingPoint.position += new Vector3(directionMult * aimSpeed * Time.deltaTime, 0f);
 
-        if (aimingPoint.transform.position.x >= 8f || aimingPoint.transform.position.x <= -6f)
+        if (aimingPoint.position.x >= rightLimit.position.x || aimingPoint.position.x <= leftLimit.position.x)
             directionMult *= -1;
     }
 
     protected virtual void HandleAimRotation()
     {
-        aimingPoint.transform.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
+        aimingPoint.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
 
-        if (aimingPoint.transform.rotation.z >= -0.1f || aimingPoint.transform.rotation.z <= -0.5f)
+        if (aimingPoint.rotation.z >= rightLimit.rotation.z || aimingPoint.rotation.z <= leftLimit.rotation.z)
             directionMult *= -1;
     }
 }
