@@ -36,7 +36,7 @@ public class BowController : PowerController
         Vector3 force = -1f * arrowSpeed * vector;
         shotRigid.velocity = force;
 
-        OnShotInstantiated(shotRigid, damageType, damage, 0f);
+        OnShotInstantiated(shotRigid.gameObject, damageType, damage, 0f);
         OnPowerShoot(this, cooldown);
         canShoot = false;
     }

@@ -17,7 +17,7 @@ public class BoilingOilController : PowerController
                 aimingPoint.transform.position.y
             ), shot.transform.rotation);
 
-        OnShotInstantiated(shotRigid, damageType, damage, speed);
+        OnShotInstantiated(shotRigid.gameObject, damageType, damage, speed);
         base.Shoot();
     }
 }

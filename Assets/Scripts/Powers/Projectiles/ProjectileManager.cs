@@ -19,9 +19,9 @@ public class ProjectileManager : MonoBehaviour
         PowerController.OnShotInstantiated -= SetVariables;
     }
 
-    private void SetVariables(Rigidbody2D shot, DamageTypes damageType, float damage, float speed)
+    private void SetVariables(GameObject shot, DamageTypes damageType, float damage, float speed)
     {
-        if (shot.gameObject == gameObject)
+        if (shot == gameObject)
         {
             this.damageType = damageType;
             this.damage = damage;

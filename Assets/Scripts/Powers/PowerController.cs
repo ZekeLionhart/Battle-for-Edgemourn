@@ -14,7 +14,7 @@ public class PowerController : MonoBehaviour
     protected WaitForSeconds shotDelayWFS;
 
     public static Action<PowerController, float> OnPowerShoot;
-    public static Action<Rigidbody2D, DamageTypes, float, float> OnShotInstantiated;
+    public static Action<GameObject, DamageTypes, float, float> OnShotInstantiated;
 
     protected virtual void Awake()
     {

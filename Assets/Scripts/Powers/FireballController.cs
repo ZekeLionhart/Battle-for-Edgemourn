@@ -1,9 +1,23 @@
+using System;
 using UnityEngine;
 
 public class FireballController : CrosshairPower
 {
     [SerializeField] private float speed;
     [SerializeField] private Transform direction;
+    [SerializeField] private GameObject explosion;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        FireballManager.OnTargetHit += InvokeExplosion;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        FireballManager.OnTargetHit -= InvokeExplosion;
+    }
 
     protected override void Update()
     {
@@ -20,7 +34,13 @@ public class FireballController : CrosshairPower
         Vector3 force = speed * (direction.position - aimingPoint.position);
         shotRigid.velocity = force;
 
-        OnShotInstantiated(shotRigid, damageType, damage, speed);
+        OnShotInstantiated(shotRigid.gameObject, damageType, damage, speed);
         base.Shoot();
+    }
+
+    private void InvokeExplosion(Vector3 position)
+    {
+        GameObject newShot = Instantiate(explosion, position, Quaternion.identity);
+        OnShotInstantiated(newShot, damageType, damage, speed);
     }
 }
