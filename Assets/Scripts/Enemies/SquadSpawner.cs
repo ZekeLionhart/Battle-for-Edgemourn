@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ShielderSpawner : EnemySpawner
+public class SquadSpawner : EnemySpawner
 {
     [SerializeField] private int squadSize;
     [SerializeField] private float distBetweenEach;
