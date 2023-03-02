@@ -96,7 +96,7 @@ public class EnemyBase : MonoBehaviour
     {
         animator.ResetTrigger("OnAttackCldwn");
 
-        transform.position -= Time.fixedDeltaTime * speed * transform.right;
+        transform.position -= 0.5f * speed * Time.fixedDeltaTime * transform.right;
     }
 
     protected virtual void Attack()

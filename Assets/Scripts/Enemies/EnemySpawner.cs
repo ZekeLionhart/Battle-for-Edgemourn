@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy;
+    [SerializeField] protected GameObject enemy;
     [SerializeField] private float enemyDelay;
-    private WaitForSeconds enemyWFS;
+    protected WaitForSeconds enemyWFS;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-    private IEnumerator SpawnEnemy()
+    protected virtual IEnumerator SpawnEnemy()
     {
         yield return enemyWFS;
 

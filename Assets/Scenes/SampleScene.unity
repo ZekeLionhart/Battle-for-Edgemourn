@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4137500561695387344, guid: a31d71eb24225ac44aab3c073a9e067f, type: 3}
-  enemyDelay: 3
+  enemyDelay: 5
 --- !u!114 &306235054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4137500561695387344, guid: a0ae97081b822e1409a6785c609d74ce, type: 3}
-  enemyDelay: 20
+  enemyDelay: 60
 --- !u!114 &306235055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4137500561695387344, guid: e71af7c7970c93644a859ce2adf47621, type: 3}
-  enemyDelay: 15
+  enemyDelay: 45
 --- !u!114 &306235056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,11 +1427,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 306235051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e232350a2d57345bf2fd6e249f44e3, type: 3}
+  m_Script: {fileID: 11500000, guid: cc10145ccc7959e4da31fc6fe7561a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4137500561695387344, guid: be5be8c13b2731e4aa2a99f8b9c8e7f4, type: 3}
-  enemyDelay: 4.5
+  enemyDelay: 30
+  squadSize: 5
+  distBetweenEach: 0.5
 --- !u!1 &322132151
 GameObject:
   m_ObjectHideFlags: 0
