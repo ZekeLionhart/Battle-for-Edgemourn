@@ -1351,6 +1351,9 @@ GameObject:
   m_Component:
   - component: {fileID: 306235052}
   - component: {fileID: 306235053}
+  - component: {fileID: 306235056}
+  - component: {fileID: 306235055}
+  - component: {fileID: 306235054}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1385,16 +1388,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e232350a2d57345bf2fd6e249f44e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4137500561695387344, guid: a31d71eb24225ac44aab3c073a9e067f, type: 3}
-  - {fileID: 4137500561695387344, guid: be5be8c13b2731e4aa2a99f8b9c8e7f4, type: 3}
-  - {fileID: 4137500561695387344, guid: e71af7c7970c93644a859ce2adf47621, type: 3}
-  - {fileID: 4137500561695387344, guid: a0ae97081b822e1409a6785c609d74ce, type: 3}
-  enemyDelays:
-  - 3
-  - 4.5
-  - 15
-  - 20
+  enemy: {fileID: 4137500561695387344, guid: a31d71eb24225ac44aab3c073a9e067f, type: 3}
+  enemyDelay: 3
+--- !u!114 &306235054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306235051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e232350a2d57345bf2fd6e249f44e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4137500561695387344, guid: a0ae97081b822e1409a6785c609d74ce, type: 3}
+  enemyDelay: 20
+--- !u!114 &306235055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306235051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e232350a2d57345bf2fd6e249f44e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4137500561695387344, guid: e71af7c7970c93644a859ce2adf47621, type: 3}
+  enemyDelay: 15
+--- !u!114 &306235056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306235051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e232350a2d57345bf2fd6e249f44e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4137500561695387344, guid: be5be8c13b2731e4aa2a99f8b9c8e7f4, type: 3}
+  enemyDelay: 4.5
 --- !u!1 &322132151
 GameObject:
   m_ObjectHideFlags: 0
