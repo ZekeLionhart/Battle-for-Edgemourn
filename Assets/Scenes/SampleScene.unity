@@ -1369,7 +1369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306235051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 11, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306235051}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2e232350a2d57345bf2fd6e249f44e3, type: 3}
   m_Name: 
@@ -1431,7 +1431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4137500561695387344, guid: be5be8c13b2731e4aa2a99f8b9c8e7f4, type: 3}
-  enemyDelay: 5
+  enemyDelay: 30
   squadSize: 5
   distBetweenEach: 0.5
 --- !u!1 &322132151
@@ -2142,7 +2142,7 @@ MonoBehaviour:
   shot: {fileID: 7169083511623344338, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
   damageType: 2
   damage: 10
-  cooldown: 1
+  cooldown: 15
   aimSpeed: 4
   leftLimit: {fileID: 1434678515}
   rightLimit: {fileID: 883160643}
@@ -5544,7 +5544,7 @@ MonoBehaviour:
   aimingPoint: {fileID: 1808682841}
   shot: {fileID: 5205078567594977183, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
   damageType: 1
-  damage: 5
+  damage: 8
   cooldown: 15
   aimSpeed: 25
   leftLimit: {fileID: 1116979731}

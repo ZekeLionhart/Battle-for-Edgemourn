@@ -176,5 +176,5 @@ MonoBehaviour:
   arrowMultiplier: 0.5
   fireMultiplier: 1.5
   thunderMultiplier: 2
-  earthMultiplier: 1
+  earthMultiplier: 2
   ammo: {fileID: 5205078567594977183, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
