@@ -4,6 +4,8 @@ public class WallManager : MonoBehaviour
 {
     private Vector2 floor;
     private int hitpoints = 100;
+    private float damage;
+    private DamageTypes damageType;
 
     private void Awake()
     {
@@ -12,14 +14,20 @@ public class WallManager : MonoBehaviour
 
     private void OnEnable()
     {
-        StoneWallController.OnWallSummon += SetHitpoints;
+        StoneWallController.OnWallSummon += SetStats;
         EnemyBase.OnDamageDealt += TakeDamage;
     }
 
     private void OnDisable()
     {
-        StoneWallController.OnWallSummon -= SetHitpoints;
+        StoneWallController.OnWallSummon -= SetStats;
         EnemyBase.OnDamageDealt -= TakeDamage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+            ProjectileManager.OnEnemyHit(collision.gameObject, damageType, damage);
     }
 
     private void Update()
@@ -30,9 +38,11 @@ public class WallManager : MonoBehaviour
             transform.position = new Vector2(transform.position.x, floor.y + transform.localScale.y);
     }
 
-    private void SetHitpoints(int newHP)
+    private void SetStats(int hitpoints, float damage, DamageTypes damageType)
     {
-        hitpoints = newHP;
+        this.hitpoints = hitpoints;
+        this.damage = damage;
+        this.damageType = damageType;
     }
 
     private void TakeDamage(GameObject target, int damage)
