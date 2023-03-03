@@ -2142,7 +2142,7 @@ MonoBehaviour:
   shot: {fileID: 7169083511623344338, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
   damageType: 2
   damage: 10
-  cooldown: 15
+  cooldown: 1
   aimSpeed: 4
   leftLimit: {fileID: 1434678515}
   rightLimit: {fileID: 883160643}
@@ -5545,7 +5545,7 @@ MonoBehaviour:
   shot: {fileID: 5205078567594977183, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
   damageType: 1
   damage: 5
-  cooldown: 1
+  cooldown: 15
   aimSpeed: 25
   leftLimit: {fileID: 1116979731}
   rightLimit: {fileID: 281032840}
@@ -5656,7 +5656,7 @@ MonoBehaviour:
   shot: {fileID: 7169083511623344338, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
   damageType: 3
   damage: 5
-  cooldown: 15
+  cooldown: 10
   aimSpeed: 5
   leftLimit: {fileID: 169869951}
   rightLimit: {fileID: 708980704}

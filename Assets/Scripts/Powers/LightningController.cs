@@ -4,10 +4,10 @@ public class LightningController : CrosshairPower
 {
     protected override void Shoot()
     {
-        Rigidbody2D shotRigid = Instantiate(shot, new Vector2(aimingPoint.transform.position.x, 6f)
-            , shot.transform.rotation);
+        GameObject newShot = Instantiate(shot.gameObject, new Vector2(aimingPoint.transform.position.x, 1.5f)
+            , Quaternion.identity);
 
-        OnShotInstantiated(shotRigid.gameObject, damageType, damage, 0f);
+        OnShotInstantiated(newShot, damageType, damage, 0f);
         base.Shoot();
     }
 }
