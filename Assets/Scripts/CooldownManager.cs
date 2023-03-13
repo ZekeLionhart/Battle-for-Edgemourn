@@ -20,13 +20,13 @@ public class CooldownManager : MonoBehaviour
     private void OnEnable()
     {
         PowerController.OnPowerShoot += StartCooldown;
-        GameManager.OnSwitchPowers += ActivateBorder;
+        PowerManager.OnSwitchPowers += ActivateBorder;
     }
 
     private void OnDisable()
     {
         PowerController.OnPowerShoot -= StartCooldown;
-        GameManager.OnSwitchPowers -= ActivateBorder;
+        PowerManager.OnSwitchPowers -= ActivateBorder;
     }
 
     void Update()
