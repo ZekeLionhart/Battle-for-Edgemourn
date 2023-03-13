@@ -6,8 +6,8 @@ using UnityEngine;
 public class PowerManager : MonoBehaviour
 {
     [SerializeField] private GameObject lineRenderer;
-    [SerializeField] private List<PowerController> powers = new();
-    private List<bool> cooldowns = new();
+    [SerializeField] private PowerController[] powers;
+    private readonly List<bool> cooldowns = new();
     private PowerController activePower;
 
     public static Action<PowerController> OnSwitchPowers;
@@ -16,7 +16,7 @@ public class PowerManager : MonoBehaviour
     {
         activePower = powers[0];
 
-        for (int i = 0; i < powers.Count; i++)
+        for (int i = 0; i < powers.Length; i++)
             cooldowns.Add(false);
     }
     private void OnEnable()
@@ -50,7 +50,7 @@ public class PowerManager : MonoBehaviour
     private void SwitchPowers(int index)
     {
         lineRenderer.SetActive(index == 0 || index == 1);
-        powers[powers.IndexOf(activePower)].gameObject.SetActive(false);
+        powers[Array.IndexOf(powers, activePower)].gameObject.SetActive(false);
 
         powers[index].gameObject.SetActive(true);
         activePower = powers[index];
@@ -63,7 +63,7 @@ public class PowerManager : MonoBehaviour
 
     private void StartPowerCooldown(PowerController power, float cooldown)
     {
-        for (int i = 0; i < powers.Count; i++)
+        for (int i = 0; i < powers.Length; i++)
         {
             if (power == powers[i])
             {
@@ -75,7 +75,7 @@ public class PowerManager : MonoBehaviour
 
     private void EndPowerCooldown(PowerController power)
     {
-        for (int i = 0; i < powers.Count; i++)
+        for (int i = 0; i < powers.Length; i++)
         {
             if (power == powers[i])
             {
