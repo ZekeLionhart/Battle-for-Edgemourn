@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject lineRenderer;
     [SerializeField] private List<PowerController> powers = new();
     private List<bool> cooldowns = new();
     private PowerController activePower;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     private void SwitchPowers(int index)
     {
+        lineRenderer.SetActive(index == 0 || index == 1);
         powers[powers.IndexOf(activePower)].gameObject.SetActive(false);
 
         powers[index].gameObject.SetActive(true);
