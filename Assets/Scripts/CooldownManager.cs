@@ -6,6 +6,7 @@ public class CooldownManager : MonoBehaviour
     [SerializeField] private PowerController power;
     [SerializeField] private RectTransform overlay;
     [SerializeField] private GameObject border;
+    [SerializeField] private GameObject crystal;
     private bool cooldownStarted = true;
     private float cooldownLength;
     private float startingHeight;
@@ -50,6 +51,7 @@ public class CooldownManager : MonoBehaviour
 
         if (y >= startingHeight)
         {
+            crystal.SetActive(true);
             overlay.sizeDelta = new Vector2(x,0);
             cooldownStarted = false;
             OnCooldownEnded(power);
@@ -65,6 +67,7 @@ public class CooldownManager : MonoBehaviour
     {
         if (power == this.power)
         {
+            crystal.SetActive(false);
             cooldownStarted = true;
             cooldownLength = length;
         }
