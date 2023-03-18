@@ -292,11 +292,11 @@ RectTransform:
   m_Father: {fileID: 1662441929}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 140, y: -4.924019}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -15, y: 0}
   m_SizeDelta: {x: 110, y: 50}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &151144103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,8 +364,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1059,6 +1059,7 @@ GameObject:
   - component: {fileID: 289554156}
   - component: {fileID: 289554157}
   - component: {fileID: 289554161}
+  - component: {fileID: 289554162}
   m_Layer: 6
   m_Name: WarBow
   m_TagString: Untagged
@@ -1122,9 +1123,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 83f7c014f069d7e4586757d8034d6848, type: 3}
+  m_Sprite: {fileID: 2041386741, guid: 8e71c8b9b66d16947bdfe4570394cb63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 5.12}
@@ -1147,10 +1148,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 289554156}
   shot: {fileID: 5205078567594977183, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
+  animator: {fileID: 289554162}
   damageType: 0
   damage: 1
   cooldown: 1
   arrowSpeed: 2.75
+--- !u!95 &289554162
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289554155}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a08c6869b7768874cba50fe963c3b6c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &306235051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,6 +2273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 1898932313}
   shot: {fileID: 7169083511623344338, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
+  animator: {fileID: 0}
   damageType: 2
   damage: 10
   cooldown: 15
@@ -2422,6 +2445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 520569539}
   shot: {fileID: 7169083511623344338, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
+  animator: {fileID: 0}
   damageType: 1
   damage: 10
   cooldown: 30
@@ -2858,11 +2882,11 @@ RectTransform:
   m_Father: {fileID: 1662441929}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 15, y: -4.924019}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 15, y: 0}
   m_SizeDelta: {x: 110, y: 50}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &604909797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2918,7 +2942,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3887,13 +3911,14 @@ GameObject:
   - component: {fileID: 862489347}
   - component: {fileID: 862489351}
   - component: {fileID: 862489348}
+  - component: {fileID: 862489352}
   m_Layer: 6
   m_Name: ArrowVolley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &862489347
 Transform:
   m_ObjectHideFlags: 0
@@ -3923,6 +3948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 862489347}
   shot: {fileID: 5205078567594977183, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
+  animator: {fileID: 862489352}
   damageType: 0
   damage: 0.5
   cooldown: 10
@@ -3970,9 +3996,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 83f7c014f069d7e4586757d8034d6848, type: 3}
+  m_Sprite: {fileID: 2041386741, guid: 8e71c8b9b66d16947bdfe4570394cb63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 5.12}
@@ -3981,6 +4007,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &862489352
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862489346}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a08c6869b7768874cba50fe963c3b6c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &862893050
 GameObject:
   m_ObjectHideFlags: 0
@@ -6817,6 +6863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 1808682841}
   shot: {fileID: 5205078567594977183, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
+  animator: {fileID: 0}
   damageType: 1
   damage: 8
   cooldown: 15
@@ -6928,6 +6975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 884464502}
   shot: {fileID: 7169083511623344338, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
+  animator: {fileID: 0}
   damageType: 3
   damage: 8
   cooldown: 10
@@ -7177,7 +7225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -135, y: -190}
+  m_AnchoredPosition: {x: -150, y: -190}
   m_SizeDelta: {x: 260, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662441930

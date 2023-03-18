@@ -4,12 +4,14 @@ using UnityEngine;
 public class LineDrawer : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRend;
+    [SerializeField] private float maxLength;
     private Vector3 startPos;
     private Vector3 endPos;
-    [SerializeField] private float maxLength;
+    private int currentPull;
 
     public static Action<Vector3> OnMouseUp;
     public static Action<float> OnAimUpdate;
+    public static Action<int> OnBowPull;
 
     private void Awake()
     {
@@ -28,6 +30,8 @@ public class LineDrawer : MonoBehaviour
         {
             startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             startPos.z = 0f;
+            currentPull = 1;
+            OnBowPull(currentPull);
         }
 
         if (Input.GetButton("Fire1"))
@@ -42,6 +46,24 @@ public class LineDrawer : MonoBehaviour
 
             if (startPos != endPos)
                 OnAimUpdate(CalculateAngle());
+
+            if ((endPos - startPos).magnitude > maxLength / 3 * 2 && currentPull != 3)
+            {
+                currentPull = 3;
+                OnBowPull(currentPull);
+            }
+            else if ((endPos - startPos).magnitude > maxLength / 3 &&
+                (endPos - startPos).magnitude <= maxLength / 3 * 2 && currentPull != 2)
+            {
+                currentPull = 2;
+                OnBowPull(currentPull);
+            }
+            else if ((endPos - startPos).magnitude <= maxLength / 3 && currentPull != 1)
+            {
+                currentPull = 1;
+                OnBowPull(currentPull);
+            }
+
         }
 
         if (Input.GetButtonUp("Fire1"))

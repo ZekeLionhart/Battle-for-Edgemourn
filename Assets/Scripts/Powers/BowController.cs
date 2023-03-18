@@ -9,6 +9,7 @@ public class BowController : PowerController
         base.OnEnable();
         LineDrawer.OnMouseUp += Shoot;
         LineDrawer.OnAimUpdate += Aim;
+        LineDrawer.OnBowPull += PullBow;
     }
 
     protected override void OnDisable()
@@ -16,6 +17,7 @@ public class BowController : PowerController
         base.OnDisable();
         LineDrawer.OnMouseUp -= Shoot;
         LineDrawer.OnAimUpdate -= Aim;
+        LineDrawer.OnBowPull -= PullBow;
     }
 
     private void Aim(float angle)
@@ -26,6 +28,8 @@ public class BowController : PowerController
 
     protected virtual void Shoot(Vector3 vector)
     {
+        animator.SetTrigger("Shoot");
+
         if (canShoot)
             CreateArrow(vector, shot, aimingPoint.position);
     }
@@ -39,5 +43,23 @@ public class BowController : PowerController
         OnShotInstantiated(shotRigid.gameObject, damageType, damage, 0f);
         OnPowerShoot(this, cooldown);
         canShoot = false;
+    }
+
+    private void PullBow(int strength)
+    {
+        switch(strength)
+        {
+            case 1:
+                animator.SetTrigger("PullWeak");
+                break;
+            case 2:
+                animator.SetTrigger("PullMed");
+                break;
+            case 3:
+                animator.SetTrigger("PullStrong");
+                break;
+            default:
+                break;
+        }
     }
 }

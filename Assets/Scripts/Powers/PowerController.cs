@@ -6,6 +6,7 @@ public class PowerController : MonoBehaviour
 {
     [SerializeField] protected Transform aimingPoint;
     [SerializeField] protected Rigidbody2D shot;
+    [SerializeField] protected Animator animator;
     [SerializeField] protected DamageTypes damageType;
     [SerializeField] protected float damage;
     [SerializeField] protected float cooldown;
