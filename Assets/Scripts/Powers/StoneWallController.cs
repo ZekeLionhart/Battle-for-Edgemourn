@@ -11,7 +11,7 @@ public class StoneWallController : CrosshairPower
     protected override void Shoot()
     {
         Instantiate(shot, new Vector2(
-            aimingPoint.transform.position.x, floor.position.y + floor.localScale.y / 2 - shot.transform.localScale.y / 2)
+            aimingPoint.transform.position.x, floor.position.y + floor.localScale.y / 2 + shot.transform.localScale.y)
             , shot.transform.rotation);
 
         OnWallSummon(hitpoints, damage, damageType);
