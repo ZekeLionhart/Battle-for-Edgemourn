@@ -161,8 +161,8 @@ TextureImporter:
       name: Stonewall_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1024
+        y: 512
         width: 512
         height: 512
       alignment: 0
@@ -182,8 +182,8 @@ TextureImporter:
       name: Stonewall_3
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
+        x: 1536
+        y: 512
         width: 512
         height: 512
       alignment: 0
@@ -199,6 +199,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Stonewall_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 188673768d8807f42bdd800ae0620620
+      internalID: -460253943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stonewall_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77745c7a1449d7640879006bce8efa05
+      internalID: -887391434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stonewall_6
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4accebbcc4e5f8478e58884a2488fd7
+      internalID: 529466971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stonewall_7
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 267ba2d6babad554cb7ae45fdc7fcb56
+      internalID: 840479712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -210,8 +294,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Stonewall_6: 529466971
+      Stonewall_4: -460253943
       Stonewall_1: -163049774
+      Stonewall_5: -887391434
       Stonewall_0: 1954035677
+      Stonewall_7: 840479712
       Stonewall_3: 1879219385
       Stonewall_2: 817020573
   spritePackingTag: 
