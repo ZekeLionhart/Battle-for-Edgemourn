@@ -4,7 +4,7 @@ public class LightningController : CrosshairPower
 {
     protected override void Shoot()
     {
-        GameObject newShot = Instantiate(shot.gameObject, new Vector2(aimingPoint.transform.position.x, 1.5f)
+        GameObject newShot = Instantiate(shot.gameObject, new Vector2(aimingPoint.transform.position.x, 1.35f)
             , Quaternion.identity);
 
         OnShotInstantiated(newShot, damageType, damage, 0f);
