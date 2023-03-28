@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WallManager : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     private int hitpoints = 100;
     private float damage;
     private DamageTypes damageType;
@@ -38,7 +39,7 @@ public class WallManager : MonoBehaviour
             hitpoints -= damage;
 
             if (hitpoints <= 0)
-                Die();
+                animator.SetTrigger("Destroy");
         }
     }
 
