@@ -2245,7 +2245,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   damageType: 2
   damage: 10
-  cooldown: 1
+  cooldown: 15
   aimSpeed: 4
   leftLimit: {fileID: 1434678515}
   rightLimit: {fileID: 883160643}
