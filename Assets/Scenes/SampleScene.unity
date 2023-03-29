@@ -2304,7 +2304,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   damageType: 2
   damage: 10
-  cooldown: 1
+  cooldown: 15
   aimSpeed: 4
   leftLimit: {fileID: 1434678515}
   rightLimit: {fileID: 883160643}
@@ -7056,7 +7056,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   damageType: 1
   damage: 8
-  cooldown: 1
+  cooldown: 15
   aimSpeed: 25
   leftLimit: {fileID: 1116979731}
   rightLimit: {fileID: 281032840}
@@ -7116,7 +7116,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   damageType: 3
   damage: 8
-  cooldown: 1
+  cooldown: 10
   aimSpeed: 5
   leftLimit: {fileID: 169869951}
   rightLimit: {fileID: 708980704}
