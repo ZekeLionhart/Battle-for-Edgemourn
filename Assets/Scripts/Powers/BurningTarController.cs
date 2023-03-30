@@ -7,7 +7,7 @@ public class BurningTarController : PowerController
     private void Update()
     {
         if (Input.GetButtonDown("Fire1") && canShoot)
-            Shoot();
+            animator.SetTrigger("Flip");
     }
 
     protected override void Shoot()
