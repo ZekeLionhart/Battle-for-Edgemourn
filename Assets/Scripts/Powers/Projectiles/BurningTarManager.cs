@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BoilingOilManager : ProjectileManager
+public class BurningTarManager : ProjectileManager
 {
     private void Update()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BoilingOilController : PowerController
+public class BurningTarController : PowerController
 {
     [SerializeField] private float speed;
     

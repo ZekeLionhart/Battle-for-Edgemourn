@@ -1,28 +1,31 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] protected GameObject enemy;
-    [SerializeField] private float enemyDelay;
-    protected WaitForSeconds enemyWFS;
+    [SerializeField] private List<EnemySpawnSettings> enemyList;
+    private float lastSpawn;
 
-    private void Awake()
+    private void FixedUpdate()
     {
-        enemyWFS = new WaitForSeconds(enemyDelay);
+        if (enemyList.Count == 0)
+            return;
+
+        if (Time.time > lastSpawn + enemyList[0].secondsAfterLastEnemy)
+        {
+            Instantiate(enemyList[0].enemy.enemyPrefab, transform.position, transform.rotation);
+            RegisterLastSpawnTime();
+            DequeueEnemy();
+        }
     }
 
-    private void Start()
+    private void RegisterLastSpawnTime()
     {
-        StartCoroutine(SpawnEnemy());
+        lastSpawn = Time.time;
     }
 
-    protected virtual IEnumerator SpawnEnemy()
+    private void DequeueEnemy()
     {
-        yield return enemyWFS;
-
-        Instantiate(enemy, transform.position, Quaternion.identity);
-
-        StartCoroutine(SpawnEnemy());
+        enemyList.RemoveAt(0);
     }
 }
