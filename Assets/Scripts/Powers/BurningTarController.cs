@@ -13,7 +13,7 @@ public class BurningTarController : PowerController
     protected override void Shoot()
     {
         Rigidbody2D shotRigid = Instantiate(shot, new Vector2(
-                aimingPoint.transform.position.x, 
+                aimingPoint.transform.position.x + 0.4f, 
                 aimingPoint.transform.position.y
             ), shot.transform.rotation);
 
