@@ -16,10 +16,13 @@ public class VolleyController : BowController
 
     protected override void Shoot(Vector3 vector)
     {
-        animator.SetTrigger("Shoot");
+        if (isActive)
+        {
+            animator.SetTrigger("Shoot");
 
-        if (canShoot)
-            for (int i = 0; i < numOfArrows; i++)
-                CreateArrow(vector, arrows[i], aimingPoint.position + i * spreadMultiplier * Vector3.left);
+            if (canShoot)
+                for (int i = 0; i < numOfArrows; i++)
+                    CreateArrow(vector, arrows[i], aimingPoint.position + i * spreadMultiplier * Vector3.left);
+        }
     }
 }

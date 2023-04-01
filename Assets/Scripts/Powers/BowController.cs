@@ -28,10 +28,15 @@ public class BowController : PowerController
 
     protected virtual void Shoot(Vector3 vector)
     {
-        animator.SetTrigger("Shoot");
+        if (isActive)
+        {
+            animator.SetTrigger("Shoot");
 
-        if (canShoot)
-            CreateArrow(vector, shot, aimingPoint.position);
+            if (canShoot)
+            {
+                CreateArrow(vector, shot, aimingPoint.position);
+            }
+        }
     }
 
     protected void CreateArrow(Vector3 vector, Rigidbody2D arrow, Vector3 position)

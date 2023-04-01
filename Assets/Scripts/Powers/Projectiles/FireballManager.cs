@@ -7,7 +7,9 @@ public class FireballManager : ProjectileManager
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Floor") || collision.collider.CompareTag("Enemy")) 
+        if (collision.collider.CompareTag("Floor") 
+            || collision.collider.CompareTag("Enemy") 
+            || collision.collider.CompareTag("Player")) 
         {
             OnTargetHit(transform.position);
             Destroy(gameObject);

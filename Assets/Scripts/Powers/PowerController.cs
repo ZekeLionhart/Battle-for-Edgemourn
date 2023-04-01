@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerController : MonoBehaviour
 {
     [SerializeField] protected Transform aimingPoint;
+    [SerializeField] protected GameObject content;
     [SerializeField] protected Rigidbody2D shot;
     [SerializeField] protected Animator animator;
     [SerializeField] protected DamageTypes damageType;
@@ -24,11 +25,13 @@ public class PowerController : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        PowerManager.OnSwitchPowers += DeActivate;
         CooldownManager.OnCooldownEnded += AllowShooting;
     }
 
     protected virtual void OnDisable()
     {
+        PowerManager.OnSwitchPowers -= DeActivate;
         CooldownManager.OnCooldownEnded -= AllowShooting;
     }
 
@@ -51,5 +54,19 @@ public class PowerController : MonoBehaviour
         yield return shotDelayWFS;
 
         canShoot = true;
+    }
+
+    private void DeActivate(PowerController activePower)
+    {
+        if (activePower == this)
+        {
+            isActive = true;
+            content.SetActive(true);
+        }
+        else
+        {
+            isActive = false;
+            content.SetActive(false);
+        }
     }
 }

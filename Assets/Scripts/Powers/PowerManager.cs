@@ -14,7 +14,7 @@ public class PowerManager : MonoBehaviour
 
     private void Awake()
     {
-        activePower = powers[0];
+        OnSwitchPowers(activePower = powers[0]);
 
         for (int i = 0; i < powers.Length; i++)
             cooldowns.Add(false);
@@ -50,9 +50,7 @@ public class PowerManager : MonoBehaviour
     private void SwitchPowers(int index)
     {
         lineRenderer.SetActive(index == 0 || index == 1);
-        powers[Array.IndexOf(powers, activePower)].gameObject.SetActive(false);
 
-        powers[index].gameObject.SetActive(true);
         activePower = powers[index];
 
         OnSwitchPowers(activePower);

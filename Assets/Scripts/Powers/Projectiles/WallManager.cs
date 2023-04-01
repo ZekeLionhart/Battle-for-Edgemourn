@@ -40,6 +40,8 @@ public class WallManager : MonoBehaviour
 
             if (hitpoints <= 0)
                 animator.SetTrigger("Destroy");
+            else
+                animator.SetTrigger("Hit");
         }
     }
 
