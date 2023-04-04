@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 408778372656344216}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6849336117804867505}
   - component: {fileID: 3852104811231758288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303667737415856918}
   - component: {fileID: 1810753646403362688}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3537969862334927083}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6953766840172936116}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1000961835699244056}
   - component: {fileID: 1962910018384262484}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8297003638193755364}
   - component: {fileID: 5480959405136488763}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5491011921562259713}
   - component: {fileID: 7442787661938729942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: rebound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3670917206852265277}
   - component: {fileID: 3341655549361162845}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4892058887722256088}
   - component: {fileID: 1114986817709404535}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6288078928107534721}
   - component: {fileID: 8438418444268322036}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   - component: {fileID: 7169083511623344334}
   - component: {fileID: -6685644357842620086}
   - component: {fileID: 4286106396977675633}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: LightningStrikeProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -900,7 +900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8587797459265372879}
   - component: {fileID: 6468082008409855828}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: White
   m_TagString: Untagged
   m_Icon: {fileID: 0}

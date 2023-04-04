@@ -9,7 +9,7 @@ public class MenuClick : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonUp("Fire1"))
         {
             SceneManager.LoadScene(sceneName);
         }

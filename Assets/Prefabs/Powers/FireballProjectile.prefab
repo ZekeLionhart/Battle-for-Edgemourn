@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5833093545846120391}
   - component: {fileID: 8836964487398120047}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 5205078567594977183}
   - component: {fileID: 5205078567594977180}
   - component: {fileID: 4359149594660312549}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: FireballProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2314618162739227598}
   - component: {fileID: 7566874125924232651}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: main
   m_TagString: Untagged
   m_Icon: {fileID: 0}

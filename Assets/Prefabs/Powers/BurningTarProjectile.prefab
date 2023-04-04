@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7169083511623344334}
   - component: {fileID: 7169083511623344338}
   - component: {fileID: 6898701813269071313}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: BurningTarProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

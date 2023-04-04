@@ -30,7 +30,9 @@ public class BowController : PowerController
     {
         if (isActive)
         {
-            animator.SetTrigger("Shoot");
+            animator.SetBool("PullWeak", false);
+            animator.SetBool("PullMed", false);
+            animator.SetBool("PullStrong", false);
 
             if (canShoot)
             {
@@ -55,13 +57,19 @@ public class BowController : PowerController
         switch(strength)
         {
             case 1:
-                animator.SetTrigger("PullWeak");
+                animator.SetBool("PullWeak", true);
+                animator.SetBool("PullMed", false);
+                animator.SetBool("PullStrong", false);
                 break;
             case 2:
-                animator.SetTrigger("PullMed");
+                animator.SetBool("PullWeak", false);
+                animator.SetBool("PullMed", true);
+                animator.SetBool("PullStrong", false);
                 break;
             case 3:
-                animator.SetTrigger("PullStrong");
+                animator.SetBool("PullWeak", false);
+                animator.SetBool("PullMed", false);
+                animator.SetBool("PullStrong", true);
                 break;
             default:
                 break;

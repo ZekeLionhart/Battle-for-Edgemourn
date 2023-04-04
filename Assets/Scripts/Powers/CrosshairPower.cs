@@ -32,7 +32,8 @@ public class CrosshairPower : PowerController
     {
         aimingPoint.position += new Vector3(directionMult * aimSpeed * Time.deltaTime, 0f);
 
-        if (aimingPoint.position.x >= rightLimit.position.x || aimingPoint.position.x <= leftLimit.position.x)
+        if (aimingPoint.position.x >= rightLimit.position.x && directionMult > 0
+                || aimingPoint.position.x <= leftLimit.position.x && directionMult < 0)
             directionMult *= -1;
     }
 
@@ -40,7 +41,8 @@ public class CrosshairPower : PowerController
     {
         aimingPoint.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
 
-        if (aimingPoint.rotation.z >= rightLimit.rotation.z || aimingPoint.rotation.z <= leftLimit.rotation.z)
+        if (aimingPoint.rotation.z >= rightLimit.rotation.z && directionMult > 0
+                || aimingPoint.rotation.z <= leftLimit.rotation.z && directionMult < 0)
             directionMult *= -1;
     }
 }

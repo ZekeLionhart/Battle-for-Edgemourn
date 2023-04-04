@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4553877365682306882}
   - component: {fileID: 4737628153979513877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: blast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5205078567594977180}
   - component: {fileID: 8322668669430377526}
   - component: {fileID: 6509116511973393642}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: FireballExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

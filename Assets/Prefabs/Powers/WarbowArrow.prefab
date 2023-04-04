@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5205078567594977183}
   - component: {fileID: 8842869123275414645}
   - component: {fileID: 1630199801917483144}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: WarbowArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
