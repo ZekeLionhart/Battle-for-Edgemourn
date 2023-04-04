@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1957718249046924603, guid: b12bfd2a33948fd4e8cc21f4af44781d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4088988560203964696}
+      objectReference: {fileID: 0}
     - target: {fileID: 1957718249046924603, guid: b12bfd2a33948fd4e8cc21f4af44781d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
@@ -18,7 +18,7 @@ PrefabInstance:
     - target: {fileID: 1957718249961471431, guid: b12bfd2a33948fd4e8cc21f4af44781d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4088988560203964696}
+      objectReference: {fileID: 0}
     - target: {fileID: 1957718249961471431, guid: b12bfd2a33948fd4e8cc21f4af44781d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitToMenu
@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 1957718250536203214, guid: b12bfd2a33948fd4e8cc21f4af44781d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4088988560203964696}
+      objectReference: {fileID: 0}
     - target: {fileID: 1957718250536203214, guid: b12bfd2a33948fd4e8cc21f4af44781d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenSettings
@@ -230,6 +230,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3122403690239237403, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6281367711472513076, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
       propertyPath: pauseScreen
       value: 
@@ -333,14 +337,21 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7319770216892865323, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
   m_PrefabInstance: {fileID: 8040306085581197612}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4088988560203964696 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6281367711472513076, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
+--- !u!1 &793453170187137088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7247996856395096428, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
   m_PrefabInstance: {fileID: 8040306085581197612}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &699624033648071168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793453170187137088}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3872a62ad305f5b45a05707e01098232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseScreen: {fileID: 4203419847753241121}
