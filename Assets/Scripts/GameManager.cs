@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void CallGameOver()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("GameOverScene");
     }
 }
