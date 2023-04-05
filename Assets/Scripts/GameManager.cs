@@ -1,11 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+
     private void OnEnable()
     {
         HealthManager.OnZeroHealth += FailGame;
@@ -17,6 +16,12 @@ public class GameManager : MonoBehaviour
     }
 
     private void FailGame()
+    {
+        animator.SetTrigger("Over");
+        Time.timeScale = 0.3f;
+    }
+
+    private void CallGameOver()
     {
         SceneManager.LoadScene("GameOverScene");
     }

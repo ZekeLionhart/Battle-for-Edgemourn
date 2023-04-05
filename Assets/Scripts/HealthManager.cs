@@ -31,7 +31,10 @@ public class HealthManager : MonoBehaviour
             healthText.text = healthPoints.ToString();
 
             if (healthPoints <= 0)
+            {
+                healthText.text = "0";
                 OnZeroHealth();
+            }
         }
     }
 }

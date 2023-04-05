@@ -27,12 +27,14 @@ public class PowerController : MonoBehaviour
     {
         PowerManager.OnSwitchPowers += DeActivate;
         CooldownManager.OnCooldownEnded += AllowShooting;
+        HealthManager.OnZeroHealth += CeaseFunction;
     }
 
     protected virtual void OnDisable()
     {
         PowerManager.OnSwitchPowers -= DeActivate;
         CooldownManager.OnCooldownEnded -= AllowShooting;
+        HealthManager.OnZeroHealth -= CeaseFunction;
     }
 
     protected void AllowShooting(PowerController power)
@@ -68,5 +70,10 @@ public class PowerController : MonoBehaviour
             isActive = false;
             content.SetActive(false);
         }
+    }
+
+    private void CeaseFunction()
+    {
+        canShoot = false;
     }
 }

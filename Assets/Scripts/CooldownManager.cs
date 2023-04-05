@@ -22,12 +22,14 @@ public class CooldownManager : MonoBehaviour
     {
         PowerController.OnPowerShoot += StartCooldown;
         PowerManager.OnSwitchPowers += ActivateBorder;
+        HealthManager.OnZeroHealth += CeaseFunction;
     }
 
     private void OnDisable()
     {
         PowerController.OnPowerShoot -= StartCooldown;
         PowerManager.OnSwitchPowers -= ActivateBorder;
+        HealthManager.OnZeroHealth -= CeaseFunction;
     }
 
     void Update()
@@ -71,5 +73,10 @@ public class CooldownManager : MonoBehaviour
             cooldownStarted = true;
             cooldownLength = length;
         }
+    }
+
+    private void CeaseFunction()
+    {
+        cooldownStarted = false;
     }
 }
