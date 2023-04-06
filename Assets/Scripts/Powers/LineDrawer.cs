@@ -5,8 +5,12 @@ public class LineDrawer : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRend;
     [SerializeField] private float maxLength;
+    [SerializeField] private Transform origin;
+    [SerializeField] private Transform back;
     private Vector3 startPos;
     private Vector3 endPos;
+    private Vector3 prevStartPos;
+    private Vector3 prevEndPos;
     private int currentPull;
 
     public static Action<Vector3> OnMouseUp;
@@ -32,6 +36,8 @@ public class LineDrawer : MonoBehaviour
             startPos.z = 0f;
             currentPull = 1;
             OnBowPull(currentPull);
+
+            ShowPreviousShot();
         }
 
         if (Input.GetButton("Fire1"))
@@ -72,6 +78,7 @@ public class LineDrawer : MonoBehaviour
             {
                 OnMouseUp(endPos - startPos);
 
+                HidePreviousShot();
                 lineRend.SetPosition(0, Vector3.zero);
                 lineRend.SetPosition(1, Vector3.zero);
             }
@@ -93,5 +100,33 @@ public class LineDrawer : MonoBehaviour
             angle = (180f + angle);
 
         return angle;
+    }
+
+    private void ShowPreviousShot()
+    {
+        if (prevStartPos != Vector3.zero && prevEndPos != Vector3.zero)
+        {
+            origin.position = startPos;
+            origin.gameObject.SetActive(true);
+            back.position = prevEndPos + (startPos - prevStartPos);
+            back.gameObject.SetActive(true);
+        }
+    }
+
+    private void HidePreviousShot()
+    {
+        float angle = CalculateAngle();
+
+        origin.gameObject.SetActive(false);
+        origin.rotation = Quaternion.identity;
+        origin.Rotate(0, 0, angle);
+
+        back.gameObject.SetActive(false);
+        back.rotation = Quaternion.identity;
+        back.Rotate(0, 0, angle);
+
+        prevStartPos = startPos;
+        prevEndPos = endPos;
+
     }
 }

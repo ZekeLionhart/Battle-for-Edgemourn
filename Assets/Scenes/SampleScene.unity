@@ -966,6 +966,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1084549656}
     m_Modifications:
+    - target: {fileID: 102183324, guid: a3f9668faa515b146963652d836ee8c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 332606746, guid: a3f9668faa515b146963652d836ee8c9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 549589294, guid: a3f9668faa515b146963652d836ee8c9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283767903, guid: a3f9668faa515b146963652d836ee8c9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097120666, guid: a3f9668faa515b146963652d836ee8c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4030131416043992114, guid: a3f9668faa515b146963652d836ee8c9, type: 3}
       propertyPath: m_Name
       value: LineRenderer
