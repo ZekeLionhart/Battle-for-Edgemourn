@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] protected Animator animator;
     [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
@@ -17,6 +18,7 @@ public class EnemyBase : MonoBehaviour
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private bool canAttack = true;
+    private bool canMove = false;
 
     public static Action<GameObject, int> OnDamageDealt;
     public static Action<int> OnEnemyDeath;
@@ -52,6 +54,12 @@ public class EnemyBase : MonoBehaviour
             animator.SetBool("IsColliding", false);
             target = null;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (canMove)
+            WalkForwards();
     }
 
     protected virtual float MultiplyDamage(DamageTypes damageType, float damageReceived)
@@ -92,11 +100,16 @@ public class EnemyBase : MonoBehaviour
             animator.SetTrigger("OnHpEmpty");
     }
 
+    private void StartMove()
+    {
+        canMove = true;
+    }
+
     private void WalkForwards()
     {
         animator.ResetTrigger("OnAttackCldwn");
 
-        transform.position -= 0.5f * speed * Time.fixedDeltaTime * transform.right;
+        rigidBody.position -= 0.5f * speed * Time.fixedDeltaTime * Vector2.right;
     }
 
     protected virtual void Attack()
@@ -108,6 +121,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (canAttack)
         {
+            canMove = false;
             canAttack = false;
             yield return attackCooldownWFS;
 

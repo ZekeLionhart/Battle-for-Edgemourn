@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d766d48bed2a4c4eab19d2e65e13cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 4137500561695387349}
   animator: {fileID: 6057173843168479271}
   hitpoints: 20
   speed: 0.5
