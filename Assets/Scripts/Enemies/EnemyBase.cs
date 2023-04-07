@@ -97,7 +97,11 @@ public class EnemyBase : MonoBehaviour
             hitpoints -= damageReceived;
 
         if (hitpoints <= 0)
+        {
+            rigidBody.gravityScale = 0f;
+            canMove = false;
             animator.SetTrigger("OnHpEmpty");
+        }
     }
 
     private void StartMove()

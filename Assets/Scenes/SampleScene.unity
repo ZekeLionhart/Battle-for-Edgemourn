@@ -286,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 721116848209824263, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 721116848209824263, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchorMax.x
@@ -532,7 +532,7 @@ Transform:
   - {fileID: 306235052}
   - {fileID: 1353358256}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2112512954 stripped
 GameObject:
