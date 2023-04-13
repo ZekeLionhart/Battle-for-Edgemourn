@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private Collider2D hitbox;
     [SerializeField] protected Animator animator;
     [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
@@ -15,7 +16,6 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float fireMultiplier;
     [SerializeField] protected float thunderMultiplier;
     [SerializeField] protected float earthMultiplier;
-    private Collider2D hitbox;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private bool canAttack = true;
@@ -27,7 +27,6 @@ public class EnemyBase : MonoBehaviour
     private void Awake()
     {
         attackCooldownWFS = new WaitForSeconds(attackCooldown);
-        hitbox = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
@@ -48,7 +47,7 @@ public class EnemyBase : MonoBehaviour
         CalculateDistanceToTarget();
     }
 
-    private void CalculateDistanceToTarget()
+    protected virtual void CalculateDistanceToTarget()
     {
         Vector2 origin = (Vector2)transform.position - new Vector2(hitbox.bounds.extents.x, 0f);
         int layerIndex = LayerMask.GetMask("Ally", "Environment");

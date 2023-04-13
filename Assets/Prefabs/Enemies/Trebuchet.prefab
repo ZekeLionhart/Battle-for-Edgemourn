@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4137500561695387349}
+  hitbox: {fileID: 4137500561695387346}
   animator: {fileID: 6057173843168479271}
   hitpoints: 20
   speed: 0.5

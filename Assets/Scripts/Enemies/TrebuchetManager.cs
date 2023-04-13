@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TrebuchetManager : EnemyBase
 {
@@ -11,6 +13,11 @@ public class TrebuchetManager : EnemyBase
     {
         if (collision.CompareTag("TrebLimit"))
             animator.SetBool("IsColliding", true);
+    }
+
+    protected override void CalculateDistanceToTarget()
+    {
+        
     }
 
     protected override void Attack()
