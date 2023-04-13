@@ -15,6 +15,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float fireMultiplier;
     [SerializeField] protected float thunderMultiplier;
     [SerializeField] protected float earthMultiplier;
+    private Collider2D hitbox;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private bool canAttack = true;
@@ -26,6 +27,7 @@ public class EnemyBase : MonoBehaviour
     private void Awake()
     {
         attackCooldownWFS = new WaitForSeconds(attackCooldown);
+        hitbox = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
@@ -38,28 +40,30 @@ public class EnemyBase : MonoBehaviour
         ProjectileManager.OnEnemyHit -= TakeDamage;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Tower") || collision.collider.CompareTag("Player"))
-        {
-            animator.SetBool("IsColliding", true);
-            target = collision.gameObject;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Tower") || collision.collider.CompareTag("Player"))
-        {
-            animator.SetBool("IsColliding", false);
-            target = null;
-        }
-    }
-
     private void FixedUpdate()
     {
         if (canMove)
             WalkForwards();
+
+        CalculateDistanceToTarget();
+    }
+
+    private void CalculateDistanceToTarget()
+    {
+        Vector2 origin = (Vector2)transform.position - new Vector2(hitbox.bounds.extents.x, 0f);
+        int layerIndex = LayerMask.GetMask("Ally", "Environment");
+        RaycastHit2D hitData = Physics2D.Raycast(origin, transform.right * -1, 0.25f, layerIndex);
+
+        if (hitData.collider != null)
+        {
+            animator.SetBool("IsColliding", true);
+            target = hitData.collider.gameObject;
+        }
+        else
+        {
+            animator.SetBool("IsColliding", false);
+            target = null;
+        }
     }
 
     protected virtual float MultiplyDamage(DamageTypes damageType, float damageReceived)
