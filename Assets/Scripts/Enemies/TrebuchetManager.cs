@@ -6,6 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class TrebuchetManager : EnemyBase
 {
     [SerializeField] private Rigidbody2D ammo;
+    [SerializeField] private Transform ammoSpawn;
 
     public static Action<Rigidbody2D, int> OnBoulderInstantiated;
 
@@ -22,8 +23,8 @@ public class TrebuchetManager : EnemyBase
 
     protected override void Attack()
     {
-        Rigidbody2D shotRigid = Instantiate(ammo, transform.position, transform.rotation);
-        Vector3 force = 2f * (new Vector3(4f, 4f, 0f) - transform.position);
+        Rigidbody2D shotRigid = Instantiate(ammo, ammoSpawn.position, ammoSpawn.rotation);
+        Vector3 force = 1.73f * (new Vector3(4f, 4f, 0f) - transform.position);
         shotRigid.velocity = force;
 
         OnBoulderInstantiated(shotRigid, damage);

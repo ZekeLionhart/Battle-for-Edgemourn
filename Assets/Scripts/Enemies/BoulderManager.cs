@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BoulderManager : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+    [SerializeField] private Rigidbody2D rigidBody;
     private int damage;
 
     protected virtual void OnEnable()
@@ -19,7 +21,8 @@ public class BoulderManager : MonoBehaviour
         if (collision.collider.CompareTag("Tower") || collision.collider.CompareTag("Player"))
         {
             EnemyBase.OnDamageDealt(collision.gameObject, damage);
-            Destroy(gameObject);
+            animator.SetTrigger("Break");
+            Destroy(rigidBody);
         }
     }
 
@@ -27,5 +30,10 @@ public class BoulderManager : MonoBehaviour
     {
         if (shot.gameObject == gameObject)
             this.damage = damage;
+    }
+
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

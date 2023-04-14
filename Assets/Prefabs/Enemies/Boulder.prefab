@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5205078567594977182}
   - component: {fileID: 5205078567594977183}
   - component: {fileID: 5205078567594977180}
+  - component: {fileID: 4987808655586837315}
   - component: {fileID: -5690577488487531995}
   m_Layer: 9
   m_Name: Boulder
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5205078567594977181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Sprite: {fileID: 1855674704, guid: cdc070fb1866a434e8ffc83112d5fe0c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.68266666, y: 0.68266666}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -123,7 +124,27 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
+--- !u!95 &4987808655586837315
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205078567594977181}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c6b87ac1342a9b84589d01496605dc92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-5690577488487531995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,3 +157,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7ac507c272b2e409b86f330fbf581f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4987808655586837315}
+  rigidBody: {fileID: 5205078567594977183}
