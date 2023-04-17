@@ -1099,6 +1099,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade-in
       objectReference: {fileID: 0}
+    - target: {fileID: 4403275490929298879, guid: bd666aafb0bd3c343b73a10787264098, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403275490929298879, guid: bd666aafb0bd3c343b73a10787264098, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403275490929298879, guid: bd666aafb0bd3c343b73a10787264098, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403275490929298879, guid: bd666aafb0bd3c343b73a10787264098, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd666aafb0bd3c343b73a10787264098, type: 3}
 --- !u!1001 &5603501153273333741
