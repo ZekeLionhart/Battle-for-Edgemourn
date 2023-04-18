@@ -52,6 +52,7 @@ public class EnemyBase : MonoBehaviour
         Vector2 origin = (Vector2)transform.position - new Vector2(hitbox.bounds.extents.x, 0f);
         int layerIndex = LayerMask.GetMask("Ally", "Environment");
         RaycastHit2D hitData = Physics2D.Raycast(origin, transform.right * -1, 0.25f, layerIndex);
+        Debug.DrawRay(origin, transform.right * -0.25f);
 
         if (hitData.collider != null)
         {
