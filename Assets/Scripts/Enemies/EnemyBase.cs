@@ -11,6 +11,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] protected int damage;
     [SerializeField] private float attackCooldown;
+    [SerializeField] private float attackRange;
     [SerializeField] private int scoreValue;
     [SerializeField] protected float arrowMultiplier;
     [SerializeField] protected float fireMultiplier;
@@ -51,8 +52,8 @@ public class EnemyBase : MonoBehaviour
     {
         Vector2 origin = (Vector2)transform.position - new Vector2(hitbox.bounds.extents.x, 0f);
         int layerIndex = LayerMask.GetMask("Ally", "Environment");
-        RaycastHit2D hitData = Physics2D.Raycast(origin, transform.right * -1, 0.25f, layerIndex);
-        Debug.DrawRay(origin, transform.right * -0.25f);
+        RaycastHit2D hitData = Physics2D.Raycast(origin, transform.right * -1, attackRange, layerIndex);
+        Debug.DrawRay(origin, transform.right * -attackRange);
 
         if (hitData.collider != null)
         {
