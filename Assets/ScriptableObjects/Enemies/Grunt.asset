@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8881ba998377adf4a95e1265a9f96022, type: 3}
   m_Name: Grunt
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4137500561695387347, guid: a31d71eb24225ac44aab3c073a9e067f, type: 3}
+  enemyPrefab: {fileID: -163331265691283065, guid: 42fc219d165052a468fcb000d4e18a64, type: 3}
