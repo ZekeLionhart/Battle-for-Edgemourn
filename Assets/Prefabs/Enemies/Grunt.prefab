@@ -103,8 +103,8 @@ MonoBehaviour:
   - {fileID: 4434166529762039713}
   - {fileID: 9145039191631955001}
   m_Bounds:
-    m_Center: {x: -0.0007240921, y: -0.03081195, z: 0}
-    m_Extent: {x: 0.074734986, y: 0.16860895, z: 0}
+    m_Center: {x: 0.124547735, y: -0.38863719, z: 0}
+    m_Extent: {x: 0.16796456, y: 0.076498136, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5791307104977983880}
   m_Bounds:
-    m_Center: {x: 0.096197546, y: 0.33227283, z: 0}
-    m_Extent: {x: 0.30284026, y: 0.15270329, z: 0}
+    m_Center: {x: 0.27673146, y: -0.20925331, z: 0}
+    m_Extent: {x: 0.3286101, y: 0.06498754, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -472,8 +472,8 @@ MonoBehaviour:
   - {fileID: 4434166529762039713}
   - {fileID: 9145039191631955001}
   m_Bounds:
-    m_Center: {x: -0.049805395, y: 0.021444298, z: 0}
-    m_Extent: {x: 0.06390605, y: 0.028203752, z: 0}
+    m_Center: {x: 0.16428298, y: -0.37435412, z: 0}
+    m_Extent: {x: 0.06322214, y: 0.028991386, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -534,7 +534,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505203466981382385}
-  m_LocalRotation: {x: 0, y: 0, z: 0.107313976, w: 0.9942252}
+  m_LocalRotation: {x: 0, y: 0, z: 0.057278413, w: 0.9983583}
   m_LocalPosition: {x: 0.13867006, y: 0.000000028715887, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -774,8 +774,8 @@ MonoBehaviour:
   - {fileID: 4229301950057930751}
   - {fileID: 3761235762484035473}
   m_Bounds:
-    m_Center: {x: 0.024237338, y: -0.025238365, z: 0}
-    m_Extent: {x: 0.055312656, y: 0.08782919, z: 0}
+    m_Center: {x: -0.07845206, y: -0.17955318, z: 0}
+    m_Extent: {x: 0.09178934, y: 0.039624967, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -882,8 +882,8 @@ MonoBehaviour:
   - {fileID: 5872501592340936775}
   - {fileID: 6694836004765232630}
   m_Bounds:
-    m_Center: {x: -0.091003954, y: -0.0010937601, z: 0}
-    m_Extent: {x: 0.05730495, y: 0.09587081, z: 0}
+    m_Center: {x: -0.15272748, y: -0.006861843, z: 0}
+    m_Extent: {x: 0.08279607, y: 0.089513, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -910,7 +910,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3520704067723473863}
-  m_LocalRotation: {x: 0, y: 0, z: -0.97673166, w: 0.21446529}
+  m_LocalRotation: {x: 0, y: 0, z: -0.99573505, w: 0.092259526}
   m_LocalPosition: {x: -0.037791576, y: 0.022764225, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -942,7 +942,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777011930548848591}
-  m_LocalRotation: {x: -0, y: -0, z: -0.6922721, w: 0.7216366}
+  m_LocalRotation: {x: -0, y: -0, z: -0.52518654, w: 0.85098714}
   m_LocalPosition: {x: 0.14978309, y: -0.000000029336084, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1130,7 +1130,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4687634154496646837}
-  m_LocalRotation: {x: 0, y: 0, z: -0.95735115, w: -0.2889273}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9489289, w: -0.3154902}
   m_LocalPosition: {x: -0.03778518, y: 0.022775251, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1241,8 +1241,8 @@ MonoBehaviour:
   - {fileID: 4434166529762039713}
   - {fileID: 2588198801714292979}
   m_Bounds:
-    m_Center: {x: 0.0038167555, y: 0.059961848, z: 0}
-    m_Extent: {x: 0.029050587, y: 0.06407136, z: 0}
+    m_Center: {x: 0.073146224, y: -0.37222254, z: 0}
+    m_Extent: {x: 0.061359666, y: 0.03417857, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1348,8 +1348,8 @@ MonoBehaviour:
   - {fileID: 9145039191631955001}
   - {fileID: 4229301950057930751}
   m_Bounds:
-    m_Center: {x: -0.09522084, y: 0.16746, z: 0}
-    m_Extent: {x: 0.027368553, y: 0.06549627, z: 0}
+    m_Center: {x: 0.26815945, y: -0.28392917, z: 0}
+    m_Extent: {x: 0.06051086, y: 0.03094916, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1455,8 +1455,8 @@ MonoBehaviour:
   - {fileID: 9145039191631955001}
   - {fileID: 3177369490707572916}
   m_Bounds:
-    m_Center: {x: 0.042148776, y: 0.24779505, z: 0}
-    m_Extent: {x: 0.049281828, y: 0.053257108, z: 0}
+    m_Center: {x: -0.02921047, y: -0.2951888, z: 0}
+    m_Extent: {x: 0.06457493, y: 0.025197864, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1595,8 +1595,8 @@ MonoBehaviour:
   - {fileID: 8961834816866855086}
   - {fileID: 4953713735059619790}
   m_Bounds:
-    m_Center: {x: 0.09446314, y: -0.011779942, z: 0}
-    m_Extent: {x: 0.06231237, y: 0.08522269, z: 0}
+    m_Center: {x: -0.2097355, y: -0.051521815, z: 0}
+    m_Extent: {x: 0.09937613, y: 0.04842849, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1703,8 +1703,8 @@ MonoBehaviour:
   - {fileID: 4229301950057930751}
   - {fileID: 6562706321570300855}
   m_Bounds:
-    m_Center: {x: -0.037669457, y: -0.015944034, z: 0}
-    m_Extent: {x: 0.0704585, y: 0.08340461, z: 0}
+    m_Center: {x: -0.059693612, y: -0.13253967, z: 0}
+    m_Extent: {x: 0.07976758, y: 0.074276134, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1827,7 +1827,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7724752369921605925}
-  m_LocalRotation: {x: 0, y: 0, z: 0.3428851, w: 0.9393774}
+  m_LocalRotation: {x: 0, y: 0, z: 0.81635153, w: 0.5775554}
   m_LocalPosition: {x: 0.13867201, y: -0.00000004306279, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1890,7 +1890,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8924330779003894877}
-  m_LocalRotation: {x: -0, y: -0, z: 0.85724795, w: -0.51490396}
+  m_LocalRotation: {x: -0, y: -0, z: 0.6987553, w: -0.7153609}
   m_LocalPosition: {x: 0.14977135, y: -0.0000000026785916, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
