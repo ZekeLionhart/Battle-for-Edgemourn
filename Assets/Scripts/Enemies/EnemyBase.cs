@@ -103,8 +103,7 @@ public class EnemyBase : MonoBehaviour
 
         if (hitpoints <= 0)
         {
-            rigidBody.gravityScale = 0f;
-            canMove = false;
+            Destroy(rigidBody);
             animator.SetTrigger("OnHpEmpty");
         }
     }
@@ -118,7 +117,8 @@ public class EnemyBase : MonoBehaviour
     {
         animator.ResetTrigger("OnAttackCldwn");
 
-        rigidBody.position -= 0.5f * speed * Time.fixedDeltaTime * Vector2.right;
+        if (rigidBody != null)
+            rigidBody.position -= 0.5f * speed * Time.fixedDeltaTime * Vector2.right;
     }
 
     protected virtual void Attack()
