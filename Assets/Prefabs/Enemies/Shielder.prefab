@@ -404,12 +404,12 @@ MonoBehaviour:
   hitbox: {fileID: 2379119460335740916}
   animator: {fileID: 8312179635094107091}
   hitpoints: 1
-  speed: 1
+  speed: 0.8
   damage: 1
   attackCooldown: 2
   attackRange: 0.35
-  scoreValue: 100
-  arrowMultiplier: 1
+  scoreValue: 300
+  arrowMultiplier: 0.5
   fireMultiplier: 1
   thunderMultiplier: 1
   earthMultiplier: 1
