@@ -13,7 +13,7 @@ public class LineDrawer : MonoBehaviour
     private Vector3 prevEndPos;
     private int currentPull;
 
-    public static Action<Vector3> OnMouseUp;
+    public static Action<Vector3, bool> OnMouseUp;
     public static Action<float> OnAimUpdate;
     public static Action<int> OnBowPull;
 
@@ -74,14 +74,19 @@ public class LineDrawer : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
+            bool willShoot = false;
+
             if (endPos - startPos != Vector3.zero)
             {
-                OnMouseUp(endPos - startPos);
+                willShoot = true;
 
-                HidePreviousShot();
+                SavePreviousShot();
                 lineRend.SetPosition(0, Vector3.zero);
                 lineRend.SetPosition(1, Vector3.zero);
             }
+
+            HidePreviousShot();
+            OnMouseUp(endPos - startPos, willShoot);
         }
     }
 
@@ -113,20 +118,23 @@ public class LineDrawer : MonoBehaviour
         }
     }
 
-    private void HidePreviousShot()
+    private void SavePreviousShot()
     {
         float angle = CalculateAngle();
 
-        origin.gameObject.SetActive(false);
         origin.rotation = Quaternion.identity;
         origin.Rotate(0, 0, angle);
 
-        back.gameObject.SetActive(false);
         back.rotation = Quaternion.identity;
         back.Rotate(0, 0, angle);
 
         prevStartPos = startPos;
         prevEndPos = endPos;
+    }
 
+    private void HidePreviousShot()
+    {
+        origin.gameObject.SetActive(false);
+        back.gameObject.SetActive(false);
     }
 }

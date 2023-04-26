@@ -14,13 +14,14 @@ public class VolleyController : BowController
             arrows[i] = shot;
     }
 
-    protected override void Shoot(Vector3 vector)
+    protected override void Shoot(Vector3 vector, bool willShoot)
     {
         if (isActive)
         {
+            ResetSprite();
             animator.SetTrigger("Shoot");
 
-            if (canShoot)
+            if (canShoot && willShoot)
                 for (int i = 0; i < numOfArrows; i++)
                     CreateArrow(vector, arrows[i], aimingPoint.position + i * spreadMultiplier * Vector3.left);
         }

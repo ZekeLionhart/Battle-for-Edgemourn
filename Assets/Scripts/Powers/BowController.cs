@@ -20,25 +20,36 @@ public class BowController : PowerController
         LineDrawer.OnBowPull -= PullBow;
     }
 
+    private void Update()
+    {
+        //if (Input.GetMouseButtonUp(0) && isActive)
+            //ResetSprite();
+    }
+
     private void Aim(float angle)
     {
         aimingPoint.rotation = Quaternion.identity;
         aimingPoint.Rotate(0, 0, angle);
     }
 
-    protected virtual void Shoot(Vector3 vector)
+    protected virtual void Shoot(Vector3 vector, bool willShoot)
     {
         if (isActive)
         {
-            animator.SetBool("PullWeak", false);
-            animator.SetBool("PullMed", false);
-            animator.SetBool("PullStrong", false);
+            ResetSprite();
 
-            if (canShoot)
+            if (canShoot && willShoot)
             {
                 CreateArrow(vector, shot, aimingPoint.position);
             }
         }
+    }
+
+    protected void ResetSprite()
+    {
+        animator.SetBool("PullWeak", false);
+        animator.SetBool("PullMed", false);
+        animator.SetBool("PullStrong", false);
     }
 
     protected void CreateArrow(Vector3 vector, Rigidbody2D arrow, Vector3 position)
