@@ -50,7 +50,7 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void CalculateDistanceToTarget()
     {
-        Vector2 origin = (Vector2)transform.position - new Vector2(hitbox.bounds.extents.x, 0f);
+        Vector2 origin = (Vector2)transform.position - new Vector2(hitbox.bounds.extents.x, -0.5f);
         int layerIndex = LayerMask.GetMask("Ally", "Environment");
         RaycastHit2D hitData = Physics2D.Raycast(origin, transform.right * -1, attackRange, layerIndex);
         Debug.DrawRay(origin, transform.right * -attackRange);
