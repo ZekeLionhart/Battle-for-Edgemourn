@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8881ba998377adf4a95e1265a9f96022, type: 3}
   m_Name: Shielder
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: -1981789691644692529, guid: be5be8c13b2731e4aa2a99f8b9c8e7f4, type: 3}
+  enemyPrefab: {fileID: -163331265691283065, guid: 5b3beaea652d1424f8c029b2d32cddf5, type: 3}
