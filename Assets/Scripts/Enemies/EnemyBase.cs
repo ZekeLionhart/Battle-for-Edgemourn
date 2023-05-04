@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
@@ -7,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D hitbox;
     [SerializeField] protected Animator animator;
+    [SerializeField] protected TargetTypes[] targets;
     [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
     [SerializeField] protected int damage;
@@ -19,6 +21,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float earthMultiplier;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
+    private List<string> targetStrings;
     private bool canAttack = true;
     private bool canMove = false;
 
@@ -28,6 +31,10 @@ public class EnemyBase : MonoBehaviour
     private void Awake()
     {
         attackCooldownWFS = new WaitForSeconds(attackCooldown);
+        targetStrings = new List<string>();
+
+        foreach (TargetTypes targetEnum in targets)
+            targetStrings.Add(Enum.GetName(typeof(TargetTypes), targetEnum));
     }
 
     private void OnEnable()
@@ -51,7 +58,7 @@ public class EnemyBase : MonoBehaviour
     protected virtual void CalculateDistanceToTarget()
     {
         Vector2 origin = (Vector2)transform.position - new Vector2(hitbox.bounds.extents.x, -0.5f);
-        int layerIndex = LayerMask.GetMask("Ally", "Environment");
+        int layerIndex = LayerMask.GetMask(targetStrings.ToArray());
         RaycastHit2D hitData = Physics2D.Raycast(origin, transform.right * -1, attackRange, layerIndex);
         Debug.DrawRay(origin, transform.right * -attackRange);
 

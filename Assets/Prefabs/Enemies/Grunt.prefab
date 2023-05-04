@@ -336,6 +336,7 @@ MonoBehaviour:
   rigidBody: {fileID: 6887184273006990719}
   hitbox: {fileID: 2379119460335740916}
   animator: {fileID: 8312179635094107091}
+  targets: 0000000001000000
   hitpoints: 1
   speed: 1
   damage: 1

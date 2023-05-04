@@ -10,17 +10,6 @@ public class TrebuchetManager : EnemyBase
 
     public static Action<Rigidbody2D, int> OnBoulderInstantiated;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("TrebLimit"))
-            animator.SetBool("IsColliding", true);
-    }
-
-    protected override void CalculateDistanceToTarget()
-    {
-        
-    }
-
     protected override void Attack()
     {
         Rigidbody2D shotRigid = Instantiate(ammo, ammoSpawn.position, ammoSpawn.rotation);
