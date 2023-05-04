@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+        Time.timeScale = 1.0f;
         HealthManager.OnZeroHealth += FailGame;
     }
 
