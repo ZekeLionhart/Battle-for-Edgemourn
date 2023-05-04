@@ -22,6 +22,16 @@ public class LineDrawer : MonoBehaviour
         lineRend.positionCount = 2;
     }
 
+    private void OnEnable()
+    {
+        PowerController.OnPowerShoot += SavePreviousShot;
+    }
+
+    private void OnDisable()
+    {
+        PowerController.OnPowerShoot -= SavePreviousShot;
+    }
+
     void Update()
     {
         if (!PauseManager.isPaused)
@@ -80,7 +90,6 @@ public class LineDrawer : MonoBehaviour
             {
                 willShoot = true;
 
-                SavePreviousShot();
                 lineRend.SetPosition(0, Vector3.zero);
                 lineRend.SetPosition(1, Vector3.zero);
             }
@@ -118,7 +127,7 @@ public class LineDrawer : MonoBehaviour
         }
     }
 
-    private void SavePreviousShot()
+    private void SavePreviousShot(PowerController power, float cooldown)
     {
         float angle = CalculateAngle();
 
