@@ -5,6 +5,8 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private AudioSource hitSfx;
+    [SerializeField] private AudioSource deathSfx;
     [SerializeField] private int healthPoints;
 
     public static Action OnZeroHealth;
@@ -29,9 +31,11 @@ public class HealthManager : MonoBehaviour
         { 
             healthPoints -= damage;
             healthText.text = healthPoints.ToString();
+            hitSfx.Play();
 
             if (healthPoints <= 0)
             {
+                deathSfx.Play();
                 healthText.text = "0";
                 OnZeroHealth();
             }

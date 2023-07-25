@@ -3,6 +3,7 @@ using UnityEngine;
 public class WallManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource hitSfx;
     private int hitpoints = 100;
     private float damage;
     private DamageTypes damageType;
@@ -37,6 +38,7 @@ public class WallManager : MonoBehaviour
         if (target == gameObject)
         {
             hitpoints -= damage;
+            hitSfx.Play();
 
             if (hitpoints <= 0)
                 animator.SetTrigger("Destroy");
