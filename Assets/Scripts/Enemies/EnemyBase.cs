@@ -9,6 +9,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Collider2D hitbox;
     [SerializeField] protected Animator animator;
     [SerializeField] private AudioSource onHitSfx;
+    [SerializeField] private AudioSource gruntSfx;
+    [SerializeField] private AudioSource onDeathSfx;
     [SerializeField] protected TargetTypes[] targets;
     [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
@@ -117,7 +119,10 @@ public class EnemyBase : MonoBehaviour
         {
             Destroy(rigidBody);
             animator.SetTrigger("OnHpEmpty");
+            onDeathSfx.Play();
         }
+        else if (gruntSfx != null)
+            gruntSfx.Play();
     }
 
     private void StartMove()

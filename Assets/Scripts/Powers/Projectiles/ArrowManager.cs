@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ArrowManager : ProjectileManager
 {
+    [SerializeField] private AudioSource groundHitSfx;
     private bool canDamage = true;
     private bool canRotate = true;
     private Rigidbody2D rigid;
@@ -18,6 +19,10 @@ public class ArrowManager : ProjectileManager
             OnEnemyHit(collision.collider.gameObject, damageType, damage);
             canDamage = false;
         }
+
+        if (collision.collider.CompareTag("Floor"))
+            groundHitSfx.Play();
+
         canRotate = false;
         GetComponent<Rigidbody2D>().simulated = false;
         Destroy(gameObject, 1f);
