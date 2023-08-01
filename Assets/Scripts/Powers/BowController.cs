@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class BowController : PowerController
 {
+    [SerializeField] private AudioSource onPullSfx;
     [SerializeField] protected float arrowSpeed;
+    private int currentState = 0;
 
     protected override void OnEnable()
     {
@@ -65,7 +67,12 @@ public class BowController : PowerController
 
     private void PullBow(int strength)
     {
-        switch(strength)
+        if (currentState < strength)
+            onPullSfx.Play();
+
+        currentState = strength;
+
+        switch (strength)
         {
             case 1:
                 animator.SetBool("PullWeak", true);

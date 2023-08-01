@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D hitbox;
     [SerializeField] protected Animator animator;
+    [SerializeField] private AudioSource onHitSfx;
     [SerializeField] protected TargetTypes[] targets;
     [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
@@ -106,7 +107,11 @@ public class EnemyBase : MonoBehaviour
         damageReceived = MultiplyDamage(damageType, damageReceived);
 
         if (target == gameObject)
+        {
+            if (damageType == DamageTypes.Pierce)
+                onHitSfx.Play();
             hitpoints -= damageReceived;
+        }
 
         if (hitpoints <= 0)
         {
