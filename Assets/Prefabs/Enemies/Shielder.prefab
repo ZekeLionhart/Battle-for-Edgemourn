@@ -824,6 +824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327454525742833920}
   - component: {fileID: 1709756565016618291}
+  - component: {fileID: 5968184934507295602}
   m_Layer: 7
   m_Name: Grunt
   m_TagString: Untagged
@@ -942,6 +943,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5968184934507295602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217756789581028065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 1709756565016618291}
+  volumeModifier: 1
 --- !u!1 &3284175596020461797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7542477662479261938}
   - component: {fileID: 7020913141009151851}
+  - component: {fileID: 4721726854361385917}
   m_Layer: 7
   m_Name: OnHit
   m_TagString: Untagged
@@ -1316,6 +1332,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4721726854361385917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169776304002024463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 7020913141009151851}
+  volumeModifier: 0.8
 --- !u!1 &4189656041713441890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692201829027154043}
   - component: {fileID: 3067218740094841345}
+  - component: {fileID: 4233469129440574569}
   m_Layer: 7
   m_Name: OnDeath
   m_TagString: Untagged
@@ -2072,6 +2103,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4233469129440574569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8052773017898937342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 3067218740094841345}
+  volumeModifier: 0.9
 --- !u!1 &8539597278783584031
 GameObject:
   m_ObjectHideFlags: 0

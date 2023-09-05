@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4553877365682306882}
   - component: {fileID: 4737628153979513877}
   - component: {fileID: 6437453795738013487}
+  - component: {fileID: 320248502997366199}
   m_Layer: 10
   m_Name: blast
   m_TagString: Untagged
@@ -181,6 +182,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &320248502997366199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71406799203858590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 6437453795738013487}
+  volumeModifier: 0.7
 --- !u!1 &5205078567594977181
 GameObject:
   m_ObjectHideFlags: 0

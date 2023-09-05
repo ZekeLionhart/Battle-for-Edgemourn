@@ -758,6 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8770315641482586677}
   - component: {fileID: 8183610266484294356}
+  - component: {fileID: 878074905362955439}
   m_Layer: 6
   m_Name: Idle
   m_TagString: Untagged
@@ -876,6 +877,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &878074905362955439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561032236389186105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8183610266484294356}
+  volumeModifier: 1
 --- !u!1 &5582535916663734176
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8232616949483751756}
   - component: {fileID: 1378145821523580300}
+  - component: {fileID: 4917403093543334924}
   m_Layer: 6
   m_Name: WakeUp
   m_TagString: Untagged
@@ -1088,6 +1104,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4917403093543334924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090166634995360146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 1378145821523580300}
+  volumeModifier: 0.8
 --- !u!1 &6863665500846995750
 GameObject:
   m_ObjectHideFlags: 0

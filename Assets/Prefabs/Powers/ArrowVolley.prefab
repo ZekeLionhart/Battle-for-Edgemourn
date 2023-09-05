@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6230319925341350463}
   - component: {fileID: 6268742350876567459}
+  - component: {fileID: 1015657997299590327}
   m_Layer: 6
   m_Name: OnPull
   m_TagString: Untagged
@@ -128,6 +129,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1015657997299590327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071681004043529752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 6268742350876567459}
+  volumeModifier: 1
 --- !u!1 &3749056363111602407
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5386672875145026259}
   - component: {fileID: 6352832503436749204}
+  - component: {fileID: 3173552557944356365}
   m_Layer: 6
   m_Name: WakeUp
   m_TagString: Untagged
@@ -452,3 +468,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3173552557944356365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869710273783099167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 6352832503436749204}
+  volumeModifier: 1

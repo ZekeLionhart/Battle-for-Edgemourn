@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6804744267884113860}
   - component: {fileID: 1224186684768213500}
+  - component: {fileID: 1939991713556637244}
   m_Layer: 0
   m_Name: Hit
   m_TagString: Untagged
@@ -296,6 +297,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1939991713556637244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728012995013350250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 1224186684768213500}
+  volumeModifier: 0.8
 --- !u!1 &767288354043260836
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 792610493558453355}
   - component: {fileID: 4921702328437706986}
+  - component: {fileID: 3102114373478981330}
   m_Layer: 0
   m_Name: Summon
   m_TagString: Untagged
@@ -714,6 +730,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3102114373478981330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082128178897764376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 4921702328437706986}
+  volumeModifier: 0.5
 --- !u!1 &1338828129106628504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,6 +1714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7628384671128534040}
   - component: {fileID: 4819003649503276271}
+  - component: {fileID: 1735573260508717170}
   m_Layer: 0
   m_Name: Break
   m_TagString: Untagged
@@ -1802,6 +1833,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1735573260508717170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3575169710985140691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 4819003649503276271}
+  volumeModifier: 1
 --- !u!1 &3586281099393359206
 GameObject:
   m_ObjectHideFlags: 0

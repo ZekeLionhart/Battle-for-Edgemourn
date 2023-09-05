@@ -211,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3446610725248664790}
   - component: {fileID: 7181984461190371997}
+  - component: {fileID: 2397922535116795046}
   m_Layer: 0
   m_Name: Boom
   m_TagString: Untagged
@@ -329,6 +330,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2397922535116795046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443663209491032430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 7181984461190371997}
+  volumeModifier: 0.5
 --- !u!1 &602697865266833294
 GameObject:
   m_ObjectHideFlags: 0
