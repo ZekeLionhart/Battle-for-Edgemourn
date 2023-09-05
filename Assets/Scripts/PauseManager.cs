@@ -10,6 +10,8 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private TextMeshProUGUI txtVolumeSlider;
+    [SerializeField] private AudioSource sfxPause;
+    [SerializeField] private AudioSource sfxUnpause;
     public static float volume = 1;
     public static bool isPaused;
 
@@ -34,6 +36,7 @@ public class PauseManager : MonoBehaviour
     public void Resume()
     {
         pauseScreen.SetActive(false);
+        sfxUnpause.Play();
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -41,6 +44,7 @@ public class PauseManager : MonoBehaviour
     public void Pause()
     {
         pauseScreen.SetActive(true);
+        sfxPause.Play();
         Time.timeScale = 0f;
         isPaused = true;
     }

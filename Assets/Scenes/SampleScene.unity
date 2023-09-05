@@ -388,14 +388,6 @@ PrefabInstance:
       propertyPath: power
       value: 
       objectReference: {fileID: 1539855757}
-    - target: {fileID: 4949553912013298304, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5381402284702209694, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
 --- !u!1 &1084549655

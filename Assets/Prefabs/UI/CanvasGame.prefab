@@ -152,8 +152,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 7b036c391b9020f4cb5c10a809d281db, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -250,8 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 0}
-  volumeModifier: 0
+  sound: {fileID: 131894481613254642}
+  volumeModifier: 1
 --- !u!1 &8650457282670016417
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,10 +547,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721116848209824263}
     m_Modifications:
+    - target: {fileID: 1261750265, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 131894481613254642}
+    - target: {fileID: 1827885774, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 131894481613254642}
     - target: {fileID: 3476445971460665889, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
       propertyPath: m_Name
       value: PauseManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6629836027183206591, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 131894481613254642}
+    - target: {fileID: 6629836028010754115, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 131894481613254642}
+    - target: {fileID: 6629836028643917386, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 131894481613254642}
     - target: {fileID: 8065897866382381917, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -653,6 +673,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1904016108, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1010546101}
     - target: {fileID: 1674991634304012603, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -797,16 +821,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1904016108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793453170187137088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2abb580b16c24540940153a474792f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1010546101}
