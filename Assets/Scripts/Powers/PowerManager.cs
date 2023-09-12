@@ -22,12 +22,14 @@ public class PowerManager : MonoBehaviour
     {
         PowerController.OnPowerShoot += StartPowerCooldown;
         CooldownManager.OnCooldownEnded += EndPowerCooldown;
+        PowerClick.OnPowerSelect += SwitchPowers;
     }
 
     private void OnDisable()
     {
         PowerController.OnPowerShoot -= StartPowerCooldown;
         CooldownManager.OnCooldownEnded -= EndPowerCooldown;
+        PowerClick.OnPowerSelect -= SwitchPowers;
     }
 
     private void Update()
