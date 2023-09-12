@@ -28,6 +28,7 @@ public class PowerController : MonoBehaviour
         PowerManager.OnSwitchPowers += DeActivate;
         CooldownManager.OnCooldownEnded += AllowShooting;
         HealthManager.OnZeroHealth += CeaseFunction;
+        PowerShooter.OnScreenClick += AttemptShooting;
     }
 
     protected virtual void OnDisable()
@@ -35,6 +36,7 @@ public class PowerController : MonoBehaviour
         PowerManager.OnSwitchPowers -= DeActivate;
         CooldownManager.OnCooldownEnded -= AllowShooting;
         HealthManager.OnZeroHealth -= CeaseFunction;
+        PowerShooter.OnScreenClick -= AttemptShooting;
     }
 
     protected void AllowShooting(PowerController power)
@@ -47,6 +49,12 @@ public class PowerController : MonoBehaviour
     {
         OnPowerShoot(this, cooldown);
         canShoot = false;
+    }
+
+    protected virtual void AttemptShooting()
+    {
+        if (canShoot && isActive)
+            Shoot();
     }
 
     protected IEnumerator ShotDelay()

@@ -23,9 +23,6 @@ public class CrosshairPower : PowerController
     protected virtual void Update()
     {
         HandleAimMovement();
-
-        if (Input.GetButtonDown("Fire1") && canShoot)
-            Shoot();
     }
 
     protected virtual void HandleAimMovement()

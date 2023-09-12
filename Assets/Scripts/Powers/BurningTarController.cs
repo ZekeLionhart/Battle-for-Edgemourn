@@ -4,12 +4,13 @@ public class BurningTarController : PowerController
 {
     [SerializeField] private float speed;
     [SerializeField] private GameObject particles;
-    
-    private void Update()
+
+    protected override void AttemptShooting()
     {
-        if (Input.GetButtonDown("Fire1") && canShoot && isActive)
+        if (canShoot && isActive)
         {
             animator.SetTrigger("Flip");
+            canShoot = false;
             Invoke(nameof(Shoot), 0.5f);
         }
     }
