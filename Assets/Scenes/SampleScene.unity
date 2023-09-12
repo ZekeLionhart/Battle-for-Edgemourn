@@ -420,6 +420,14 @@ PrefabInstance:
       propertyPath: power
       value: 
       objectReference: {fileID: 1539855757}
+    - target: {fileID: 3263108989813507767, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: lineDrawer
+      value: 
+      objectReference: {fileID: 2112512956}
+    - target: {fileID: 3263108989813507767, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 2112512954}
     - target: {fileID: 4203419847753241121, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -852,6 +860,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4030131416043992115, guid: a3f9668faa515b146963652d836ee8c9, type: 3}
   m_PrefabInstance: {fileID: 4030131417305044872}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2112512956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4030131416043992116, guid: a3f9668faa515b146963652d836ee8c9, type: 3}
+  m_PrefabInstance: {fileID: 4030131417305044872}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112512954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be503bafbbeb714fa3ae30959f21254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &472467559373602476
 PrefabInstance:
   m_ObjectHideFlags: 0

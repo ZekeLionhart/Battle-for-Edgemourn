@@ -28,6 +28,11 @@ public class BowController : PowerController
             //ResetSprite();
     }
 
+    protected override void AttemptShooting()
+    {
+        
+    }
+
     private void Aim(float angle)
     {
         aimingPoint.rotation = Quaternion.identity;

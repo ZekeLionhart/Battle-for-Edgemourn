@@ -12,6 +12,8 @@ public class LineDrawer : MonoBehaviour
     private Vector3 prevStartPos;
     private Vector3 prevEndPos;
     private int currentPull;
+    private bool isMouseInside;
+    private bool wasFirstClickInside = false;
 
     public static Action<Vector3, bool> OnMouseUp;
     public static Action<float> OnAimUpdate;
@@ -25,11 +27,13 @@ public class LineDrawer : MonoBehaviour
     private void OnEnable()
     {
         PowerController.OnPowerShoot += SavePreviousShot;
+        PowerShooter.IsInsideArea += UpdateMouseState;
     }
 
     private void OnDisable()
     {
         PowerController.OnPowerShoot -= SavePreviousShot;
+        PowerShooter.IsInsideArea -= UpdateMouseState;
     }
 
     void Update()
@@ -38,19 +42,25 @@ public class LineDrawer : MonoBehaviour
             DrawAimingLine();
     }
 
+    private void UpdateMouseState(bool value)
+    {
+        isMouseInside = value;
+    }
+
     private void DrawAimingLine()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && isMouseInside)
         {
             startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             startPos.z = 0f;
             currentPull = 1;
+            wasFirstClickInside = true;
             OnBowPull(currentPull);
 
             ShowPreviousShot();
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && isMouseInside)
         {
             endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             endPos.z = 0f;
@@ -82,7 +92,7 @@ public class LineDrawer : MonoBehaviour
 
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1") && wasFirstClickInside)
         {
             bool willShoot = false;
 
@@ -94,6 +104,7 @@ public class LineDrawer : MonoBehaviour
                 lineRend.SetPosition(1, Vector3.zero);
             }
 
+            wasFirstClickInside = false;
             HidePreviousShot();
             OnMouseUp(endPos - startPos, willShoot);
         }
