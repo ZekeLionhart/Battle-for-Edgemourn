@@ -26,11 +26,12 @@ public class WallManager : MonoBehaviour
             ProjectileManager.OnEnemyHit(collision.gameObject, damageType, damage);
     }
 
-    private void SetStats(int hitpoints, float damage, DamageTypes damageType)
+    private void SetStats(int hitpoints, float duration, float damage, DamageTypes damageType)
     {
         this.hitpoints = hitpoints;
         this.damage = damage;
         this.damageType = damageType;
+        Invoke(nameof(ForceDeath), duration);
     }
 
     private void TakeDamage(GameObject target, int damage)
@@ -45,6 +46,11 @@ public class WallManager : MonoBehaviour
             else
                 animator.SetTrigger("Hit");
         }
+    }
+
+    private void ForceDeath()
+    {
+        TakeDamage(gameObject, 1000);
     }
 
     private void Die()
