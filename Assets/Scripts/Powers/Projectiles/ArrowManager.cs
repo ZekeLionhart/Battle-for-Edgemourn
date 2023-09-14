@@ -3,6 +3,7 @@ using UnityEngine;
 public class ArrowManager : ProjectileManager
 {
     [SerializeField] private AudioSource groundHitSfx;
+    [SerializeField] private float lifespan;
     private bool canDamage = true;
     private bool canRotate = true;
     private Rigidbody2D rigid;
@@ -24,11 +25,25 @@ public class ArrowManager : ProjectileManager
             groundHitSfx.Play();
 
         canRotate = false;
-        GetComponent<Rigidbody2D>().simulated = false;
-        Destroy(gameObject, 1f);
+        rigid.simulated = false;
+
+
+        GameObject target = collision.collider.gameObject;
+
+        if (target.transform.Find("Bones (spine)") != null)
+            target = target.transform.Find("Bones (spine)").gameObject;
+        else if (target.transform.Find("Roof") != null)
+            target = target.transform.Find("Roof").gameObject;
+        else if (target.transform.Find("bone_1") != null)
+            target = target.transform.Find("bone_1").gameObject;
+        if (target != collision.collider.gameObject)
+
+
+        transform.parent = target.transform;
+        Destroy(gameObject, lifespan);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!PauseManager.isPaused && canRotate)
             RotateMidFlight();

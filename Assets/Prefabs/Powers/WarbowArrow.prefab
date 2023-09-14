@@ -284,7 +284,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &8842869123275414645
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundHitSfx: {fileID: 629109177977362957}
+  lifespan: 10
 --- !u!1 &8546241233317983099
 GameObject:
   m_ObjectHideFlags: 0
