@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D hitbox;
     [SerializeField] protected Animator animator;
+    [SerializeField] private AudioSource onAttackSfx;
     [SerializeField] private AudioSource onHitSfx;
     [SerializeField] private AudioSource gruntSfx;
     [SerializeField] private AudioSource onDeathSfx;
@@ -160,5 +161,11 @@ public class EnemyBase : MonoBehaviour
     {
         OnEnemyDeath(scoreValue);
         Destroy(gameObject);
+    }
+
+    private void PlayAttackSfx()
+    {
+        if (onAttackSfx != null)
+            onAttackSfx.Play();
     }
 }

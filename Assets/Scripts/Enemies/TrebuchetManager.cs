@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.Rendering.DebugUI;
 
 public class TrebuchetManager : EnemyBase
 {
     [SerializeField] private Rigidbody2D ammo;
     [SerializeField] private Transform ammoSpawn;
+    [SerializeField] private AudioSource onReloadSfx;
 
     public static Action<Rigidbody2D, int> OnBoulderInstantiated;
 
@@ -17,5 +16,11 @@ public class TrebuchetManager : EnemyBase
         shotRigid.velocity = force;
 
         OnBoulderInstantiated(shotRigid, damage);
+    }
+
+    private void PlayReloadSfx()
+    {
+        if (onReloadSfx != null)
+            onReloadSfx.Play();
     }
 }
