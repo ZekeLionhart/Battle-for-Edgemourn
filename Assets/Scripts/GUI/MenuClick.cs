@@ -6,10 +6,9 @@ public class MenuClick : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string sceneName;
 
-    void Update()
+    public void StartTransition() 
     {
-        if (Input.GetButtonUp("Fire1"))
-            animator.SetTrigger("Start");
+        animator.SetTrigger("Start");
     }
 
     private void ChangeScene()

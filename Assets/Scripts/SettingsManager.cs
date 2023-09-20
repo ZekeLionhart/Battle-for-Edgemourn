@@ -21,7 +21,8 @@ public class SettingsManager : MonoBehaviour
     public void CallPauseScreen()
     {
         volumeSlider.value = volume * 10;
-        pauseScreen.SetActive(true);
+        if (pauseScreen != null)
+            pauseScreen.SetActive(true);
         settingsScreen.SetActive(false);
     }
 
