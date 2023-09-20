@@ -1,26 +1,13 @@
-using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject settingsScreen;
-    [SerializeField] private Slider volumeSlider;
-    [SerializeField] private TextMeshProUGUI txtVolumeSlider;
     [SerializeField] private AudioSource sfxPause;
     [SerializeField] private AudioSource sfxUnpause;
-    public static float volume = 1;
     public static bool isPaused;
-
-    public static Action SetAudioVolume;
-
-    private void Awake()
-    {
-        ChangeVolume();
-    }
 
     private void Update()
     {
@@ -49,22 +36,10 @@ public class PauseManager : MonoBehaviour
         isPaused = true;
     }
 
-    public void OpenCloseSettings(bool b)
+    public void CallSettingsScreen()
     {
-        volumeSlider.value = volume * 10;
-        settingsScreen.SetActive(b);
-        pauseScreen.SetActive(!b);
-    }
-
-    public void ChangeVolume()
-    {
-        txtVolumeSlider.text = "" + volumeSlider.value;
-    }
-
-    public void SetVolume()
-    {
-        volume = volumeSlider.value / 10;
-        SetAudioVolume();
+        settingsScreen.SetActive(true);
+        pauseScreen.SetActive(false);
     }
 
     public void QuitToMenu()
