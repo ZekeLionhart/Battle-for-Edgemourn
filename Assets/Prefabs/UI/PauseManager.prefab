@@ -201,7 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 6629836028703225026}
-  settingsScreen: {fileID: 5004020699964770817}
   sfxPause: {fileID: 4823840499088397197}
   sfxUnpause: {fileID: 1296741087585542295}
 --- !u!1 &4090546920045302792
@@ -1178,9 +1177,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 5837443327419409179}
-        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: CallSettingsScreen
+      - m_Target: {fileID: 6657071389529876797}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1189,6 +1188,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6629836028703225026}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6629836028703225026
 GameObject:
@@ -1695,8 +1706,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8680945836001576811, guid: 8670b1553f9c2254bb4b4f79801197a7, type: 3}
   m_PrefabInstance: {fileID: 8680945837872482356}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5004020699964770817 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4398099762705957429, guid: 8670b1553f9c2254bb4b4f79801197a7, type: 3}
+--- !u!114 &6657071389529876797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2601463299880231177, guid: 8670b1553f9c2254bb4b4f79801197a7, type: 3}
   m_PrefabInstance: {fileID: 8680945837872482356}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfdec564f41ae44e8a96b86c0251f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

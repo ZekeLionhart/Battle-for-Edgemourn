@@ -1,10 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private GameObject settingsScreen;
     [SerializeField] private AudioSource sfxPause;
     [SerializeField] private AudioSource sfxUnpause;
     public static bool isPaused;
@@ -34,12 +34,6 @@ public class PauseManager : MonoBehaviour
         sfxPause.Play();
         Time.timeScale = 0f;
         isPaused = true;
-    }
-
-    public void CallSettingsScreen()
-    {
-        settingsScreen.SetActive(true);
-        pauseScreen.SetActive(false);
     }
 
     public void QuitToMenu()

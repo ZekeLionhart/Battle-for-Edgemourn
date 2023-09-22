@@ -4,6 +4,7 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource sound;
     [SerializeField] private float volumeModifier;
+    [SerializeField] private AudioTypes audioType;
 
     private void Awake()
     {
@@ -12,12 +13,22 @@ public class AudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SettingsManager.SetAudioVolume += SetVolume;
+        SettingsManager.UpdateVolume += SetVolume;
+    }
+
+    private void OnDisable()
+    {
+        SettingsManager.UpdateVolume -= SetVolume;
     }
 
     private void SetVolume()
     {
-        if (sound!= null)
-            sound.volume = SettingsManager.volume * volumeModifier;
+        if (sound != null)
+        {
+            if (audioType == AudioTypes.SFX)
+                sound.volume = PlayerPrefs.GetFloat("SFX") * volumeModifier;
+            else
+                sound.volume = PlayerPrefs.GetFloat("BGM") * volumeModifier;
+        }
     }
 }

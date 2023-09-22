@@ -7,33 +7,61 @@ public class SettingsManager : MonoBehaviour
 {
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private Slider volumeSlider;
-    [SerializeField] private TextMeshProUGUI txtVolumeSlider;
-    public static float volume = 1;
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private TextMeshProUGUI txtBgmSlider;
+    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private TextMeshProUGUI txtSfxSlider;
 
-    public static Action SetAudioVolume;
+    public static Action UpdateVolume;
 
-    private void Awake()
+    private void OnEnable()
     {
-        ChangeVolume();
+        GameManager.SetUpVolume += LoadVolumeValues;
     }
 
-    public void CallPauseScreen()
+    private void OnDisable()
     {
-        volumeSlider.value = volume * 10;
+        GameManager.SetUpVolume -= LoadVolumeValues;
+    }
+
+    public void OpenSettings()
+    {
+        settingsScreen.SetActive(true);
+        LoadVolumeValues();
+    }
+
+    public void CloseSettings()
+    {
         if (pauseScreen != null)
             pauseScreen.SetActive(true);
         settingsScreen.SetActive(false);
     }
 
-    public void ChangeVolume()
+    private void LoadVolumeValues()
     {
-        txtVolumeSlider.text = "" + volumeSlider.value;
+        float volume = PlayerPrefs.GetFloat("BGM") * 10;
+        txtBgmSlider.text = volume.ToString();
+        bgmSlider.value = volume;
+
+        volume = PlayerPrefs.GetFloat("SFX") * 10;
+        txtSfxSlider.text = volume.ToString();
+        sfxSlider.value = volume;
+    }
+
+    public void ChangeBgmVolume()
+    {
+        txtBgmSlider.text = bgmSlider.value.ToString();
+    }
+
+    public void ChangeSfxVolume()
+    {
+        txtSfxSlider.text = sfxSlider.value.ToString();
     }
 
     public void SetVolume()
     {
-        volume = volumeSlider.value / 10;
-        SetAudioVolume();
+        PlayerPrefs.SetFloat("BGM", bgmSlider.value / 10);
+        PlayerPrefs.SetFloat("SFX", sfxSlider.value / 10);
+        UpdateVolume();
     }
 }

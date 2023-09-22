@@ -546,6 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 6319812592535554415}
   volumeModifier: 0.8
+  audioType: 1
 --- !u!1 &2430949666559943132
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 7681712392194344502}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &7216429480770567576
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,7 +708,6 @@ GameObject:
   - component: {fileID: 5183740440433720748}
   - component: {fileID: 1355078897637172953}
   - component: {fileID: 3872087734297427393}
-  - component: {fileID: 7880261477333450511}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -828,9 +829,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7880261477333450511}
-        m_TargetAssemblyTypeName: OpenSettings, Assembly-CSharp
-        m_MethodName: OnSettingsClick
+      - m_Target: {fileID: 4599810035631616129}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -838,21 +839,8 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &7880261477333450511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7216429480770567576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4558f356553be449abe33562e8ca421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingsScreen: {fileID: 2794131327230366653}
 --- !u!1 &7329202215943426171
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8609331360584382558}
   volumeModifier: 0.4
+  audioType: 0
 --- !u!1 &8142366053814639325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,8 +1400,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8670b1553f9c2254bb4b4f79801197a7, type: 3}
---- !u!1 &2794131327230366653 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4398099762705957429, guid: 8670b1553f9c2254bb4b4f79801197a7, type: 3}
+--- !u!114 &4599810035631616129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2601463299880231177, guid: 8670b1553f9c2254bb4b4f79801197a7, type: 3}
   m_PrefabInstance: {fileID: 2003978473148436872}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfdec564f41ae44e8a96b86c0251f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -496,6 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 6940257954326615191}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &4757639194588950864
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 7282114629609894883}
   volumeModifier: 0.4
+  audioType: 0
 --- !u!1 &7817535330200856703
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 3632106144822124712}
   volumeModifier: 0.4
+  audioType: 1
 --- !u!1001 &7621276708304515087
 PrefabInstance:
   m_ObjectHideFlags: 0
