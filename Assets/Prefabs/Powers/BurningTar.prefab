@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95272017789649838}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31,8 +31,8 @@ Transform:
   - {fileID: 3355819055609538264}
   - {fileID: 1704483439129133553}
   - {fileID: 2477857884879061026}
-  m_Father: {fileID: 830598145490437261}
-  m_RootOrder: 2
+  m_Father: {fileID: 830598145307475657}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &830598144924466277
 GameObject:
@@ -148,6 +148,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 830598145490437261}
+  - {fileID: 2046338336692563644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -165,6 +166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 830598145724261563}
   content: {fileID: 830598145490437260}
+  wakeUpSfx: {fileID: 2634401228021832608}
+  wakeUpSfx2: {fileID: 7479003820310505099}
+  idleSfx: {fileID: 6572382311401423358}
   shot: {fileID: 7169083511623344338, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
   animator: {fileID: 830598145490437250}
   damageType: 1
@@ -203,7 +207,6 @@ Transform:
   m_Children:
   - {fileID: 830598145724261563}
   - {fileID: 830598144924466298}
-  - {fileID: 2046338336692563644}
   m_Father: {fileID: 830598145307475657}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -302,7 +305,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c7865fd595be8a046a018f3e24771dd6, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -401,6 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 7479003820310505099}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &6057019786075923868
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +449,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3e08c01206593a7429a6764386ff3648, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -544,6 +548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 6572382311401423358}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &6723787689630375612
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +593,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9f5bea1d1a0be35418580fc31b991ed5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -687,3 +692,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 2634401228021832608}
   volumeModifier: 1
+  audioType: 0

@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 6268742350876567459}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &3749056363111602407
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,15 +167,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3749056363111602407}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5386672875145026259}
   - {fileID: 6230319925341350463}
-  m_Father: {fileID: 7235869134840304035}
-  m_RootOrder: 0
+  m_Father: {fileID: 7235869135344049737}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7235869134840304034
 GameObject:
@@ -205,8 +206,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 639241802710849}
+  m_Children: []
   m_Father: {fileID: 7235869135344049737}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -312,6 +312,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7235869134840304035}
+  - {fileID: 639241802710849}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -329,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 7235869135344049737}
   content: {fileID: 7235869134840304034}
+  wakeUpSfx: {fileID: 6352832503436749204}
   shot: {fileID: 5205078567594977183, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
   animator: {fileID: 7235869134840304032}
   damageType: 0
@@ -383,7 +385,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1b904333a52174b4d82021b595952ef6, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -482,3 +484,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 6352832503436749204}
   volumeModifier: 1
+  audioType: 0

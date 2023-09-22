@@ -6,6 +6,9 @@ public class PowerController : MonoBehaviour
 {
     [SerializeField] protected Transform aimingPoint;
     [SerializeField] protected GameObject content;
+    [SerializeField] protected AudioSource wakeUpSfx;
+    [SerializeField] protected AudioSource wakeUpSfx2;
+    [SerializeField] protected AudioSource idleSfx;
     [SerializeField] protected Rigidbody2D shot;
     [SerializeField] protected Animator animator;
     [SerializeField] protected DamageTypes damageType;
@@ -72,11 +75,18 @@ public class PowerController : MonoBehaviour
         {
             isActive = true;
             content.SetActive(true);
+            wakeUpSfx.Play();
+            if (wakeUpSfx2 != null)
+                wakeUpSfx2.Play();
+            if (idleSfx != null)
+                idleSfx.Play();
         }
         else
         {
             isActive = false;
             content.SetActive(false);
+            if (idleSfx != null)
+                idleSfx.Stop();
         }
     }
 

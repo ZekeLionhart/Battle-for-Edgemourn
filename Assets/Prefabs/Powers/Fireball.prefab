@@ -286,7 +286,6 @@ Transform:
   - {fileID: 472467558340508863}
   - {fileID: 472467559109346852}
   - {fileID: 1968407411305497587}
-  - {fileID: 1422026169340111400}
   m_Father: {fileID: 472467558219623200}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -436,6 +435,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 472467557934712019}
+  - {fileID: 1422026169340111400}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -453,6 +453,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 472467557951320565}
   content: {fileID: 472467557934712018}
+  wakeUpSfx: {fileID: 4984173216598642221}
+  wakeUpSfx2: {fileID: 0}
+  idleSfx: {fileID: 4345431307888063161}
   shot: {fileID: 5205078567594977183, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
   animator: {fileID: 0}
   damageType: 1
@@ -656,7 +659,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a48301f0f15853a4db9e2035e648313d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -755,6 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 4345431307888063161}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &3800392663870074303
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +803,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c7865fd595be8a046a018f3e24771dd6, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -898,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 4984173216598642221}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &5610614845833635606
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,8 +933,8 @@ Transform:
   m_Children:
   - {fileID: 5361583464798226949}
   - {fileID: 4485511587445794382}
-  m_Father: {fileID: 472467557934712019}
-  m_RootOrder: 6
+  m_Father: {fileID: 472467558219623200}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5656007303575825480
 GameObject:

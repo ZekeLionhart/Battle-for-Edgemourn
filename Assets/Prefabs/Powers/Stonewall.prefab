@@ -23,15 +23,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531129059685958752}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8232616949483751756}
   - {fileID: 8770315641482586677}
-  m_Father: {fileID: 1599239275816592770}
-  m_RootOrder: 5
+  m_Father: {fileID: 1599239274968860950}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1599239273949399615
 GameObject:
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 1599239274968860950}
   - component: {fileID: 1599239274968860953}
   m_Layer: 6
-  m_Name: StoneWall
+  m_Name: Stonewall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,6 +180,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1599239275816592770}
+  - {fileID: 2621183802096401616}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -197,6 +198,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 1599239275717450423}
   content: {fileID: 1599239275816592771}
+  wakeUpSfx: {fileID: 1378145821523580300}
+  wakeUpSfx2: {fileID: 0}
+  idleSfx: {fileID: 8183610266484294356}
   shot: {fileID: 7169083511623344338, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
   animator: {fileID: 0}
   damageType: 3
@@ -206,6 +210,7 @@ MonoBehaviour:
   leftLimit: {fileID: 1599239275338662846}
   rightLimit: {fileID: 1599239275869122081}
   hitpoints: 8
+  duration: 0
   floor: {fileID: 0}
 --- !u!1 &1599239275047059012
 GameObject:
@@ -492,7 +497,6 @@ Transform:
   - {fileID: 1599239275338662846}
   - {fileID: 1599239275869122081}
   - {fileID: 1646199705562056999}
-  - {fileID: 2621183802096401616}
   m_Father: {fileID: 1599239274968860950}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -792,10 +796,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4f16a2e984815ec4fa0cd0d3c5fa34b1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -891,6 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8183610266484294356}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &5582535916663734176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1024,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4520ec31ea3126f489c91cd3a838b298, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
@@ -1118,6 +1123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 1378145821523580300}
   volumeModifier: 0.8
+  audioType: 0
 --- !u!1 &6863665500846995750
 GameObject:
   m_ObjectHideFlags: 0

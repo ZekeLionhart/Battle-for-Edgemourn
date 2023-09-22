@@ -13,6 +13,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtSfxSlider;
 
     public static Action UpdateVolume;
+    public static Action<float, float> SaveVolume;
 
     private void OnEnable()
     {
@@ -60,8 +61,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SetVolume()
     {
-        PlayerPrefs.SetFloat("BGM", bgmSlider.value / 10);
-        PlayerPrefs.SetFloat("SFX", sfxSlider.value / 10);
+        SaveVolume(bgmSlider.value / 10, sfxSlider.value / 10);
         UpdateVolume();
     }
 }

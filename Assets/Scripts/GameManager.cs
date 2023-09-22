@@ -17,11 +17,13 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         HealthManager.OnZeroHealth += FailGame;
+        SettingsManager.SaveVolume += SaveVolumePrefs;
     }
 
     private void OnDisable()
     {
         HealthManager.OnZeroHealth -= FailGame;
+        SettingsManager.SaveVolume -= SaveVolumePrefs;
     }
 
     private void FailGame()
@@ -42,7 +44,11 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("BGM", 1f);
         if (!PlayerPrefs.HasKey("SFX"))
             PlayerPrefs.SetFloat("SFX", 1f);
+    }
 
-        SetUpVolume();
+    private void SaveVolumePrefs(float bgmVolume, float sfxVolume)
+    {
+        PlayerPrefs.SetFloat("BGM", bgmVolume);
+        PlayerPrefs.SetFloat("SFX", sfxVolume);
     }
 }
