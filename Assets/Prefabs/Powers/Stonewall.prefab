@@ -210,7 +210,7 @@ MonoBehaviour:
   leftLimit: {fileID: 1599239275338662846}
   rightLimit: {fileID: 1599239275869122081}
   hitpoints: 8
-  duration: 0
+  duration: 10
   floor: {fileID: 0}
 --- !u!1 &1599239275047059012
 GameObject:

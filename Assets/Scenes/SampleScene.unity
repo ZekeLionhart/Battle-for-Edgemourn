@@ -1009,10 +1009,6 @@ PrefabInstance:
       propertyPath: floor
       value: 
       objectReference: {fileID: 1465251180}
-    - target: {fileID: 1599239274968860953, guid: 92a0f88e12e31f04e8abc8c3f87af298, type: 3}
-      propertyPath: duration
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8183610266484294356, guid: 92a0f88e12e31f04e8abc8c3f87af298, type: 3}
       propertyPath: Loop
       value: 1
@@ -1485,14 +1481,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1084549656}
     m_Modifications:
-    - target: {fileID: 6663799360619997873, guid: 0e1ea90a51b82a54da34d52dee4755ef, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385550455155442942, guid: 0e1ea90a51b82a54da34d52dee4755ef, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7385550456352134689, guid: 0e1ea90a51b82a54da34d52dee4755ef, type: 3}
       propertyPath: m_Name
       value: Warbow
