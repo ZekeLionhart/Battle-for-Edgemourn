@@ -830,6 +830,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 472467558219623201, guid: 0cf919c363b526947bd440e4d48023be, type: 3}
+      propertyPath: cooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 472467558219623207, guid: 0cf919c363b526947bd440e4d48023be, type: 3}
       propertyPath: m_Name
       value: Fireball
