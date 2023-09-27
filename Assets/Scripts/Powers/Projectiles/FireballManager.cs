@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class FireballManager : ProjectileManager
@@ -13,29 +12,19 @@ public class FireballManager : ProjectileManager
     private void Awake()
     {
         particleWFS = new WaitForSeconds(particleFrequency);
-        //StartCoroutine(SpawnSmoke());
         SpawnSmoke();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Floor") 
-            || collision.collider.CompareTag("Enemy") 
-            || collision.collider.CompareTag("Player")) 
+        if (collision.collider.CompareTag(TagNames.Floor) 
+            || collision.collider.CompareTag(TagNames.Enemy) 
+            || collision.collider.CompareTag(TagNames.Player)) 
         {
             OnTargetHit(transform.position);
             Destroy(gameObject);
         }
     }
-
-    /*private IEnumerator SpawnSmoke()
-    {
-        Instantiate(smokeParticle, transform);
-
-        yield return particleWFS;
-
-        StartCoroutine(SpawnSmoke());
-    }*/
 
     private void SpawnSmoke()
     {

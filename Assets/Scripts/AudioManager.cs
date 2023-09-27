@@ -26,9 +26,9 @@ public class AudioManager : MonoBehaviour
         if (sound != null)
         {
             if (audioType == AudioTypes.SFX)
-                sound.volume = PlayerPrefs.GetFloat("SFX") * volumeModifier;
+                sound.volume = PlayerPrefs.GetFloat(AudioTypeNames.SFX) * volumeModifier;
             else
-                sound.volume = PlayerPrefs.GetFloat("BGM") * volumeModifier;
+                sound.volume = PlayerPrefs.GetFloat(AudioTypeNames.BGM) * volumeModifier;
         }
     }
 }

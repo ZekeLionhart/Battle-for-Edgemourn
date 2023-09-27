@@ -35,41 +35,41 @@ public class GameManager : MonoBehaviour
 
     private void FailGame()
     {
-        animator.SetTrigger("Over");
+        animator.SetTrigger(ParameterNames.GameIsOver);
         Time.timeScale = 0.3f;
     }
 
     private void CallGameOver()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene(SceneNames.GameOver);
     }
 
     private void SetUpPrefs()
     {
 #if UNITY_EDITOR
-        if (!PlayerPrefs.HasKey("BGM"))
-            PlayerPrefs.SetFloat("BGM", 1f);
-        if (!PlayerPrefs.HasKey("SFX"))
-            PlayerPrefs.SetFloat("SFX", 1f);
+        if (!PlayerPrefs.HasKey(AudioTypeNames.BGM))
+            PlayerPrefs.SetFloat(AudioTypeNames.BGM, 1f);
+        if (!PlayerPrefs.HasKey(AudioTypeNames.SFX))
+            PlayerPrefs.SetFloat(AudioTypeNames.SFX, 1f);
 #endif
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if (HasKeyInLocalStorage("BGM") == 0)
-            SetVolumeStorage("BGM", 1f, "SFX", 1f);
+        if (HasKeyInLocalStorage(AudioTypeStrings.BGM) == 0)
+            SetVolumeStorage(AudioTypeStrings.BGM, 1f, AudioTypeStrings.SFX, 1f);
 
-        PlayerPrefs.SetFloat("BGM", GetStorage("BGM"));
-        PlayerPrefs.SetFloat("SFX", GetStorage("SFX"));
+        PlayerPrefs.SetFloat(AudioTypeStrings.BGM, GetStorage(AudioTypeStrings.BGM));
+        PlayerPrefs.SetFloat(AudioTypeStrings.SFX, GetStorage(AudioTypeStrings.SFX));
 #endif
     }
 
     private void SaveVolumePrefs(float bgmVolume, float sfxVolume)
     {
-        PlayerPrefs.SetFloat("BGM", bgmVolume);
-        PlayerPrefs.SetFloat("SFX", sfxVolume);
+        PlayerPrefs.SetFloat(AudioTypeNames.BGM, bgmVolume);
+        PlayerPrefs.SetFloat(AudioTypeNames.SFX, sfxVolume);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-        SetVolumeStorage("BGM", bgmVolume, "SFX", sfxVolume);
+        SetVolumeStorage(AudioTypeStrings.BGM, bgmVolume, AudioTypeStrings.SFX, sfxVolume);
 #endif
     }
 }

@@ -49,7 +49,7 @@ public class LineDrawer : MonoBehaviour
 
     private void DrawAimingLine()
     {
-        if (Input.GetButtonDown("Fire1") && isMouseInside)
+        if (Input.GetButtonDown(KeyNames.Fire) && isMouseInside)
         {
             startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             startPos.z = 0f;
@@ -60,7 +60,7 @@ public class LineDrawer : MonoBehaviour
             ShowPreviousShot();
         }
 
-        if (Input.GetButton("Fire1") && isMouseInside)
+        if (Input.GetButton(KeyNames.Fire) && isMouseInside)
         {
             endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             endPos.z = 0f;
@@ -92,7 +92,7 @@ public class LineDrawer : MonoBehaviour
 
         }
 
-        if (Input.GetButtonUp("Fire1") && wasFirstClickInside)
+        if (Input.GetButtonUp(KeyNames.Fire) && wasFirstClickInside)
         {
             bool willShoot = false;
 

@@ -22,12 +22,6 @@ public class BowController : PowerController
         LineDrawer.OnBowPull -= PullBow;
     }
 
-    private void Update()
-    {
-        //if (Input.GetMouseButtonUp(0) && isActive)
-            //ResetSprite();
-    }
-
     protected override void AttemptShooting()
     {
         
@@ -54,9 +48,9 @@ public class BowController : PowerController
 
     protected void ResetSprite()
     {
-        animator.SetBool("PullWeak", false);
-        animator.SetBool("PullMed", false);
-        animator.SetBool("PullStrong", false);
+        animator.SetBool(ParameterNames.BowPullWeak, false);
+        animator.SetBool(ParameterNames.BowPullMed, false);
+        animator.SetBool(ParameterNames.BowPullStrong, false);
     }
 
     protected void CreateArrow(Vector3 vector, Rigidbody2D arrow, Vector3 position)
@@ -80,19 +74,19 @@ public class BowController : PowerController
         switch (strength)
         {
             case 1:
-                animator.SetBool("PullWeak", true);
-                animator.SetBool("PullMed", false);
-                animator.SetBool("PullStrong", false);
+                animator.SetBool(ParameterNames.BowPullWeak, true);
+                animator.SetBool(ParameterNames.BowPullMed, false);
+                animator.SetBool(ParameterNames.BowPullStrong, false);
                 break;
             case 2:
-                animator.SetBool("PullWeak", false);
-                animator.SetBool("PullMed", true);
-                animator.SetBool("PullStrong", false);
+                animator.SetBool(ParameterNames.BowPullWeak, false);
+                animator.SetBool(ParameterNames.BowPullMed, true);
+                animator.SetBool(ParameterNames.BowPullStrong, false);
                 break;
             case 3:
-                animator.SetBool("PullWeak", false);
-                animator.SetBool("PullMed", false);
-                animator.SetBool("PullStrong", true);
+                animator.SetBool(ParameterNames.BowPullWeak, false);
+                animator.SetBool(ParameterNames.BowPullMed, false);
+                animator.SetBool(ParameterNames.BowPullStrong, true);
                 break;
             default:
                 break;

@@ -68,12 +68,12 @@ public class EnemyBase : MonoBehaviour
 
         if (hitData.collider != null)
         {
-            animator.SetBool("IsColliding", true);
+            animator.SetBool(ParameterNames.IsColliding, true);
             target = hitData.collider.gameObject;
         }
         else
         {
-            animator.SetBool("IsColliding", false);
+            animator.SetBool(ParameterNames.IsColliding, false);
             target = null;
         }
     }
@@ -119,7 +119,7 @@ public class EnemyBase : MonoBehaviour
         if (hitpoints <= 0)
         {
             Destroy(rigidBody);
-            animator.SetTrigger("OnHpEmpty");
+            animator.SetTrigger(ParameterNames.OnHpEmpty);
             onDeathSfx.Play();
         }
         else if (gruntSfx != null)
@@ -133,7 +133,7 @@ public class EnemyBase : MonoBehaviour
 
     private void WalkForwards()
     {
-        animator.ResetTrigger("OnAttackCldwn");
+        animator.ResetTrigger(ParameterNames.OnAttackCldwn);
 
         if (rigidBody != null)
             rigidBody.position -= 0.5f * speed * Time.fixedDeltaTime * Vector2.right;
@@ -152,7 +152,7 @@ public class EnemyBase : MonoBehaviour
             canAttack = false;
             yield return attackCooldownWFS;
 
-            animator.SetTrigger("OnAttackCldwn");
+            animator.SetTrigger(ParameterNames.OnAttackCldwn);
             canAttack = true;
         }
     }

@@ -40,11 +40,11 @@ public class SettingsManager : MonoBehaviour
 
     private void LoadVolumeValues()
     {
-        float volume = PlayerPrefs.GetFloat("BGM") * 10;
+        float volume = PlayerPrefs.GetFloat(AudioTypeNames.BGM) * 10;
         txtBgmSlider.text = volume.ToString();
         bgmSlider.value = volume;
 
-        volume = PlayerPrefs.GetFloat("SFX") * 10;
+        volume = PlayerPrefs.GetFloat(AudioTypeNames.SFX) * 10;
         txtSfxSlider.text = volume.ToString();
         sfxSlider.value = volume;
     }

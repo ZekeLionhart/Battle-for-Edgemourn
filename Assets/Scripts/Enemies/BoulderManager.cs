@@ -18,10 +18,10 @@ public class BoulderManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Tower") || collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag(TagNames.Tower) || collision.collider.CompareTag(TagNames.Player))
         {
             EnemyBase.OnDamageDealt(collision.gameObject, damage);
-            animator.SetTrigger("Break");
+            animator.SetTrigger(ParameterNames.Destroy);
             Destroy(rigidBody);
         }
     }

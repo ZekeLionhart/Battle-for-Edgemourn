@@ -9,7 +9,7 @@ public class BurningTarController : PowerController
     {
         if (canShoot && isActive)
         {
-            animator.SetTrigger("Flip");
+            animator.SetTrigger(ParameterNames.Shoot);
             canShoot = false;
             Invoke(nameof(Shoot), 0.5f);
         }
@@ -19,8 +19,8 @@ public class BurningTarController : PowerController
     {
         Rigidbody2D shotRigid = Instantiate(shot, new Vector2(
                 aimingPoint.transform.position.x + 0.4f,
-                aimingPoint.transform.position.y
-            ), shot.transform.rotation);
+                aimingPoint.transform.position.y),
+            shot.transform.rotation);
 
         Instantiate(particles, new Vector2(
                 aimingPoint.transform.position.x,

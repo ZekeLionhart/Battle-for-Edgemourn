@@ -34,17 +34,17 @@ public class PowerManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Power1"))
+        if (Input.GetButtonDown(KeyNames.Warbow))
             SwitchPowers(0);
-        if (Input.GetButtonDown("Power2"))
+        if (Input.GetButtonDown(KeyNames.Volley))
             SwitchPowers(1);
-        if (Input.GetButtonDown("Power3"))
+        if (Input.GetButtonDown(KeyNames.Fireball))
             SwitchPowers(2);
-        if (Input.GetButtonDown("Power4"))
+        if (Input.GetButtonDown(KeyNames.Lightning))
             SwitchPowers(3);
-        if (Input.GetButtonDown("Power5"))
+        if (Input.GetButtonDown(KeyNames.Stonewall))
             SwitchPowers(4);
-        if (Input.GetButtonDown("Power6"))
+        if (Input.GetButtonDown(KeyNames.BurningTar))
             SwitchPowers(5);
     }
 

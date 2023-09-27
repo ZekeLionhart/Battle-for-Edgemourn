@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +10,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown(KeyNames.Pause))
         {
             if (isPaused)
                 Resume();
@@ -39,6 +38,6 @@ public class PauseManager : MonoBehaviour
     public void QuitToMenu()
     {
         Resume();
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene(SceneNames.Menu);
     }
 }

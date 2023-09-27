@@ -22,7 +22,7 @@ public class WallManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag(TagNames.Enemy))
             ProjectileManager.OnEnemyHit(collision.gameObject, damageType, damage);
     }
 
@@ -42,9 +42,9 @@ public class WallManager : MonoBehaviour
             hitSfx.Play();
 
             if (hitpoints <= 0)
-                animator.SetTrigger("Destroy");
+                animator.SetTrigger(ParameterNames.Destroy);
             else
-                animator.SetTrigger("Hit");
+                animator.SetTrigger(ParameterNames.Hit);
         }
     }
 

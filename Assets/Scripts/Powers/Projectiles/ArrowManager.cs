@@ -15,13 +15,13 @@ public class ArrowManager : ProjectileManager
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Enemy") && canDamage)
+        if (collision.collider.CompareTag(TagNames.Enemy) && canDamage)
         {
             OnEnemyHit(collision.collider.gameObject, damageType, damage);
             canDamage = false;
         }
 
-        if (collision.collider.CompareTag("Floor"))
+        if (collision.collider.CompareTag(TagNames.Floor))
             groundHitSfx.Play();
 
         canRotate = false;

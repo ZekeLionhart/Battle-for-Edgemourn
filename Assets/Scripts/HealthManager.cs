@@ -27,7 +27,7 @@ public class HealthManager : MonoBehaviour
 
     private void SubtractHealth(GameObject target, int damage)
     {
-        if (target.CompareTag("Tower"))
+        if (target.CompareTag(TagNames.Tower))
         { 
             healthPoints -= damage;
             healthText.text = healthPoints.ToString();

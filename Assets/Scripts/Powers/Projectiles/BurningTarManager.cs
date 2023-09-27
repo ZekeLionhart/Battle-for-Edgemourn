@@ -9,13 +9,13 @@ public class BurningTarManager : ProjectileManager
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.collider.CompareTag(TagNames.Enemy))
             OnEnemyHit(collision.collider.gameObject, damageType, damage);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Floor"))
+        if (collision.CompareTag(TagNames.Floor))
             Destroy(gameObject);
     }
 }

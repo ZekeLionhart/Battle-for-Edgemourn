@@ -25,7 +25,7 @@ public class VolleyController : BowController
         if (isActive)
         {
             ResetSprite();
-            animator.SetTrigger("Shoot");
+            animator.SetTrigger(ParameterNames.Shoot);
 
             if (canShoot && willShoot)
             {
