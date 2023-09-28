@@ -7,10 +7,23 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private AudioSource sfxPause;
     [SerializeField] private AudioSource sfxUnpause;
     public static bool isPaused;
+    private bool isSettingsOpen;
+
+    private void OnEnable()
+    {
+        SettingsManager.OnSettingsOpen += BlockResume;
+        SettingsManager.OnSettingsClose += AllowResume;
+    }
+
+    private void OnDisable()
+    {
+        SettingsManager.OnSettingsOpen -= BlockResume;
+        SettingsManager.OnSettingsClose -= AllowResume;
+    }
 
     private void Update()
     {
-        if (Input.GetButtonDown(KeyNames.Pause))
+        if (!isSettingsOpen && Input.GetButtonDown(KeyNames.Pause))
         {
             if (isPaused)
                 Resume();
@@ -33,6 +46,16 @@ public class PauseManager : MonoBehaviour
         sfxPause.Play();
         Time.timeScale = 0f;
         isPaused = true;
+    }
+
+    private void BlockResume()
+    {
+        isSettingsOpen = true;
+    }
+
+    private void AllowResume()
+    {
+        isSettingsOpen = false;
     }
 
     public void QuitToMenu()
