@@ -9,11 +9,12 @@ public class PowerManager : MonoBehaviour
     private readonly List<bool> cooldowns = new();
     private PowerController activePower;
 
+    public static Action<PowerController> SetUpStartingPower;
     public static Action<PowerController> OnSwitchPowers;
 
     private void Awake()
     {
-        OnSwitchPowers(activePower = powers[0]);
+        SetUpStartingPower(activePower = powers[0]);
 
         for (int i = 0; i < powers.Length; i++)
             cooldowns.Add(false);

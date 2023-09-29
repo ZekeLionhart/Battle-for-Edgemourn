@@ -28,6 +28,7 @@ public class PowerController : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        PowerManager.SetUpStartingPower += SetUpStartingPower;
         PowerManager.OnSwitchPowers += DeActivate;
         CooldownManager.OnCooldownEnded += AllowShooting;
         HealthManager.OnZeroHealth += CeaseFunction;
@@ -36,6 +37,7 @@ public class PowerController : MonoBehaviour
 
     protected virtual void OnDisable()
     {
+        PowerManager.SetUpStartingPower -= SetUpStartingPower;
         PowerManager.OnSwitchPowers -= DeActivate;
         CooldownManager.OnCooldownEnded -= AllowShooting;
         HealthManager.OnZeroHealth -= CeaseFunction;
@@ -67,6 +69,20 @@ public class PowerController : MonoBehaviour
         yield return shotDelayWFS;
 
         canShoot = true;
+    }
+
+    private void SetUpStartingPower(PowerController activePower)
+    {
+        if (activePower == this)
+        {
+            isActive = true;
+            content.SetActive(true);
+        }
+        else
+        {
+            isActive = false;
+            content.SetActive(false);
+        }
     }
 
     private void DeActivate(PowerController activePower)
