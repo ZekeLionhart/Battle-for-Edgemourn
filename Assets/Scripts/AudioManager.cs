@@ -13,12 +13,12 @@ public class AudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SettingsManager.UpdateVolume += SetVolume;
+        SettingsManager.UpdateSettings += SetVolume;
     }
 
     private void OnDisable()
     {
-        SettingsManager.UpdateVolume -= SetVolume;
+        SettingsManager.UpdateSettings -= SetVolume;
     }
 
     private void SetVolume()
@@ -26,9 +26,9 @@ public class AudioManager : MonoBehaviour
         if (sound != null)
         {
             if (audioType == AudioTypes.SFX)
-                sound.volume = PlayerPrefs.GetFloat(AudioTypeNames.SFX) * volumeModifier;
+                sound.volume = PlayerPrefs.GetFloat(SettingNames.SFX) * volumeModifier;
             else
-                sound.volume = PlayerPrefs.GetFloat(AudioTypeNames.BGM) * volumeModifier;
+                sound.volume = PlayerPrefs.GetFloat(SettingNames.BGM) * volumeModifier;
         }
     }
 }

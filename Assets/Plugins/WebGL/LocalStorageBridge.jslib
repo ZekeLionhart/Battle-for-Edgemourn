@@ -1,10 +1,19 @@
 mergeInto(LibraryManager.library, {
-    SetVolumeStorage: function(keya, valuea, keyb, valueb) {
-        localStorage.setItem(UTF8ToString(keya), valuea);
-        localStorage.setItem(UTF8ToString(keyb), valueb);
+    SetFloatToStorage: function(key, value) {
+        localStorage.setItem(UTF8ToString(key), value);
     },
 
-    GetStorage: function(key) {
+    SetIntToStorage: function(key, value) {
+        localStorage.setItem(UTF8ToString(key), value);
+    },
+
+    GetFloatInStorage: function(key) {
+        var value = localStorage.getItem(UTF8ToString(key));
+        if (value === null) return 3;
+        return value;
+    },
+
+    GetIntInStorage: function(key) {
         var value = localStorage.getItem(UTF8ToString(key));
         if (value === null) return 3;
         return value;

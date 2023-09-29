@@ -1,4 +1,3 @@
-using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,12 +7,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator animator;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-    [DllImport("__Internal")] private static extern void SetVolumeStorage(string bgmKey, float bgmValue, string sfxKey, float sfxValue);
-    [DllImport("__Internal")] private static extern float GetStorage(string key);
+    [DllImport("__Internal")] private static extern void SetFloatToStorage(string key, float value);
+    [DllImport("__Internal")] private static extern void SetIntToStorage(string key, int value);
+    [DllImport("__Internal")] private static extern float GetFloatInStorage(string key);
+    [DllImport("__Internal")] private static extern int GetIntInStorage(string key);
     [DllImport("__Internal")] private static extern int HasKeyInLocalStorage(string key);
 #endif
-
-    public static Action SetUpVolume;
 
     private void Awake()
     {
@@ -24,13 +23,13 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         HealthManager.OnZeroHealth += FailGame;
-        SettingsManager.SaveVolume += SaveVolumePrefs;
+        SettingsManager.UpdateSettings += SaveSettingsToStorage;
     }
 
     private void OnDisable()
     {
         HealthManager.OnZeroHealth -= FailGame;
-        SettingsManager.SaveVolume -= SaveVolumePrefs;
+        SettingsManager.UpdateSettings -= SaveSettingsToStorage;
     }
 
     private void FailGame()
@@ -48,28 +47,37 @@ public class GameManager : MonoBehaviour
     private void SetUpPrefs()
     {
 #if UNITY_EDITOR
-        if (!PlayerPrefs.HasKey(AudioTypeNames.BGM))
-            PlayerPrefs.SetFloat(AudioTypeNames.BGM, 1f);
-        if (!PlayerPrefs.HasKey(AudioTypeNames.SFX))
-            PlayerPrefs.SetFloat(AudioTypeNames.SFX, 1f);
+        if (!PlayerPrefs.HasKey(SettingNames.BGM))
+            PlayerPrefs.SetFloat(SettingNames.BGM, 1f);
+        if (!PlayerPrefs.HasKey(SettingNames.SFX))
+            PlayerPrefs.SetFloat(SettingNames.SFX, 1f);
+        if (!PlayerPrefs.HasKey(SettingNames.ReturnToBow))
+            PlayerPrefs.SetInt(SettingNames.ReturnToBow, 0);
 #endif
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if (HasKeyInLocalStorage(AudioTypeStrings.BGM) == 0)
-            SetVolumeStorage(AudioTypeStrings.BGM, 1f, AudioTypeStrings.SFX, 1f);
+        if (HasKeyInLocalStorage(SettingNames.BGM) == 0)
+        {
+            SetFloatToStorage(SettingNames.BGM, 1f);
+            SetFloatToStorage(SettingNames.SFX, 1f);
+        }
 
-        PlayerPrefs.SetFloat(AudioTypeStrings.BGM, GetStorage(AudioTypeStrings.BGM));
-        PlayerPrefs.SetFloat(AudioTypeStrings.SFX, GetStorage(AudioTypeStrings.SFX));
+        PlayerPrefs.SetFloat(SettingNames.BGM, GetFloatInStorage(SettingNames.BGM));
+        PlayerPrefs.SetFloat(SettingNames.SFX, GetFloatInStorage(SettingNames.SFX));
+
+        if (HasKeyInLocalStorage(SettingNames.ReturnToBow) == 0)
+            SetIntToStorage(SettingNames.ReturnToBow, 0);
+
+        PlayerPrefs.SetInt(SettingNames.ReturnToBow, GetIntInStorage(SettingNames.ReturnToBow));
 #endif
     }
 
-    private void SaveVolumePrefs(float bgmVolume, float sfxVolume)
+    private void SaveSettingsToStorage()
     {
-        PlayerPrefs.SetFloat(AudioTypeNames.BGM, bgmVolume);
-        PlayerPrefs.SetFloat(AudioTypeNames.SFX, sfxVolume);
-
 #if UNITY_WEBGL && !UNITY_EDITOR
-        SetVolumeStorage(AudioTypeStrings.BGM, bgmVolume, AudioTypeStrings.SFX, sfxVolume);
+        SetFloatToStorage(SettingNames.BGM, PlayerPrefs.GetFloat(SettingNames.BGM));
+        SetFloatToStorage(SettingNames.SFX, PlayerPrefs.GetFloat(SettingNames.SFX));
+        SetIntToStorage(SettingNames.ReturnToBow, PlayerPrefs.GetInt(SettingNames.ReturnToBow));
 #endif
     }
 }

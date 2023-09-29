@@ -2,10 +2,11 @@ public enum DamageTypes { Pierce, Fire, Thunder, Earth }
 public enum TargetTypes { Ally, Environment }
 public enum AudioTypes { SFX, BGM };
 
-public static class AudioTypeNames
+public static class SettingNames
 {
     public static string BGM = "BGM";
     public static string SFX = "SFX";
+    public static string ReturnToBow = "ReturnToBow";
 }
 
 public static class SceneNames

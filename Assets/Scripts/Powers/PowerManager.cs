@@ -8,6 +8,7 @@ public class PowerManager : MonoBehaviour
     [SerializeField] private PowerController[] powers;
     private readonly List<bool> cooldowns = new();
     private PowerController activePower;
+    private bool isReturnToWarbow;
 
     public static Action<PowerController> SetUpStartingPower;
     public static Action<PowerController> OnSwitchPowers;
@@ -15,6 +16,7 @@ public class PowerManager : MonoBehaviour
     private void Awake()
     {
         SetUpStartingPower(activePower = powers[0]);
+        UpdateReturnToBow();
 
         for (int i = 0; i < powers.Length; i++)
             cooldowns.Add(false);
@@ -24,6 +26,7 @@ public class PowerManager : MonoBehaviour
         PowerController.OnPowerShoot += StartPowerCooldown;
         CooldownManager.OnCooldownEnded += EndPowerCooldown;
         PowerClick.OnPowerSelect += SwitchPowers;
+        SettingsManager.UpdateSettings += UpdateReturnToBow;
     }
 
     private void OnDisable()
@@ -31,6 +34,7 @@ public class PowerManager : MonoBehaviour
         PowerController.OnPowerShoot -= StartPowerCooldown;
         CooldownManager.OnCooldownEnded -= EndPowerCooldown;
         PowerClick.OnPowerSelect -= SwitchPowers;
+        SettingsManager.UpdateSettings -= UpdateReturnToBow;
     }
 
     private void Update()
@@ -51,18 +55,24 @@ public class PowerManager : MonoBehaviour
 
     private void SwitchPowers(int index)
     {
-        lineRenderer.SetActive(index == 0 || index == 1);
+        if (activePower != powers[index])
+        {
+            lineRenderer.SetActive(index == 0 || index == 1);
 
-        activePower = powers[index];
+            activePower = powers[index];
 
-        OnSwitchPowers(activePower);
+            OnSwitchPowers(activePower);
 
-        if (!cooldowns[index])
-            CooldownManager.OnCooldownEnded(powers[index]);
+            if (!cooldowns[index])
+                CooldownManager.OnCooldownEnded(powers[index]);
+        }
     }
 
     private void StartPowerCooldown(PowerController power, float cooldown)
     {
+        if (isReturnToWarbow && activePower != powers[0])
+            SwitchPowers(0);
+
         for (int i = 0; i < powers.Length; i++)
         {
             if (power == powers[i])
@@ -83,5 +93,10 @@ public class PowerManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void UpdateReturnToBow()
+    {
+        isReturnToWarbow = Convert.ToBoolean(PlayerPrefs.GetInt(SettingNames.ReturnToBow));
     }
 }

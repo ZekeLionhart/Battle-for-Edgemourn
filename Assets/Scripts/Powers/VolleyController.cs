@@ -31,6 +31,7 @@ public class VolleyController : BowController
             {
                 arrowCounter = 0;
                 CreateArrow(vector, arrows[arrowCounter], aimingPoint.position + rand * spreadMultiplier * Vector3.left);
+                OnPowerShoot(this, cooldown);
                 StartCoroutine(DelayShot(vector));
             }
         }

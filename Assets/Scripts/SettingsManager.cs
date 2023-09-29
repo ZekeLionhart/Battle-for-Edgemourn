@@ -11,21 +11,11 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtBgmSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private TextMeshProUGUI txtSfxSlider;
+    [SerializeField] private Toggle returnToBowToggle;
 
     public static Action OnSettingsOpen;
     public static Action OnSettingsClose;
-    public static Action UpdateVolume;
-    public static Action<float, float> SaveVolume;
-
-    private void OnEnable()
-    {
-        GameManager.SetUpVolume += LoadVolumeValues;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.SetUpVolume -= LoadVolumeValues;
-    }
+    public static Action UpdateSettings;
 
     private void Update()
     {
@@ -39,7 +29,16 @@ public class SettingsManager : MonoBehaviour
             OnSettingsOpen();
 
         settingsScreen.SetActive(true);
-        LoadVolumeValues();
+        LoadSettingsValues();
+    }
+
+    public void SaveSettings()
+    {
+        PlayerPrefs.SetFloat(SettingNames.BGM, bgmSlider.value / 10);
+        PlayerPrefs.SetFloat(SettingNames.SFX, sfxSlider.value / 10);
+        PlayerPrefs.SetInt(SettingNames.ReturnToBow, returnToBowToggle.isOn ? 1 : 0);
+
+        UpdateSettings();
     }
 
     public void CloseSettings()
@@ -52,15 +51,23 @@ public class SettingsManager : MonoBehaviour
         settingsScreen.SetActive(false);
     }
 
-    private void LoadVolumeValues()
+    private void LoadSettingsValues()
     {
-        float volume = PlayerPrefs.GetFloat(AudioTypeNames.BGM) * 10;
+        float volume = PlayerPrefs.GetFloat(SettingNames.BGM) * 10;
         txtBgmSlider.text = volume.ToString();
         bgmSlider.value = volume;
 
-        volume = PlayerPrefs.GetFloat(AudioTypeNames.SFX) * 10;
+        volume = PlayerPrefs.GetFloat(SettingNames.SFX) * 10;
         txtSfxSlider.text = volume.ToString();
         sfxSlider.value = volume;
+
+        bool returnToBow;
+        if (PlayerPrefs.GetInt(SettingNames.ReturnToBow) == 1)
+            returnToBow = true;
+        else 
+            returnToBow = false;
+        returnToBowToggle.isOn = returnToBow;
+
     }
 
     public void ChangeBgmVolume()
@@ -71,11 +78,5 @@ public class SettingsManager : MonoBehaviour
     public void ChangeSfxVolume()
     {
         txtSfxSlider.text = sfxSlider.value.ToString();
-    }
-
-    public void SetVolume()
-    {
-        SaveVolume(bgmSlider.value / 10, sfxSlider.value / 10);
-        UpdateVolume();
     }
 }
