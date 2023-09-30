@@ -1238,10 +1238,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnlimitedSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 2741227415307129542, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2741227415307129561, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1356,10 +1352,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 3851270056583433955, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3851270056583433956, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1404,10 +1396,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3851270056583433957, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
-      propertyPath: enemyList.Array.data[0].enemy
-      value: 
-      objectReference: {fileID: 11400000, guid: e20c0373038740c47b52fe0f2233571a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
 --- !u!1001 &4030131417305044872
@@ -1551,14 +1539,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2105410221}
     m_Modifications:
-    - target: {fileID: 6538419316897117432, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6538419316897117435, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 6538419317011117766, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.01
@@ -1566,14 +1546,6 @@ PrefabInstance:
     - target: {fileID: 6538419317011117766, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6538419317588224991, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6538419317588224991, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.696
       objectReference: {fileID: 0}
     - target: {fileID: 6538419317593423790, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
       propertyPath: m_IsActive
