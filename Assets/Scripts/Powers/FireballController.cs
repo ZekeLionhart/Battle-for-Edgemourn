@@ -28,8 +28,7 @@ public class FireballController : CrosshairPower
     {
         if (isActive)
         {
-            Rigidbody2D shotRigid = Instantiate(shot, new Vector2(transform.position.x, transform.position.y)
-                , aimingPoint.transform.rotation);
+            Rigidbody2D shotRigid = Instantiate(shot, transform.position, aimingPoint.transform.rotation);
             Vector3 force = speed * (direction.position - aimingPoint.position);
             shotRigid.velocity = force;
 

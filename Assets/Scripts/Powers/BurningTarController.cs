@@ -17,15 +17,9 @@ public class BurningTarController : PowerController
 
     protected override void Shoot()
     {
-        Rigidbody2D shotRigid = Instantiate(shot, new Vector2(
-                aimingPoint.transform.position.x + 0.4f,
-                aimingPoint.transform.position.y),
-            shot.transform.rotation);
+        Rigidbody2D shotRigid = Instantiate(shot, aimingPoint.transform.position + new Vector3(0.4f, 0f), shot.transform.rotation);
 
-        Instantiate(particles, new Vector2(
-                aimingPoint.transform.position.x,
-                aimingPoint.transform.position.y), 
-            aimingPoint.rotation);
+        Instantiate(particles, aimingPoint.transform.position, aimingPoint.rotation);
 
         OnShotInstantiated(shotRigid.gameObject, damageType, damage, speed);
         base.Shoot();
