@@ -251,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 7894294031129804287}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &518898683014582895
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,8 +513,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 6887184273006990719}
+  mainBone: {fileID: 1405731737053285132}
   hitbox: {fileID: 2379119460335740916}
   animator: {fileID: 8312179635094107091}
+  onAttackSfx: {fileID: 0}
   onHitSfx: {fileID: 4717142554829170760}
   gruntSfx: {fileID: 7894294031129804287}
   onDeathSfx: {fileID: 845939757326330325}
@@ -2032,6 +2035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 845939757326330325}
   volumeModifier: 1
+  audioType: 0
 --- !u!1 &6724395858116656517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2397,3 +2401,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 4717142554829170760}
   volumeModifier: 1
+  audioType: 0

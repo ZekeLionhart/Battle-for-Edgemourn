@@ -1,12 +1,16 @@
+using System;
 using UnityEngine;
 
 public class ArrowManager : ProjectileManager
 {
     [SerializeField] private AudioSource groundHitSfx;
     [SerializeField] private float lifespan;
+    [SerializeField] private TrailRenderer trailRenderer;
     private bool canDamage = true;
     private bool canRotate = true;
     private Rigidbody2D rigid;
+
+    public static Action<GameObject, Rigidbody2D, DamageTypes, float> OnEnemyHitWithArrow;
 
     private void Awake()
     {
@@ -17,29 +21,17 @@ public class ArrowManager : ProjectileManager
     {
         if (collision.collider.CompareTag(TagNames.Enemy) && canDamage)
         {
-            OnEnemyHit(collision.collider.gameObject, damageType, damage);
+            OnEnemyHitWithArrow(collision.collider.gameObject, rigid, damageType, damage);
             canDamage = false;
         }
 
         if (collision.collider.CompareTag(TagNames.Floor))
             groundHitSfx.Play();
 
-        canRotate = false;
         rigid.simulated = false;
+        canRotate = false;
+        trailRenderer.enabled = false;
 
-
-        GameObject target = collision.collider.gameObject;
-
-        if (target.transform.Find("Bones (spine)") != null)
-            target = target.transform.Find("Bones (spine)").gameObject;
-        else if (target.transform.Find("Roof") != null)
-            target = target.transform.Find("Roof").gameObject;
-        else if (target.transform.Find("bone_1") != null)
-            target = target.transform.Find("bone_1").gameObject;
-        if (target != collision.collider.gameObject)
-
-
-        transform.parent = target.transform;
         Destroy(gameObject, lifespan);
     }
 

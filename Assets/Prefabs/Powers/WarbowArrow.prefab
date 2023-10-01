@@ -317,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundHitSfx: {fileID: 629109177977362957}
   lifespan: 10
+  trailRenderer: {fileID: 2053265632224044233}
 --- !u!96 &2053265632224044233
 TrailRenderer:
   serializedVersion: 2

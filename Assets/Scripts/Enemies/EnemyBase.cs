@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] protected GameObject mainBone;
     [SerializeField] private Collider2D hitbox;
     [SerializeField] protected Animator animator;
     [SerializeField] private AudioSource onAttackSfx;
@@ -44,11 +45,13 @@ public class EnemyBase : MonoBehaviour
     private void OnEnable()
     {
         ProjectileManager.OnEnemyHit += TakeDamage;
+        ArrowManager.OnEnemyHitWithArrow += PinArrow;
     }
 
     private void OnDisable()
     {
         ProjectileManager.OnEnemyHit -= TakeDamage;
+        ArrowManager.OnEnemyHitWithArrow -= PinArrow;
     }
 
     private void FixedUpdate()
@@ -105,7 +108,7 @@ public class EnemyBase : MonoBehaviour
         return damageReceived;
     }
 
-    protected virtual void TakeDamage(GameObject target, DamageTypes damageType, float damageReceived)
+    protected void TakeDamage(GameObject target, DamageTypes damageType, float damageReceived)
     {
         damageReceived = MultiplyDamage(damageType, damageReceived);
 
@@ -124,6 +127,14 @@ public class EnemyBase : MonoBehaviour
         }
         else if (gruntSfx != null)
             gruntSfx.Play();
+    }
+
+    protected virtual void PinArrow(GameObject target, Rigidbody2D arrow, DamageTypes damageType, float damageReceived)
+    {
+        if (target == gameObject)
+            arrow.transform.parent = mainBone.transform;
+
+        TakeDamage(target, damageType, damageReceived);
     }
 
     private void StartMove()
