@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         if (!PlayerPrefs.HasKey(SettingNames.SFX))
             PlayerPrefs.SetFloat(SettingNames.SFX, 1f);
         if (!PlayerPrefs.HasKey(SettingNames.ReturnToBow))
-            PlayerPrefs.SetInt(SettingNames.ReturnToBow, 0);
+            PlayerPrefs.SetInt(SettingNames.ReturnToBow, 1);
 #endif
 
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat(SettingNames.SFX, GetFloatInStorage(SettingNames.SFX));
 
         if (HasKeyInLocalStorage(SettingNames.ReturnToBow) == 0)
-            SetIntToStorage(SettingNames.ReturnToBow, 0);
+            SetIntToStorage(SettingNames.ReturnToBow, 1);
 
         PlayerPrefs.SetInt(SettingNames.ReturnToBow, GetIntInStorage(SettingNames.ReturnToBow));
 #endif
