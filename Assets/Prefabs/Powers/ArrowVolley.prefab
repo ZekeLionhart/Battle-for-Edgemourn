@@ -331,10 +331,12 @@ MonoBehaviour:
   aimingPoint: {fileID: 7235869135344049737}
   content: {fileID: 7235869134840304034}
   wakeUpSfx: {fileID: 6352832503436749204}
+  wakeUpSfx2: {fileID: 0}
+  idleSfx: {fileID: 0}
   shot: {fileID: 5205078567594977183, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
   animator: {fileID: 7235869134840304032}
   damageType: 0
-  damage: 0.5
+  damage: 1
   cooldown: 10
   onPullSfx: {fileID: 6268742350876567459}
   arrowSpeed: 2.75
