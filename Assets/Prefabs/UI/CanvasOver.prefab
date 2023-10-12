@@ -900,6 +900,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7128042418332849257, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7247996856395096428, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
       propertyPath: m_Name
       value: CanvasOver

@@ -11,6 +11,7 @@ public class PowerController : MonoBehaviour
     [SerializeField] protected AudioSource idleSfx;
     [SerializeField] protected Rigidbody2D shot;
     [SerializeField] protected Animator animator;
+    [SerializeField] protected PowerTypes powerType;
     [SerializeField] protected DamageTypes damageType;
     [SerializeField] protected float damage;
     [SerializeField] protected float cooldown;
@@ -19,7 +20,7 @@ public class PowerController : MonoBehaviour
     protected WaitForSeconds shotDelayWFS;
 
     public static Action<PowerController, float> OnPowerShoot;
-    public static Action<GameObject, DamageTypes, float, float> OnShotInstantiated;
+    public static Action<GameObject, PowerTypes, DamageTypes, float, float> OnShotInstantiated;
 
     protected virtual void Awake()
     {
@@ -52,6 +53,7 @@ public class PowerController : MonoBehaviour
 
     protected virtual void Shoot()
     {
+        CallShotAnalytics();
         OnPowerShoot(this, cooldown);
         canShoot = false;
     }
@@ -109,5 +111,10 @@ public class PowerController : MonoBehaviour
     private void CeaseFunction()
     {
         canShoot = false;
+    }
+
+    protected void CallShotAnalytics()
+    {
+        Analytics.OnPowerUsed(powerType);
     }
 }

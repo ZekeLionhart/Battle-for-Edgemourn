@@ -6,6 +6,7 @@ public class WallManager : MonoBehaviour
     [SerializeField] private AudioSource hitSfx;
     private int hitpoints = 100;
     private float damage;
+    private PowerTypes powerType;
     private DamageTypes damageType;
 
     private void OnEnable()
@@ -23,11 +24,12 @@ public class WallManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(TagNames.Enemy))
-            ProjectileManager.OnEnemyHit(collision.gameObject, damageType, damage);
+            ProjectileManager.OnEnemyHit(gameObject, collision.gameObject, powerType, damageType, damage);
     }
 
-    private void SetStats(int hitpoints, float duration, float damage, DamageTypes damageType)
+    private void SetStats(int hitpoints, float duration, float damage, PowerTypes powerType, DamageTypes damageType)
     {
+        this.powerType = powerType;
         this.hitpoints = hitpoints;
         this.damage = damage;
         this.damageType = damageType;

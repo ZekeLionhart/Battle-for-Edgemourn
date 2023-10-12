@@ -10,7 +10,7 @@ public class ArrowManager : ProjectileManager
     private bool canRotate = true;
     private Rigidbody2D rigid;
 
-    public static Action<GameObject, Rigidbody2D, DamageTypes, float> OnEnemyHitWithArrow;
+    public static Action<GameObject, GameObject, Rigidbody2D, PowerTypes, DamageTypes, float> OnEnemyHitWithArrow;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class ArrowManager : ProjectileManager
     {
         if (collision.collider.CompareTag(TagNames.Enemy) && canDamage)
         {
-            OnEnemyHitWithArrow(collision.collider.gameObject, rigid, damageType, damage);
+            OnEnemyHitWithArrow(gameObject, collision.collider.gameObject, rigid, powerType, damageType, damage);
             canDamage = false;
         }
 

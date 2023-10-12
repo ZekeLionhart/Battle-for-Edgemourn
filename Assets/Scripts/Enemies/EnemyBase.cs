@@ -24,11 +24,13 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float fireMultiplier;
     [SerializeField] protected float thunderMultiplier;
     [SerializeField] protected float earthMultiplier;
+    private GameObject previousHit;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private List<string> targetStrings;
     private bool canAttack = true;
     private bool canMove = false;
+    private bool isDead = false;
 
     public static Action<GameObject, int> OnDamageDealt;
     public static Action<int> OnEnemyDeath;
@@ -108,33 +110,36 @@ public class EnemyBase : MonoBehaviour
         return damageReceived;
     }
 
-    protected void TakeDamage(GameObject target, DamageTypes damageType, float damageReceived)
+    protected void TakeDamage(GameObject power, GameObject target, PowerTypes powerType, DamageTypes damageType, float damageReceived)
     {
-        damageReceived = MultiplyDamage(damageType, damageReceived);
-
-        if (target == gameObject)
+        if (target == gameObject && power != previousHit)
         {
+            previousHit = power;
+            damageReceived = MultiplyDamage(damageType, damageReceived);
             if (damageType == DamageTypes.Pierce)
                 onHitSfx.Play();
             hitpoints -= damageReceived;
+            CallDamageAnalytics(powerType, damageReceived);
         }
 
-        if (hitpoints <= 0)
+        if (hitpoints <= 0 && !isDead)
         {
+            isDead = true;
             Destroy(rigidBody);
             animator.SetTrigger(ParameterNames.OnHpEmpty);
             onDeathSfx.Play();
+            CallKillAnalytics(powerType, scoreValue);
         }
         else if (gruntSfx != null)
             gruntSfx.Play();
     }
 
-    protected virtual void PinArrow(GameObject target, Rigidbody2D arrow, DamageTypes damageType, float damageReceived)
+    protected virtual void PinArrow(GameObject power, GameObject target, Rigidbody2D arrow, PowerTypes powerType, DamageTypes damageType, float damageReceived)
     {
         if (target == gameObject)
             arrow.transform.parent = mainBone.transform;
 
-        TakeDamage(target, damageType, damageReceived);
+        TakeDamage(power, target, powerType, damageType, damageReceived);
     }
 
     private void StartMove()
@@ -178,5 +183,18 @@ public class EnemyBase : MonoBehaviour
     {
         if (onAttackSfx != null)
             onAttackSfx.Play();
+    }
+
+    protected virtual void CallDamageAnalytics(PowerTypes power, float damage)
+    {
+        if (hitpoints < 0)
+            damage += hitpoints;
+
+        Analytics.OnPowerDamage(power, damage);
+    }
+
+    protected virtual void CallKillAnalytics(PowerTypes power, float credits)
+    {
+        Analytics.OnPowerKill(power, credits);
     }
 }

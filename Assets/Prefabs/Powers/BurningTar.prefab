@@ -171,6 +171,7 @@ MonoBehaviour:
   idleSfx: {fileID: 6572382311401423358}
   shot: {fileID: 7169083511623344338, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
   animator: {fileID: 830598145490437250}
+  powerType: 5
   damageType: 1
   damage: 10
   cooldown: 30

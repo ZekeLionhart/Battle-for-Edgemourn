@@ -32,7 +32,7 @@ public class FireballController : CrosshairPower
             Vector3 force = speed * (direction.position - aimingPoint.position);
             shotRigid.velocity = force;
 
-            OnShotInstantiated(shotRigid.gameObject, damageType, damage, speed);
+            OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, speed);
             base.Shoot();
         }
     }
@@ -40,6 +40,6 @@ public class FireballController : CrosshairPower
     private void InvokeExplosion(Vector3 position)
     {
         GameObject newShot = Instantiate(explosion, position, Quaternion.identity);
-        OnShotInstantiated(newShot, damageType, damage, speed);
+        OnShotInstantiated(newShot, powerType, damageType, damage, speed);
     }
 }

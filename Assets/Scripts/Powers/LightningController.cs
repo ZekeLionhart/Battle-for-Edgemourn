@@ -9,7 +9,7 @@ public class LightningController : CrosshairPower
             GameObject newShot = Instantiate(shot.gameObject, new Vector2(aimingPoint.transform.position.x, 1.35f)
                 , Quaternion.identity);
 
-            OnShotInstantiated(newShot, damageType, damage, 0f);
+            OnShotInstantiated(newShot, powerType, damageType, damage, 0f);
             base.Shoot();
         }
     }

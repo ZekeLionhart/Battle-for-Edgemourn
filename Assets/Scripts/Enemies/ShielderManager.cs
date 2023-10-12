@@ -13,7 +13,7 @@ public class ShielderManager : EnemyBase
             return damageReceived;
     }
 
-    protected override void PinArrow(GameObject target, Rigidbody2D arrow, DamageTypes damageType, float damageReceived)
+    protected override void PinArrow(GameObject power, GameObject target, Rigidbody2D arrow, PowerTypes powerType, DamageTypes damageType, float damageReceived)
     {
         if (target == gameObject)
         {
@@ -23,7 +23,7 @@ public class ShielderManager : EnemyBase
             {
                 arrow.transform.parent = mainBone.transform;
                 arrow.simulated = false;
-                TakeDamage(target, damageType, damageReceived);
+                TakeDamage(power, target, powerType, damageType, damageReceived);
             }
             else
             {

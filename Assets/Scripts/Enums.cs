@@ -1,6 +1,7 @@
 public enum DamageTypes { Pierce, Fire, Thunder, Earth }
 public enum TargetTypes { Ally, Environment }
 public enum AudioTypes { SFX, BGM };
+public enum PowerTypes { Warbow, ArrowVolley, Fireball, LightningStrike, Stonewall, BurningTar };
 
 public static class SettingNames
 {

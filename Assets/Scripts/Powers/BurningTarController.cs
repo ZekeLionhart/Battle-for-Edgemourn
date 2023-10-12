@@ -21,7 +21,7 @@ public class BurningTarController : PowerController
 
         Instantiate(particles, aimingPoint.transform.position, aimingPoint.rotation);
 
-        OnShotInstantiated(shotRigid.gameObject, damageType, damage, speed);
+        OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, speed);
         base.Shoot();
     }
 }

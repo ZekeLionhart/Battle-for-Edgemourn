@@ -29,6 +29,7 @@ public class VolleyController : BowController
 
             if (canShoot && willShoot)
             {
+                CallShotAnalytics();
                 arrowCounter = 0;
                 CreateArrow(vector, arrows[arrowCounter], aimingPoint.position + rand * spreadMultiplier * Vector3.left);
                 OnPowerShoot(this, cooldown);

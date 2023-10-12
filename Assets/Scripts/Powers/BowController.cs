@@ -41,6 +41,7 @@ public class BowController : PowerController
 
             if (canShoot && willShoot)
             {
+                CallShotAnalytics();
                 CreateArrow(vector, shot, aimingPoint.position);
                 OnPowerShoot(this, cooldown);
             }
@@ -60,7 +61,7 @@ public class BowController : PowerController
         Vector3 force = -1f * arrowSpeed * vector;
         shotRigid.velocity = force;
 
-        OnShotInstantiated(shotRigid.gameObject, damageType, damage, 0f);
+        OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, 0f);
         canShoot = false;
     }
 
