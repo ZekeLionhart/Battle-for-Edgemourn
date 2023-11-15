@@ -941,7 +941,7 @@ MonoBehaviour:
   speed: 0.5
   damage: 30
   attackCooldown: 5
-  attackRange: 14.5
+  attackRange: 12
   scoreValue: 1000
   arrowMultiplier: 0.5
   fireMultiplier: 1.5
