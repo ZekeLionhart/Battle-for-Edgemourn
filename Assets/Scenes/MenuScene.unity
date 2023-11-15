@@ -400,9 +400,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 8448063464342221248, guid: 1c2b54116c3ea444b9b7492b5e6050fb, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c2b54116c3ea444b9b7492b5e6050fb, type: 3}
