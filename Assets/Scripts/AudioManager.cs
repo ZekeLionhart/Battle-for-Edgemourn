@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -14,11 +15,14 @@ public class AudioManager : MonoBehaviour
     private void OnEnable()
     {
         SettingsManager.UpdateSettings += SetVolume;
+        MenuClick.OnFadeAudio += FadeOut;
+
     }
 
     private void OnDisable()
     {
         SettingsManager.UpdateSettings -= SetVolume;
+        MenuClick.OnFadeAudio -= FadeOut;
     }
 
     private void SetVolume()
@@ -30,5 +34,24 @@ public class AudioManager : MonoBehaviour
             else
                 sound.volume = PlayerPrefs.GetFloat(SettingNames.BGM) * volumeModifier;
         }
+    }
+
+    private void FadeOut(AudioSource audio, float fadeTime)
+    {
+        if (audio == sound)
+            StartCoroutine(FadeOutCore(fadeTime));
+    }
+
+    private IEnumerator FadeOutCore(float FadeTime)
+    {
+        float startVolume = sound.volume;
+        while (sound.volume > 0f)
+        {
+            var tmp = sound.volume;
+            sound.volume = tmp - (startVolume * Time.deltaTime / FadeTime);
+            yield return new WaitForEndOfFrame();
+        }
+        sound.Stop();
+        sound.volume = startVolume;
     }
 }

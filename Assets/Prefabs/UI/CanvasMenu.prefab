@@ -1455,6 +1455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 204148999059725298}
+  bgm: {fileID: 6319812592535554415}
+  audioFadeTime: 1
 --- !u!1001 &2003978473148436872
 PrefabInstance:
   m_ObjectHideFlags: 0
