@@ -128,6 +128,7 @@ public class EnemyBase : MonoBehaviour
                 animator.SetTrigger(ParameterNames.OnHpEmpty);
                 onDeathSfx.Play();
                 CallKillAnalytics(powerType, scoreValue);
+                OnEnemyDeath(scoreValue);
             }
             else if (gruntSfx != null)
                 gruntSfx.Play();
@@ -175,7 +176,6 @@ public class EnemyBase : MonoBehaviour
 
     private void Die()
     {
-        OnEnemyDeath(scoreValue);
         Destroy(gameObject);
     }
 
