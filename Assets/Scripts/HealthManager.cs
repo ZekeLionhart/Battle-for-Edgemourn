@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private AudioSource hitSfx;
     [SerializeField] private AudioSource deathSfx;
     [SerializeField] private int healthPoints;
+    private bool isAlive = true;
 
     public static Action OnZeroHealth;
 
@@ -27,7 +28,7 @@ public class HealthManager : MonoBehaviour
 
     private void SubtractHealth(GameObject target, int damage)
     {
-        if (target.CompareTag(TagNames.Tower))
+        if (target.CompareTag(TagNames.Tower) && isAlive)
         { 
             healthPoints -= damage;
             healthText.text = healthPoints.ToString();
@@ -35,6 +36,7 @@ public class HealthManager : MonoBehaviour
 
             if (healthPoints <= 0)
             {
+                isAlive = false;
                 deathSfx.Play();
                 healthText.text = "0";
                 OnZeroHealth();
