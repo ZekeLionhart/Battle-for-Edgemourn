@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private PowerShooter clickableArea;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
     [DllImport("__Internal")] private static extern void SetFloatToStorage(string key, float value);
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
     {
         HealthManager.OnZeroHealth -= FailGame;
         SettingsManager.UpdateSettings -= SaveSettingsToStorage;
+    }
+
+    private void EnableAction()
+    {
+        clickableArea.enabled = true;
     }
 
     private void FailGame()

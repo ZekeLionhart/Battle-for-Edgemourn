@@ -1167,6 +1167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8040306085912978585}
+  clickableArea: {fileID: 3263108989813507767}
 --- !u!95 &8040306085912978585 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1010546101, guid: 203b912ba15c1f14dae58943a6d8d1e0, type: 3}
