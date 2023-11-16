@@ -120,18 +120,18 @@ public class EnemyBase : MonoBehaviour
                 onHitSfx.Play();
             hitpoints -= damageReceived;
             CallDamageAnalytics(powerType, damageReceived);
-        }
 
-        if (hitpoints <= 0 && !isDead)
-        {
-            isDead = true;
-            Destroy(rigidBody);
-            animator.SetTrigger(ParameterNames.OnHpEmpty);
-            onDeathSfx.Play();
-            CallKillAnalytics(powerType, scoreValue);
+            if (hitpoints <= 0 && !isDead)
+            {
+                isDead = true;
+                Destroy(rigidBody);
+                animator.SetTrigger(ParameterNames.OnHpEmpty);
+                onDeathSfx.Play();
+                CallKillAnalytics(powerType, scoreValue);
+            }
+            else if (gruntSfx != null)
+                gruntSfx.Play();
         }
-        else if (gruntSfx != null)
-            gruntSfx.Play();
     }
 
     protected virtual void PinArrow(GameObject power, GameObject target, Rigidbody2D arrow, PowerTypes powerType, DamageTypes damageType, float damageReceived)
