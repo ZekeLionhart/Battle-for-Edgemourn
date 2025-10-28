@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public enum DamageTypes { Pierce, Fire, Thunder, Earth }
 public enum TargetTypes { Ally, Environment }
 public enum AudioTypes { SFX, BGM };
@@ -5,49 +7,49 @@ public enum PowerTypes { Warbow, ArrowVolley, Fireball, LightningStrike, Stonewa
 
 public static class SettingNames
 {
-    public static string BGM = "BGM";
-    public static string SFX = "SFX";
-    public static string ReturnToBow = "ReturnToBow";
+    public const string BGM = "BGM";
+    public const string SFX = "SFX";
+    public const string ReturnToBow = "ReturnToBow";
 }
 
 public static class SceneNames
 {
-    public static string Menu = "MenuScene";
-    public static string GameOver = "GameOverScene";
-    public static string Level1 = "SampleScene";
+    public const string Menu = "MenuScene";
+    public const string GameOver = "GameOverScene";
+    public const string Level1 = "SampleScene";
 }
 
 public static class KeyNames
 {
-    public static string Pause = "Pause";
-    public static string Fire = "Fire1";
-    public static string Warbow = "Power1";
-    public static string Volley = "Power2";
-    public static string Fireball = "Power3";
-    public static string Lightning = "Power4";
-    public static string Stonewall = "Power5";
-    public static string BurningTar = "Power6";
+    public const string Pause = "Pause";
+    public const string Fire = "Fire1";
+    public const string Warbow = "Power1";
+    public const string Volley = "Power2";
+    public const string Fireball = "Power3";
+    public const string Lightning = "Power4";
+    public const string Stonewall = "Power5";
+    public const string BurningTar = "Power6";
 }
 
 public static class TagNames
 {
-    public static string Player = "Player";
-    public static string Enemy = "Enemy";
-    public static string Tower = "Tower";
-    public static string Floor = "Floor";
+    public const string Player = "Player";
+    public const string Enemy = "Enemy";
+    public const string Tower = "Tower";
+    public const string Floor = "Floor";
 }
 
 public static class ParameterNames
 {
-    public static string StartGame = "Start";
-    public static string GameIsOver = "Over";
-    public static string IsColliding = "IsColliding";
-    public static string OnHpEmpty = "OnHpEmpty";
-    public static string OnAttackCldwn = "OnAttackCldwn";
-    public static string BowPullWeak = "PullWeak";
-    public static string BowPullMed = "PullMed";
-    public static string BowPullStrong = "PullStrong";
-    public static string Shoot = "Shoot";
-    public static string Hit = "Hit";
-    public static string Destroy = "Destroy";
+    public const string StartGame = "Start";
+    public const string GameIsOver = "Over";
+    public const string IsColliding = "IsColliding";
+    public const string OnHpEmpty = "OnHpEmpty";
+    public const string OnAttackCldwn = "OnAttackCldwn";
+    public const string BowPullWeak = "PullWeak";
+    public const string BowPullMed = "PullMed";
+    public const string BowPullStrong = "PullStrong";
+    public const string Shoot = "Shoot";
+    public const string Hit = "Hit";
+    public const string Destroy = "Destroy";
 }
