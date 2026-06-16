@@ -7,6 +7,8 @@ public class ProjectileManager : MonoBehaviour
     protected DamageTypes damageType;
     protected float damage;
     protected float speed;
+    private float shakeDuration;
+    private float shakeIntensity;
 
     public static Action<GameObject, GameObject, PowerTypes, DamageTypes, float> OnEnemyHit;
     
@@ -20,7 +22,7 @@ public class ProjectileManager : MonoBehaviour
         PowerController.OnShotInstantiated -= SetVariables;
     }
 
-    private void SetVariables(GameObject shot, PowerTypes powerType, DamageTypes damageType, float damage, float speed)
+    private void SetVariables(GameObject shot, PowerTypes powerType, DamageTypes damageType, float damage, float speed, float shakeDuration, float shakeIntensity)
     {
         if (shot == gameObject)
         {
@@ -28,6 +30,13 @@ public class ProjectileManager : MonoBehaviour
             this.damageType = damageType;
             this.damage = damage;
             this.speed = speed;
+            this.shakeDuration = shakeDuration;
+            this.shakeIntensity = shakeIntensity;
         }
+    }
+
+    private void CallCameraShake()
+    {
+        CameraShake.CallShake(shakeDuration, shakeIntensity);
     }
 }

@@ -41,7 +41,6 @@ public class LevelPlayAdsManager : MonoBehaviour
             #endif
         }
     }
-
     private string bannerAdUnitId
     {
         get
@@ -55,7 +54,6 @@ public class LevelPlayAdsManager : MonoBehaviour
             #endif
         }
     }
-
     private string interstitialAdUnitId
     {
         get
@@ -69,7 +67,6 @@ public class LevelPlayAdsManager : MonoBehaviour
             #endif
         }
     }
-
     private string rewardedAdUnitId
     {
         get

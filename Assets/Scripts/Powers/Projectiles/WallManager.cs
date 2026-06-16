@@ -6,6 +6,8 @@ public class WallManager : MonoBehaviour
     [SerializeField] private AudioSource hitSfx;
     private int hitpoints = 100;
     private float damage;
+    private float shakeDuration;
+    private float shakeIntensity;
     private PowerTypes powerType;
     private DamageTypes damageType;
 
@@ -27,12 +29,14 @@ public class WallManager : MonoBehaviour
             ProjectileManager.OnEnemyHit(gameObject, collision.gameObject, powerType, damageType, damage);
     }
 
-    private void SetStats(int hitpoints, float duration, float damage, PowerTypes powerType, DamageTypes damageType)
+    private void SetStats(int hitpoints, float duration, float damage, PowerTypes powerType, DamageTypes damageType, float shakeDuration, float shakeIntensity)
     {
         this.powerType = powerType;
         this.hitpoints = hitpoints;
         this.damage = damage;
         this.damageType = damageType;
+        this.shakeDuration = shakeDuration;
+        this.shakeIntensity = shakeIntensity;
         Invoke(nameof(ForceDeath), duration);
     }
 
@@ -48,6 +52,11 @@ public class WallManager : MonoBehaviour
             else
                 animator.SetTrigger(ParameterNames.Hit);
         }
+    }
+
+    private void CallCameraShake()
+    {
+        CameraShake.CallShake(shakeDuration, shakeIntensity);
     }
 
     private void ForceDeath()

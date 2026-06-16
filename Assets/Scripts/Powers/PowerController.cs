@@ -15,12 +15,14 @@ public class PowerController : MonoBehaviour
     [SerializeField] protected DamageTypes damageType;
     [SerializeField] protected float damage;
     [SerializeField] protected float cooldown;
+    [SerializeField] protected float shakeDuration;
+    [SerializeField] protected float shakeIntensity;
     protected bool isActive;
     protected bool canShoot = true;
     protected WaitForSeconds shotDelayWFS;
 
     public static Action<PowerController, float> OnPowerShoot;
-    public static Action<GameObject, PowerTypes, DamageTypes, float, float> OnShotInstantiated;
+    public static Action<GameObject, PowerTypes, DamageTypes, float, float, float, float> OnShotInstantiated;
 
     protected virtual void Awake()
     {
