@@ -7,7 +7,7 @@ public class TrebuchetManager : EnemyBase
     [SerializeField] private Transform ammoSpawn;
     [SerializeField] private AudioSource onReloadSfx;
 
-    public static Action<Rigidbody2D, int> OnBoulderInstantiated;
+    public static Action<Rigidbody2D, int, float, float> OnBoulderInstantiated;
 
     protected override void Attack()
     {
@@ -16,7 +16,7 @@ public class TrebuchetManager : EnemyBase
         //shotRigid.velocity = force;
         shotRigid.velocity = CalculateBallisticVelocity(new Vector2(-6.5f, -0.5f));
 
-        OnBoulderInstantiated(shotRigid, damage);
+        OnBoulderInstantiated(shotRigid, damage, shakeDuration, shakeIntensity);
     }
 
     private void PlayReloadSfx()

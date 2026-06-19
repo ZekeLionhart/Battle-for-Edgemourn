@@ -24,6 +24,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float fireMultiplier;
     [SerializeField] protected float thunderMultiplier;
     [SerializeField] protected float earthMultiplier;
+    [SerializeField] protected float shakeDuration;
+    [SerializeField] protected float shakeIntensity;
     private GameObject previousHit;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
@@ -159,6 +161,7 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Attack()
     {
         OnDamageDealt(target, damage);
+        CameraShake.CallShake(shakeDuration, shakeIntensity);
     }
 
     protected IEnumerator AttackCooldown()

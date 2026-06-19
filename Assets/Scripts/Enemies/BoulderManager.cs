@@ -5,6 +5,8 @@ public class BoulderManager : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidBody;
     private int damage;
+    private float shakeDuration;
+    private float shakeIntensity;
 
     protected virtual void OnEnable()
     {
@@ -26,10 +28,19 @@ public class BoulderManager : MonoBehaviour
         }
     }
 
-    private void SetVariables(Rigidbody2D shot, int damage)
+    private void SetVariables(Rigidbody2D shot, int damage, float shakeDuration, float shakeIntensity)
     {
         if (shot.gameObject == gameObject)
+        {
             this.damage = damage;
+            this.shakeDuration = shakeDuration;
+            this.shakeIntensity = shakeIntensity;
+        }
+    }
+
+    private void CallCameraShake()
+    {
+        CameraShake.CallShake(shakeDuration, shakeIntensity);
     }
 
     private void DestroySelf()
