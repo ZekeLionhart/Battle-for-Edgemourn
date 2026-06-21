@@ -89,7 +89,7 @@ MonoBehaviour:
   powerType: 3
   damageType: 2
   damage: 10
-  cooldown: 1
+  cooldown: 15
   shakeDuration: 0.25
   shakeIntensity: 0.5
   aimSpeed: 4
