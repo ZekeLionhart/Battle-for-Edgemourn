@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472467557740267726}
   - component: {fileID: 472467557740267727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AimIndicator_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472467557755064808}
   - component: {fileID: 472467557755064809}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 1968407411305497587}
   - component: {fileID: 3429491194209220482}
   - component: {fileID: 8626716258132779109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireballPower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

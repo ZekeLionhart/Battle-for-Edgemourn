@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3697623694590546154}
   - component: {fileID: 382117732774681081}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightningStrike_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 3446610725248664790}
   - component: {fileID: 7181984461190371997}
   - component: {fileID: 2397922535116795046}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2896095316982674446}
   - component: {fileID: 1813961716440339449}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GemShine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7654548392669985440}
   - component: {fileID: 5925178818474798256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stonewall_6 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5817,7 +5817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3157153449958928424}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5850,7 +5850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7912318972074606768}
   - component: {fileID: 1628029216689386161}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stonewall_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5934,7 +5934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 735381273688328736}
   - component: {fileID: 2316048644046113114}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stonewall_6 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6138,7 +6138,7 @@ GameObject:
   - component: {fileID: 3801015488695940237}
   - component: {fileID: 3872419946131330750}
   - component: {fileID: 5000148417170248323}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundDust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11341,7 +11341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5784063415276826553}
   - component: {fileID: 6598350579317815005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LightningStrike_4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11509,7 +11509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2467501866790773339}
   - component: {fileID: 4751162138723207476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stonewall_6 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11593,7 +11593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8354289830952743102}
   - component: {fileID: 7362390095909943291}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stonewall_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

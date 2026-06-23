@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8500174487843806025}
   - component: {fileID: 2924055404518076650}
   - component: {fileID: 8688860572708309690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShinF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8102067885867126423}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bones (spine)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 4804351039689229216}
   - component: {fileID: 8678831920000955978}
   - component: {fileID: 6578496832543720190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ThighB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6957729469388847418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thighB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -723,7 +723,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3302298539960036418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8701208904652896755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8382485079925035257}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: armF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,7 +819,7 @@ GameObject:
   - component: {fileID: 3685745561215139344}
   - component: {fileID: 7614065525518111459}
   - component: {fileID: 1109185756011458398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4042834695382349044}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -965,7 +965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8038363087035440652}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shinB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1143,7 +1143,7 @@ GameObject:
   - component: {fileID: 3253438227812965200}
   - component: {fileID: 7529624011412893045}
   - component: {fileID: 1776368086365406627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 9012628074425016476}
   - component: {fileID: 9093447327744372202}
   - component: {fileID: 6837538414642027746}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1353,7 +1353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1569834096933968552}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shinF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1529,7 +1529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3160192392275671127}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: armB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1645,7 +1645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3652963309201766158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shoulders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1679,7 +1679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8734956969296722186}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: forearmB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1711,7 +1711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3767131801891883498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: forarmF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,7 +1806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282033671940681648}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: footF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1839,7 +1839,7 @@ GameObject:
   - component: {fileID: 5995642394425561681}
   - component: {fileID: 7683774958672287332}
   - component: {fileID: 2306591381606451370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ForearmB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1944,7 +1944,7 @@ GameObject:
   - component: {fileID: 3118959380598214203}
   - component: {fileID: 4699462689217780770}
   - component: {fileID: 537714840324756779}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ForearmF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2050,7 +2050,7 @@ GameObject:
   - component: {fileID: 697151117557705568}
   - component: {fileID: 2889377583198043364}
   - component: {fileID: 4346019881759043352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2298,7 +2298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1060666443285231324}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thighF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2330,7 +2330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4798430608802731786}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: footB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2363,7 +2363,7 @@ GameObject:
   - component: {fileID: 1634020183061116227}
   - component: {fileID: 222854264102919031}
   - component: {fileID: 4758986076002120012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShinB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2470,7 +2470,7 @@ GameObject:
   - component: {fileID: 3085939854793901758}
   - component: {fileID: 3497847484678083577}
   - component: {fileID: 6194403905113721402}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ThighF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
