@@ -908,10 +908,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1084549656}
     m_Modifications:
     - target: {fileID: 472467558219623200, guid: 0cf919c363b526947bd440e4d48023be, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 472467558219623200, guid: 0cf919c363b526947bd440e4d48023be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1223,10 +1219,6 @@ PrefabInstance:
     - target: {fileID: 2841594700007315789, guid: 0bd63e2d68c02934c97576e445f647e1, type: 3}
       propertyPath: m_Name
       value: LightningStrike
-      objectReference: {fileID: 0}
-    - target: {fileID: 2841594700007315790, guid: 0bd63e2d68c02934c97576e445f647e1, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2841594700007315790, guid: 0bd63e2d68c02934c97576e445f647e1, type: 3}
       propertyPath: m_LocalPosition.x
