@@ -74,6 +74,8 @@ Material:
     - _CausticSize: 150
     - _CausticSpeed: -0.003
     - _CausticStrength: 10
+    - _Distortion: 500
+    - _DistortionIntensity: 500
     - _EdgeWidth: 0.15
     - _PerspectiveScale: 0.4
     - _Strength: 0.01
@@ -82,8 +84,11 @@ Material:
     - _WaterScale: 1
     - _WaterSpeed: 1
     m_Colors:
-    - _CausticColor: {r: 731.18695, g: 788.6907, b: 1240.093, a: 0}
-    - _ReflectionColor: {r: 0.1505365, g: 0.14862938, b: 0.18867922, a: 0}
+    - _CausticColor: {r: 452.2383, g: 487.8043, b: 766.9961, a: 0}
+    - _DistortionDirection: {r: 0, g: 3, b: 0, a: 0}
+    - _DistortionSpeed: {r: 0, g: -0.01, b: 0, a: 0}
+    - _Distortion_1: {r: 0, g: 0, b: 0, a: 0}
+    - _ReflectionColor: {r: 0.36084905, g: 0.39609662, b: 0.5, a: 0}
     - _ReflectionOffset: {r: -0.04, g: -0.4, b: 0, a: 0}
     - _ReflectionTiling: {r: 1, g: -1, b: 0, a: 0}
     - _Speed: {r: 0.05, g: 0.01, b: 0, a: 0}
