@@ -50,8 +50,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ArcAngle: 65.39
-    - _ArcRotation: -133.1
+    - _ArcAngle: 37
+    - _ArcRotation: -116.5
     - _CenterSize: 0
     - _GeneralHardness: 0.005
     - _GreenSize: 0
