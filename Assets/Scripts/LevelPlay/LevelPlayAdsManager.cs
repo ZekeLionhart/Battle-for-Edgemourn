@@ -1,7 +1,8 @@
-using TMPro;
-using UnityEngine;
-using Unity.Services.LevelPlay;
 using System;
+using TMPro;
+using Unity.Services.LevelPlay;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelPlayAdsManager : MonoBehaviour
 {
@@ -91,6 +92,18 @@ public class LevelPlayAdsManager : MonoBehaviour
 
             UpdateCoin();
         }
+    }
+
+    public static Action CallInterstitial;
+
+    private void OnEnable()
+    {
+        CallInterstitial += ShowInterstitialAd;
+    }
+
+    private void OnDisable()
+    {
+        CallInterstitial -= ShowInterstitialAd;
     }
 
     public void Start()
@@ -186,7 +199,7 @@ public class LevelPlayAdsManager : MonoBehaviour
         interstitialAd.OnAdClosed += InterstitialOnAdClosedEvent;
         interstitialAd.OnAdInfoChanged += InterstitialOnAdInfoChangedEvent;
 
-        //LoadInterstitialAd();
+        LoadInterstitialAd();//
     }
 
     public void LoadInterstitialAd()
@@ -202,21 +215,22 @@ public class LevelPlayAdsManager : MonoBehaviour
             interstitialAd.ShowAd();
             Debug.Log("#BfE Interstitial Ad Showing");
         }
-
     }
 
     // Implement the events
     void InterstitialOnAdLoadedEvent(LevelPlayAdInfo adInfo) { }
     void InterstitialOnAdLoadFailedEvent(LevelPlayAdError error)
     {
-        //LoadInterstitialAd();
+        LoadInterstitialAd();//
+        SceneManager.LoadScene(SceneNames.Level1);
     }
     void InterstitialOnAdDisplayedEvent(LevelPlayAdInfo adInfo) { }
     void InterstitialOnAdDisplayFailedEvent(LevelPlayAdInfo adInfo, LevelPlayAdError error) { }
     void InterstitialOnAdClickedEvent(LevelPlayAdInfo adInfo) { }
     void InterstitialOnAdClosedEvent(LevelPlayAdInfo adInfo)
     {
-        //LoadInterstitialAd();
+        LoadInterstitialAd();//
+        SceneManager.LoadScene(SceneNames.Level1);
     }
     void InterstitialOnAdInfoChangedEvent(LevelPlayAdInfo adInfo) { }
 
