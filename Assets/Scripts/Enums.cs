@@ -9,6 +9,7 @@ public static class SettingNames
 {
     public const string BGM = "BGM";
     public const string SFX = "SFX";
+    public const string MuteAudio = "MuteAudio";
     public const string ReturnToBow = "ReturnToBow";
 }
 

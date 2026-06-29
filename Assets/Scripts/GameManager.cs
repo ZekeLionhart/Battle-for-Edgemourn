@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat(SettingNames.BGM, 1f);
         if (!PlayerPrefs.HasKey(SettingNames.SFX))
             PlayerPrefs.SetFloat(SettingNames.SFX, 1f);
+        if (!PlayerPrefs.HasKey(SettingNames.MuteAudio))
+            PlayerPrefs.SetInt(SettingNames.MuteAudio, 0);
         if (!PlayerPrefs.HasKey(SettingNames.ReturnToBow))
             PlayerPrefs.SetInt(SettingNames.ReturnToBow, 1);
 #endif
@@ -72,6 +74,11 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat(SettingNames.BGM, GetFloatInStorage(SettingNames.BGM));
         PlayerPrefs.SetFloat(SettingNames.SFX, GetFloatInStorage(SettingNames.SFX));
 
+        if (HasKeyInLocalStorage(SettingNames.MuteAudio) == 0)
+            SetIntToStorage(SettingNames.MuteAudio, 1);
+
+        PlayerPrefs.SetInt(SettingNames.MuteAudio, GetIntInStorage(SettingNames.MuteAudio));
+
         if (HasKeyInLocalStorage(SettingNames.ReturnToBow) == 0)
             SetIntToStorage(SettingNames.ReturnToBow, 1);
 
@@ -84,6 +91,7 @@ public class GameManager : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
         SetFloatToStorage(SettingNames.BGM, PlayerPrefs.GetFloat(SettingNames.BGM));
         SetFloatToStorage(SettingNames.SFX, PlayerPrefs.GetFloat(SettingNames.SFX));
+        SetIntToStorage(SettingNames.MuteAudio, PlayerPrefs.GetInt(SettingNames.MuteAudio));
         SetIntToStorage(SettingNames.ReturnToBow, PlayerPrefs.GetInt(SettingNames.ReturnToBow));
 #endif
     }

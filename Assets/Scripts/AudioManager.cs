@@ -29,6 +29,12 @@ public class AudioManager : MonoBehaviour
     {
         if (sound != null)
         {
+            if (PlayerPrefs.GetInt(SettingNames.MuteAudio) == 1)
+            {
+                sound.volume = 0;
+                return;
+            }
+
             if (audioType == AudioTypes.SFX)
                 sound.volume = PlayerPrefs.GetFloat(SettingNames.SFX) * volumeModifier;
             else

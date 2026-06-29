@@ -11,6 +11,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtBgmSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private TextMeshProUGUI txtSfxSlider;
+    [SerializeField] private Toggle muteAudioToggle;
     [SerializeField] private Toggle returnToBowToggle;
 
     public static Action OnSettingsOpen;
@@ -36,6 +37,7 @@ public class SettingsManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat(SettingNames.BGM, bgmSlider.value / 10);
         PlayerPrefs.SetFloat(SettingNames.SFX, sfxSlider.value / 10);
+        PlayerPrefs.SetInt(SettingNames.MuteAudio, muteAudioToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt(SettingNames.ReturnToBow, returnToBowToggle.isOn ? 1 : 0);
 
         UpdateSettings();
@@ -60,6 +62,13 @@ public class SettingsManager : MonoBehaviour
         volume = PlayerPrefs.GetFloat(SettingNames.SFX) * 10;
         txtSfxSlider.text = volume.ToString();
         sfxSlider.value = volume;
+
+        bool muteAudio;
+        if (PlayerPrefs.GetInt(SettingNames.MuteAudio) == 1)
+            muteAudio = true;
+        else
+            muteAudio = false;
+        muteAudioToggle.isOn = muteAudio;
 
         bool returnToBow;
         if (PlayerPrefs.GetInt(SettingNames.ReturnToBow) == 1)
