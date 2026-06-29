@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -118,6 +119,7 @@ public class EnemyBase : MonoBehaviour
         {
             previousHit = power;
             damageReceived = MultiplyDamage(damageType, damageReceived);
+            onHitSfx.pitch = Random.Range(0.9f, 1.1f);
             if (damageType == DamageTypes.Pierce)
                 onHitSfx.Play();
             hitpoints -= damageReceived;
@@ -128,12 +130,16 @@ public class EnemyBase : MonoBehaviour
                 isDead = true;
                 Destroy(rigidBody);
                 animator.SetTrigger(ParameterNames.OnHpEmpty);
+                onDeathSfx.pitch = Random.Range(0.9f, 1.1f);
                 onDeathSfx.Play();
                 CallKillAnalytics(powerType, scoreValue);
                 OnEnemyDeath(scoreValue);
             }
             else if (gruntSfx != null)
+            {
+                gruntSfx.pitch = Random.Range(0.9f, 1.1f);
                 gruntSfx.Play();
+            }
         }
     }
 
@@ -185,7 +191,10 @@ public class EnemyBase : MonoBehaviour
     private void PlayAttackSfx()
     {
         if (onAttackSfx != null)
+        {
+            onAttackSfx.pitch = Random.Range(0.9f, 1.1f);
             onAttackSfx.Play();
+        }
     }
 
     protected virtual void CallDamageAnalytics(PowerTypes power, float damage)
