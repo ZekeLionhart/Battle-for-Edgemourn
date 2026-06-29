@@ -6,18 +6,27 @@ public class CrosshairPower : PowerController
     [SerializeField] private Transform leftLimit;
     [SerializeField] private Transform rightLimit;
     private Vector2 startingPos;
-    private int directionMult = 1;
+    private Quaternion startingRot;
+    private int directionMult = -1;
 
     protected override void Awake()
     {
         base.Awake();
         startingPos = new Vector2(aimingPoint.position.x, aimingPoint.position.y);
+        startingRot = Quaternion.Euler(0f, 0f, aimingPoint.eulerAngles.z);
+        aimingPoint.SetPositionAndRotation(startingPos, startingRot);
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        aimingPoint.position = startingPos;
+        PowerManager.OnSwitchPowers += ResetAim;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        PowerManager.OnSwitchPowers += ResetAim;
     }
 
     protected virtual void Update()
@@ -38,8 +47,13 @@ public class CrosshairPower : PowerController
     {
         aimingPoint.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
 
-        if (aimingPoint.rotation.z >= rightLimit.rotation.z && directionMult > 0
-                || aimingPoint.rotation.z <= leftLimit.rotation.z && directionMult < 0)
+        if (aimingPoint.eulerAngles.z >= rightLimit.eulerAngles.z && directionMult > 0
+                || aimingPoint.eulerAngles.z <= leftLimit.eulerAngles.z && directionMult < 0)
             directionMult *= -1;
+    }
+
+    protected virtual void ResetAim(PowerController power)
+    {
+        aimingPoint.SetPositionAndRotation(startingPos, startingRot);
     }
 }
