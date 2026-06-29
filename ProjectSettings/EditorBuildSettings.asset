@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LevelPlay Test.unity
     guid: 0e27ee0bd0ad2cb4b86c822eea9bd76b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 62d7946995d06e849850936caa1e3d51
   - enabled: 1
-    path: Assets/Scenes/GameOverScene.unity
-    guid: a448bb3c80a486246bd09534592bcd4e
-  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: a448bb3c80a486246bd09534592bcd4e
   m_configObjects: {}

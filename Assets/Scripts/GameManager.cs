@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat(SettingNames.SFX, GetFloatInStorage(SettingNames.SFX));
 
         if (HasKeyInLocalStorage(SettingNames.MuteAudio) == 0)
-            SetIntToStorage(SettingNames.MuteAudio, 1);
+            SetIntToStorage(SettingNames.MuteAudio, 0);
 
         PlayerPrefs.SetInt(SettingNames.MuteAudio, GetIntInStorage(SettingNames.MuteAudio));
 
