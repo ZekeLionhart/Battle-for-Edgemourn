@@ -18,6 +18,11 @@ public class MenuClick : MonoBehaviour
 
     private void ChangeScene()
     {
+        SceneManager.LoadScene(SceneNames.Level1);
+    }
+
+    private void ChangeSceneWithAd()
+    {
 #if UNITY_WEBGL
         SceneManager.LoadScene(SceneNames.Level1);
         
