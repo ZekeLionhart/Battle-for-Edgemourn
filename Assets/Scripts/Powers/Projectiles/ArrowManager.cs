@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ArrowManager : ProjectileManager
 {
+    [SerializeField] private AudioSource arrowLooseSfx;
     [SerializeField] private AudioSource groundHitSfx;
     [SerializeField] private float lifespan;
     [SerializeField] private TrailRenderer trailRenderer;
@@ -14,6 +16,8 @@ public class ArrowManager : ProjectileManager
 
     private void Awake()
     {
+        arrowLooseSfx.pitch = Random.Range(0.9f, 1.1f);
+        arrowLooseSfx.Play();
         rigid = GetComponent<Rigidbody2D>();
     }
 
@@ -26,7 +30,10 @@ public class ArrowManager : ProjectileManager
         }
 
         if (collision.collider.CompareTag(TagNames.Floor))
+        {
+            groundHitSfx.pitch = Random.Range(0.9f, 1.1f);
             groundHitSfx.Play();
+        }
 
         rigid.simulated = false;
         canRotate = false;
