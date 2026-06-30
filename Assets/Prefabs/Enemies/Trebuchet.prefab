@@ -962,7 +962,7 @@ MonoBehaviour:
   targets: 00000000
   hitpoints: 20
   speed: 0.5
-  damage: 30
+  damage: 20
   attackCooldown: 5
   attackRange: 12
   scoreValue: 1000
