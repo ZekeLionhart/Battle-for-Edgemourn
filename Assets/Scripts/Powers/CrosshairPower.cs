@@ -7,7 +7,7 @@ public class CrosshairPower : PowerController
     [SerializeField] private Transform rightLimit;
     private Vector2 startingPos;
     private Quaternion startingRot;
-    private int directionMult = -1;
+    private int directionMult = 1;
 
     protected override void Awake()
     {
@@ -26,7 +26,7 @@ public class CrosshairPower : PowerController
     protected override void OnDisable()
     {
         base.OnDisable();
-        PowerManager.OnSwitchPowers += ResetAim;
+        PowerManager.OnSwitchPowers -= ResetAim;
     }
 
     protected virtual void Update()
@@ -36,20 +36,26 @@ public class CrosshairPower : PowerController
 
     protected virtual void HandleAimMovement()
     {
-        aimingPoint.position += new Vector3(directionMult * aimSpeed * Time.deltaTime, 0f);
+        if (Input.GetButton(KeyNames.Fire))
+        {
+            aimingPoint.position += aimSpeed * directionMult * Time.deltaTime * Vector3.right;
 
-        if (aimingPoint.position.x >= rightLimit.position.x && directionMult > 0
-                || aimingPoint.position.x <= leftLimit.position.x && directionMult < 0)
-            directionMult *= -1;
+            if (aimingPoint.position.x >= rightLimit.position.x && directionMult > 0
+                    || aimingPoint.position.x <= leftLimit.position.x && directionMult < 0)
+                directionMult *= -1;
+        }
     }
 
     protected virtual void HandleAimRotation()
     {
-        aimingPoint.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
+        if (Input.GetButton(KeyNames.Fire))
+        {
+            aimingPoint.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
 
-        if (aimingPoint.eulerAngles.z >= rightLimit.eulerAngles.z && directionMult > 0
-                || aimingPoint.eulerAngles.z <= leftLimit.eulerAngles.z && directionMult < 0)
-            directionMult *= -1;
+            if (aimingPoint.eulerAngles.z >= rightLimit.eulerAngles.z && directionMult > 0
+                    || aimingPoint.eulerAngles.z <= leftLimit.eulerAngles.z && directionMult < 0)
+                directionMult *= -1;
+        }
     }
 
     protected virtual void ResetAim(PowerController power)
