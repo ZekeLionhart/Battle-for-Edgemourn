@@ -36,7 +36,7 @@ public class CrosshairPower : PowerController
 
     protected virtual void HandleAimMovement()
     {
-        if (Input.GetButton(KeyNames.Fire))
+        if (Input.GetButton(KeyNames.Fire) && canShoot)
         {
             aimingPoint.position += aimSpeed * directionMult * Time.deltaTime * Vector3.right;
 
@@ -48,7 +48,7 @@ public class CrosshairPower : PowerController
 
     protected virtual void HandleAimRotation()
     {
-        if (Input.GetButton(KeyNames.Fire))
+        if (Input.GetButton(KeyNames.Fire) && canShoot)
         {
             aimingPoint.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
 
@@ -61,5 +61,11 @@ public class CrosshairPower : PowerController
     protected virtual void ResetAim(PowerController power)
     {
         aimingPoint.SetPositionAndRotation(startingPos, startingRot);
+    }
+
+    protected override void Shoot()
+    {
+        base.Shoot();
+        ResetAim(this);
     }
 }
