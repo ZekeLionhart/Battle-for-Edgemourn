@@ -13,6 +13,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtSfxSlider;
     [SerializeField] private Toggle muteAudioToggle;
     [SerializeField] private Toggle returnToBowToggle;
+    [SerializeField] private Toggle aimStyleToggle;
 
     public static Action OnSettingsOpen;
     public static Action OnSettingsClose;
@@ -39,7 +40,8 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat(SettingNames.SFX, sfxSlider.value / 10);
         PlayerPrefs.SetInt(SettingNames.MuteAudio, muteAudioToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt(SettingNames.ReturnToBow, returnToBowToggle.isOn ? 1 : 0);
-
+        PlayerPrefs.SetInt(SettingNames.AimStyle, aimStyleToggle.isOn ? 1 : 0);
+        
         UpdateSettings();
     }
 
@@ -77,6 +79,12 @@ public class SettingsManager : MonoBehaviour
             returnToBow = false;
         returnToBowToggle.isOn = returnToBow;
 
+        bool aimStyle;
+        if (PlayerPrefs.GetInt(SettingNames.AimStyle) == 1)
+            aimStyle = true;
+        else
+            aimStyle = false;
+        aimStyleToggle.isOn = aimStyle;
     }
 
     public void ChangeBgmVolume()

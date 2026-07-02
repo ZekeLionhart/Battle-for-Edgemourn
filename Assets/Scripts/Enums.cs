@@ -11,6 +11,7 @@ public static class SettingNames
     public const string SFX = "SFX";
     public const string MuteAudio = "MuteAudio";
     public const string ReturnToBow = "ReturnToBow";
+    public const string AimStyle = "AimStyle";
 }
 
 public static class SceneNames

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,8 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private AudioSource sfxUnpause;
     public static bool isPaused;
     private bool isSettingsOpen;
+
+    public static Action OnPause;
 
     private void OnEnable()
     {
@@ -46,6 +49,7 @@ public class PauseManager : MonoBehaviour
         sfxPause.Play();
         Time.timeScale = 0f;
         isPaused = true;
+        OnPause();
     }
 
     private void BlockResume()

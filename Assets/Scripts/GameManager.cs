@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt(SettingNames.MuteAudio, 0);
         if (!PlayerPrefs.HasKey(SettingNames.ReturnToBow))
             PlayerPrefs.SetInt(SettingNames.ReturnToBow, 1);
+        if (!PlayerPrefs.HasKey(SettingNames.AimStyle))
+            PlayerPrefs.SetInt(SettingNames.AimStyle, 0);
 #endif
 
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -83,6 +85,11 @@ public class GameManager : MonoBehaviour
             SetIntToStorage(SettingNames.ReturnToBow, 1);
 
         PlayerPrefs.SetInt(SettingNames.ReturnToBow, GetIntInStorage(SettingNames.ReturnToBow));
+
+        if (HasKeyInLocalStorage(SettingNames.AimStyle) == 0)
+            SetIntToStorage(SettingNames.AimStyle, 0);
+
+        PlayerPrefs.SetInt(SettingNames.AimStyle, GetIntInStorage(SettingNames.AimStyle));
 #endif
     }
 
@@ -93,6 +100,7 @@ public class GameManager : MonoBehaviour
         SetFloatToStorage(SettingNames.SFX, PlayerPrefs.GetFloat(SettingNames.SFX));
         SetIntToStorage(SettingNames.MuteAudio, PlayerPrefs.GetInt(SettingNames.MuteAudio));
         SetIntToStorage(SettingNames.ReturnToBow, PlayerPrefs.GetInt(SettingNames.ReturnToBow));
+        SetIntToStorage(SettingNames.AimStyle, PlayerPrefs.GetInt(SettingNames.AimStyle));
 #endif
     }
 }
