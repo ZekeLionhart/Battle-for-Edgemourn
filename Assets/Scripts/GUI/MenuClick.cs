@@ -30,4 +30,13 @@ public class MenuClick : MonoBehaviour
         LevelPlayAdsManager.CallInterstitial();
 #endif
     }
+
+    public void CloseApplication()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_ANDROID
+        Application.Quit();
+#endif
+    }
 }
