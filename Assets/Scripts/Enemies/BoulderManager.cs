@@ -4,6 +4,7 @@ public class BoulderManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private AudioSource hitSFX;
     private int damage;
     private float shakeDuration;
     private float shakeIntensity;
@@ -41,6 +42,11 @@ public class BoulderManager : MonoBehaviour
     private void CallCameraShake()
     {
         CameraShake.CallShake(shakeDuration, shakeIntensity);
+    }
+
+    public void PlayHitSound()
+    {
+        hitSFX.Play();
     }
 
     private void DestroySelf()

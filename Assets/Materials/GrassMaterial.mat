@@ -54,7 +54,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _WindDistortion: 0.04
+    - _WindDistortion: 0.02
     m_Colors:
     - _WindColor: {r: 0.13896927, g: 0.18867922, b: 0.08098967, a: 0}
     - _WindScale: {r: 0.005, g: 0, b: 0, a: 0}

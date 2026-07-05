@@ -10,6 +10,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected GameObject mainBone;
     [SerializeField] private Collider2D hitbox;
     [SerializeField] protected Animator animator;
+    [SerializeField] protected ParticleSystem[] dustParticles;
     [SerializeField] private AudioSource onAttackSfx;
     [SerializeField] private AudioSource onHitSfx;
     [SerializeField] private AudioSource gruntSfx;
@@ -208,5 +209,11 @@ public class EnemyBase : MonoBehaviour
     protected virtual void CallKillAnalytics(PowerTypes power, float credits)
     {
         Analytics.OnPowerKill(power, credits);
+    }
+
+    public void SummonDustPasticles()
+    {
+        foreach (ParticleSystem particles in dustParticles)
+            particles.Play();
     }
 }
