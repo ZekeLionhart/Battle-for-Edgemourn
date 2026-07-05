@@ -17,8 +17,8 @@ public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (lineRenderer.activeInHierarchy) 
-            IsInsideArea(false);
+        /*if (lineRenderer.activeInHierarchy) 
+            IsInsideArea(false);*/
     }
 
     private void ClickScreen()
