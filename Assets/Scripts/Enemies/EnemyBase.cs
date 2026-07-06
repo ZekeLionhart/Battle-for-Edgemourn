@@ -136,7 +136,7 @@ public class EnemyBase : MonoBehaviour
                 CallKillAnalytics(powerType, scoreValue);
                 OnEnemyDeath(scoreValue);
             }
-            else if (gruntSfx != null)
+            else if (gruntSfx != null && !isDead)
             {
                 gruntSfx.pitch = Random.Range(0.9f, 1.1f);
                 gruntSfx.Play();
