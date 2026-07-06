@@ -3,15 +3,18 @@ using UnityEngine;
 
 public class FireballManager : ProjectileManager
 {
+    [SerializeField] private GameObject sparkParticle;
     [SerializeField] private GameObject smokeParticle;
-    [SerializeField] private float particleFrequency;
-    private WaitForSeconds particleWFS;
+    [SerializeField] private float sparkFrequency;
+    [SerializeField] private float smokeFrequency;
+    //private WaitForSeconds particleWFS;
 
     public static Action<Vector3> OnTargetHit;
 
     private void Awake()
     {
-        particleWFS = new WaitForSeconds(particleFrequency);
+        //particleWFS = new WaitForSeconds(smokeFrequency);
+        SpawnSparks();
         SpawnSmoke();
     }
 
@@ -26,10 +29,17 @@ public class FireballManager : ProjectileManager
         }
     }
 
+    private void SpawnSparks()
+    {
+        Instantiate(sparkParticle, sparkParticle.transform.position, Quaternion.identity, null);
+        
+        Invoke(nameof(SpawnSparks), sparkFrequency);
+    }
+
     private void SpawnSmoke()
     {
-        Instantiate(smokeParticle, transform.position, Quaternion.identity, null);
+        Instantiate(smokeParticle, smokeParticle.transform.position, Quaternion.identity, null);
 
-        Invoke(nameof(SpawnSmoke), particleFrequency);
+        Invoke(nameof(SpawnSmoke), smokeFrequency);
     }
 }
