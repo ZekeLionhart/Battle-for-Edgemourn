@@ -14,6 +14,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Toggle muteAudioToggle;
     [SerializeField] private Toggle returnToBowToggle;
     [SerializeField] private Toggle aimStyleToggle;
+    [SerializeField] private Toggle shakeToggle;
 
     public static Action OnSettingsOpen;
     public static Action OnSettingsClose;
@@ -41,7 +42,8 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetInt(SettingNames.MuteAudio, muteAudioToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt(SettingNames.ReturnToBow, returnToBowToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt(SettingNames.AimStyle, aimStyleToggle.isOn ? 1 : 0);
-        
+        PlayerPrefs.SetInt(SettingNames.ScreenShake, shakeToggle.isOn ? 1 : 0);
+
         UpdateSettings();
     }
 
@@ -57,14 +59,17 @@ public class SettingsManager : MonoBehaviour
 
     private void LoadSettingsValues()
     {
+        //BGM Slider
         float volume = PlayerPrefs.GetFloat(SettingNames.BGM) * 10;
         txtBgmSlider.text = volume.ToString();
         bgmSlider.value = volume;
 
+        //SFX Slider
         volume = PlayerPrefs.GetFloat(SettingNames.SFX) * 10;
         txtSfxSlider.text = volume.ToString();
         sfxSlider.value = volume;
 
+        //Mute Toggle
         bool muteAudio;
         if (PlayerPrefs.GetInt(SettingNames.MuteAudio) == 1)
             muteAudio = true;
@@ -72,6 +77,7 @@ public class SettingsManager : MonoBehaviour
             muteAudio = false;
         muteAudioToggle.isOn = muteAudio;
 
+        //Return to Bow Toggle
         bool returnToBow;
         if (PlayerPrefs.GetInt(SettingNames.ReturnToBow) == 1)
             returnToBow = true;
@@ -79,12 +85,21 @@ public class SettingsManager : MonoBehaviour
             returnToBow = false;
         returnToBowToggle.isOn = returnToBow;
 
+        //Aim Style Toggle
         bool aimStyle;
         if (PlayerPrefs.GetInt(SettingNames.AimStyle) == 1)
             aimStyle = true;
         else
             aimStyle = false;
         aimStyleToggle.isOn = aimStyle;
+
+        //Screen Shake Toggle
+        bool screenShake;
+        if (PlayerPrefs.GetInt(SettingNames.ScreenShake) == 1)
+            screenShake = true;
+        else
+            screenShake = false;
+        shakeToggle.isOn = screenShake;
     }
 
     public void ChangeBgmVolume()

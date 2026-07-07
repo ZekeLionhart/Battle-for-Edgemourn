@@ -64,9 +64,14 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt(SettingNames.ReturnToBow, 1);
         if (!PlayerPrefs.HasKey(SettingNames.AimStyle))
             PlayerPrefs.SetInt(SettingNames.AimStyle, 0);
+        if (!PlayerPrefs.HasKey(SettingNames.ScreenShake))
+            PlayerPrefs.SetInt(SettingNames.ScreenShake, 1);
+
+        // 0 = off by default; 1 = on by default
 #endif
 
 #if UNITY_WEBGL && !UNITY_EDITOR
+        //------------BGM & SFX sliders------------
         if (HasKeyInLocalStorage(SettingNames.BGM) == 0)
         {
             SetFloatToStorage(SettingNames.BGM, 1f);
@@ -76,20 +81,29 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat(SettingNames.BGM, GetFloatInStorage(SettingNames.BGM));
         PlayerPrefs.SetFloat(SettingNames.SFX, GetFloatInStorage(SettingNames.SFX));
 
+        //---------------Mute Toggle---------------
         if (HasKeyInLocalStorage(SettingNames.MuteAudio) == 0)
             SetIntToStorage(SettingNames.MuteAudio, 0);
 
         PlayerPrefs.SetInt(SettingNames.MuteAudio, GetIntInStorage(SettingNames.MuteAudio));
-
+        
+        //-----------Return to Bow Toggle-----------
         if (HasKeyInLocalStorage(SettingNames.ReturnToBow) == 0)
             SetIntToStorage(SettingNames.ReturnToBow, 1);
 
         PlayerPrefs.SetInt(SettingNames.ReturnToBow, GetIntInStorage(SettingNames.ReturnToBow));
-
+        
+        //-------------Aim Style Toggle-------------
         if (HasKeyInLocalStorage(SettingNames.AimStyle) == 0)
             SetIntToStorage(SettingNames.AimStyle, 0);
 
         PlayerPrefs.SetInt(SettingNames.AimStyle, GetIntInStorage(SettingNames.AimStyle));
+        
+        //------------Screen Shake Toggle------------
+        if (HasKeyInLocalStorage(SettingNames.ScreenShake) == 0)
+            SetIntToStorage(SettingNames.ScreenShake, 1);
+
+        PlayerPrefs.SetInt(SettingNames.ScreenShake, GetIntInStorage(SettingNames.ScreenShake));
 #endif
     }
 
@@ -100,6 +114,7 @@ public class GameManager : MonoBehaviour
         SetFloatToStorage(SettingNames.SFX, PlayerPrefs.GetFloat(SettingNames.SFX));
         SetIntToStorage(SettingNames.MuteAudio, PlayerPrefs.GetInt(SettingNames.MuteAudio));
         SetIntToStorage(SettingNames.ReturnToBow, PlayerPrefs.GetInt(SettingNames.ReturnToBow));
+        SetIntToStorage(SettingNames.AimStyle, PlayerPrefs.GetInt(SettingNames.AimStyle));
         SetIntToStorage(SettingNames.AimStyle, PlayerPrefs.GetInt(SettingNames.AimStyle));
 #endif
     }

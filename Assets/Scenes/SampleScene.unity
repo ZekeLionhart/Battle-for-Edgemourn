@@ -332,6 +332,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 448171241228084606, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448171241228084606, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448171241228084606, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448171241228084606, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 721116848209824263, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -460,6 +476,22 @@ PrefabInstance:
       propertyPath: power
       value: 
       objectReference: {fileID: 1539855757}
+    - target: {fileID: 2683658171563048752, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683658171563048752, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683658171563048752, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683658171563048752, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3263108989813507767, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: lineRenderer
       value: 
@@ -506,6 +538,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5767083455383399789, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976086352826358432, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976086352826358432, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976086352826358432, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976086352826358432, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6284189440403926075, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
@@ -605,6 +653,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6954358775856887568, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994339227673454754, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994339227673454754, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994339227673454754, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994339227673454754, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}

@@ -6,28 +6,38 @@ using Random = UnityEngine.Random;
 public class CameraShake : MonoBehaviour
 {
     private Vector3 originalPosition;
+    private bool canShake = true;
 
     public static Action<float, float> CallShake;
 
     private void OnEnable()
     {
+        SettingsManager.UpdateSettings += FlipShake;
         CallShake += Shake;
     }
 
     private void OnDisable()
     {
+        SettingsManager.UpdateSettings -= FlipShake;
         CallShake -= Shake;
     }
 
     private void Awake()
     {
         originalPosition = transform.localPosition;
+        SetUpShake();
+    }
+
+    private void SetUpShake()
+    {
+        if (PlayerPrefs.GetInt(SettingNames.MuteAudio) == 0) canShake = false;
+        else canShake = true;
     }
 
     private void Shake(float duration, float intensity)
     {
         StopAllCoroutines();
-        StartCoroutine(ShakeCoroutine(duration, intensity));
+        if (canShake) StartCoroutine(ShakeCoroutine(duration, intensity));
     }
 
     private IEnumerator ShakeCoroutine(float duration, float intensity)
@@ -46,5 +56,11 @@ public class CameraShake : MonoBehaviour
         }
 
         transform.localPosition = originalPosition;
+    }
+
+    private void FlipShake()
+    {
+        if (canShake) canShake = false;
+        else canShake = true;
     }
 }

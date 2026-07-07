@@ -12,6 +12,7 @@ public static class SettingNames
     public const string MuteAudio = "MuteAudio";
     public const string ReturnToBow = "ReturnToBow";
     public const string AimStyle = "AimStyle";
+    public const string ScreenShake = "ScreenShake";
 }
 
 public static class SceneNames
