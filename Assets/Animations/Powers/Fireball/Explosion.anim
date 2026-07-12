@@ -99,7 +99,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: burn mark
+    path: burnDecal/burn mark
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -124,7 +124,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: burn mark/Circle
+    path: burnDecal/burn mark/Circle
   m_FloatCurves:
   - serializedVersion: 2
     curve:
@@ -320,7 +320,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark
+    path: burnDecal/burn mark
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -359,7 +359,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark/Circle
+    path: burnDecal/burn mark/Circle
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -389,7 +389,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: burn mark/Embers
+    path: burnDecal/Embers
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -419,7 +419,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark/Embers/Ember3
+    path: burnDecal/Embers/Ember3
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -449,7 +449,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark/Embers/Ember2
+    path: burnDecal/Embers/Ember2
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -479,7 +479,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark/Embers/Ember1
+    path: burnDecal/Embers/Ember1
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -1080,7 +1080,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: burn mark
+    path: burnDecal/burn mark
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1110,7 +1110,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: burn mark
+    path: burnDecal/burn mark
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1140,7 +1140,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: burn mark
+    path: burnDecal/burn mark
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1179,7 +1179,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark
+    path: burnDecal/burn mark
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -1218,7 +1218,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark/Circle
+    path: burnDecal/burn mark/Circle
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -1248,7 +1248,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: burn mark/Circle
+    path: burnDecal/burn mark/Circle
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1278,7 +1278,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: burn mark/Circle
+    path: burnDecal/burn mark/Circle
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1308,7 +1308,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: burn mark/Circle
+    path: burnDecal/burn mark/Circle
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1338,7 +1338,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: burn mark/Embers
+    path: burnDecal/Embers
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -1368,7 +1368,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark/Embers/Ember3
+    path: burnDecal/Embers/Ember3
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -1398,7 +1398,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark/Embers/Ember2
+    path: burnDecal/Embers/Ember2
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -1428,7 +1428,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: burn mark/Embers/Ember1
+    path: burnDecal/Embers/Ember1
     classID: 212
     script: {fileID: 0}
     flags: 0
