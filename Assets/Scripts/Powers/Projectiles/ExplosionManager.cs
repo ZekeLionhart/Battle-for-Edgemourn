@@ -20,6 +20,8 @@ public class ExplosionManager : ProjectileManager
 
     private void PlaceBurnMark()
     {
+        if (burnMark == null) return;
+
         Vector2 origin = burnMark.transform.position + Vector3.up; //gives some distance to avoid clipping
 
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, rayDistance, groundLayer);
