@@ -4,18 +4,18 @@ using UnityEngine;
 public class FireballManager : ProjectileManager
 {
     [SerializeField] private GameObject sparkParticle;
-    [SerializeField] private GameObject smokeParticle;
     [SerializeField] private float sparkFrequency;
+    [SerializeField] private GameObject smokeParticle;
     [SerializeField] private float smokeFrequency;
-    //private WaitForSeconds particleWFS;
+    [SerializeField] private GameObject muzzleFlash;
 
     public static Action<Vector3> OnTargetHit;
 
     private void Awake()
     {
-        //particleWFS = new WaitForSeconds(smokeFrequency);
         SpawnSparks();
         SpawnSmoke();
+        SpawnMuzzle();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,5 +41,10 @@ public class FireballManager : ProjectileManager
         Instantiate(smokeParticle, smokeParticle.transform.position, Quaternion.identity, null);
 
         Invoke(nameof(SpawnSmoke), smokeFrequency);
+    }
+
+    private void SpawnMuzzle()
+    {
+        Instantiate(muzzleFlash, muzzleFlash.transform.position, muzzleFlash.transform.rotation, null);
     }
 }
