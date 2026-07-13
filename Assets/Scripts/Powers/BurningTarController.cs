@@ -4,6 +4,7 @@ public class BurningTarController : PowerController
 {
     [SerializeField] private float speed;
     [SerializeField] private GameObject particles;
+    [SerializeField] private ParticleSystem smokeParticles;  
 
     protected override void AttemptShooting()
     {
@@ -20,8 +21,15 @@ public class BurningTarController : PowerController
         Rigidbody2D shotRigid = Instantiate(shot, aimingPoint.transform.position + new Vector3(0.4f, 0f), shot.transform.rotation);
 
         Instantiate(particles, aimingPoint.transform.position, aimingPoint.rotation);
-
+        
         OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
         base.Shoot();
+    }
+
+    private void ToggleSmoke()
+    {
+        if (smokeParticles.isPlaying)
+            smokeParticles.Stop();
+        else smokeParticles.Play();
     }
 }
