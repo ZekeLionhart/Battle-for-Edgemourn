@@ -10,17 +10,17 @@ public class PowerManager : MonoBehaviour
     private PowerController activePower;
     private bool isReturnToWarbow;
 
-    public static Action<PowerController> SetUpStartingPower;
+    //public static Action<PowerController> SetUpStartingPower;
     public static Action<PowerController> OnSwitchPowers;
 
     private void Awake()
     {
-        SetUpStartingPower(activePower = powers[0]);
+        SetUpStartingPower();
         UpdateReturnToBow();
-
         for (int i = 0; i < powers.Length; i++)
             cooldowns.Add(false);
     }
+
     private void OnEnable()
     {
         PowerController.OnPowerShoot += StartPowerCooldown;
@@ -51,6 +51,13 @@ public class PowerManager : MonoBehaviour
             SwitchPowers(4);
         if (Input.GetButtonDown(KeyNames.BurningTar))
             SwitchPowers(5);
+    }
+
+    private void SetUpStartingPower()
+    {
+        activePower = powers[0];
+        foreach (PowerController power in powers)
+            power.SetUpStartingPower(activePower);
     }
 
     private void SwitchPowers(int index)

@@ -31,7 +31,7 @@ public class PowerController : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        PowerManager.SetUpStartingPower += SetUpStartingPower;
+        //PowerManager.SetUpStartingPower += SetUpStartingPower;
         PowerManager.OnSwitchPowers += DeActivate;
         CooldownManager.OnCooldownEnded += AllowShooting;
         HealthManager.OnZeroHealth += CeaseFunction;
@@ -40,7 +40,7 @@ public class PowerController : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        PowerManager.SetUpStartingPower -= SetUpStartingPower;
+        //PowerManager.SetUpStartingPower -= SetUpStartingPower;
         PowerManager.OnSwitchPowers -= DeActivate;
         CooldownManager.OnCooldownEnded -= AllowShooting;
         HealthManager.OnZeroHealth -= CeaseFunction;
@@ -75,7 +75,7 @@ public class PowerController : MonoBehaviour
         canShoot = true;
     }
 
-    private void SetUpStartingPower(PowerController activePower)
+    public void SetUpStartingPower(PowerController activePower)
     {
         if (activePower == this)
         {

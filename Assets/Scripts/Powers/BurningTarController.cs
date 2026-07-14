@@ -20,7 +20,7 @@ public class BurningTarController : PowerController
     {
         Rigidbody2D shotRigid = Instantiate(shot, aimingPoint.transform.position + new Vector3(0.4f, 0f), shot.transform.rotation);
 
-        Instantiate(particles, aimingPoint.transform.position, aimingPoint.rotation);
+        Instantiate(particles, aimingPoint.transform.position, particles.transform.rotation);
         
         OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
         base.Shoot();
