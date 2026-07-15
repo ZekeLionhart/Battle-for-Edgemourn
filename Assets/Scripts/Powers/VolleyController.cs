@@ -10,6 +10,7 @@ public class VolleyController : BowController
     private int arrowCounter = 0;
     private int rand = 0;
     private WaitForSeconds delayWFS;
+    private Quaternion arrowRotation;
 
     protected override void Awake()
     {
@@ -29,10 +30,12 @@ public class VolleyController : BowController
 
             if (canShoot && willShoot)
             {
+                Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
                 CallShotAnalytics();
                 arrowCounter = 1;
                 CreateArrow(vector, arrows[arrowCounter], aimingPoint.position);
                 OnPowerShoot(this, cooldown);
+                arrowRotation = this.transform.rotation;
                 StartCoroutine(DelayShot(vector));
             }
         }
@@ -44,6 +47,10 @@ public class VolleyController : BowController
 
         rand = Random.Range(1, numOfArrows);
         CreateArrow(vector, arrows[arrowCounter], aimingPoint.position + rand * spreadMultiplier * Vector3.left);
+
+        GameObject tempShockwave = Instantiate(bowShockwave, aimingPoint.position + rand * spreadMultiplier * Vector3.left, arrowRotation);
+        tempShockwave.transform.localScale *= 0.5f;
+
         arrowCounter++;
 
         if (arrowCounter < numOfArrows)

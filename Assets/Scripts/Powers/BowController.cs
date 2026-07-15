@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BowController : PowerController
 {
+    [SerializeField] protected GameObject bowShockwave;
     [SerializeField] private AudioSource onPullSfx;
     [SerializeField] protected float arrowSpeed;
     private int currentState = 0;
@@ -41,6 +42,7 @@ public class BowController : PowerController
 
             if (canShoot && willShoot)
             {
+                Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
                 CallShotAnalytics();
                 CreateArrow(vector, shot, aimingPoint.position);
                 OnPowerShoot(this, cooldown);
