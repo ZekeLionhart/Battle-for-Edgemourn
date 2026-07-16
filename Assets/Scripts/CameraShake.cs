@@ -30,7 +30,7 @@ public class CameraShake : MonoBehaviour
 
     private void SetUpShake()
     {
-        if (PlayerPrefs.GetInt(SettingNames.MuteAudio) == 0) canShake = false;
+        if (PlayerPrefs.GetInt(SettingNames.ScreenShake) == 0) canShake = false;
         else canShake = true;
     }
 

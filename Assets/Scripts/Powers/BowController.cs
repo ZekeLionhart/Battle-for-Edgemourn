@@ -40,6 +40,7 @@ public class BowController : PowerController
             Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
             CallShotAnalytics();
             CreateArrow(vector, shot, aimingPoint.position);
+            CameraShake.CallShake(shakeDuration, shakeIntensity);
             OnPowerShoot(this, cooldown);
         }
     }

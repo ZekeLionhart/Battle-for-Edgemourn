@@ -340,8 +340,8 @@ MonoBehaviour:
   damageType: 0
   damage: 1
   cooldown: 8
-  shakeDuration: 0
-  shakeIntensity: 0
+  shakeDuration: 0.05
+  shakeIntensity: 0.02
   bowShockwave: {fileID: 3509964316922946487, guid: 77b853ef8e605054598578b3bae6f8cc, type: 3}
   onPullSfx: {fileID: 6268742350876567459}
   arrowSpeed: 2.75
