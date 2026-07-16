@@ -632,6 +632,7 @@ MonoBehaviour:
   earthMultiplier: 2
   shakeDuration: 0.2
   shakeIntensity: 0.2
+  gore: {fileID: 2115766130640322734, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
 --- !u!1 &4963584205576358051
 GameObject:
   m_ObjectHideFlags: 0

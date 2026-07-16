@@ -28,13 +28,14 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float earthMultiplier;
     [SerializeField] protected float shakeDuration;
     [SerializeField] protected float shakeIntensity;
+    [SerializeField] protected GameObject gore;
     private GameObject previousHit;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private List<string> targetStrings;
     private bool canAttack = true;
     private bool canMove = false;
-    private bool isDead = false;
+    protected bool isDead = false;
 
     public static Action<GameObject, int> OnDamageDealt;
     public static Action<int> OnEnemyDeath;
@@ -116,40 +117,48 @@ public class EnemyBase : MonoBehaviour
 
     protected void TakeDamage(GameObject power, GameObject target, PowerTypes powerType, DamageTypes damageType, float damageReceived)
     {
-        if (target == gameObject && power != previousHit)
-        {
-            previousHit = power;
-            damageReceived = MultiplyDamage(damageType, damageReceived);
-            onHitSfx.pitch = Random.Range(0.9f, 1.1f);
-            if (damageType == DamageTypes.Pierce)
-                onHitSfx.Play();
-            hitpoints -= damageReceived;
-            CallDamageAnalytics(powerType, damageReceived);
+        if (target != gameObject || power == previousHit) return;
 
-            if (hitpoints <= 0 && !isDead)
-            {
-                isDead = true;
-                Destroy(rigidBody);
-                animator.SetTrigger(ParameterNames.OnHpEmpty);
-                onDeathSfx.pitch = Random.Range(0.9f, 1.1f);
-                onDeathSfx.Play();
-                CallKillAnalytics(powerType, scoreValue);
-                OnEnemyDeath(scoreValue);
-            }
-            else if (gruntSfx != null && !isDead)
-            {
-                gruntSfx.pitch = Random.Range(0.9f, 1.1f);
-                gruntSfx.Play();
-            }
+        previousHit = power;
+        damageReceived = MultiplyDamage(damageType, damageReceived);
+        onHitSfx.pitch = Random.Range(0.9f, 1.1f);
+        if (damageType == DamageTypes.Pierce)
+            onHitSfx.Play();
+        hitpoints -= damageReceived;
+        CallDamageAnalytics(powerType, damageReceived);
+
+        if (hitpoints <= 0 && !isDead)
+        {
+            isDead = true;
+            Destroy(rigidBody);
+            animator.SetTrigger(ParameterNames.OnHpEmpty);
+            onDeathSfx.pitch = Random.Range(0.9f, 1.1f);
+            onDeathSfx.Play();
+            CallKillAnalytics(powerType, scoreValue);
+            OnEnemyDeath(scoreValue);
+        }
+        else if (gruntSfx != null && !isDead)
+        {
+            gruntSfx.pitch = Random.Range(0.9f, 1.1f);
+            gruntSfx.Play();
         }
     }
 
-    protected virtual void PinArrow(GameObject power, GameObject target, Rigidbody2D arrow, PowerTypes powerType, DamageTypes damageType, float damageReceived)
+    protected virtual void PinArrow(GameObject power, GameObject target, Vector2 hitPoint, Quaternion rotation, Rigidbody2D arrow, PowerTypes powerType, DamageTypes damageType, float damageReceived)
     {
-        if (target == gameObject)
-            arrow.transform.parent = mainBone.transform;
+        if (target != gameObject) return;
+        
+        arrow.transform.parent = mainBone.transform;
+
+        if (isDead) return;
 
         TakeDamage(power, target, powerType, damageType, damageReceived);
+        SprayGore(rotation, hitPoint);
+    }
+
+    protected virtual void SprayGore(Quaternion rotation, Vector2 hitPoint)
+    {
+        if (gore != null) Instantiate(gore, hitPoint, rotation);
     }
 
     private void StartMove()

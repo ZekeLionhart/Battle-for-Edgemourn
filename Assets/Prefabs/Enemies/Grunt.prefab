@@ -560,6 +560,7 @@ MonoBehaviour:
   earthMultiplier: 1
   shakeDuration: 0.1
   shakeIntensity: 0.07
+  gore: {fileID: 6354823605687495958, guid: dee54a508e22bcc44aab5b4644f26a36, type: 3}
 --- !u!114 &3601649977943887639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,7 +1233,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 140
+  m_SortingOrder: 180
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.23529412}
   m_FlipX: 0

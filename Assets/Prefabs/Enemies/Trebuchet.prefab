@@ -979,6 +979,7 @@ MonoBehaviour:
   earthMultiplier: 2
   shakeDuration: 0.25
   shakeIntensity: 0.5
+  gore: {fileID: 2115766130640322734, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
   ammo: {fileID: 5205078567594977183, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
   ammoSpawn: {fileID: 3676179479713334986}
   onReloadSfx: {fileID: 6555318111688981696}
