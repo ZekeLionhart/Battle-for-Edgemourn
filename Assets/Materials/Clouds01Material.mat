@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CloudsMaterial
+  m_Name: Clouds01Material
   m_Shader: {fileID: -6465566751694194690, guid: 44a7d120cf7d6c84d8d005789149c9e8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5c0e5d8aa62f7d54f84fda6e67551795, type: 3}
+        m_Texture: {fileID: 2800000, guid: fd11f6c66cd73c948b6025126038ba04, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_2fc2e9506c994b0faeb695917aeb993d_Texture_1_Texture2D:
@@ -59,7 +59,7 @@ Material:
     - _DistortScale: 150
     m_Colors:
     - _CloudsColor: {r: 0.2838254, g: 0.2838254, b: 0.2838254, a: 1}
-    - _CloudsSpeed: {r: 0.005, g: 0, b: 0, a: 0}
+    - _CloudsSpeed: {r: 0.002, g: 0, b: 0, a: 0}
     - _DistortSpeed: {r: -0.05, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5509176738948837879
