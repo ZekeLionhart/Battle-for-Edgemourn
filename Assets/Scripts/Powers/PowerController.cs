@@ -18,7 +18,8 @@ public class PowerController : MonoBehaviour
     [SerializeField] protected float shakeDuration;
     [SerializeField] protected float shakeIntensity;
     protected bool isActive;
-    protected bool canShoot = true;
+    protected bool isMouseInside;
+    protected bool offCooldown = true;
     protected WaitForSeconds shotDelayWFS;
 
     public static Action<PowerController, float> OnPowerShoot;
@@ -31,48 +32,44 @@ public class PowerController : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        //PowerManager.SetUpStartingPower += SetUpStartingPower;
         PowerManager.OnSwitchPowers += DeActivate;
         CooldownManager.OnCooldownEnded += AllowShooting;
         HealthManager.OnZeroHealth += CeaseFunction;
-        PowerShooter.OnScreenClick += AttemptShooting;
     }
 
     protected virtual void OnDisable()
     {
-        //PowerManager.SetUpStartingPower -= SetUpStartingPower;
         PowerManager.OnSwitchPowers -= DeActivate;
         CooldownManager.OnCooldownEnded -= AllowShooting;
         HealthManager.OnZeroHealth -= CeaseFunction;
-        PowerShooter.OnScreenClick -= AttemptShooting;
     }
 
     protected void AllowShooting(PowerController power)
     {
         if (power == this)
-            canShoot = true;
+            offCooldown = true;
+    }
+
+    protected bool TryShoot()
+    {
+        if (Input.GetButtonUp(KeyNames.Fire) && offCooldown && isMouseInside && isActive) return true;
+        return false;
     }
 
     protected virtual void Shoot()
     {
         CallShotAnalytics();
         OnPowerShoot(this, cooldown);
-        canShoot = false;
-    }
-
-    protected virtual void AttemptShooting()
-    {
-        if (canShoot && isActive)
-            Shoot();
+        offCooldown = false;
     }
 
     protected IEnumerator ShotDelay()
     {
-        canShoot = false;
+        offCooldown = false;
 
         yield return shotDelayWFS;
 
-        canShoot = true;
+        offCooldown = true;
     }
 
     public void SetUpStartingPower(PowerController activePower)
@@ -112,7 +109,7 @@ public class PowerController : MonoBehaviour
 
     private void CeaseFunction()
     {
-        canShoot = false;
+        offCooldown = false;
     }
 
     protected void CallShotAnalytics()

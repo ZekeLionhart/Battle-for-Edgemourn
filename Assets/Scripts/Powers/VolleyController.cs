@@ -23,21 +23,20 @@ public class VolleyController : BowController
 
     protected override void Shoot(Vector3 vector, bool willShoot)
     {
-        if (isActive)
-        {
-            ResetSprite();
-            animator.SetTrigger(ParameterNames.Shoot);
+        if (!isActive) return;
 
-            if (canShoot && willShoot)
-            {
-                Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
-                CallShotAnalytics();
-                arrowCounter = 1;
-                CreateArrow(vector, arrows[arrowCounter], aimingPoint.position);
-                OnPowerShoot(this, cooldown);
-                arrowRotation = this.transform.rotation;
-                StartCoroutine(DelayShot(vector));
-            }
+        ResetSprite();
+        animator.SetTrigger(ParameterNames.Shoot);
+
+        if (offCooldown && willShoot)
+        {
+            Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
+            CallShotAnalytics();
+            arrowCounter = 1;
+            CreateArrow(vector, arrows[arrowCounter], aimingPoint.position);
+            OnPowerShoot(this, cooldown);
+            arrowRotation = this.transform.rotation;
+            StartCoroutine(DelayShot(vector));
         }
     }
 

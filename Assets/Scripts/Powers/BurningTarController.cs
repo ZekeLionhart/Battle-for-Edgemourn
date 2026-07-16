@@ -4,16 +4,35 @@ public class BurningTarController : PowerController
 {
     [SerializeField] private float speed;
     [SerializeField] private GameObject particles;
-    [SerializeField] private ParticleSystem smokeParticles;  
+    [SerializeField] private ParticleSystem smokeParticles;
 
-    protected override void AttemptShooting()
+    protected override void OnEnable()
     {
-        if (canShoot && isActive)
-        {
-            animator.SetTrigger(ParameterNames.Shoot);
-            canShoot = false;
-            Invoke(nameof(Shoot), 0.5f);
-        }
+        base.OnEnable();
+        PowerShooter.IsInsideArea += UpdateMouseState;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnEnable();
+        PowerShooter.IsInsideArea -= UpdateMouseState;
+    }
+
+    private void Update()
+    {
+        if (TryShoot()) AttemptShooting();
+    }
+
+    private void AttemptShooting()
+    {
+        animator.SetTrigger(ParameterNames.Shoot);
+        offCooldown = false;
+        Invoke(nameof(Shoot), 0.5f);
+    }
+
+    private void UpdateMouseState(bool value)
+    {
+        isMouseInside = value;
     }
 
     protected override void Shoot()

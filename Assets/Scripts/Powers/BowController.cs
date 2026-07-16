@@ -23,11 +23,6 @@ public class BowController : PowerController
         LineDrawer.OnBowPull -= PullBow;
     }
 
-    protected override void AttemptShooting()
-    {
-        
-    }
-
     private void Aim(float angle)
     {
         aimingPoint.rotation = Quaternion.identity;
@@ -36,17 +31,16 @@ public class BowController : PowerController
 
     protected virtual void Shoot(Vector3 vector, bool willShoot)
     {
-        if (isActive)
-        {
-            ResetSprite();
+        if (!isActive) return;
 
-            if (canShoot && willShoot)
-            {
-                Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
-                CallShotAnalytics();
-                CreateArrow(vector, shot, aimingPoint.position);
-                OnPowerShoot(this, cooldown);
-            }
+        ResetSprite();
+
+        if (offCooldown && willShoot)
+        {
+            Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
+            CallShotAnalytics();
+            CreateArrow(vector, shot, aimingPoint.position);
+            OnPowerShoot(this, cooldown);
         }
     }
 
@@ -64,7 +58,7 @@ public class BowController : PowerController
         shotRigid.velocity = force;
 
         OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, 0f, shakeDuration, shakeIntensity);
-        canShoot = false;
+        offCooldown = false;
     }
 
     private void PullBow(int strength)

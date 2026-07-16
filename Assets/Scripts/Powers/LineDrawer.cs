@@ -60,7 +60,7 @@ public class LineDrawer : MonoBehaviour
             ShowPreviousShot();
         }
 
-        if (Input.GetButton(KeyNames.Fire) && isMouseInside)
+        if (Input.GetButton(KeyNames.Fire) && wasFirstClickInside)
         {
             endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             endPos.z = 0f;

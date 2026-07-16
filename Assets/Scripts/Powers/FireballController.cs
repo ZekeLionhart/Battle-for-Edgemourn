@@ -22,19 +22,18 @@ public class FireballController : CrosshairPower
     protected override void Update()
     {
         HandleAimRotation();
+
+        if (TryShoot()) Shoot();
     }
 
     protected override void Shoot()
     {
-        if (isActive)
-        {
-            Rigidbody2D shotRigid = Instantiate(shot, transform.position, aimingPoint.transform.rotation);
-            Vector3 force = speed * (direction.position - aimingPoint.position);
-            shotRigid.velocity = force;
+        Rigidbody2D shotRigid = Instantiate(shot, transform.position, aimingPoint.transform.rotation);
+        Vector3 force = speed * (direction.position - aimingPoint.position);
+        shotRigid.velocity = force;
 
-            OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
-            base.Shoot();
-        }
+        OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
+        base.Shoot();
     }
 
     private void InvokeExplosion(Vector3 position)

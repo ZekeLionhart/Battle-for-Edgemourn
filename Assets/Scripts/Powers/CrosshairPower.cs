@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CrosshairPower : PowerController
@@ -22,6 +23,7 @@ public class CrosshairPower : PowerController
     protected override void OnEnable()
     {
         base.OnEnable();
+        PowerShooter.IsInsideArea += UpdateMouseState;
         PowerManager.OnSwitchPowers += ResetAim;
         PauseManager.OnPause += ResetAim;
         SettingsManager.UpdateSettings += SetAimStyle;
@@ -38,11 +40,13 @@ public class CrosshairPower : PowerController
     protected virtual void Update()
     {
         HandleAimMovement();
+
+        if (TryShoot()) Shoot();
     }
 
     protected virtual void HandleAimMovement()
     {
-        if (aimStyleManual && !Input.GetButton(KeyNames.Fire) || !canShoot)
+        if (aimStyleManual && !Input.GetButton(KeyNames.Fire) || !offCooldown || !isMouseInside)
             return;
 
         aimingPoint.position += aimSpeed * directionMult * Time.deltaTime * Vector3.right;
@@ -54,7 +58,7 @@ public class CrosshairPower : PowerController
 
     protected virtual void HandleAimRotation()
     {
-        if (aimStyleManual && !Input.GetButton(KeyNames.Fire) || !canShoot)
+        if (aimStyleManual && !Input.GetButton(KeyNames.Fire) || !offCooldown || !isMouseInside)
             return;
 
         aimingPoint.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
@@ -62,6 +66,8 @@ public class CrosshairPower : PowerController
         if (aimingPoint.eulerAngles.z >= rightLimit.eulerAngles.z && directionMult > 0
                 || aimingPoint.eulerAngles.z <= leftLimit.eulerAngles.z && directionMult < 0)
             directionMult *= -1;
+
+        if (Input.GetButtonUp(KeyNames.Fire)) Shoot();
     }
 
     protected virtual void ResetAim()
@@ -72,6 +78,11 @@ public class CrosshairPower : PowerController
     protected virtual void ResetAim(PowerController power)
     {
         ResetAim();
+    }
+
+    private void UpdateMouseState(bool value)
+    {
+        isMouseInside = value;
     }
 
     protected override void Shoot()

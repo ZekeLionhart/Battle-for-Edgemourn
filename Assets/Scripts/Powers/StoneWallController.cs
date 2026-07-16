@@ -11,14 +11,11 @@ public class StoneWallController : CrosshairPower
 
     protected override void Shoot()
     {
-        if (isActive)
-        {
-            Instantiate(shot, new Vector2(
-                aimingPoint.transform.position.x, floor.position.y + floor.localScale.y / 2 + shot.transform.localScale.y)
-                , shot.transform.rotation);
+        Instantiate(shot, new Vector2(
+            aimingPoint.transform.position.x, floor.position.y + floor.localScale.y / 2 + shot.transform.localScale.y)
+            , shot.transform.rotation);
 
-            OnWallSummon(hitpoints, duration, damage, powerType, damageType, shakeDuration, shakeIntensity);
-            base.Shoot();
-        }
+        OnWallSummon(hitpoints, duration, damage, powerType, damageType, shakeDuration, shakeIntensity);
+        base.Shoot();
     }
 }
