@@ -222,6 +222,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "53e4e03985df4e7eb8814090c81eae62"
+                },
+                "m_SlotId": 1
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "bf18109fa01246fa9a43046e52629e19"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "5cd48ca906c24052b5fb307063ee4085"
                 },
                 "m_SlotId": 1
@@ -348,20 +362,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "86d787ef591d40eab532e3ded2cd3c2c"
-                },
-                "m_SlotId": 2
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "bf18109fa01246fa9a43046e52629e19"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "bb9513dd15c543269665f00d3fe76ac1"
                 },
                 "m_SlotId": 2
@@ -412,7 +412,7 @@
                 "m_Node": {
                     "m_Id": "5ed55e9fabeb4d909cea5c80d45cd297"
                 },
-                "m_SlotId": 0
+                "m_SlotId": 1
             }
         },
         {
@@ -496,7 +496,7 @@
                 "m_Node": {
                     "m_Id": "5ed55e9fabeb4d909cea5c80d45cd297"
                 },
-                "m_SlotId": 1
+                "m_SlotId": 0
             }
         }
     ],
@@ -583,10 +583,10 @@
     "m_Guid": {
         "m_GuidSerialized": "44af49d5-41c6-42e3-b800-a33484e0f3d7"
     },
-    "m_Name": "Round/Square",
+    "m_Name": "Roundness",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Round/Square",
-    "m_DefaultReferenceName": "_Round_Square",
+    "m_RefNameGeneratedByDisplayName": "Roundness",
+    "m_DefaultReferenceName": "_Roundness",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -596,7 +596,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 1.0,
+    "m_Value": 0.0,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
@@ -616,8 +616,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2858.0,
-            "y": 433.0,
+            "x": -2837.0,
+            "y": 577.0,
             "width": 112.0,
             "height": 34.0
         }
@@ -932,10 +932,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -661.0000610351563,
-            "y": 200.0000457763672,
-            "width": 149.00009155273438,
-            "height": 34.0
+            "x": -660.9999389648438,
+            "y": 216.99996948242188,
+            "width": 148.99993896484376,
+            "height": 34.000030517578128
         }
     },
     "m_Slots": [
@@ -1291,7 +1291,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "4d70879f6e79403598db95a49626aa88",
     "m_Id": 0,
-    "m_DisplayName": "Round/Square",
+    "m_DisplayName": "Roundness",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1337,10 +1337,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2167.0,
-            "y": 689.0,
+            "x": -2150.0,
+            "y": 507.0,
             "width": 208.0,
-            "height": 278.00006103515627
+            "height": 278.0
         }
     },
     "m_Slots": [
@@ -1423,8 +1423,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1888.0,
-            "y": 685.0,
+            "x": -1839.0001220703125,
+            "y": 363.0,
             "width": 119.0,
             "height": 149.0
         }
@@ -1450,7 +1450,7 @@
         "separate"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -1700,10 +1700,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2602.0,
-            "y": 301.0,
+            "x": -2581.0,
+            "y": 445.0,
             "width": 105.0,
-            "height": 34.0
+            "height": 33.999969482421878
         }
     },
     "m_Slots": [
@@ -2017,8 +2017,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2433.0,
-            "y": 363.0,
+            "x": -2412.0,
+            "y": 507.0,
             "width": 208.0,
             "height": 302.0
         }
@@ -2434,8 +2434,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2705.0,
-            "y": 363.0,
+            "x": -2684.0,
+            "y": 507.0,
             "width": 208.0,
             "height": 302.0
         }
@@ -2493,9 +2493,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1330.0,
-            "y": 283.0,
-            "width": 109.9998779296875,
+            "x": -1325.0,
+            "y": 298.0,
+            "width": 110.0,
             "height": 34.0
         }
     },
@@ -2529,8 +2529,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1687.0,
-            "y": 363.0,
+            "x": -1686.9998779296875,
+            "y": 693.9999389648438,
             "width": 208.0,
             "height": 278.00006103515627
         }
@@ -2871,8 +2871,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2891.0,
-            "y": 485.0,
+            "x": -2870.0,
+            "y": 629.0,
             "width": 145.0,
             "height": 128.0
         }
@@ -3101,10 +3101,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -900.0000610351563,
-            "y": 200.0000457763672,
-            "width": 119.99993896484375,
-            "height": 34.0
+            "x": -899.9999389648438,
+            "y": 216.99996948242188,
+            "width": 120.0,
+            "height": 34.000030517578128
         }
     },
     "m_Slots": [
@@ -3252,9 +3252,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1687.0,
-            "y": 685.0,
-            "width": 208.0,
+            "x": -1687.0001220703125,
+            "y": 363.0,
+            "width": 208.0001220703125,
             "height": 302.0
         }
     },

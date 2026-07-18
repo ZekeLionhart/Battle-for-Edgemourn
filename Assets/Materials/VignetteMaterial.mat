@@ -59,6 +59,7 @@ Material:
     - _QueueOffset: 0
     - _Radius: 0.1
     - _Round_Square: 0.3
+    - _Roundness: 0.7
     - _Softness: 0.5
     m_Colors:
     - _Center: {r: 0.5, g: 0.5, b: 0, a: 0}
