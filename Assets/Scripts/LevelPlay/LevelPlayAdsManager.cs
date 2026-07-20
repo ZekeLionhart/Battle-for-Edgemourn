@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.Services.LevelPlay;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class LevelPlayAdsManager : MonoBehaviour
     private LevelPlayInterstitialAd interstitialAd;
     private LevelPlayRewardedAd rewardedAd;
 
-    private string appKey
+    private string AppKey
     {
         get
         {
@@ -42,7 +43,7 @@ public class LevelPlayAdsManager : MonoBehaviour
             #endif
         }
     }
-    private string bannerAdUnitId
+    private string BannerAdUnitId
     {
         get
         {
@@ -55,7 +56,7 @@ public class LevelPlayAdsManager : MonoBehaviour
             #endif
         }
     }
-    private string interstitialAdUnitId
+    private string InterstitialAdUnitId
     {
         get
         {
@@ -68,7 +69,7 @@ public class LevelPlayAdsManager : MonoBehaviour
             #endif
         }
     }
-    private string rewardedAdUnitId
+    private string RewardedAdUnitId
     {
         get
         {
@@ -114,7 +115,7 @@ public class LevelPlayAdsManager : MonoBehaviour
         LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
         LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
         // SDK init
-        LevelPlay.Init(appKey);
+        LevelPlay.Init(AppKey);
     }
 
     public void UpdateCoin()
@@ -123,6 +124,12 @@ public class LevelPlayAdsManager : MonoBehaviour
         {
             coinsText.text = Coins.ToString();
         }
+    }
+
+    private void ContinueToGame()
+    {
+        LoadInterstitialAd();
+        SceneManager.LoadScene(SceneNames.Level1);
     }
 
     private void SdkInitializationCompletedEvent(LevelPlayConfiguration config)
@@ -146,7 +153,7 @@ public class LevelPlayAdsManager : MonoBehaviour
             .SetPosition(LevelPlayBannerPosition.BottomCenter)
             .Build();
 
-        bannerAd = new LevelPlayBannerAd(bannerAdUnitId, adConfig);
+        bannerAd = new LevelPlayBannerAd(BannerAdUnitId, adConfig);
 
         // Register to the events 
         bannerAd.OnAdLoaded += BannerOnAdLoadedEvent;
@@ -188,7 +195,7 @@ public class LevelPlayAdsManager : MonoBehaviour
 
     private void CreateInterstitialAd()
     {
-        interstitialAd = new LevelPlayInterstitialAd(interstitialAdUnitId);
+        interstitialAd = new LevelPlayInterstitialAd(InterstitialAdUnitId);
 
         // Register to interstitial events
         interstitialAd.OnAdLoaded += InterstitialOnAdLoadedEvent;
@@ -215,22 +222,24 @@ public class LevelPlayAdsManager : MonoBehaviour
             interstitialAd.ShowAd();
             Debug.Log("#BfE Interstitial Ad Showing");
         }
+        else ContinueToGame();
     }
 
     // Implement the events
     void InterstitialOnAdLoadedEvent(LevelPlayAdInfo adInfo) { }
     void InterstitialOnAdLoadFailedEvent(LevelPlayAdError error)
     {
-        LoadInterstitialAd();//
-        SceneManager.LoadScene(SceneNames.Level1);
+        LoadInterstitialAd();
     }
     void InterstitialOnAdDisplayedEvent(LevelPlayAdInfo adInfo) { }
-    void InterstitialOnAdDisplayFailedEvent(LevelPlayAdInfo adInfo, LevelPlayAdError error) { }
+    void InterstitialOnAdDisplayFailedEvent(LevelPlayAdInfo adInfo, LevelPlayAdError error)
+    {
+        ContinueToGame();
+    }
     void InterstitialOnAdClickedEvent(LevelPlayAdInfo adInfo) { }
     void InterstitialOnAdClosedEvent(LevelPlayAdInfo adInfo)
     {
-        LoadInterstitialAd();//
-        SceneManager.LoadScene(SceneNames.Level1);
+        ContinueToGame();
     }
     void InterstitialOnAdInfoChangedEvent(LevelPlayAdInfo adInfo) { }
 
@@ -240,7 +249,7 @@ public class LevelPlayAdsManager : MonoBehaviour
 
     private void CreateRewardedAd()
     {
-        rewardedAd = new LevelPlayRewardedAd(rewardedAdUnitId);
+        rewardedAd = new LevelPlayRewardedAd(RewardedAdUnitId);
 
         // Register to Rewarded events
         rewardedAd.OnAdLoaded += RewardedOnAdLoadedEvent;

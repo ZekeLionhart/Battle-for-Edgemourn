@@ -10,7 +10,6 @@ public class PowerManager : MonoBehaviour
     private PowerController activePower;
     private bool isReturnToWarbow;
 
-    //public static Action<PowerController> SetUpStartingPower;
     public static Action<PowerController> OnSwitchPowers;
 
     private void Awake()
