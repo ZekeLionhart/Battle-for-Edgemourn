@@ -32,6 +32,7 @@ public class CrosshairPower : PowerController
     protected override void OnDisable()
     {
         base.OnDisable();
+        PowerShooter.IsInsideArea -= UpdateMouseState;
         PowerManager.OnSwitchPowers -= ResetAim;
         PauseManager.OnPause -= ResetAim;
         SettingsManager.UpdateSettings -= SetAimStyle;

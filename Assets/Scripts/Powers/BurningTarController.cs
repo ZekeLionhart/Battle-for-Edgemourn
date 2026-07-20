@@ -14,7 +14,7 @@ public class BurningTarController : PowerController
 
     protected override void OnDisable()
     {
-        base.OnEnable();
+        base.OnDisable();
         PowerShooter.IsInsideArea -= UpdateMouseState;
     }
 

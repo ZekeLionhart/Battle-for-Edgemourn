@@ -98,7 +98,7 @@ public class PowerController : MonoBehaviour
             if (idleSfx != null)
                 idleSfx.Play();
         }
-        else
+        else if (isActive)
         {
             isActive = false;
             content.SetActive(false);
