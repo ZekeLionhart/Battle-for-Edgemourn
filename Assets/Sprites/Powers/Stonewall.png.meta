@@ -144,7 +144,7 @@ TextureImporter:
         width: 128
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
         width: 167
         height: 163
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,7 +186,7 @@ TextureImporter:
         width: 31
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,7 +207,7 @@ TextureImporter:
         width: 113
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,7 +228,7 @@ TextureImporter:
         width: 154
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,6 +236,27 @@ TextureImporter:
       bones: []
       spriteID: d40c3825167c9724bad2a09e3cd125e9
       internalID: 659265188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stonewall_14
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 0
+        width: 128
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c514dd476cc49499d6bb9fc1933b9b
+      internalID: 1954819274
       vertices: []
       indices: 
       edges: []
@@ -253,6 +274,11 @@ TextureImporter:
     nameFileIdTable:
       Stonewall_0: 2117453613
       Stonewall_1: 1463577833
+      Stonewall_10: 1799792293
+      Stonewall_11: 952712979
+      Stonewall_12: -65429025
+      Stonewall_13: -1917607258
+      Stonewall_14: 1954819274
       Stonewall_2: 1636694569
       Stonewall_3: 572486442
       Stonewall_4: 285615536
@@ -260,6 +286,7 @@ TextureImporter:
       Stonewall_6: 2048603870
       Stonewall_7: -594045857
       Stonewall_8: 659265188
+      Stonewall_9: -1000993488
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
