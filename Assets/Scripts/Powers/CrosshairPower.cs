@@ -67,8 +67,6 @@ public class CrosshairPower : PowerController
         if (aimingPoint.eulerAngles.z >= rightLimit.eulerAngles.z && directionMult > 0
                 || aimingPoint.eulerAngles.z <= leftLimit.eulerAngles.z && directionMult < 0)
             directionMult *= -1;
-
-        if (Input.GetButtonUp(KeyNames.Fire)) Shoot();
     }
 
     protected virtual void ResetAim()

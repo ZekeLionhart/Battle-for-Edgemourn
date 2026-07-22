@@ -61,6 +61,7 @@ public class PowerController : MonoBehaviour
         CallShotAnalytics();
         OnPowerShoot(this, cooldown);
         offCooldown = false;
+        isMouseInside = false;
     }
 
     protected IEnumerator ShotDelay()
