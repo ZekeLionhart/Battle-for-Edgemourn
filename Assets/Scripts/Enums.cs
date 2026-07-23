@@ -19,7 +19,9 @@ public static class SceneNames
 {
     public const string Menu = "MenuScene";
     public const string GameOver = "GameOverScene";
-    public const string Level1 = "SampleScene";
+    public const string LevelSelector = "Lv_Selector_Scene";
+    public const string LevelInfinite = "SampleScene";
+    public const string Level1 = "Lv_1_Scene";
 }
 
 public static class KeyNames

@@ -18,7 +18,7 @@ public class MenuClick : MonoBehaviour
 
     private void ChangeScene()
     {
-        SceneManager.LoadScene(SceneNames.Level1);
+        SceneManager.LoadScene(SceneNames.LevelSelector);
     }
 
     private void ChangeSceneWithAd()
