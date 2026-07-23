@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         SetIntToStorage(SettingNames.MuteAudio, PlayerPrefs.GetInt(SettingNames.MuteAudio));
         SetIntToStorage(SettingNames.ReturnToBow, PlayerPrefs.GetInt(SettingNames.ReturnToBow));
         SetIntToStorage(SettingNames.AimStyle, PlayerPrefs.GetInt(SettingNames.AimStyle));
-        SetIntToStorage(SettingNames.AimStyle, PlayerPrefs.GetInt(SettingNames.AimStyle));
+        SetIntToStorage(SettingNames.AimStyle, PlayerPrefs.GetInt(SettingNames.ScreenShake));
 #endif
     }
 }
