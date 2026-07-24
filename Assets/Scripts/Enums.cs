@@ -4,6 +4,7 @@ public enum DamageTypes { Pierce, Fire, Thunder, Earth }
 public enum TargetTypes { Ally, Environment }
 public enum AudioTypes { SFX, BGM };
 public enum PowerTypes { Warbow, ArrowVolley, Fireball, LightningStrike, Stonewall, BurningTar };
+public enum LevelNameKeys { };
 
 public static class SettingNames
 {
@@ -21,7 +22,6 @@ public static class SceneNames
     public const string GameOver = "GameOverScene";
     public const string LevelSelector = "Lv_Selector_Scene";
     public const string LevelInfinite = "SampleScene";
-    public const string Level1 = "Lv_1_Scene";
 }
 
 public static class KeyNames

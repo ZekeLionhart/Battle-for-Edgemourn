@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 1
   sceneName: Lv_1_Scene
-  preview: {fileID: 0}
   unlockedByDefault: 1
-  chapter: 1
+  chapter: 3

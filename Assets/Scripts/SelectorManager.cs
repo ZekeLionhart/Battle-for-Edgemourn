@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SelectorManager : MonoBehaviour
 {
-    [SerializeField] private LevelDatabase database;
+    [SerializeField] private CampaignData database;
     [SerializeField] private LevelButton buttonPrefab;
     [SerializeField] private Transform parentLayout;
 

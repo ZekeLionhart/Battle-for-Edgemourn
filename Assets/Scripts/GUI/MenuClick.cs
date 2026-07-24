@@ -24,7 +24,7 @@ public class MenuClick : MonoBehaviour
     private void ChangeSceneWithAd()
     {
 #if UNITY_WEBGL
-        SceneManager.LoadScene(SceneNames.Level1);
+        SceneManager.LoadScene(SceneNames.LevelSelector);
         
 #else
         LevelPlayAdsManager.CallInterstitial();

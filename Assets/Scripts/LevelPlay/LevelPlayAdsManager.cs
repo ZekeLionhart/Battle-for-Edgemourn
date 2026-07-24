@@ -129,7 +129,7 @@ public class LevelPlayAdsManager : MonoBehaviour
     private void ContinueToGame()
     {
         LoadInterstitialAd();
-        SceneManager.LoadScene(SceneNames.Level1);
+        SceneManager.LoadScene(SceneNames.LevelSelector);
     }
 
     private void SdkInitializationCompletedEvent(LevelPlayConfiguration config)

@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "Level", menuName = "Level")]
+[CreateAssetMenu(fileName = "LevelData", menuName = "Level")]
 public class LevelData : ScriptableObject
 {
     public string levelName;
     public string sceneName;
 
-    public Sprite preview;
+    public Image thumbnail;
 
     public bool unlockedByDefault;
 
