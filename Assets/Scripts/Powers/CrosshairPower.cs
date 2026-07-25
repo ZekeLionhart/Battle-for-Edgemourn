@@ -17,7 +17,6 @@ public class CrosshairPower : PowerController
         startingPos = new Vector2(aimingPoint.position.x, aimingPoint.position.y);
         startingRot = Quaternion.Euler(0f, 0f, aimingPoint.eulerAngles.z);
         aimingPoint.SetPositionAndRotation(startingPos, startingRot);
-        SetAimStyle();
     }
 
     protected override void OnEnable()
@@ -90,10 +89,8 @@ public class CrosshairPower : PowerController
         ResetAim(this);
     }
 
-    private void SetAimStyle()
+    private void SetAimStyle(SettingsData data)
     {
-        if (PlayerPrefs.GetInt(SettingNames.AimStyle) == 0)
-            aimStyleManual = false;
-        else aimStyleManual = true;
+        aimStyleManual = data.manualAim;
     }
 }

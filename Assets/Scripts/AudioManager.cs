@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Data;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -7,16 +8,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float volumeModifier;
     [SerializeField] private AudioTypes audioType;
 
-    private void Awake()
-    {
-        SetVolume();
-    }
-
     private void OnEnable()
     {
         SettingsManager.UpdateSettings += SetVolume;
         MenuClick.OnFadeAudio += FadeOut;
-
     }
 
     private void OnDisable()
@@ -25,21 +20,25 @@ public class AudioManager : MonoBehaviour
         MenuClick.OnFadeAudio -= FadeOut;
     }
 
-    private void SetVolume()
+    private void Start()
     {
-        if (sound != null)
-        {
-            if (PlayerPrefs.GetInt(SettingNames.MuteAudio) == 1)
-            {
-                sound.volume = 0;
-                return;
-            }
+        SetVolume(SettingsManager.Instance.CurrentSettings);
+    }
 
-            if (audioType == AudioTypes.SFX)
-                sound.volume = PlayerPrefs.GetFloat(SettingNames.SFX) * volumeModifier;
-            else
-                sound.volume = PlayerPrefs.GetFloat(SettingNames.BGM) * volumeModifier;
+    private void SetVolume(SettingsData data)
+    {
+        if (sound == null) return;
+        
+        if (data.muteAudio)
+        {
+            sound.volume = 0;
+            return;
         }
+
+        if (audioType == AudioTypes.SFX)
+            sound.volume = (data.sfxVolume / 10) * volumeModifier;
+        else
+            sound.volume = (data.bgmVolume / 10) * volumeModifier;
     }
 
     private void FadeOut(AudioSource audio, float fadeTime)

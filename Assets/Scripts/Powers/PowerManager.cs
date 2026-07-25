@@ -15,7 +15,7 @@ public class PowerManager : MonoBehaviour
     private void Awake()
     {
         SetUpStartingPower();
-        UpdateReturnToBow();
+
         for (int i = 0; i < powers.Length; i++)
             cooldowns.Add(false);
     }
@@ -101,8 +101,8 @@ public class PowerManager : MonoBehaviour
         }
     }
 
-    private void UpdateReturnToBow()
+    private void UpdateReturnToBow(SettingsData data)
     {
-        isReturnToWarbow = Convert.ToBoolean(PlayerPrefs.GetInt(SettingNames.ReturnToBow));
+        isReturnToWarbow = data.returnToBow;
     }
 }

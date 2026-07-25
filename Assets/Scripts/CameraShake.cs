@@ -12,13 +12,13 @@ public class CameraShake : MonoBehaviour
 
     private void OnEnable()
     {
-        SettingsManager.UpdateSettings += FlipShake;
+        SettingsManager.UpdateSettings += ToggleShake;
         CallShake += Shake;
     }
 
     private void OnDisable()
     {
-        SettingsManager.UpdateSettings -= FlipShake;
+        SettingsManager.UpdateSettings -= ToggleShake;
         CallShake -= Shake;
     }
 
@@ -58,9 +58,8 @@ public class CameraShake : MonoBehaviour
         transform.localPosition = originalPosition;
     }
 
-    private void FlipShake()
+    private void ToggleShake(SettingsData data)
     {
-        if (canShake) canShake = false;
-        else canShake = true;
+        canShake = data.screenShake;
     }
 }

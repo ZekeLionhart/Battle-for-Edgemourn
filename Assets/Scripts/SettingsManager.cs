@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
+    public static SettingsManager Instance { get; private set; }
+
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private SettingsData settingsData;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private TextMeshProUGUI txtBgmSlider;
@@ -16,10 +19,24 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Toggle returnToBowToggle;
     [SerializeField] private Toggle aimStyleToggle;
     [SerializeField] private Toggle shakeToggle;
+    public SettingsData CurrentSettings => settingsData;
 
     public static Action OnSettingsOpen;
     public static Action OnSettingsClose;
-    public static Action UpdateSettings;
+    public static Action<SettingsData> UpdateSettings;
+
+    private void Awake()
+    {
+        settingsData = saveSystem.LoadSettings();
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -38,21 +55,15 @@ public class SettingsManager : MonoBehaviour
 
     public void SaveSettings()
     {
-        settingsData.bmgVolume = bgmSlider.value;
+        settingsData.bgmVolume = bgmSlider.value;
         settingsData.sfxVolume = sfxSlider.value;
         settingsData.muteAudio = muteAudioToggle.isOn;
         settingsData.returnToBow = returnToBowToggle.isOn;
         settingsData.manualAim = aimStyleToggle.isOn;
         settingsData.screenShake = shakeToggle.isOn;
-        /*
-        PlayerPrefs.SetFloat(SettingNames.BGM, bgmSlider.value / 10);
-        PlayerPrefs.SetFloat(SettingNames.SFX, sfxSlider.value / 10);
-        PlayerPrefs.SetInt(SettingNames.MuteAudio, muteAudioToggle.isOn ? 1 : 0);
-        PlayerPrefs.SetInt(SettingNames.ReturnToBow, returnToBowToggle.isOn ? 1 : 0);
-        PlayerPrefs.SetInt(SettingNames.AimStyle, aimStyleToggle.isOn ? 1 : 0);
-        PlayerPrefs.SetInt(SettingNames.ScreenShake, shakeToggle.isOn ? 1 : 0);
 
-        UpdateSettings();*/
+        UpdateSettings(settingsData);
+        saveSystem.SaveSettings(settingsData);
     }
 
     public void CloseSettings()
@@ -67,47 +78,14 @@ public class SettingsManager : MonoBehaviour
 
     private void LoadSettingsValues()
     {
-        //BGM Slider
-        float volume = PlayerPrefs.GetFloat(SettingNames.BGM) * 10;
-        txtBgmSlider.text = volume.ToString();
-        bgmSlider.value = volume;
+        settingsData = saveSystem.LoadSettings();
 
-        //SFX Slider
-        volume = PlayerPrefs.GetFloat(SettingNames.SFX) * 10;
-        txtSfxSlider.text = volume.ToString();
-        sfxSlider.value = volume;
-
-        //Mute Toggle
-        bool muteAudio;
-        if (PlayerPrefs.GetInt(SettingNames.MuteAudio) == 1)
-            muteAudio = true;
-        else
-            muteAudio = false;
-        muteAudioToggle.isOn = muteAudio;
-
-        //Return to Bow Toggle
-        bool returnToBow;
-        if (PlayerPrefs.GetInt(SettingNames.ReturnToBow) == 1)
-            returnToBow = true;
-        else 
-            returnToBow = false;
-        returnToBowToggle.isOn = returnToBow;
-
-        //Aim Style Toggle
-        bool aimStyle;
-        if (PlayerPrefs.GetInt(SettingNames.AimStyle) == 1)
-            aimStyle = true;
-        else
-            aimStyle = false;
-        aimStyleToggle.isOn = aimStyle;
-
-        //Screen Shake Toggle
-        bool screenShake;
-        if (PlayerPrefs.GetInt(SettingNames.ScreenShake) == 1)
-            screenShake = true;
-        else
-            screenShake = false;
-        shakeToggle.isOn = screenShake;
+        bgmSlider.value = settingsData.bgmVolume;
+        sfxSlider.value = settingsData.sfxVolume;
+        muteAudioToggle.isOn = settingsData.muteAudio;
+        returnToBowToggle.isOn = settingsData.returnToBow;
+        aimStyleToggle.isOn = settingsData.manualAim;
+        shakeToggle.isOn = settingsData.screenShake;
     }
 
     public void ChangeBgmVolume()
