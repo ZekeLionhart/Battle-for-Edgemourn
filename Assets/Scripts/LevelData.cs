@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 [CreateAssetMenu(fileName = "LevelData", menuName = "Level")]
 public class LevelData : ScriptableObject
 {
+    public string id;
     public string levelName;
     public string sceneName;
 

@@ -2881,6 +2881,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsScreen: {fileID: 4398099762705957429}
   pauseScreen: {fileID: 0}
+  settingsData:
+    bmgVolume: 10
+    sfxVolume: 10
+    muteAudio: 0
+    returnToBow: 1
+    manualAim: 0
+    screenShake: 1
   bgmSlider: {fileID: 3119785526610124822}
   txtBgmSlider: {fileID: 5629820892505452624}
   sfxSlider: {fileID: 8680945837317873999}

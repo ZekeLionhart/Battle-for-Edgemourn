@@ -7,6 +7,7 @@ public class SettingsManager : MonoBehaviour
 {
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private SettingsData settingsData;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private TextMeshProUGUI txtBgmSlider;
     [SerializeField] private Slider sfxSlider;
@@ -37,6 +38,13 @@ public class SettingsManager : MonoBehaviour
 
     public void SaveSettings()
     {
+        settingsData.bmgVolume = bgmSlider.value;
+        settingsData.sfxVolume = sfxSlider.value;
+        settingsData.muteAudio = muteAudioToggle.isOn;
+        settingsData.returnToBow = returnToBowToggle.isOn;
+        settingsData.manualAim = aimStyleToggle.isOn;
+        settingsData.screenShake = shakeToggle.isOn;
+        /*
         PlayerPrefs.SetFloat(SettingNames.BGM, bgmSlider.value / 10);
         PlayerPrefs.SetFloat(SettingNames.SFX, sfxSlider.value / 10);
         PlayerPrefs.SetInt(SettingNames.MuteAudio, muteAudioToggle.isOn ? 1 : 0);
@@ -44,7 +52,7 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetInt(SettingNames.AimStyle, aimStyleToggle.isOn ? 1 : 0);
         PlayerPrefs.SetInt(SettingNames.ScreenShake, shakeToggle.isOn ? 1 : 0);
 
-        UpdateSettings();
+        UpdateSettings();*/
     }
 
     public void CloseSettings()
