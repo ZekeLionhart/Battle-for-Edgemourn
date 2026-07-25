@@ -36,6 +36,11 @@ public class PowerManager : MonoBehaviour
         SettingsManager.UpdateSettings -= UpdateReturnToBow;
     }
 
+    private void Start()
+    {
+        UpdateReturnToBow(SettingsManager.Instance.CurrentSettings);
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown(KeyNames.Warbow))

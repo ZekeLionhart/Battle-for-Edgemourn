@@ -10,6 +10,11 @@ public class CameraShake : MonoBehaviour
 
     public static Action<float, float> CallShake;
 
+    private void Awake()
+    {
+        originalPosition = transform.localPosition;
+    }
+
     private void OnEnable()
     {
         SettingsManager.UpdateSettings += ToggleShake;
@@ -22,16 +27,14 @@ public class CameraShake : MonoBehaviour
         CallShake -= Shake;
     }
 
-    private void Awake()
+    private void Start()
     {
-        originalPosition = transform.localPosition;
-        SetUpShake();
+        SetUpShake(SettingsManager.Instance.CurrentSettings);
     }
 
-    private void SetUpShake()
+    private void SetUpShake(SettingsData data)
     {
-        if (PlayerPrefs.GetInt(SettingNames.ScreenShake) == 0) canShake = false;
-        else canShake = true;
+        canShake = data.screenShake;
     }
 
     private void Shake(float duration, float intensity)

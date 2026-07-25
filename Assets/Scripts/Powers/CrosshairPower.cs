@@ -37,6 +37,11 @@ public class CrosshairPower : PowerController
         SettingsManager.UpdateSettings -= SetAimStyle;
     }
 
+    private void Start()
+    {
+        SetAimStyle(SettingsManager.Instance.CurrentSettings);
+    }
+
     protected virtual void Update()
     {
         HandleAimMovement();
