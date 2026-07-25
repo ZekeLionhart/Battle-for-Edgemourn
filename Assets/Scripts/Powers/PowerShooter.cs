@@ -11,20 +11,9 @@ public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public static Action OnScreenClick;
     public static Action<bool> IsInsideArea;
 
-    private void OnEnable()
-    {
-        //PowerController.OnPowerShoot += RevokeShotPermission;
-    }
-
-    private void OnDisable()
-    {
-        //PowerController.OnPowerShoot -= RevokeShotPermission;
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         isPointerInside = true;
-        //permissionToShoot = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -39,10 +28,5 @@ public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         if (!isPointerInside && Input.GetButtonDown(KeyNames.Fire))
             IsInsideArea(false);
-    }/*
-
-    private void RevokeShotPermission(PowerController power, float cooldown)
-    {
-        permissionToShoot = false;
-    }*/
+    }
 }
