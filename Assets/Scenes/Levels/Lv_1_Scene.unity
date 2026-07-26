@@ -710,6 +710,10 @@ PrefabInstance:
       propertyPath: powerButtons.Array.data[0]
       value: 
       objectReference: {fileID: 1084549657}
+    - target: {fileID: 6873288280490317189, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: disabledButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1084549657}
     - target: {fileID: 6954358774134324553, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

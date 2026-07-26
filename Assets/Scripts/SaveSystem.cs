@@ -1,12 +1,14 @@
 #if UNITY_WEBGL && !UNITY_EDITOR
 using System.Runtime.InteropServices;
 #endif
-using System;
+using System.IO;
 using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem Instance { get; private set; }
+
+    private string settingsPath;
 
     private void Awake()
     {
@@ -17,59 +19,45 @@ public class SaveSystem : MonoBehaviour
         }
 
         Instance = this;
+
+        settingsPath = Path.Combine(Application.persistentDataPath, "settings.json");
     }
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-    [DllImport("__Internal")] private static extern void SetFloatToStorage(string key, float value);
-    [DllImport("__Internal")] private static extern void SetIntToStorage(string key, int value);
-    [DllImport("__Internal")] private static extern float GetFloatInStorage(string key);
-    [DllImport("__Internal")] private static extern int GetIntInStorage(string key);
-    [DllImport("__Internal")] private static extern int HasKeyInLocalStorage(string key);
+    [DllImport("__Internal")] private static extern void SyncFileSystem();
 #endif
 
     public void SaveSettings(SettingsData data)
     {
-#if UNITY_EDITOR
-        PlayerPrefs.SetFloat(SettingNames.BGM, data.bgmVolume);
-        PlayerPrefs.SetFloat(SettingNames.SFX, data.sfxVolume);
-        PlayerPrefs.SetInt(SettingNames.MuteAudio, data.muteAudio ? 1 : 0);
-        PlayerPrefs.SetInt(SettingNames.ReturnToBow, data.returnToBow ? 1 : 0);
-        PlayerPrefs.SetInt(SettingNames.AimStyle, data.manualAim ? 1 : 0);
-        PlayerPrefs.SetInt(SettingNames.ScreenShake, data.screenShake ? 1 : 0);
-#elif UNITY_WEBGL && !UNITY_EDITOR
-        SetFloatToStorage(SettingNames.BGM, data.bmgVolume);
-        SetFloatToStorage(SettingNames.SFX, data.sfxVolume);
-        SetIntToStorage(SettingNames.MuteAudio, data.muteAudio ? 1 : 0);
-        SetIntToStorage(SettingNames.ReturnToBow, data.returnToBow ? 1 : 0);
-        SetIntToStorage(SettingNames.AimStyle, data.manualAim ? 1 : 0);
-        SetIntToStorage(SettingNames.ScreenShake, data.screenShake ? 1 : 0);
-#elif UNITY_ANDROID && !UNITY_EDITOR
-        //INCLUDE ANDROID LATER
+        string json = JsonUtility.ToJson(data, true);
+
+        File.WriteAllText(settingsPath, json);
+
+        Debug.Log("Settings saved to: " + settingsPath);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SyncFileSystem();
 #endif
     }
 
     public SettingsData LoadSettings()
     {
-        SettingsData data = new();
+        if (!File.Exists(settingsPath))
+            return new SettingsData();
 
-#if UNITY_EDITOR
-        data.bgmVolume = PlayerPrefs.GetFloat(SettingNames.BGM);
-        data.sfxVolume = PlayerPrefs.GetFloat(SettingNames.SFX);
-        data.muteAudio = Convert.ToBoolean(PlayerPrefs.GetInt(SettingNames.MuteAudio));
-        data.returnToBow = Convert.ToBoolean(PlayerPrefs.GetInt(SettingNames.ReturnToBow));
-        data.manualAim = Convert.ToBoolean(PlayerPrefs.GetInt(SettingNames.AimStyle));
-        data.screenShake = Convert.ToBoolean(PlayerPrefs.GetInt(SettingNames.ScreenShake));
-#elif UNITY_WEBGL && !UNITY_EDITOR
-        data.bgmVolume = GetFloatInStorage(SettingNames.BGM);
-        data.sfxVolume = GetFloatInStorage(SettingNames.SFX);
-        data.muteAudio = Convert.ToBoolean(GetIntInStorage(SettingNames.MuteAudio));
-        data.returnToBow = Convert.ToBoolean(GetIntInStorage(SettingNames.ReturnToBow));
-        data.manualAim = Convert.ToBoolean(GetIntInStorage(SettingNames.AimStyle));
-        data.screenShake = Convert.ToBoolean(GetIntInStorage(SettingNames.ScreenShake));
-#elif UNITY_ANDROID && !UNITY_EDITOR
-        //INCLUDE ANDROID LATER
-#endif
+        string json = File.ReadAllText(settingsPath);
 
-        return data;
+        return JsonUtility.FromJson<SettingsData>(json);
+    }
+
+    public void DeleteSettings()
+    {
+        if (File.Exists(settingsPath))
+            File.Delete(settingsPath);
+    }
+
+    public void DeleteAllSaves()
+    {
+        DeleteSettings();
     }
 }
