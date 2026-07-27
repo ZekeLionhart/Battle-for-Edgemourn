@@ -19,6 +19,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Toggle returnToBowToggle;
     [SerializeField] private Toggle aimStyleToggle;
     [SerializeField] private Toggle shakeToggle;
+
     public SettingsData CurrentSettings => settingsData;
 
     public static Action OnSettingsOpen;

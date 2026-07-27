@@ -8,7 +8,7 @@ public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem Instance { get; private set; }
 
-    private string settingsPath;
+    private string SettingsPath => Path.Combine(Application.persistentDataPath, "settings.json");
 
     private void Awake()
     {
@@ -19,8 +19,6 @@ public class SaveSystem : MonoBehaviour
         }
 
         Instance = this;
-
-        settingsPath = Path.Combine(Application.persistentDataPath, "settings.json");
     }
 
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -31,9 +29,9 @@ public class SaveSystem : MonoBehaviour
     {
         string json = JsonUtility.ToJson(data, true);
 
-        File.WriteAllText(settingsPath, json);
+        File.WriteAllText(SettingsPath, json);
 
-        Debug.Log("Settings saved to: " + settingsPath);
+        Debug.Log("Settings saved to: " + SettingsPath);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
         SyncFileSystem();
@@ -42,18 +40,18 @@ public class SaveSystem : MonoBehaviour
 
     public SettingsData LoadSettings()
     {
-        if (!File.Exists(settingsPath))
+        if (!File.Exists(SettingsPath))
             return new SettingsData();
-
-        string json = File.ReadAllText(settingsPath);
-
+        
+        string json = File.ReadAllText(SettingsPath);
+        
         return JsonUtility.FromJson<SettingsData>(json);
     }
 
     public void DeleteSettings()
     {
-        if (File.Exists(settingsPath))
-            File.Delete(settingsPath);
+        if (File.Exists(SettingsPath))
+            File.Delete(SettingsPath);
     }
 
     public void DeleteAllSaves()
