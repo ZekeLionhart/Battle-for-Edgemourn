@@ -25,24 +25,34 @@ public class LevelButton : MonoBehaviour
         button.onClick.RemoveListener(StartLevel);
     }
 
-    public void Initialize(LevelData level)
+    public void Initialize(LevelData level, LevelProgress progress)
     {
+
         levelData = level;
         levelNameBox.text = level.levelName;
-        starAmount = levelData.chapter; // change to load from PlayrPrefs in the future
+        starAmount = progress.stars;
+
+        if (levelData.unlockedByDefault && progress.state == LevelStates.Locked)
+            progress.state = LevelStates.Unlocked;
+
+        if (progress.state == LevelStates.Locked) return;
+        else lockedOverlay.SetActive(false);
 
         for (int i = 0; i < MaxStars; i++)
         {
             if (starAmount > i) Instantiate(goldStar, starLayout);
             else Instantiate(grayStar, starLayout);
         }
-
-        if (!levelData.unlockedByDefault) lockedOverlay.SetActive(true);
     }
 
     public void StartLevel()
     {
         if (levelData.unlockedByDefault)
             SceneManager.LoadScene(levelData.sceneName);
+    }
+
+    public void SetName(string name)
+    {
+        levelNameBox.text = name;
     }
 }

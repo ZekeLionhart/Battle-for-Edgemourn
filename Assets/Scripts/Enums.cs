@@ -1,10 +1,13 @@
-using UnityEngine;
-
 public enum DamageTypes { Pierce, Fire, Thunder, Earth }
 public enum TargetTypes { Ally, Environment }
 public enum AudioTypes { SFX, BGM };
 public enum PowerTypes { Warbow, ArrowVolley, Fireball, LightningStrike, Stonewall, BurningTar };
-public enum LevelNameKeys { };
+public enum LevelStates { Locked, Unlocked, Completed };
+public enum LevelIDs { OuterGates001 = 0, OuterGates002 = 1, OuterGates003 = 2,
+                       FirstLayer001 = 3, FirstLayer002 = 4, FirstLayer003 = 5,
+                       MidLayer001 = 6, MidLayer002 = 7, MidLayer003 = 8,
+                       InnerLayer001 = 9, InnerLayer002 = 10, InnerLayer003 = 11,
+                       EndlessMode = 12 };
 
 public static class SettingNames
 {

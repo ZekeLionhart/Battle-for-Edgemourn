@@ -1,0 +1,71 @@
+using System.Linq;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.VisualScripting;
+
+public class ProgressManager : MonoBehaviour
+{
+    public static ProgressManager Instance { get; private set; }
+
+    [SerializeField] private SaveSystem saveSystem;
+    [SerializeField] private CampaignData campaign;
+    [SerializeField] private ProgressData progressData;
+
+    public ProgressData CurrentProgress => progressData;
+    public IReadOnlyList<LevelData> Levels => campaign.levels;
+
+    private void Awake()
+    {
+        LoadProgress();
+        CreateProgressData();
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
+    private void LoadProgress()
+    {
+        progressData = saveSystem.LoadProgress();
+    }
+
+    public void SaveProgress()
+    {
+        saveSystem.SaveProgress(progressData);
+    }
+
+    private void CreateProgressData()
+    {
+        foreach (LevelData level in campaign.levels)
+        {
+            if (!progressData.levels.Any(progress => progress.levelID == level.levelID))
+            {
+                LevelProgress progress = new()
+                {
+                    levelID = level.levelID,
+                    state = LevelStates.Locked,
+                    stars = 0
+                };
+
+                if (level.unlockedByDefault) progress.state = LevelStates.Unlocked;
+
+                progressData.levels.Add(progress);
+            }
+        }
+
+        SaveProgress();
+    }
+
+    public LevelProgress FindLevelProgress(LevelData level)
+    {
+        foreach (LevelProgress levelProgress in progressData.levels)
+            if (level.levelID == levelProgress.levelID)
+                return levelProgress;
+
+        return new LevelProgress();
+    }
+}

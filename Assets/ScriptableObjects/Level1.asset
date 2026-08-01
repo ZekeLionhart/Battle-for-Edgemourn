@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e83f431611b8d24981046b47a5a8bb9, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  levelName: Level 1
+  levelID: 0
+  levelName: OuterGates1
   sceneName: Lv_1_Scene
   unlockedByDefault: 1
   chapter: 3
