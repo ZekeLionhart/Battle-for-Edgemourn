@@ -50,6 +50,7 @@ public static class TagNames
 public static class ParameterNames
 {
     public const string StartGame = "Start";
+    public const string GameIsWon = "Win";
     public const string GameIsOver = "Over";
     public const string IsColliding = "IsColliding";
     public const string OnHpEmpty = "OnHpEmpty";

@@ -38,7 +38,7 @@ public class EnemyBase : MonoBehaviour
     protected bool isDead = false;
 
     public static Action<GameObject, int> OnDamageDealt;
-    public static Action<int> OnEnemyDeath;
+    public static Action<int, EnemyBase> OnEnemyDeath;
 
     private void Awake()
     {
@@ -135,7 +135,7 @@ public class EnemyBase : MonoBehaviour
             onDeathSfx.pitch = Random.Range(0.9f, 1.1f);
             onDeathSfx.Play();
             CallKillAnalytics(powerType, scoreValue);
-            OnEnemyDeath(scoreValue);
+            OnEnemyDeath(scoreValue, this);
         }
         else if (gruntSfx != null && !isDead)
         {

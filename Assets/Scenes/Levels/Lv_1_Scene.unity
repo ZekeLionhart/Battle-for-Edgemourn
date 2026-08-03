@@ -666,6 +666,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5011106606909112968, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5767083455383399789, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1608,6 +1612,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2105410221}
     m_Modifications:
+    - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
+      propertyPath: waves.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
+      propertyPath: waves.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 353779000df751f40a9b74b639909482, type: 2}
     - target: {fileID: 3851270056583433955, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: m_Name
       value: WaveSpawner

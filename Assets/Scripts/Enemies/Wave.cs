@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Wave", menuName = "Wave")]
+[CreateAssetMenu(fileName = "Wave", menuName = "Enemy Wave")]
 public class Wave : ScriptableObject
 {
     public EnemyBase enemy;

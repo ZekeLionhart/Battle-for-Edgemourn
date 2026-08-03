@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,9 @@ public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private List<Wave> waves;
     private WaitForSeconds waveWFS;
+
+    public static Action<EnemyBase> OnEnemySpawn;
+    public static Action OnFinishedSpawning;
 
     private void Awake()
     {
@@ -26,7 +30,7 @@ public class WaveSpawner : MonoBehaviour
             for (int i = 0; i < wave.amount; i++)
             {
                 if (!wave.IsDelayOnly)
-                    Instantiate(wave.enemy, transform.position, transform.rotation);
+                    OnEnemySpawn(Instantiate(wave.enemy, transform.position, transform.rotation));
 
                 if (i < wave.amount - 1)
                     yield return waveWFS;
@@ -34,5 +38,7 @@ public class WaveSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(wave.nextWaveDelay);
         }
+
+        OnFinishedSpawning();
     }
 }

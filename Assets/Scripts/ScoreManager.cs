@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
         EnemyBase.OnEnemyDeath += AddScore;
     }
 
-    private void AddScore(int points)
+    private void AddScore(int points, EnemyBase enemy)
     {
         score += points;
         UpdateScore();
