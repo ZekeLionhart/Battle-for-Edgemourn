@@ -23,15 +23,16 @@ public class WaveSpawner : MonoBehaviour
         {
             waveWFS = new WaitForSeconds(wave.interval);
 
-            yield return new WaitForSeconds(wave.startDelay);
-
             for (int i = 0; i < wave.amount; i++)
             {
-                Instantiate(wave.enemy, transform.position, transform.rotation);
+                if (!wave.IsDelayOnly)
+                    Instantiate(wave.enemy, transform.position, transform.rotation);
 
                 if (i < wave.amount - 1)
                     yield return waveWFS;
             }
+
+            yield return new WaitForSeconds(wave.nextWaveDelay);
         }
     }
 }
