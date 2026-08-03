@@ -5,6 +5,12 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private List<Wave> waves;
+    private WaitForSeconds waveWFS;
+
+    private void Awake()
+    {
+        waveWFS = new WaitForSeconds(0f);
+    }
 
     private void Start()
     {
@@ -15,6 +21,8 @@ public class WaveSpawner : MonoBehaviour
     {
         foreach (Wave wave in waves)
         {
+            waveWFS = new WaitForSeconds(wave.interval);
+
             yield return new WaitForSeconds(wave.startDelay);
 
             for (int i = 0; i < wave.amount; i++)
@@ -22,7 +30,7 @@ public class WaveSpawner : MonoBehaviour
                 Instantiate(wave.enemy, transform.position, transform.rotation);
 
                 if (i < wave.amount - 1)
-                    yield return new WaitForSeconds(wave.interval);
+                    yield return waveWFS;
             }
         }
     }

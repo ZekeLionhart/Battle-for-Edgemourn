@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class UnlimitedSpawner : MonoBehaviour
 {
-    [SerializeField] private EnemyConfig enemy;
+    [SerializeField] private EnemyBase enemy;
     [SerializeField] private int squadSize;
     [SerializeField] private float distBetweenEach;
     [SerializeField] private float enemyDelay;
-    protected WaitForSeconds enemyWFS;
+    private WaitForSeconds enemyWFS;
 
     private void Awake()
     {
@@ -19,12 +19,12 @@ public class UnlimitedSpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-    protected virtual IEnumerator SpawnEnemy()
+    private IEnumerator SpawnEnemy()
     {
         yield return enemyWFS;
 
         for (int i = 0; i < squadSize; i++)
-            Instantiate(enemy.enemyPrefab, transform.position + distBetweenEach * i * Vector3.right, transform.rotation);
+            Instantiate(enemy, transform.position + distBetweenEach * i * Vector3.right, transform.rotation);
 
         StartCoroutine(SpawnEnemy());
     }

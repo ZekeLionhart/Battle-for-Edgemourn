@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd4e3ff2c30bf42bf48726839c9bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: e20c0373038740c47b52fe0f2233571a, type: 2}
+  enemy: {fileID: -163331265691283065, guid: 42fc219d165052a468fcb000d4e18a64, type: 3}
   squadSize: 1
   distBetweenEach: 0
   enemyDelay: 3
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd4e3ff2c30bf42bf48726839c9bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: e0d6300b290f62446a41ed237d3284f8, type: 2}
+  enemy: {fileID: 3909368127585934619, guid: 5b3beaea652d1424f8c029b2d32cddf5, type: 3}
   squadSize: 5
   distBetweenEach: 0.5
   enemyDelay: 15
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd4e3ff2c30bf42bf48726839c9bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: f836403a9f3358e47897fc114710bd36, type: 2}
+  enemy: {fileID: -6790633900081757478, guid: e71af7c7970c93644a859ce2adf47621, type: 3}
   squadSize: 1
   distBetweenEach: 0
   enemyDelay: 45
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd4e3ff2c30bf42bf48726839c9bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: 3ca99ebfdddc2d74095b1daed54d41fa, type: 2}
+  enemy: {fileID: -7301758324021147790, guid: a0ae97081b822e1409a6785c609d74ce, type: 3}
   squadSize: 1
   distBetweenEach: 0
   enemyDelay: 60
