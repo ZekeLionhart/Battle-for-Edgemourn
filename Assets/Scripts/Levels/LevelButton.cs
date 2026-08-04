@@ -12,6 +12,7 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private GameObject grayStar;
     [SerializeField] private GameObject goldStar;
     private LevelData levelData;
+    private LevelProgress levelProgress;
     private int starAmount = 0;
     private const int MaxStars = 3;
 
@@ -29,11 +30,9 @@ public class LevelButton : MonoBehaviour
     {
 
         levelData = level;
+        levelProgress = progress;
         levelNameBox.text = level.levelName;
         starAmount = progress.stars;
-
-        if (levelData.unlockedByDefault && progress.state == LevelStates.Locked)
-            progress.state = LevelStates.Unlocked;
 
         if (progress.state == LevelStates.Locked) return;
         else lockedOverlay.SetActive(false);
@@ -47,7 +46,7 @@ public class LevelButton : MonoBehaviour
 
     public void StartLevel()
     {
-        if (levelData.unlockedByDefault)
+        if (levelProgress.state != LevelStates.Locked)
             SceneManager.LoadScene(levelData.sceneName);
     }
 

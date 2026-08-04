@@ -89,7 +89,26 @@ public class ProgressManager : MonoBehaviour
 
         progressData.coins += result.coinsEarned;
 
+        UnlockNextLevel(result.level);
+
         SaveProgress();
+    }
+
+    private void UnlockNextLevel(LevelData currentLevel)
+    {
+        LevelData nextLevel = campaign.GetNextLevel(currentLevel);
+
+        if (nextLevel == null) return;
+        
+        foreach (LevelProgress progress in progressData.levels)
+        {
+            if (progress.levelID == nextLevel.levelID)
+            {
+                if (progress.state == LevelStates.Locked)
+                    progress.state = LevelStates.Unlocked;
+                break;
+            }
+        }
     }
 
     public LevelProgress FindLevelProgress(LevelData level)

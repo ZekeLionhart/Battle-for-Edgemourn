@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     private void CalculateResult(bool victory)
     {
-        if (HealthManager.Instance.CurrentHealth == HealthManager.Instance.MaxHealth)
+        if (HealthManager.Instance.CurrentHealth >= HealthManager.Instance.MaxHealth)
             starReward = 3;
 
         else if (HealthManager.Instance.CurrentHealth >= HealthManager.Instance.MaxHealth * 0.6)
