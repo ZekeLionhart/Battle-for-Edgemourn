@@ -52,8 +52,6 @@ public class SaveSystem : MonoBehaviour
 
         File.WriteAllText(SettingsPath, json);
 
-        Debug.Log("Settings saved to: " + SettingsPath);
-
 #if UNITY_WEBGL && !UNITY_EDITOR
         SyncFileSystem();
 #endif
@@ -64,8 +62,6 @@ public class SaveSystem : MonoBehaviour
         string json = JsonUtility.ToJson(data, true);
 
         File.WriteAllText(ProgressPath, json);
-
-        Debug.Log("Progress saved to: " + ProgressPath);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
         SyncFileSystem();

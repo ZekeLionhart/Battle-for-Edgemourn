@@ -711,6 +711,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6873288280490317189, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: currentLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: af93f7772c5b881468536934660cc5ff, type: 2}
+    - target: {fileID: 6873288280490317189, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: powerButtons.Array.data[0]
       value: 
       objectReference: {fileID: 1084549657}
@@ -1614,7 +1618,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: waves.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: waves.Array.data[0]

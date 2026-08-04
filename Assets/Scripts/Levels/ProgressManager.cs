@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.VisualScripting;
 
 public class ProgressManager : MonoBehaviour
 {
@@ -26,6 +25,16 @@ public class ProgressManager : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnResultCalculated += MergeResultIntoProgress;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnResultCalculated -= MergeResultIntoProgress;
     }
 
     private void LoadProgress()
@@ -56,6 +65,29 @@ public class ProgressManager : MonoBehaviour
                 progressData.levels.Add(progress);
             }
         }
+
+        SaveProgress();
+    }
+
+    private void MergeResultIntoProgress(MatchResult result)
+    {
+        if (result.victory)
+        {
+            foreach (LevelProgress progress in progressData.levels)
+            {
+                if (progress.levelID == result.level.levelID)
+                {
+                    progress.state = LevelStates.Completed;
+
+                    if (result.stars > progress.stars)
+                        progress.stars = result.stars;
+
+                    break;
+                }
+            }
+        }
+
+        progressData.coins += result.coinsEarned;
 
         SaveProgress();
     }
