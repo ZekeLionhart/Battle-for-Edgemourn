@@ -47,7 +47,7 @@ public class CrosshairPower : PowerController
 
     protected virtual void HandleAimMovement()
     {
-        if ((aimStyleManual && !Input.GetButton(KeyNames.Fire)) || !offCooldown)
+        if ((aimStyleManual && !Input.GetButton(KeyNames.Fire)) || !offCooldown || !isMouseInside)
             return;
 
         aimingPoint.position += aimSpeed * directionMult * Time.deltaTime * Vector3.right;
@@ -59,7 +59,7 @@ public class CrosshairPower : PowerController
 
     protected virtual void HandleAimRotation()
     {
-        if ((aimStyleManual && !Input.GetButton(KeyNames.Fire)) || !offCooldown)
+        if ((aimStyleManual && !Input.GetButton(KeyNames.Fire)) || !offCooldown || !isMouseInside)
             return;
 
         aimingPoint.Rotate(0, 0, directionMult * aimSpeed * Time.deltaTime);
