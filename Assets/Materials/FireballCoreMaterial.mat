@@ -54,13 +54,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DistortionScale: 10
+    - _DistortionScale: 5
+    - _DistortionStrength: 0.3
     - _EdgeScale: 10
+    - _Power: 1
     - _RotationSpeed: 0.05
     - _Scale: 3
     - _Strength: 0.1
     m_Colors:
-    - _DistortionSpeed: {r: 0, g: -0.5, b: 0, a: 0}
-    - _EdgeSpeed: {r: 0, g: -2, b: 0, a: 0}
+    - _DistortionSpeed: {r: 0, g: -1, b: 0, a: 0}
+    - _EdgeSpeed: {r: 0, g: -1, b: 0, a: 0}
     - _Speed: {r: 0, g: -1.5, b: 0, a: 0}
   m_BuildTextureStacks: []
