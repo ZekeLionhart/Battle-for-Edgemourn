@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6373542227332148437}
   - component: {fileID: 8508911276192536716}
   m_Layer: 0
-  m_Name: EnemyGroundDust
+  m_Name: VFX_Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

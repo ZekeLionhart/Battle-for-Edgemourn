@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6097240729853534702}
   - component: {fileID: 847254952506251030}
   m_Layer: 0
-  m_Name: Splinters
+  m_Name: VFX_Splinters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

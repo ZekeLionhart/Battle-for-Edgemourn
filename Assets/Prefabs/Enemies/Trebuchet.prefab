@@ -811,10 +811,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4137500561695387351}
+  - component: {fileID: -7301758324021147790}
   - component: {fileID: 4137500561695387349}
   - component: {fileID: 4137500561695387346}
   - component: {fileID: 6057173843168479271}
-  - component: {fileID: -7301758324021147790}
   m_Layer: 7
   m_Name: Trebuchet
   m_TagString: Enemy
@@ -849,6 +849,47 @@ Transform:
   - {fileID: 8984441023868236081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7301758324021147790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137500561695387344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d766d48bed2a4c4eab19d2e65e13cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 4137500561695387349}
+  mainBone: {fileID: 1200999328095946515}
+  hitbox: {fileID: 4137500561695387346}
+  animator: {fileID: 6057173843168479271}
+  dustParticles:
+  - {fileID: 5316003272819445099}
+  - {fileID: 5509366278450983643}
+  - {fileID: 8894176001173384649}
+  onAttackSfx: {fileID: 3577800615795664938}
+  onHitSfx: {fileID: 1325589692690376816}
+  gruntSfx: {fileID: 0}
+  onDeathSfx: {fileID: 4598319623281406663}
+  targets: 00000000
+  hitpoints: 20
+  speed: 0.5
+  damage: 20
+  attackCooldown: 5
+  attackRange: 12
+  scoreValue: 1000
+  arrowMultiplier: 0.5
+  fireMultiplier: 1.5
+  thunderMultiplier: 2
+  earthMultiplier: 2
+  shakeDuration: 0.25
+  shakeIntensity: 0.5
+  gore: {fileID: 2115766130640322734, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
+  ammo: {fileID: 5205078567594977183, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
+  ammoSpawn: {fileID: 3676179479713334986}
+  onReloadSfx: {fileID: 6555318111688981696}
 --- !u!50 &4137500561695387349
 Rigidbody2D:
   serializedVersion: 4
@@ -942,47 +983,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-7301758324021147790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4137500561695387344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d766d48bed2a4c4eab19d2e65e13cb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 4137500561695387349}
-  mainBone: {fileID: 1200999328095946515}
-  hitbox: {fileID: 4137500561695387346}
-  animator: {fileID: 6057173843168479271}
-  dustParticles:
-  - {fileID: 5316003272819445099}
-  - {fileID: 5509366278450983643}
-  - {fileID: 8894176001173384649}
-  onAttackSfx: {fileID: 3577800615795664938}
-  onHitSfx: {fileID: 1325589692690376816}
-  gruntSfx: {fileID: 0}
-  onDeathSfx: {fileID: 4598319623281406663}
-  targets: 00000000
-  hitpoints: 20
-  speed: 0.5
-  damage: 20
-  attackCooldown: 5
-  attackRange: 12
-  scoreValue: 1000
-  arrowMultiplier: 0.5
-  fireMultiplier: 1.5
-  thunderMultiplier: 2
-  earthMultiplier: 2
-  shakeDuration: 0.25
-  shakeIntensity: 0.5
-  gore: {fileID: 2115766130640322734, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
-  ammo: {fileID: 5205078567594977183, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
-  ammoSpawn: {fileID: 3676179479713334986}
-  onReloadSfx: {fileID: 6555318111688981696}
 --- !u!1 &4286608714469487077
 GameObject:
   m_ObjectHideFlags: 0

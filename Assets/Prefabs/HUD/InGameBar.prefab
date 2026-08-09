@@ -635,7 +635,7 @@ MonoBehaviour:
   healthText: {fileID: 5974680377626159049}
   hitSfx: {fileID: 4687192800691410756}
   deathSfx: {fileID: 7545936259961371982}
-  healthPoints: 100
+  maxHealth: 100
 --- !u!1 &5974680377791855041
 GameObject:
   m_ObjectHideFlags: 0

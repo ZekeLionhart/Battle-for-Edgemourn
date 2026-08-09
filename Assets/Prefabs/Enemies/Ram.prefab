@@ -465,10 +465,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4137500561695387351}
+  - component: {fileID: -6790633900081757478}
   - component: {fileID: 4137500561695387349}
   - component: {fileID: 4137500561695387346}
   - component: {fileID: 6057173843168479271}
-  - component: {fileID: -6790633900081757478}
   m_Layer: 7
   m_Name: Ram
   m_TagString: Enemy
@@ -502,6 +502,44 @@ Transform:
   - {fileID: 8585140029753453001}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6790633900081757478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137500561695387344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a58a5824e84624489b77570f2d04129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 4137500561695387349}
+  mainBone: {fileID: 6275979215848511877}
+  hitbox: {fileID: 4137500561695387346}
+  animator: {fileID: 6057173843168479271}
+  dustParticles:
+  - {fileID: 4286310067860567932}
+  - {fileID: 3353435348232350638}
+  - {fileID: 8135149299354989873}
+  onAttackSfx: {fileID: 0}
+  onHitSfx: {fileID: 6811056253433361817}
+  gruntSfx: {fileID: 0}
+  onDeathSfx: {fileID: 4780616504508939532}
+  targets: 0000000001000000
+  hitpoints: 15
+  speed: 0.5
+  damage: 12
+  attackCooldown: 3
+  attackRange: 0.25
+  scoreValue: 500
+  arrowMultiplier: 0.5
+  fireMultiplier: 2
+  thunderMultiplier: 1
+  earthMultiplier: 2
+  shakeDuration: 0.2
+  shakeIntensity: 0.2
+  gore: {fileID: 2115766130640322734, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
 --- !u!50 &4137500561695387349
 Rigidbody2D:
   serializedVersion: 4
@@ -595,44 +633,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-6790633900081757478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4137500561695387344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a58a5824e84624489b77570f2d04129, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 4137500561695387349}
-  mainBone: {fileID: 6275979215848511877}
-  hitbox: {fileID: 4137500561695387346}
-  animator: {fileID: 6057173843168479271}
-  dustParticles:
-  - {fileID: 4286310067860567932}
-  - {fileID: 3353435348232350638}
-  - {fileID: 8135149299354989873}
-  onAttackSfx: {fileID: 0}
-  onHitSfx: {fileID: 6811056253433361817}
-  gruntSfx: {fileID: 0}
-  onDeathSfx: {fileID: 4780616504508939532}
-  targets: 0000000001000000
-  hitpoints: 15
-  speed: 0.5
-  damage: 12
-  attackCooldown: 3
-  attackRange: 0.25
-  scoreValue: 500
-  arrowMultiplier: 0.5
-  fireMultiplier: 2
-  thunderMultiplier: 1
-  earthMultiplier: 2
-  shakeDuration: 0.2
-  shakeIntensity: 0.2
-  gore: {fileID: 2115766130640322734, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
 --- !u!1 &4963584205576358051
 GameObject:
   m_ObjectHideFlags: 0
