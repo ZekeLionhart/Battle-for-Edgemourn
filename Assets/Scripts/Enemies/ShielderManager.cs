@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ShielderManager : EnemyBase
 {
+    [Header("--Individual Fields--")]
     [SerializeField] private AudioSource onDefendSfx;
     [SerializeField] private Rigidbody2D deadArrow;
 

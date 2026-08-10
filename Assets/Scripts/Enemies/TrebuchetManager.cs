@@ -3,17 +3,22 @@ using UnityEngine;
 
 public class TrebuchetManager : EnemyBase
 {
+    [Header("--Individual Fields--")]
     [SerializeField] private Rigidbody2D ammo;
     [SerializeField] private Transform ammoSpawn;
     [SerializeField] private AudioSource onReloadSfx;
 
     public static Action<Rigidbody2D, int, float, float> OnBoulderInstantiated;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        bonusWindow = 10f;
+    }
+
     protected override void Attack()
     {
         Rigidbody2D shotRigid = Instantiate(ammo, ammoSpawn.position, ammoSpawn.rotation);
-        //Vector3 force = 1.73f * (new Vector3(4f, 4f, 0f) - transform.position);
-        //shotRigid.velocity = force;
         shotRigid.velocity = CalculateBallisticVelocity(new Vector2(-6.5f, -0.5f));
 
         OnBoulderInstantiated(shotRigid, damage, shakeDuration, shakeIntensity);

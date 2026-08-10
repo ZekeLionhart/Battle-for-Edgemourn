@@ -831,7 +831,7 @@ Transform:
   m_GameObject: {fileID: 4137500561695387344}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.7, y: -1.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -847,6 +847,7 @@ Transform:
   - {fileID: 5622582226443374995}
   - {fileID: 5455093908192407075}
   - {fileID: 8984441023868236081}
+  - {fileID: 1609877517991856674}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-7301758324021147790
@@ -869,6 +870,8 @@ MonoBehaviour:
   - {fileID: 5316003272819445099}
   - {fileID: 5509366278450983643}
   - {fileID: 8894176001173384649}
+  scoreVFX: {fileID: 5303948133577739757, guid: 31aeb39669f1f0c4d9c082d4455bc8e2, type: 3}
+  scoreVFXOrigin: {fileID: 1609877517991856674}
   onAttackSfx: {fileID: 3577800615795664938}
   onHitSfx: {fileID: 1325589692690376816}
   gruntSfx: {fileID: 0}
@@ -879,7 +882,7 @@ MonoBehaviour:
   damage: 20
   attackCooldown: 5
   attackRange: 12
-  scoreValue: 1000
+  scoreValue: 100
   arrowMultiplier: 0.5
   fireMultiplier: 1.5
   thunderMultiplier: 2
@@ -1737,6 +1740,37 @@ MonoBehaviour:
     m_Extent: {x: 0.04852596, y: 0.87077117, z: 0}
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!1 &8795628162108995282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1609877517991856674}
+  m_Layer: 0
+  m_Name: ScoreVFXOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1609877517991856674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795628162108995282}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.417, y: 1.369, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4137500561695387351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1276034012831424958
 PrefabInstance:
   m_ObjectHideFlags: 0

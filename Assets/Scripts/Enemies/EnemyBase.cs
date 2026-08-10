@@ -6,15 +6,27 @@ using Random = UnityEngine.Random;
 
 public class EnemyBase : MonoBehaviour
 {
+    [Header("------References------")]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] protected GameObject mainBone;
     [SerializeField] private Collider2D hitbox;
     [SerializeField] protected Animator animator;
+
+    [Header("---------VFX---------")]
+    [SerializeField] protected float shakeDuration;
+    [SerializeField] protected float shakeIntensity;
+    [SerializeField] private ScoreVFX scoreVFX;
+    [SerializeField] private Transform scoreVFXOrigin;
+    [SerializeField] protected GameObject gore;
     [SerializeField] protected ParticleSystem[] dustParticles;
+
+    [Header("---------SFX---------")]
     [SerializeField] private AudioSource onAttackSfx;
     [SerializeField] private AudioSource onHitSfx;
     [SerializeField] private AudioSource gruntSfx;
     [SerializeField] private AudioSource onDeathSfx;
+
+    [Header("--------Stats--------")]
     [SerializeField] protected TargetTypes[] targets;
     [SerializeField] private float hitpoints;
     [SerializeField] private float speed;
@@ -22,13 +34,13 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private float attackRange;
     [SerializeField] private int scoreValue;
+
+    [Header("-----Resistances-----")]
     [SerializeField] protected float arrowMultiplier;
     [SerializeField] protected float fireMultiplier;
     [SerializeField] protected float thunderMultiplier;
     [SerializeField] protected float earthMultiplier;
-    [SerializeField] protected float shakeDuration;
-    [SerializeField] protected float shakeIntensity;
-    [SerializeField] protected GameObject gore;
+
     private GameObject previousHit;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
@@ -36,12 +48,19 @@ public class EnemyBase : MonoBehaviour
     private bool canAttack = true;
     private bool canMove = false;
     protected bool isDead = false;
+    private float spawnTime;
+    protected float bonusWindow = 15f;
+    private float bonusMultiplier = 2f;
+
+    public float Lifetime => Time.time - spawnTime;
+    public int CoinsReward => scoreValue;
 
     public static Action<GameObject, int> OnDamageDealt;
     public static Action<int, EnemyBase> OnEnemyDeath;
 
-    private void Awake()
+    protected virtual void Awake()
     {
+        spawnTime = Time.time;
         attackCooldownWFS = new WaitForSeconds(attackCooldown);
         targetStrings = new List<string>();
 
@@ -67,6 +86,14 @@ public class EnemyBase : MonoBehaviour
             WalkForwards();
 
         CalculateDistanceToTarget();
+    }
+
+    private int CalculateScore()
+    {
+        if (Lifetime <= bonusWindow / speed) //slower enemies retain the bonus for longer
+            return (int)(scoreValue * bonusMultiplier);
+        else
+            return scoreValue;
     }
 
     protected virtual void CalculateDistanceToTarget()
@@ -129,13 +156,10 @@ public class EnemyBase : MonoBehaviour
 
         if (hitpoints <= 0 && !isDead)
         {
-            isDead = true;
-            Destroy(rigidBody);
-            animator.SetTrigger(ParameterNames.OnHpEmpty);
-            onDeathSfx.pitch = Random.Range(0.9f, 1.1f);
-            onDeathSfx.Play();
-            CallKillAnalytics(powerType, scoreValue);
-            OnEnemyDeath(scoreValue, this);
+            int finalScore = CalculateScore();
+
+            InitiateDeath(finalScore);
+            CallKillAnalytics(powerType, finalScore);
         }
         else if (gruntSfx != null && !isDead)
         {
@@ -191,6 +215,18 @@ public class EnemyBase : MonoBehaviour
             animator.SetTrigger(ParameterNames.OnAttackCldwn);
             canAttack = true;
         }
+    }
+
+    private void InitiateDeath(int finalScore)
+    {
+        isDead = true;
+        Destroy(rigidBody);
+        animator.SetTrigger(ParameterNames.OnHpEmpty);
+        onDeathSfx.pitch = Random.Range(0.9f, 1.1f);
+        onDeathSfx.Play();
+        OnEnemyDeath(finalScore, this);
+        scoreVFX.SetScoreText(finalScore);
+        Instantiate(scoreVFX, scoreVFXOrigin);
     }
 
     private void Die()
