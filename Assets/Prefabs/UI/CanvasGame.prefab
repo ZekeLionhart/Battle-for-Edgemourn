@@ -863,7 +863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dae82963203ea6a478af54145c0dbe10, type: 2}
   m_sharedMaterial: {fileID: 3102890874766891067, guid: dae82963203ea6a478af54145c0dbe10, type: 2}
@@ -3626,6 +3626,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6629836028703225026, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6657071389529876797, guid: 201894f3ced3e4b40be611fb76d27d13, type: 3}
       propertyPath: saveSystem
       value: 
@@ -4024,6 +4028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55784c0620b832840bfb2ff10b3e2e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   animator: {fileID: 8040306085912978585}
   killScore: {fileID: 5459827628215740100}
   hPScore: {fileID: 5588568365072287531}

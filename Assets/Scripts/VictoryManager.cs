@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class VictoryManager : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private Animator animator;
     [SerializeField] private TextMeshProUGUI killScore;
     [SerializeField] private TextMeshProUGUI hPScore;
@@ -11,13 +12,33 @@ public class VictoryManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalScore;
     [SerializeField] private TextMeshProUGUI totalScoreToMove;
     [SerializeField] private TextMeshProUGUI moraleScore;
-    private int maxKillScore = 100;
-    private int maxHPScore = 100;
-    private int maxStreakScore = 100;
+    private int maxKillScore;
+    private int maxHPScore;
+    private int maxStreakScore;
+    private int maxTotalScore;
+    private int stashedMoraleScore;
 
-    private void Update()
+    private void OnEnable()
     {
+        GameManager.OnScoreCalculated += SetScores;
+    }
 
+    private void OnDisable()
+    { 
+        GameManager.OnScoreCalculated -= SetScores;
+    }
+
+    private void Start()
+    {
+        moraleScore.text = (stashedMoraleScore = ProgressManager.Instance.CurrentProgress.coins).ToString();
+    }
+
+    private void SetScores(int newKillScore, int newHPScore, int newStreakScore)
+    {
+        maxKillScore = newKillScore;
+        maxHPScore = newHPScore;
+        maxStreakScore = newStreakScore;
+        maxTotalScore = maxKillScore + maxHPScore + maxStreakScore;
     }
 
     public void RunKillScore()
@@ -37,13 +58,14 @@ public class VictoryManager : MonoBehaviour
 
     public void RunFinalScore()
     {
-        StartCoroutine(RunScoreCount(totalScore, 0, maxKillScore + maxHPScore + maxStreakScore));
-        totalScoreToMove.text = (maxKillScore + maxHPScore + maxStreakScore).ToString();
+        StartCoroutine(RunScoreCount(totalScore, 0, maxTotalScore));
+        totalScoreToMove.text = maxTotalScore.ToString();
     }
 
     public void RunAddToMorale()
     {
-        StartCoroutine(RunScoreCount(moraleScore, 1000, maxKillScore + maxHPScore + maxStreakScore));
+        StartCoroutine(RunScoreCount(moraleScore, stashedMoraleScore, maxTotalScore));
+
     }
 
     private IEnumerator RunScoreCount(TextMeshProUGUI text, int startScore, int maxScore)

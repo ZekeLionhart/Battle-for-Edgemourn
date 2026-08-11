@@ -12,7 +12,12 @@ public class GameManager : MonoBehaviour
     private readonly HashSet<EnemyBase> enemiesAlive = new();
     private bool hasSpawningFinished = false;
     private int starReward = 0;
+    private int newKillScore;
+    private int newHPScore;
+    private int newStreakScore;
+    private int newTotalScore;
 
+    public static Action<int, int, int> OnScoreCalculated;
     public static Action<MatchResult> OnResultCalculated;
 
     private void Start()
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         animator.SetTrigger(ParameterNames.GameIsWon);
         Time.timeScale = 0.3f;
+        CalculateScore();
         CalculateResult(true);
     }
 
@@ -60,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
         animator.SetTrigger(ParameterNames.GameIsOver);
         Time.timeScale = 0.3f;
+        CalculateScore();
         CalculateResult(false);
     }
 
@@ -88,6 +95,16 @@ public class GameManager : MonoBehaviour
         if (enemiesAlive.Count == 0) WinGame();
     }
 
+    private void CalculateScore()
+    {
+        newKillScore = 100;
+        newHPScore = 200;
+        newStreakScore = 300;
+        newTotalScore = newKillScore + newHPScore + newStreakScore;
+
+        OnScoreCalculated(newKillScore, newHPScore, newStreakScore);
+    }
+
     private void CalculateResult(bool victory)
     {
         if (HealthManager.Instance.CurrentHealth >= HealthManager.Instance.MaxHealth)
@@ -104,7 +121,7 @@ public class GameManager : MonoBehaviour
             level = currentLevel,
             victory = victory,
             stars = starReward,
-            coinsEarned = 0
+            coinsEarned = ProgressManager.Instance.CurrentProgress.coins + newTotalScore
         };
 
         OnResultCalculated(result);
