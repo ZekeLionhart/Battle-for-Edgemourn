@@ -2269,8 +2269,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 458.44, y: -319.85}
-  m_SizeDelta: {x: 50, y: 30}
+  m_AnchoredPosition: {x: 483.44, y: -319.85}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2186720285533922492
 CanvasRenderer:
@@ -3389,11 +3389,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ec85da9d1b19b947a1caed7b364890a, type: 3}
+--- !u!114 &8694801394433655593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5974680375957728120, guid: 6ec85da9d1b19b947a1caed7b364890a, type: 3}
+  m_PrefabInstance: {fileID: 3044565188914128977}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3596a55f2085f40b794c7b9f9ad3d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8694801395041927191 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5974680377119516742, guid: 6ec85da9d1b19b947a1caed7b364890a, type: 3}
   m_PrefabInstance: {fileID: 3044565188914128977}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8694801395684495259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5974680377626159050, guid: 6ec85da9d1b19b947a1caed7b364890a, type: 3}
+  m_PrefabInstance: {fileID: 3044565188914128977}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdb7fe4aa8c290448bb9f159d0332f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7373629168314590947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4001,9 +4023,12 @@ MonoBehaviour:
   currentLevel: {fileID: 0}
   saveSystem: {fileID: 1615077440854779746}
   animator: {fileID: 8040306085912978585}
+  scoreManager: {fileID: 8694801394433655593}
+  hpManager: {fileID: 8694801395684495259}
   disabledButtons:
   - {fileID: 0}
   - {fileID: 3987558612675806712}
+  hpBonusMultiplier: 10
 --- !u!114 &1615077440854779746
 MonoBehaviour:
   m_ObjectHideFlags: 0

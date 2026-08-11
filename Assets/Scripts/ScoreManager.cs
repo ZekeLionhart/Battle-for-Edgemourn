@@ -6,6 +6,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreLabel;
     private int score;
 
+    public int CurrentScore => score;
+
     private void Awake()
     {
         score = 0;

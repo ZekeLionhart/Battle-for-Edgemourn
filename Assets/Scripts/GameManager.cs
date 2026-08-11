@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelData currentLevel;
     [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private Animator animator;
+    [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private HealthManager hpManager;
     [SerializeField] private MonoBehaviour[] disabledButtons;
+    [SerializeField] private int hpBonusMultiplier;
     private readonly HashSet<EnemyBase> enemiesAlive = new();
     private bool hasSpawningFinished = false;
     private int starReward = 0;
@@ -97,8 +100,8 @@ public class GameManager : MonoBehaviour
 
     private void CalculateScore()
     {
-        newKillScore = 100;
-        newHPScore = 200;
+        newKillScore = scoreManager.CurrentScore;
+        newHPScore = hpManager.CurrentHealth * hpBonusMultiplier;
         newStreakScore = 300;
         newTotalScore = newKillScore + newHPScore + newStreakScore;
 
