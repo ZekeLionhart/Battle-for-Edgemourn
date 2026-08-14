@@ -2,23 +2,21 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelData currentLevel;
     [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private Animator animator;
-    [SerializeField] private HealthManager hpManager;
     [SerializeField] private MonoBehaviour[] disabledButtons;
-    [SerializeField] private int hpBonusMultiplier;
+    [SerializeField] private int hpBonusScoreMultiplier;
     private readonly HashSet<EnemyBase> enemiesAlive = new();
     private bool hasSpawningFinished = false;
     private int killScore = 0;
     private int starReward = 0;
-    private int newHPScore;
-    private int newStreakScore;
-    private int newTotalScore;
+    private int hpScore;
+    private int streakScore;
+    private int totalScore;
 
     public static Action<int> OnScoreChanged;
     public static Action<int, int, int> OnScoreCalculated;
@@ -109,11 +107,11 @@ public class GameManager : MonoBehaviour
 
     private void CalculateScore()
     {
-        newHPScore = hpManager.CurrentHealth * hpBonusMultiplier;
-        newStreakScore = 300;
-        newTotalScore = killScore + newHPScore + newStreakScore;
+        hpScore = HealthManager.Instance.CurrentHealth * hpBonusScoreMultiplier;
+        streakScore = 300;
+        totalScore = killScore + hpScore + streakScore;
 
-        OnScoreCalculated(killScore, newHPScore, newStreakScore);
+        OnScoreCalculated(killScore, hpScore, streakScore);
     }
 
     private void CalculateResult(bool victory)
@@ -132,7 +130,7 @@ public class GameManager : MonoBehaviour
             level = currentLevel,
             victory = victory,
             stars = starReward,
-            coinsEarned = ProgressManager.Instance.CurrentProgress.coins + newTotalScore
+            coinsEarned = ProgressManager.Instance.CurrentProgress.coins + totalScore
         };
 
         OnResultCalculated(result);

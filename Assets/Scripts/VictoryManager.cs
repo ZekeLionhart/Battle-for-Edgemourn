@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class VictoryManager : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
     [SerializeField] private Animator animator;
     [SerializeField] private TextMeshProUGUI killScore;
     [SerializeField] private TextMeshProUGUI hPScore;
