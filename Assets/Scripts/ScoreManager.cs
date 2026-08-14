@@ -4,33 +4,23 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreLabel;
-    private int score;
-
-    public int CurrentScore => score;
 
     private void Awake()
     {
-        score = 0;
-        UpdateScore();
+        UpdateScore(0);
     }
 
     private void OnEnable()
     {
-        EnemyBase.OnEnemyDeath += AddScore;
+        GameManager.OnScoreChanged += UpdateScore;
     }
     private void OnDisable()
     {
-        EnemyBase.OnEnemyDeath += AddScore;
+        GameManager.OnScoreChanged -= UpdateScore;
     }
 
-    private void AddScore(int points, EnemyBase enemy)
+    private void UpdateScore(int newScore)
     {
-        score += points;
-        UpdateScore();
-    }
-
-    private void UpdateScore()
-    {
-        scoreLabel.text = score.ToString();
+        scoreLabel.text = newScore.ToString();
     }
 }

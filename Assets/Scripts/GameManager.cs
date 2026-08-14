@@ -2,24 +2,25 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelData currentLevel;
     [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private Animator animator;
-    [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private HealthManager hpManager;
     [SerializeField] private MonoBehaviour[] disabledButtons;
     [SerializeField] private int hpBonusMultiplier;
     private readonly HashSet<EnemyBase> enemiesAlive = new();
     private bool hasSpawningFinished = false;
+    private int killScore = 0;
     private int starReward = 0;
-    private int newKillScore;
     private int newHPScore;
     private int newStreakScore;
     private int newTotalScore;
 
+    public static Action<int> OnScoreChanged;
     public static Action<int, int, int> OnScoreCalculated;
     public static Action<MatchResult> OnResultCalculated;
 
@@ -88,7 +89,15 @@ public class GameManager : MonoBehaviour
     {
         enemiesAlive.Remove(enemy);
 
+        IncreaseScore(score);
+
         if (hasSpawningFinished && enemiesAlive.Count == 0) WinGame();
+    }
+
+    private void IncreaseScore(int score)
+    {
+        killScore += score;
+        OnScoreChanged(killScore);
     }
 
     private void SpawnFinished()
@@ -100,12 +109,11 @@ public class GameManager : MonoBehaviour
 
     private void CalculateScore()
     {
-        newKillScore = scoreManager.CurrentScore;
         newHPScore = hpManager.CurrentHealth * hpBonusMultiplier;
         newStreakScore = 300;
-        newTotalScore = newKillScore + newHPScore + newStreakScore;
+        newTotalScore = killScore + newHPScore + newStreakScore;
 
-        OnScoreCalculated(newKillScore, newHPScore, newStreakScore);
+        OnScoreCalculated(killScore, newHPScore, newStreakScore);
     }
 
     private void CalculateResult(bool victory)
