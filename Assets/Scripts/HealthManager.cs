@@ -1,12 +1,10 @@
 using System;
-using TMPro;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
     public static HealthManager Instance { get; private set; }
 
-    [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private AudioSource hitSfx;
     [SerializeField] private AudioSource deathSfx;
     [SerializeField] private int maxHealth;
@@ -16,6 +14,7 @@ public class HealthManager : MonoBehaviour
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
 
+    public static Action<int> OnHealthChanged;
     public static Action OnZeroHealth;
 
     private void Awake()
@@ -29,33 +28,34 @@ public class HealthManager : MonoBehaviour
         Instance = this;
 
         currentHealth = maxHealth;
-        healthText.text = currentHealth.ToString();
+        OnHealthChanged(currentHealth);
     }
 
     private void OnEnable()
     {
-        EnemyBase.OnDamageDealt += SubtractHealth;
+        EnemyBase.OnDamageDealt += DecreaseHealth;
     }
     private void OnDisable()
     {
-        EnemyBase.OnDamageDealt -= SubtractHealth;
+        EnemyBase.OnDamageDealt -= DecreaseHealth;
     }
 
-    private void SubtractHealth(GameObject target, int damage)
+    private void DecreaseHealth(GameObject target, int damage)
     {
         if (target.CompareTag(TagNames.Tower) && isAlive)
         { 
             currentHealth -= damage;
-            healthText.text = currentHealth.ToString();
             hitSfx.Play();
 
             if (currentHealth <= 0)
             {
+                currentHealth = 0;
                 isAlive = false;
                 deathSfx.Play();
-                healthText.text = "0";
                 OnZeroHealth();
             }
+
+            OnHealthChanged(currentHealth);
         }
     }
 }
