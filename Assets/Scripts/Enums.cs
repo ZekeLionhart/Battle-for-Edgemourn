@@ -61,4 +61,5 @@ public static class ParameterNames
     public const string Shoot = "Shoot";
     public const string Hit = "Hit";
     public const string Destroy = "Destroy";
+    public const string Increase = "Increase";
 }

@@ -32,7 +32,7 @@ public class StreakView : MonoBehaviour
     private void UpdateStreak(int newStreak)
     {
         streakLabel.text = "x" + newStreak;
-        animator.SetTrigger("Increase");
+        animator.SetTrigger(ParameterNames.Increase);
     }
 
     private void EndStreak()

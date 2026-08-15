@@ -6,14 +6,16 @@ public class VictoryManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private TextMeshProUGUI killScore;
-    [SerializeField] private TextMeshProUGUI hPScore;
+    [SerializeField] private TextMeshProUGUI earlyScore;
     [SerializeField] private TextMeshProUGUI streakScore;
+    [SerializeField] private TextMeshProUGUI hPScore;
     [SerializeField] private TextMeshProUGUI totalScore;
     [SerializeField] private TextMeshProUGUI totalScoreToMove;
     [SerializeField] private TextMeshProUGUI moraleScore;
     private int maxKillScore;
-    private int maxHPScore;
+    private int maxEarlyScore;
     private int maxStreakScore;
+    private int maxHPScore;
     private int maxTotalScore;
     private int stashedMoraleScore;
 
@@ -32,12 +34,13 @@ public class VictoryManager : MonoBehaviour
         moraleScore.text = (stashedMoraleScore = ProgressManager.Instance.CurrentProgress.coins).ToString();
     }
 
-    private void SetScores(int newKillScore, int newHPScore, int newStreakScore)
+    private void SetScores(int newKillScore, int newEarlyScore, int newStreakScore, int newHPScore)
     {
         maxKillScore = newKillScore;
-        maxHPScore = newHPScore;
+        maxEarlyScore = newEarlyScore;
         maxStreakScore = newStreakScore;
-        maxTotalScore = maxKillScore + maxHPScore + maxStreakScore;
+        maxHPScore = newHPScore;
+        maxTotalScore = maxKillScore + maxEarlyScore + maxStreakScore + maxHPScore;
     }
 
     public void RunKillScore()
@@ -45,14 +48,19 @@ public class VictoryManager : MonoBehaviour
         StartCoroutine(RunScoreCount(killScore, 0, maxKillScore));
     }
 
-    public void RunHPScore()
+    public void RunEarlyScore()
     {
-        StartCoroutine(RunScoreCount(hPScore, 0, maxHPScore));
+        StartCoroutine(RunScoreCount(earlyScore, 0, maxEarlyScore));
     }
 
     public void RunStreakScore()
     {
         StartCoroutine(RunScoreCount(streakScore, 0, maxStreakScore));
+    }
+
+    public void RunHPScore()
+    {
+        StartCoroutine(RunScoreCount(hPScore, 0, maxHPScore));
     }
 
     public void RunFinalScore()

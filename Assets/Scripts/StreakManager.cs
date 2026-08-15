@@ -6,11 +6,11 @@ public class StreakManager : MonoBehaviour
     public static StreakManager Instance { get; private set; }
 
     [SerializeField] private float streakWindow;
+    [SerializeField] private float streakMultiplier;
     private EnemyBase previousEnemy;
     private int currentStreak;
     private float startTime;
     private float timer;
-    private int totalStreakBonus;
     private bool timerIsRunning = false;
 
     public float StreakWindow => streakWindow;
@@ -30,37 +30,25 @@ public class StreakManager : MonoBehaviour
         Instance = this;
     }
 
-    private void OnEnable()
-    {
-        EnemyBase.OnEnemyDeath += RegisterKill;
-    }
-
-    private void OnDisable()
-    {
-        EnemyBase.OnEnemyDeath -= RegisterKill;
-    }
-
     private void Update()
     {
         if (timerIsRunning)
+        {
             timer = streakWindow - (Time.time - startTime);
-
-        Debug.Log(timer);
-
-        if (timerIsRunning && timer <= 0)
-            EndStreak();
+            if (timer <= 0) EndStreak();
+        }
     }
 
-    private void RegisterKill(int score, EnemyBase enemy)
+    public int RegisterKill(EnemyBase enemy, Transform popupCoord)
     {
-        if (enemy == previousEnemy) return;
+        if (enemy == previousEnemy) return 0;
         
         previousEnemy = enemy;
 
         if (!timerIsRunning) StartStreak();
         else ContinueStreak();
 
-        OnStreakIncreased(currentStreak);
+        return currentStreak;
     }
 
     private void StartStreak()
@@ -68,12 +56,16 @@ public class StreakManager : MonoBehaviour
         currentStreak = 1;
         timerIsRunning = true;
         startTime = Time.time;
+
+        OnStreakIncreased(currentStreak);
     }
 
     private void ContinueStreak()
     {
         currentStreak++;
         startTime = Time.time;
+
+        OnStreakIncreased(currentStreak);
     }
 
     private void EndStreak()
@@ -81,7 +73,6 @@ public class StreakManager : MonoBehaviour
         if (timer < 0) timer = 0;
         currentStreak = 0;
         timerIsRunning = false;
-        totalStreakBonus = 0;
         OnStreakEnded();
     }
 }

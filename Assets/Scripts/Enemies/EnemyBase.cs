@@ -15,7 +15,6 @@ public class EnemyBase : MonoBehaviour
     [Header("---------VFX---------")]
     [SerializeField] protected float shakeDuration;
     [SerializeField] protected float shakeIntensity;
-    [SerializeField] private ScoreVFX scoreVFX;
     [SerializeField] private Transform scoreVFXOrigin;
     [SerializeField] protected GameObject gore;
     [SerializeField] protected ParticleSystem[] dustParticles;
@@ -50,13 +49,12 @@ public class EnemyBase : MonoBehaviour
     protected bool isDead = false;
     private float spawnTime;
     protected float bonusWindow = 15f;
-    private float bonusMultiplier = 2f;
 
     public float Lifetime => Time.time - spawnTime;
     public int CoinsReward => scoreValue;
 
     public static Action<GameObject, int> OnDamageDealt;
-    public static Action<int, EnemyBase> OnEnemyDeath;
+    public static Action<int, bool, EnemyBase, Transform> OnEnemyDeath;
 
     protected virtual void Awake()
     {
@@ -88,12 +86,12 @@ public class EnemyBase : MonoBehaviour
         CalculateDistanceToTarget();
     }
 
-    private int CalculateScore()
+    private bool VerifyEarlyKill()
     {
         if (Lifetime <= bonusWindow / speed) //slower enemies retain the bonus for longer
-            return (int)(scoreValue * bonusMultiplier);
+            return true;
         else
-            return scoreValue;
+            return false;
     }
 
     protected virtual void CalculateDistanceToTarget()
@@ -156,10 +154,10 @@ public class EnemyBase : MonoBehaviour
 
         if (hitpoints <= 0 && !isDead)
         {
-            int finalScore = CalculateScore();
+            VerifyEarlyKill();
 
-            InitiateDeath(finalScore);
-            CallKillAnalytics(powerType, finalScore);
+            InitiateDeath();
+            CallKillAnalytics(powerType, scoreValue);
         }
         else if (gruntSfx != null && !isDead)
         {
@@ -217,16 +215,14 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void InitiateDeath(int finalScore)
+    private void InitiateDeath()
     {
         isDead = true;
         Destroy(rigidBody);
         animator.SetTrigger(ParameterNames.OnHpEmpty);
         onDeathSfx.pitch = Random.Range(0.9f, 1.1f);
         onDeathSfx.Play();
-        OnEnemyDeath(finalScore, this);
-        scoreVFX.SetScoreText(finalScore);
-        Instantiate(scoreVFX, scoreVFXOrigin);
+        OnEnemyDeath(scoreValue, VerifyEarlyKill(), this, scoreVFXOrigin);
     }
 
     private void Die()

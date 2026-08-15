@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,17 +10,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private Animator animator;
     [SerializeField] private MonoBehaviour[] disabledButtons;
-    [SerializeField] private int hpBonusScoreMultiplier;
+    [SerializeField] private float earlyScoreMultiplier;
+    [SerializeField] private float streakScoreMultiplier;
+    [SerializeField] private int hpScoreMultiplier;
     private readonly HashSet<EnemyBase> enemiesAlive = new();
     private bool hasSpawningFinished = false;
-    private int killScore = 0;
     private int starReward = 0;
+    private int killScore = 0;
+    private int earlyScore = 0;
     private int hpScore;
     private int streakScore;
     private int totalScore;
 
     public static Action<int> OnScoreChanged;
-    public static Action<int, int, int> OnScoreCalculated;
+    public static Action<int, Transform> OnScoreEarned;
+    public static Action<int, int, int, int> OnScoreCalculated;
     public static Action<MatchResult> OnResultCalculated;
 
     private void Start()
@@ -83,19 +88,30 @@ public class GameManager : MonoBehaviour
         enemiesAlive.Add(enemy);
     }
 
-    private void UnregisterEnemy(int score, EnemyBase enemy)
+    private void UnregisterEnemy(int newKillScore, bool isEarlyKill, EnemyBase enemy, Transform popupCoord)
     {
-        enemiesAlive.Remove(enemy);
+        int newEarlyBonus = 0;
+        int currentStreak = StreakManager.Instance.RegisterKill(enemy, popupCoord);
 
-        IncreaseScore(score);
+        if (isEarlyKill)
+            newEarlyBonus = (int)(newKillScore * earlyScoreMultiplier);
+
+        int newStreakScore = (currentStreak - 1) * (int)(streakScoreMultiplier * (newKillScore + newEarlyBonus));
+
+        OnScoreEarned(newKillScore + newEarlyBonus + newStreakScore, popupCoord);
+        IncreaseScore(newKillScore, newEarlyBonus, newStreakScore);
+
+        enemiesAlive.Remove(enemy);
 
         if (hasSpawningFinished && enemiesAlive.Count == 0) WinGame();
     }
 
-    private void IncreaseScore(int score)
+    private void IncreaseScore(int newkillScore, int newEarlyBonus, int newStreakBonus)
     {
-        killScore += score;
-        OnScoreChanged(killScore);
+        killScore += newkillScore;
+        earlyScore += newEarlyBonus;
+        streakScore += newStreakBonus;
+        OnScoreChanged(killScore + earlyScore + streakScore);
     }
 
     private void SpawnFinished()
@@ -107,11 +123,10 @@ public class GameManager : MonoBehaviour
 
     private void CalculateScore()
     {
-        hpScore = HealthManager.Instance.CurrentHealth * hpBonusScoreMultiplier;
-        streakScore = 300;
-        totalScore = killScore + hpScore + streakScore;
+        hpScore = HealthManager.Instance.CurrentHealth * hpScoreMultiplier;
+        totalScore = killScore + earlyScore + streakScore + hpScore;
 
-        OnScoreCalculated(killScore, hpScore, streakScore);
+        OnScoreCalculated(killScore, earlyScore, streakScore, hpScore);
     }
 
     private void CalculateResult(bool victory)
@@ -130,7 +145,7 @@ public class GameManager : MonoBehaviour
             level = currentLevel,
             victory = victory,
             stars = starReward,
-            coinsEarned = ProgressManager.Instance.CurrentProgress.coins + totalScore
+            coinsEarned = totalScore
         };
 
         OnResultCalculated(result);
