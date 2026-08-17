@@ -2,13 +2,15 @@ using UnityEngine;
 
 public enum UITextKey { 
     AppVersion = 3,
-    ClickToRestart = 2,
     ClickToStart = 1,
+    Continue = 14,
     Defeat = 7,
     GameOver = 4,
     GameSubtitle = 5,
     GameTitle = 0, 
     Morale = 8,
+    Quit = 15,
+    Restart = 2,
     ScoreEarly = 9,
     ScoreHP = 10,
     ScoreKill = 11,
@@ -20,9 +22,10 @@ public enum UITextKey {
 public static class TextDB
 {
     public const string ClickToStart = "Click to Start";
-    public const string ClickToRestart = "Click to Restart";
     public const string TapToStart = "Tap to Start";
-    public const string TapToRestart = "Tap to Restart";
+    public const string Restart = "Restart";
+    public const string Continue = "Continue";
+    public const string Quit = "Quit";
     public const string GameTitle = "Battle for Edgemourn";
     public const string GameSubtitle = "Chronicles of Archana";
     public static string AppVersion = "Version: " + Application.version;
@@ -41,11 +44,12 @@ public static class TextDB
         {
 #if PLATFORM_ANDROID
             case UITextKey.ClickToStart: return TextDB.TapToStart;
-            case UITextKey.ClickToRestart: return TextDB.TapToRestart;
 #else
             case UITextKey.ClickToStart: return TextDB.ClickToStart;
-            case UITextKey.ClickToRestart: return TextDB.ClickToRestart;
 #endif
+            case UITextKey.Restart: return TextDB.Restart;
+            case UITextKey.Continue: return TextDB.Continue;
+            case UITextKey.Quit: return TextDB.Quit;
             case UITextKey.GameTitle: return TextDB.GameTitle;
             case UITextKey.GameSubtitle: return TextDB.GameSubtitle;
             case UITextKey.AppVersion: return TextDB.AppVersion;

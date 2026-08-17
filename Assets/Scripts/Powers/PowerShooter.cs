@@ -6,7 +6,6 @@ public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 {
     [SerializeField] private GameObject lineRenderer;
     private bool isPointerInside;
-    private bool permissionToShoot;
 
     public static Action OnScreenClick;
     public static Action<bool> IsInsideArea;

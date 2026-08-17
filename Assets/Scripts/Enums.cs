@@ -8,6 +8,7 @@ public enum LevelIDs { OuterGates001 = 0, OuterGates002 = 1, OuterGates003 = 2,
                        MidLayer001 = 6, MidLayer002 = 7, MidLayer003 = 8,
                        InnerLayer001 = 9, InnerLayer002 = 10, InnerLayer003 = 11,
                        EndlessMode = 12 };
+//public enum TransitionSources { MainMenu, RestartMatch, QuitToSelection };
 
 public static class SettingNames
 {
@@ -25,6 +26,7 @@ public static class SceneNames
     public const string GameOver = "GameOverScene";
     public const string LevelSelector = "Lv_Selector_Scene";
     public const string LevelInfinite = "SampleScene";
+    public const string RestartTransition = "TransitionScene";
 }
 
 public static class KeyNames
@@ -51,6 +53,8 @@ public static class ParameterNames
 {
     public const string StartGame = "Start";
     public const string MatchEnded = "MatchEnd";
+    public const string Restart = "Restart";
+    public const string Quit = "Quit";
     public const string IsColliding = "IsColliding";
     public const string OnHpEmpty = "OnHpEmpty";
     public const string OnAttackCldwn = "OnAttackCldwn";

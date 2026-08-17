@@ -10,19 +10,27 @@ public class MenuClick : MonoBehaviour
 
     public static Action<AudioSource, float> OnFadeAudio;
 
-    public void StartTransition()
+    public void StartSceneTransition(string source)
     {
-        animator.SetTrigger(ParameterNames.StartGame);
+        switch (source)
+        {
+            case "Menu":
+                animator.SetTrigger(ParameterNames.StartGame);
+                break;
+            case "Restart":
+                animator.SetTrigger(ParameterNames.Restart);
+                break;
+            case "Quit":
+                animator.SetTrigger(ParameterNames.Quit);
+                break;
+            default:
+                break;
+        }
+
         OnFadeAudio(bgm, audioFadeTime);
     }
 
-    public void RestartLevel()
-    {
-        animator.SetTrigger("Restart");
-        OnFadeAudio(bgm, audioFadeTime);
-    }
-
-    private void ChangeScene()
+    private void SelectLevel()
     {
         SceneManager.LoadScene(SceneNames.LevelSelector);
     }

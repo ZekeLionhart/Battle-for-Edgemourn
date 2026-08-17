@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ResultViewer : MonoBehaviour
@@ -17,6 +18,8 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalScore;
     [SerializeField] private TextMeshProUGUI totalScoreToMove;
     [SerializeField] private TextMeshProUGUI moraleScore;
+    [SerializeField] private TextMeshProUGUI restartButton;
+    [SerializeField] private TextMeshProUGUI quitButton;
     private int maxKillScore;
     private int maxEarlyScore;
     private int maxStreakScore;
@@ -100,6 +103,16 @@ public class ResultViewer : MonoBehaviour
 
     }
 
+    public void ChooseButtons()
+    {
+        if (!isVictory)
+        {
+            restartButton.gameObject.SetActive(true);
+            quitButton.text = TextDB.GetTextByKey(UITextKey.Quit);
+        }
+        else quitButton.text = TextDB.GetTextByKey(UITextKey.Continue);
+    }
+
     private IEnumerator RunScoreCount(TextMeshProUGUI text, int startScore, int maxScore)
     {
         float elapsed = 0f;
@@ -153,5 +166,16 @@ public class ResultViewer : MonoBehaviour
     private void ResumeTime()
     {
         Time.timeScale = 1f;
+    }
+
+    private void Restart()
+    {
+        PlayerPrefs.SetString("Restart", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneNames.RestartTransition);
+    }
+
+    private void QuitLevel()
+    {
+        SceneManager.LoadScene(SceneNames.LevelSelector);
     }
 }
