@@ -47,6 +47,7 @@ public class EnemyBase : MonoBehaviour
     private bool canAttack = true;
     private bool canMove = false;
     protected bool isDead = false;
+    private bool hasGameEnded = false;
     private float spawnTime;
     protected float bonusWindow = 15f;
 
@@ -70,12 +71,14 @@ public class EnemyBase : MonoBehaviour
     {
         ProjectileManager.OnEnemyHit += TakeDamage;
         ArrowManager.OnEnemyHitWithArrow += PinArrow;
+        GameManager.OnGameEnded += EndGame;
     }
 
     private void OnDisable()
     {
         ProjectileManager.OnEnemyHit -= TakeDamage;
         ArrowManager.OnEnemyHitWithArrow -= PinArrow;
+        GameManager.OnGameEnded -= EndGame;
     }
 
     private void FixedUpdate()
@@ -210,7 +213,7 @@ public class EnemyBase : MonoBehaviour
             canAttack = false;
             yield return attackCooldownWFS;
 
-            animator.SetTrigger(ParameterNames.OnAttackCldwn);
+            if (!hasGameEnded) animator.SetTrigger(ParameterNames.OnAttackCldwn);
             canAttack = true;
         }
     }
@@ -228,6 +231,11 @@ public class EnemyBase : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void EndGame()
+    {
+        hasGameEnded = true;
     }
 
     private void PlayAttackSfx()

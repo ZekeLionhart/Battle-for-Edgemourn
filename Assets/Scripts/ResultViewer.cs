@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class VictoryManager : MonoBehaviour
+public class ResultViewer : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private Image victoryBackground;
+    [SerializeField] private Image defeatBackground;
+    [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI killScore;
     [SerializeField] private TextMeshProUGUI earlyScore;
     [SerializeField] private TextMeshProUGUI streakScore;
@@ -18,15 +23,18 @@ public class VictoryManager : MonoBehaviour
     private int maxHPScore;
     private int maxTotalScore;
     private int stashedMoraleScore;
+    private bool isVictory;
+
+    public static Action CallMusicStop;
 
     private void OnEnable()
     {
-        GameManager.OnScoreCalculated += SetScores;
+        GameManager.OnScoreCalculated += SetUpResultScreen;
     }
 
     private void OnDisable()
     { 
-        GameManager.OnScoreCalculated -= SetScores;
+        GameManager.OnScoreCalculated -= SetUpResultScreen;
     }
 
     private void Start()
@@ -34,13 +42,30 @@ public class VictoryManager : MonoBehaviour
         moraleScore.text = (stashedMoraleScore = ProgressManager.Instance.CurrentProgress.coins).ToString();
     }
 
-    private void SetScores(int newKillScore, int newEarlyScore, int newStreakScore, int newHPScore)
+    private void SetUpResultScreen(bool isVictory, int newKillScore, int newEarlyScore, int newStreakScore, int newHPScore)
     {
+        if (isVictory)
+            title.text = TextDB.Victory;
+        else
+            title.text = TextDB.Defeat;
+
+        this.isVictory = isVictory;
         maxKillScore = newKillScore;
         maxEarlyScore = newEarlyScore;
         maxStreakScore = newStreakScore;
         maxHPScore = newHPScore;
         maxTotalScore = maxKillScore + maxEarlyScore + maxStreakScore + maxHPScore;
+
+        CallMusicStop();
+        animator.SetTrigger(ParameterNames.MatchEnded);
+    }
+
+    public void ChooseBackground()
+    {
+        if (isVictory)
+            victoryBackground.gameObject.SetActive(true);
+        else
+            defeatBackground.gameObject.SetActive(true);
     }
 
     public void RunKillScore()
@@ -92,5 +117,41 @@ public class VictoryManager : MonoBehaviour
         }
 
         text.text = (startScore + maxScore).ToString();
+    }
+
+    private void MoveTotalScore()
+    {
+        StartCoroutine(MoveTotalScoreCoroutine());
+    }
+
+    private IEnumerator MoveTotalScoreCoroutine()
+    {
+        Vector3 startPosition = totalScoreToMove.transform.position;
+        Vector3 targetPosition = moraleScore.transform.position;
+
+        float duration = 1f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float time = elapsed / duration;
+
+            totalScoreToMove.transform.position = Vector3.Lerp(
+                startPosition,
+                targetPosition,
+                time
+            );
+
+            yield return null;
+        }
+
+        totalScoreToMove.transform.position = targetPosition;
+    }
+
+    private void ResumeTime()
+    {
+        Time.timeScale = 1f;
     }
 }

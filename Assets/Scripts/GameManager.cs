@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelData currentLevel;
     [SerializeField] private SaveSystem saveSystem;
-    [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource bgm;
     [SerializeField] private MonoBehaviour[] disabledButtons;
     [SerializeField] private float earlyScoreMultiplier;
     [SerializeField] private float streakScoreMultiplier;
@@ -24,8 +23,9 @@ public class GameManager : MonoBehaviour
 
     public static Action<int> OnScoreChanged;
     public static Action<int, Transform> OnScoreEarned;
-    public static Action<int, int, int, int> OnScoreCalculated;
+    public static Action<bool, int, int, int, int> OnScoreCalculated;
     public static Action<MatchResult> OnResultCalculated;
+    public static Action OnGameEnded;
 
     private void Start()
     {
@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         WaveSpawner.OnEnemySpawn += RegisterEnemy;
         WaveSpawner.OnFinishedSpawning += SpawnFinished;
         EnemyBase.OnEnemyDeath += UnregisterEnemy;
+        ResultViewer.CallMusicStop += StopMusic;
     }
 
     private void OnDisable()
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         WaveSpawner.OnEnemySpawn -= RegisterEnemy;
         WaveSpawner.OnFinishedSpawning -= SpawnFinished;
         EnemyBase.OnEnemyDeath -= UnregisterEnemy;
+        ResultViewer.CallMusicStop -= StopMusic;
     }
 
     private void EnableAction()
@@ -57,31 +59,30 @@ public class GameManager : MonoBehaviour
 
     private void WinGame()
     {
-        animator.SetTrigger(ParameterNames.GameIsWon);
         Time.timeScale = 0.3f;
-        CalculateScore();
+        CalculateScore(true);
         CalculateResult(true);
     }
 
-    private void CallVictoryLoad()
+    /*private void CallVictoryLoad()
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneNames.LevelSelector);
-    }
+    }*/
 
     private void FailGame()
     {
-        animator.SetTrigger(ParameterNames.GameIsOver);
         Time.timeScale = 0.3f;
-        CalculateScore();
+        OnGameEnded();
+        CalculateScore(false);
         CalculateResult(false);
     }
 
-    private void CallGameOver()
+    /*private void CallGameOver()
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneNames.GameOver);
-    }
+    }*/
 
     private void RegisterEnemy(EnemyBase enemy)
     {
@@ -121,12 +122,12 @@ public class GameManager : MonoBehaviour
         if (enemiesAlive.Count == 0) WinGame();
     }
 
-    private void CalculateScore()
+    private void CalculateScore(bool isVictory)
     {
         hpScore = HealthManager.Instance.CurrentHealth * hpScoreMultiplier;
         totalScore = killScore + earlyScore + streakScore + hpScore;
 
-        OnScoreCalculated(killScore, earlyScore, streakScore, hpScore);
+        OnScoreCalculated(isVictory, killScore, earlyScore, streakScore, hpScore);
     }
 
     private void CalculateResult(bool victory)
@@ -149,5 +150,10 @@ public class GameManager : MonoBehaviour
         };
 
         OnResultCalculated(result);
+    }
+
+    private void StopMusic()
+    {
+        bgm.enabled = false;
     }
 }

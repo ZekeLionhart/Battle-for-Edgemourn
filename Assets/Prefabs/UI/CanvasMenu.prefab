@@ -1658,6 +1658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1426995235129081754}
+  - component: {fileID: 5225919299004649645}
   - component: {fileID: 3521396565190857393}
   - component: {fileID: 3164990302940582113}
   m_Layer: 5
@@ -1686,6 +1687,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 732.15, y: 50}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &5225919299004649645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8978872616932167465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d371acb60cba7784b954e01f15163999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiText: 5
 --- !u!222 &3521396565190857393
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2030,9 +2044,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2abb580b16c24540940153a474792f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: {fileID: 0}
   saveSystem: {fileID: 5911802286554298497}
-  animator: {fileID: 0}
+  bgm: {fileID: 0}
   disabledButtons: []
+  earlyScoreMultiplier: 0
+  streakScoreMultiplier: 0
+  hpScoreMultiplier: 0
 --- !u!1001 &2003978473148436872
 PrefabInstance:
   m_ObjectHideFlags: 0
