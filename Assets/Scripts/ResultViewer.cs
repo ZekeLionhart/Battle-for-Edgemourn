@@ -10,6 +10,8 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Image victoryBackground;
     [SerializeField] private Image defeatBackground;
+    [SerializeField] private AudioSource victoryBGM;
+    [SerializeField] private AudioSource defeatBGM;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI killScore;
     [SerializeField] private TextMeshProUGUI earlyScore;
@@ -63,12 +65,18 @@ public class ResultViewer : MonoBehaviour
         animator.SetTrigger(ParameterNames.MatchEnded);
     }
 
-    public void ChooseBackground()
+    public void ChooseTheme()
     {
         if (isVictory)
+        {
             victoryBackground.gameObject.SetActive(true);
+            victoryBGM.gameObject.SetActive(true);
+        }
         else
+        {
             defeatBackground.gameObject.SetActive(true);
+            defeatBGM.gameObject.SetActive(true);
+        }
     }
 
     public void RunKillScore()
@@ -140,7 +148,8 @@ public class ResultViewer : MonoBehaviour
     private IEnumerator MoveTotalScoreCoroutine()
     {
         Vector3 startPosition = totalScoreToMove.transform.position;
-        Vector3 targetPosition = moraleScore.transform.position;
+        Vector3 targetPosition = moraleScore.transform.position
+            + new Vector3(totalScoreToMove.rectTransform.rect.width / 2, 0);
 
         float duration = 1f;
         float elapsed = 0f;

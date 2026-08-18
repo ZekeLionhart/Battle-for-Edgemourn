@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuClick : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioSource bgm;
+    [SerializeField] private AudioSource[] bgm;
     [SerializeField] private float audioFadeTime;
 
     public static Action<AudioSource, float> OnFadeAudio;
@@ -27,7 +27,10 @@ public class MenuClick : MonoBehaviour
                 break;
         }
 
-        OnFadeAudio(bgm, audioFadeTime);
+        foreach (AudioSource audio in bgm)
+        {
+            OnFadeAudio(audio, audioFadeTime);
+        }
     }
 
     private void SelectLevel()

@@ -1996,7 +1996,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 204148999059725298}
-  bgm: {fileID: 6319812592535554415}
+  bgm:
+  - {fileID: 6319812592535554415}
   audioFadeTime: 1
 --- !u!114 &4874384275294108749
 MonoBehaviour:

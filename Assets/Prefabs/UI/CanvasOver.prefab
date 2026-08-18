@@ -6070,5 +6070,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6554375985367498130}
-  bgm: {fileID: 3632106144822124712}
+  bgm:
+  - {fileID: 3632106144822124712}
   audioFadeTime: 0.7
