@@ -180,11 +180,20 @@ public class ResultViewer : MonoBehaviour
     private void Restart()
     {
         PlayerPrefs.SetString("Restart", SceneManager.GetActiveScene().name);
+
+#if UNITY_ANDROID
+        LevelPlayAdsManager.CallInterstitial(true);
+#else
         SceneManager.LoadScene(SceneNames.RestartTransition);
+#endif
     }
 
     private void QuitLevel()
     {
+#if UNITY_ANDROID
+        LevelPlayAdsManager.CallInterstitial(false);
+#else
         SceneManager.LoadScene(SceneNames.LevelSelector);
+#endif
     }
 }

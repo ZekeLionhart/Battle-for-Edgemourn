@@ -44,7 +44,7 @@ public class MenuClick : MonoBehaviour
         SceneManager.LoadScene(SceneNames.LevelSelector);
         
 #else
-        LevelPlayAdsManager.CallInterstitial();
+        LevelPlayAdsManager.CallInterstitial(true);
 #endif
     }
 

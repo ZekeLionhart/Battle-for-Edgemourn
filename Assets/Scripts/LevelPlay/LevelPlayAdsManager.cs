@@ -29,6 +29,7 @@ public class LevelPlayAdsManager : MonoBehaviour
     private LevelPlayBannerAd bannerAd;
     private LevelPlayInterstitialAd interstitialAd;
     private LevelPlayRewardedAd rewardedAd;
+    private bool isRestart;
 
     private string AppKey
     {
@@ -95,7 +96,7 @@ public class LevelPlayAdsManager : MonoBehaviour
         }
     }
 
-    public static Action CallInterstitial;
+    public static Action<bool> CallInterstitial;
 
     private void OnEnable()
     {
@@ -129,7 +130,8 @@ public class LevelPlayAdsManager : MonoBehaviour
     private void ContinueToGame()
     {
         LoadInterstitialAd();
-        SceneManager.LoadScene(SceneNames.LevelSelector);
+        if (isRestart) SceneManager.LoadScene(PlayerPrefs.GetString("Restart"));
+        else SceneManager.LoadScene(SceneNames.LevelSelector);
     }
 
     private void SdkInitializationCompletedEvent(LevelPlayConfiguration config)
@@ -215,8 +217,10 @@ public class LevelPlayAdsManager : MonoBehaviour
         Debug.Log("#BfE Interstitial Ad Loaded");
     }
 
-    public void ShowInterstitialAd()
+    public void ShowInterstitialAd(bool isRestart)
     {
+        this.isRestart = isRestart;
+
         if (interstitialAd.IsAdReady())
         {
             interstitialAd.ShowAd();
