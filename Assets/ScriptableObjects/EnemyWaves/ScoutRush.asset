@@ -16,3 +16,5 @@ MonoBehaviour:
   amount: 10
   interval: 2
   nextWaveDelay: 2
+  minCoins: 100
+  maxCoins: 200

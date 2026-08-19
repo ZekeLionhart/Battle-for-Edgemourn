@@ -20,6 +20,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected ParticleSystem[] dustParticles;
 
     [Header("---------SFX---------")]
+    [SerializeField] private AudioSource[] onMoveSfx;
     [SerializeField] private AudioSource onAttackSfx;
     [SerializeField] private AudioSource onHitSfx;
     [SerializeField] private AudioSource gruntSfx;
@@ -189,6 +190,15 @@ public class EnemyBase : MonoBehaviour
     private void StartMove()
     {
         canMove = true;
+    }
+
+    private void CallFootstep()
+    {
+        foreach (AudioSource sfx in onMoveSfx)
+        {
+            sfx.pitch = Random.Range(0.9f, 1.1f);
+            sfx.Play();
+        }
     }
 
     private void WalkForwards()
