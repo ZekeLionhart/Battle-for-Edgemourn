@@ -6,7 +6,6 @@ public class HealthManager : MonoBehaviour
     public static HealthManager Instance { get; private set; }
 
     [SerializeField] private AudioSource hitSfx;
-    [SerializeField] private AudioSource deathSfx;
     [SerializeField] private int maxHealth;
     private int currentHealth;
     private bool isAlive = true;
@@ -51,7 +50,6 @@ public class HealthManager : MonoBehaviour
             {
                 currentHealth = 0;
                 isAlive = false;
-                deathSfx.Play();
                 OnZeroHealth();
             }
 

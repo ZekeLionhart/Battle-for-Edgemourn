@@ -70,12 +70,12 @@ public class ResultViewer : MonoBehaviour
         if (isVictory)
         {
             victoryBackground.gameObject.SetActive(true);
-            victoryBGM.gameObject.SetActive(true);
+            victoryBGM.Play();
         }
         else
         {
             defeatBackground.gameObject.SetActive(true);
-            defeatBGM.gameObject.SetActive(true);
+            defeatBGM.Play();
         }
     }
 

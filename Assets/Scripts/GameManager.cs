@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelData currentLevel;
     [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private AudioSource bgm;
+    [SerializeField] private AudioSource victorySFX;
+    [SerializeField] private AudioSource defeatSFX;
     [SerializeField] private MonoBehaviour[] disabledButtons;
     [SerializeField] private float earlyScoreMultiplier;
     [SerializeField] private float streakScoreMultiplier;
@@ -59,30 +61,20 @@ public class GameManager : MonoBehaviour
 
     private void WinGame()
     {
+        victorySFX.Play();
         Time.timeScale = 0.3f;
         CalculateScore(true);
         CalculateResult(true);
     }
 
-    /*private void CallVictoryLoad()
-    {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneNames.LevelSelector);
-    }*/
-
     private void FailGame()
     {
+        defeatSFX.Play();
         Time.timeScale = 0.3f;
         OnGameEnded();
         CalculateScore(false);
         CalculateResult(false);
     }
-
-    /*private void CallGameOver()
-    {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneNames.GameOver);
-    }*/
 
     private void RegisterEnemy(EnemyBase enemy)
     {
