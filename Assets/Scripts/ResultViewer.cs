@@ -136,15 +136,18 @@ public class ResultViewer : MonoBehaviour
 
             text.text = currentScore.ToString();
 
-            if (counterSFX == 0)
+            if (maxScore > 0)
             {
-                scoreSFX.Play();
-                counterSFX++;
+                if (counterSFX == 0)
+                {
+                    scoreSFX.Play();
+                    counterSFX++;
+                }
+                else if (counterSFX < 20)
+                    counterSFX++;
+                else
+                    counterSFX = 0;
             }
-            else if (counterSFX < 20)
-                counterSFX++;
-            else
-                counterSFX = 0;
 
             yield return null;
         }
