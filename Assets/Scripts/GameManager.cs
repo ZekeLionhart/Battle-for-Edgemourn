@@ -55,14 +55,21 @@ public class GameManager : MonoBehaviour
 
     private void EnableAction()
     {
-        foreach(MonoBehaviour script in disabledButtons)
+        foreach (MonoBehaviour script in disabledButtons)
             script.enabled = true;
+    }
+
+    private void DisableAction()
+    {
+        foreach (MonoBehaviour script in disabledButtons)
+            script.enabled = false;
     }
 
     private void WinGame()
     {
         victorySFX.Play();
         Time.timeScale = 0.3f;
+        DisableAction();
         CalculateScore(true);
         CalculateResult(true);
     }
@@ -72,6 +79,7 @@ public class GameManager : MonoBehaviour
         defeatSFX.Play();
         Time.timeScale = 0.3f;
         OnGameEnded();
+        DisableAction();
         CalculateScore(false);
         CalculateResult(false);
     }

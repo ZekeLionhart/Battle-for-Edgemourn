@@ -62,6 +62,13 @@ public class PauseManager : MonoBehaviour
         isSettingsOpen = false;
     }
 
+    public void Retry()
+    {
+        Resume();
+        PlayerPrefs.SetString("Restart", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneNames.RestartTransition);
+    }
+
     public void QuitToMenu()
     {
         Resume();
