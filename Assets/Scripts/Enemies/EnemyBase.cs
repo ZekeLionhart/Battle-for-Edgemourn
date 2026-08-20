@@ -192,13 +192,19 @@ public class EnemyBase : MonoBehaviour
         canMove = true;
     }
 
-    private void CallFootstep()
+    private void CallMovementSFX()
     {
         foreach (AudioSource sfx in onMoveSfx)
         {
             sfx.pitch = Random.Range(0.9f, 1.1f);
             sfx.Play();
         }
+    }
+
+    private void StopMovementSFX()
+    {
+        foreach (AudioSource sfx in onMoveSfx)
+            sfx.Stop();
     }
 
     private void WalkForwards()
