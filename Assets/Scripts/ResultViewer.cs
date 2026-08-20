@@ -12,6 +12,7 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private Image defeatBackground;
     [SerializeField] private AudioSource victoryBGM;
     [SerializeField] private AudioSource defeatBGM;
+    [SerializeField] private AudioSource scoreSFX;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI killScore;
     [SerializeField] private TextMeshProUGUI earlyScore;
@@ -123,6 +124,7 @@ public class ResultViewer : MonoBehaviour
 
     private IEnumerator RunScoreCount(TextMeshProUGUI text, int startScore, int maxScore)
     {
+        int counterSFX = 0;
         float elapsed = 0f;
 
         while (elapsed < 0.5f)
@@ -133,6 +135,16 @@ public class ResultViewer : MonoBehaviour
             int currentScore = Mathf.RoundToInt(Mathf.Lerp(startScore, startScore + maxScore, progress));
 
             text.text = currentScore.ToString();
+
+            if (counterSFX == 0)
+            {
+                scoreSFX.Play();
+                counterSFX++;
+            }
+            else if (counterSFX < 20)
+                counterSFX++;
+            else
+                counterSFX = 0;
 
             yield return null;
         }
