@@ -303,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8065897866382381917}
   - component: {fileID: 5837443327419409179}
+  - component: {fileID: 979559341333088041}
   m_Layer: 5
   m_Name: PauseManager
   m_TagString: Untagged
@@ -345,8 +346,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 6629836028703225026}
+  animator: {fileID: 979559341333088041}
   sfxPause: {fileID: 4823840499088397197}
   sfxUnpause: {fileID: 1296741087585542295}
+--- !u!95 &979559341333088041
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3476445971460665889}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82639728a1a82c44e85950e9947fc3c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3630698225260409235
 GameObject:
   m_ObjectHideFlags: 0

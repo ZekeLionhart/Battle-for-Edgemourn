@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private Animator animator;
     [SerializeField] private AudioSource sfxPause;
     [SerializeField] private AudioSource sfxUnpause;
     public static bool isPaused;
@@ -37,15 +38,21 @@ public class PauseManager : MonoBehaviour
 
     public void Resume()
     {
-        pauseScreen.SetActive(false);
+        animator.SetTrigger("Unpause");
         sfxUnpause.Play();
         Time.timeScale = 1f;
         isPaused = false;
     }
 
+    private void Close()
+    {
+        pauseScreen.SetActive(false);
+    }
+
     public void Pause()
     {
         pauseScreen.SetActive(true);
+        animator.SetTrigger("Pause");
         sfxPause.Play();
         Time.timeScale = 0f;
         isPaused = true;
