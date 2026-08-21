@@ -38,7 +38,7 @@ public class PauseManager : MonoBehaviour
 
     public void Resume()
     {
-        animator.SetTrigger("Unpause");
+        animator.SetTrigger(ParameterNames.Unpause);
         sfxUnpause.Play();
         Time.timeScale = 1f;
         isPaused = false;
@@ -52,7 +52,7 @@ public class PauseManager : MonoBehaviour
     public void Pause()
     {
         pauseScreen.SetActive(true);
-        animator.SetTrigger("Pause");
+        animator.SetTrigger(ParameterNames.Pause);
         sfxPause.Play();
         Time.timeScale = 0f;
         isPaused = true;
