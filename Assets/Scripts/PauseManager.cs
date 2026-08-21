@@ -8,10 +8,12 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource sfxPause;
     [SerializeField] private AudioSource sfxUnpause;
+    [SerializeField] private float volumeMultiplier;
     public static bool isPaused;
     private bool isSettingsOpen;
 
     public static Action OnPause;
+    public static Action<float> SetPauseVolume;
 
     private void OnEnable()
     {
@@ -42,6 +44,7 @@ public class PauseManager : MonoBehaviour
         sfxUnpause.Play();
         Time.timeScale = 1f;
         isPaused = false;
+        SetPauseVolume(1f);
     }
 
     private void Close()
@@ -57,6 +60,7 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         OnPause();
+        SetPauseVolume(volumeMultiplier);
     }
 
     private void BlockResume()

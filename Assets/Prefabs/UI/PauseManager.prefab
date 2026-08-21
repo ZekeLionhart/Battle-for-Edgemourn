@@ -349,6 +349,7 @@ MonoBehaviour:
   animator: {fileID: 979559341333088041}
   sfxPause: {fileID: 4823840499088397197}
   sfxUnpause: {fileID: 1296741087585542295}
+  volumeMultiplier: 0.2
 --- !u!95 &979559341333088041
 Animator:
   serializedVersion: 5

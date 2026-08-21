@@ -6,17 +6,21 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource sound;
     [SerializeField] private float volumeModifier;
     [SerializeField] private AudioTypes audioType;
+    private float normalVolume;
+    private float pauseMultiplier = 1f;
 
     private void OnEnable()
     {
         SettingsManager.UpdateSettings += SetVolume;
         MenuClick.OnFadeAudio += FadeOut;
+        PauseManager.SetPauseVolume += SetPauseVolume;
     }
 
     private void OnDisable()
     {
         SettingsManager.UpdateSettings -= SetVolume;
         MenuClick.OnFadeAudio -= FadeOut;
+        PauseManager.SetPauseVolume -= SetPauseVolume;
     }
 
     private void Start()
@@ -30,14 +34,31 @@ public class AudioManager : MonoBehaviour
         
         if (data.muteAudio)
         {
-            sound.volume = 0;
+            normalVolume = 0;
             return;
         }
 
         if (audioType == AudioTypes.SFX)
-            sound.volume = (data.sfxVolume / 10) * volumeModifier;
+            normalVolume = (data.sfxVolume / 10) * volumeModifier;
         else
-            sound.volume = (data.bgmVolume / 10) * volumeModifier;
+            normalVolume = (data.bgmVolume / 10) * volumeModifier;
+
+        ApplyVolume();
+    }
+
+    private void SetPauseVolume(float pauseMultiplier)
+    {
+        if (audioType == AudioTypes.SFX) 
+            this.pauseMultiplier = 0f;
+        else 
+            this.pauseMultiplier = pauseMultiplier;
+
+        ApplyVolume();
+    }
+
+    private void ApplyVolume()
+    {
+        sound.volume = normalVolume * pauseMultiplier;
     }
 
     private void FadeOut(AudioSource audio, float fadeTime)
