@@ -1,6 +1,6 @@
 public enum DamageTypes { Pierce, Fire, Thunder, Earth }
 public enum TargetTypes { Ally, Environment }
-public enum AudioTypes { SFX, BGM };
+public enum AudioTypes { SFX, BGM, UISFX};
 public enum PowerTypes { Warbow, ArrowVolley, Fireball, LightningStrike, Stonewall, BurningTar };
 public enum LevelStates { Locked, Unlocked, Completed };
 public enum LevelIDs { OuterGates001 = 0, OuterGates002 = 1, OuterGates003 = 2,

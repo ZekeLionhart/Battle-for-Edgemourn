@@ -909,7 +909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 7681712392194344502}
   volumeModifier: 1
-  audioType: 0
+  audioType: 2
 --- !u!1 &2717378346386830260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8609331360584382558}
   volumeModifier: 0.4
-  audioType: 0
+  audioType: 2
 --- !u!1 &8142366053814639325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,6 +2048,8 @@ MonoBehaviour:
   currentLevel: {fileID: 0}
   saveSystem: {fileID: 5911802286554298497}
   bgm: {fileID: 0}
+  victorySFX: {fileID: 0}
+  defeatSFX: {fileID: 0}
   disabledButtons: []
   earlyScoreMultiplier: 0
   streakScoreMultiplier: 0

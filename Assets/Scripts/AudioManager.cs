@@ -48,10 +48,25 @@ public class AudioManager : MonoBehaviour
 
     private void SetPauseVolume(float pauseMultiplier)
     {
-        if (audioType == AudioTypes.SFX) 
-            this.pauseMultiplier = 0f;
-        else 
-            this.pauseMultiplier = pauseMultiplier;
+        if (pauseMultiplier == 1f)
+        {
+            this.pauseMultiplier = 1f;
+            ApplyVolume();
+            return;
+        }
+
+        switch (audioType)
+        {
+            case AudioTypes.SFX:
+                this.pauseMultiplier = 0f;
+                break;
+            case AudioTypes.UISFX:
+                this.pauseMultiplier = 1f;
+                break;
+            default:
+                this.pauseMultiplier = pauseMultiplier;
+                break;
+        }
 
         ApplyVolume();
     }
