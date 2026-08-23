@@ -8,8 +8,13 @@ using UnityEngine.UI;
 public class ResultViewer : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private Image[] victorySideDecorations;
+    [SerializeField] private Image[] defeatSideDecorations;
     [SerializeField] private Image victoryBackground;
     [SerializeField] private Image defeatBackground;
+    [SerializeField] private Image banner;
+    [SerializeField] private Color bannerVictoryColor;
+    [SerializeField] private Color bannerDefeatColor;
     [SerializeField] private AudioSource victoryBGM;
     [SerializeField] private AudioSource defeatBGM;
     [SerializeField] private AudioSource scoreSFX;
@@ -70,12 +75,18 @@ public class ResultViewer : MonoBehaviour
     {
         if (isVictory)
         {
+            foreach (Image deco in defeatSideDecorations)
+                deco.gameObject.SetActive(false);
             victoryBackground.gameObject.SetActive(true);
+            banner.color = bannerVictoryColor;
             victoryBGM.Play();
         }
         else
         {
+            foreach (Image deco in victorySideDecorations)
+                deco.gameObject.SetActive(false);
             defeatBackground.gameObject.SetActive(true);
+            banner.color = bannerDefeatColor;
             defeatBGM.Play();
         }
     }
