@@ -35,13 +35,14 @@ public class AudioManager : MonoBehaviour
         if (data.muteAudio)
         {
             normalVolume = 0;
+            ApplyVolume();
             return;
         }
 
-        if (audioType == AudioTypes.SFX)
-            normalVolume = (data.sfxVolume / 10) * volumeModifier;
-        else
+        if (audioType == AudioTypes.BGM)
             normalVolume = (data.bgmVolume / 10) * volumeModifier;
+        else
+            normalVolume = (data.sfxVolume / 10) * volumeModifier;
 
         ApplyVolume();
     }
