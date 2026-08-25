@@ -57,7 +57,9 @@ public class ProgressManager : MonoBehaviour
                 {
                     levelID = level.levelID,
                     state = LevelStates.Locked,
-                    stars = 0
+                    victoryStar = false,
+                    scoreStar = false,
+                    defenseStar = false
                 };
 
                 if (level.unlockedByDefault) progress.state = LevelStates.Unlocked;
@@ -79,8 +81,12 @@ public class ProgressManager : MonoBehaviour
                 {
                     progress.state = LevelStates.Completed;
 
-                    if (result.stars > progress.stars)
-                        progress.stars = result.stars;
+                    if (result.victory && !progress.victoryStar)
+                        progress.victoryStar = true;
+                    if (result.targetScore && !progress.scoreStar)
+                        progress.scoreStar = true;
+                    if (result.perfectDefense && !progress.defenseStar)
+                        progress.defenseStar = true;
 
                     break;
                 }

@@ -7,6 +7,7 @@ public class LevelData : ScriptableObject
     public LevelIDs levelID;
     public string levelName;
     public string sceneName;
+    public int targetScore;
 
     public Image thumbnail;
 

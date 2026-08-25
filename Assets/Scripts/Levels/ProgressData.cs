@@ -10,7 +10,15 @@ public class ProgressData
     {
         int totalStars = 0;
 
-        foreach (LevelProgress level in levels) totalStars += level.stars;
+        foreach (LevelProgress level in levels)
+        {
+            if (level.victoryStar)
+                totalStars++;
+            if (level.scoreStar)
+                totalStars++;
+            if (level.defenseStar)
+                totalStars++;
+        }
 
         return totalStars;
     }

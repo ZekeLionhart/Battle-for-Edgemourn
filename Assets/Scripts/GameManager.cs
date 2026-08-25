@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int hpScoreMultiplier;
     private readonly HashSet<EnemyBase> enemiesAlive = new();
     private bool hasSpawningFinished = false;
-    private int starReward = 0;
     private int killScore = 0;
     private int earlyScore = 0;
     private int hpScore;
@@ -25,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public static Action<int> OnScoreChanged;
     public static Action<int, Transform> OnScoreEarned;
-    public static Action<bool, int, int, int, int> OnScoreCalculated;
+    public static Action<bool, bool, bool, int, int, int, int> OnScoreCalculated;
     public static Action<MatchResult> OnResultCalculated;
     public static Action OnGameEnded;
 
@@ -70,7 +69,6 @@ public class GameManager : MonoBehaviour
         victorySFX.Play();
         Time.timeScale = 0.3f;
         DisableAction();
-        CalculateScore(true);
         CalculateResult(true);
     }
 
@@ -80,7 +78,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0.3f;
         OnGameEnded();
         DisableAction();
-        CalculateScore(false);
         CalculateResult(false);
     }
 
@@ -122,30 +119,28 @@ public class GameManager : MonoBehaviour
         if (enemiesAlive.Count == 0) WinGame();
     }
 
-    private void CalculateScore(bool isVictory)
+    private void CalculateResult(bool isVictory)
     {
         hpScore = HealthManager.Instance.CurrentHealth * hpScoreMultiplier;
         totalScore = killScore + earlyScore + streakScore + hpScore;
 
-        OnScoreCalculated(isVictory, killScore, earlyScore, streakScore, hpScore);
-    }
+        bool metTargetScore = false;
+        bool isPerfectDefense = false;
 
-    private void CalculateResult(bool victory)
-    {
+        if (totalScore >= currentLevel.targetScore) 
+            metTargetScore = true;
+
         if (HealthManager.Instance.CurrentHealth >= HealthManager.Instance.MaxHealth)
-            starReward = 3;
+            isPerfectDefense = true;
 
-        else if (HealthManager.Instance.CurrentHealth >= HealthManager.Instance.MaxHealth * 0.6)
-            starReward = 2;
-
-        else if (HealthManager.Instance.CurrentHealth >= HealthManager.Instance.MaxHealth * 0.3)
-            starReward = 1;
+        OnScoreCalculated(isVictory, metTargetScore, isPerfectDefense, killScore, earlyScore, streakScore, hpScore);
 
         MatchResult result = new()
         {
             level = currentLevel,
-            victory = victory,
-            stars = starReward,
+            victory = isVictory,
+            targetScore = metTargetScore,
+            perfectDefense = isPerfectDefense,
             coinsEarned = totalScore
         };
 

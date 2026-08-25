@@ -12,6 +12,9 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private Image[] defeatSideDecorations;
     [SerializeField] private Image victoryBackground;
     [SerializeField] private Image defeatBackground;
+    [SerializeField] private Image victoryStar;
+    [SerializeField] private Image scoreStar;
+    [SerializeField] private Image defenseStar;
     [SerializeField] private Image banner;
     [SerializeField] private Color bannerVictoryColor;
     [SerializeField] private Color bannerDefeatColor;
@@ -53,12 +56,22 @@ public class ResultViewer : MonoBehaviour
         moraleScore.text = (stashedMoraleScore = ProgressManager.Instance.CurrentProgress.coins).ToString();
     }
 
-    private void SetUpResultScreen(bool isVictory, int newKillScore, int newEarlyScore, int newStreakScore, int newHPScore)
+    private void SetUpResultScreen(bool isVictory, bool metTargetScore, bool isPerfectDefense, 
+        int newKillScore, int newEarlyScore, int newStreakScore, int newHPScore)
     {
         if (isVictory)
+        {
             title.text = TextDB.Victory;
+            victoryStar.gameObject.SetActive(true);
+        }
         else
             title.text = TextDB.Defeat;
+
+        if (metTargetScore)
+            scoreStar.gameObject.SetActive(true);
+
+        if (isPerfectDefense)
+            defenseStar.gameObject.SetActive(true);
 
         this.isVictory = isVictory;
         maxKillScore = newKillScore;

@@ -11,10 +11,14 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private Transform starLayout;
     [SerializeField] private GameObject grayStar;
     [SerializeField] private GameObject goldStar;
+    [SerializeField] private Image victoryStar;
+    [SerializeField] private Image victoryIcon;
+    [SerializeField] private Image scoreStar;
+    [SerializeField] private Image scoreIcon;
+    [SerializeField] private Image defenseStar;
+    [SerializeField] private Image defenseIcon;
     private LevelData levelData;
     private LevelProgress levelProgress;
-    private int starAmount = 0;
-    private const int MaxStars = 3;
 
     private void Awake()
     {
@@ -32,16 +36,27 @@ public class LevelButton : MonoBehaviour
         levelData = level;
         levelProgress = progress;
         levelNameBox.text = level.levelName;
-        starAmount = progress.stars;
+
+        if (progress.victoryStar)
+        {
+            victoryStar.color = Color.white;
+            victoryIcon.color = Color.white;
+        }
+
+        if (progress.scoreStar)
+        {
+            scoreStar.color = Color.white;
+            scoreIcon.color = Color.white;
+        }
+
+        if (progress.defenseStar)
+        {
+            defenseStar.color = Color.white;
+            defenseIcon.color = Color.white;
+        }
 
         if (progress.state == LevelStates.Locked) return;
         else lockedOverlay.SetActive(false);
-
-        for (int i = 0; i < MaxStars; i++)
-        {
-            if (starAmount > i) Instantiate(goldStar, starLayout);
-            else Instantiate(grayStar, starLayout);
-        }
     }
 
     public void StartLevel()
