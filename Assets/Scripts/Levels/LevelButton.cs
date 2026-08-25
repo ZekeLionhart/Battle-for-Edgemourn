@@ -8,9 +8,6 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI levelNameBox;
     [SerializeField] private GameObject lockedOverlay;
-    [SerializeField] private Transform starLayout;
-    [SerializeField] private GameObject grayStar;
-    [SerializeField] private GameObject goldStar;
     [SerializeField] private Image victoryStar;
     [SerializeField] private Image victoryIcon;
     [SerializeField] private Image scoreStar;
