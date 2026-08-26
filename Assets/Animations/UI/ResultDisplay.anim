@@ -3884,6 +3884,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 2.8833334
+    functionName: PlayStarHitSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 3
     functionName: RunEarlyScore
     data: 
@@ -3891,8 +3898,22 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 3.3833334
+    functionName: PlayStarHitSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 3.5
     functionName: RunStreakScore
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 3.8833334
+    functionName: PlayStarHitSFX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

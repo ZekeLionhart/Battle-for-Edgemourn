@@ -21,6 +21,7 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private AudioSource victoryBGM;
     [SerializeField] private AudioSource defeatBGM;
     [SerializeField] private AudioSource scoreSFX;
+    [SerializeField] private AudioSource starHitSFX;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI killScore;
     [SerializeField] private TextMeshProUGUI earlyScore;
@@ -209,6 +210,11 @@ public class ResultViewer : MonoBehaviour
         }
 
         totalScoreToMove.transform.position = targetPosition;
+    }
+
+    private void PlayStarHitSFX()
+    {
+        starHitSFX.Play();
     }
 
     private void ResumeTime()

@@ -15,5 +15,6 @@ MonoBehaviour:
   levelID: 0
   levelName: OuterGates1
   sceneName: Lv_1_Scene
+  targetScore: 30
   unlockedByDefault: 1
   chapter: 3
