@@ -12,9 +12,9 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private Image[] defeatSideDecorations;
     [SerializeField] private Image victoryBackground;
     [SerializeField] private Image defeatBackground;
-    [SerializeField] private Image victoryStar;
-    [SerializeField] private Image scoreStar;
-    [SerializeField] private Image defenseStar;
+    [SerializeField] private Animator victoryStar;
+    [SerializeField] private Animator scoreStar;
+    [SerializeField] private Animator defenseStar;
     [SerializeField] private Image banner;
     [SerializeField] private Color bannerVictoryColor;
     [SerializeField] private Color bannerDefeatColor;
@@ -212,9 +212,22 @@ public class ResultViewer : MonoBehaviour
         totalScoreToMove.transform.position = targetPosition;
     }
 
-    private void PlayStarHitSFX()
+    private void SpawnVictoryStar()
     {
-        starHitSFX.Play();
+        if (victoryStar.gameObject.activeInHierarchy)
+            victoryStar.SetTrigger(ParameterNames.Spawn);
+    }
+
+    private void SpawnScoreStar()
+    {
+        if (scoreStar.gameObject.activeInHierarchy)
+            scoreStar.SetTrigger(ParameterNames.Spawn);
+    }
+
+    private void SpawnDefenseStar()
+    {
+        if (defenseStar.gameObject.activeInHierarchy)
+            defenseStar.SetTrigger(ParameterNames.Spawn);
     }
 
     private void ResumeTime()

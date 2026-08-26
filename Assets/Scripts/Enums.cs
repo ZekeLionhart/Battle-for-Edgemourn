@@ -67,4 +67,5 @@ public static class ParameterNames
     public const string Increase = "Increase";
     public const string Pause = "Pause";
     public const string Unpause = "Unpause";
+    public const string Spawn = "Spawn";
 }
