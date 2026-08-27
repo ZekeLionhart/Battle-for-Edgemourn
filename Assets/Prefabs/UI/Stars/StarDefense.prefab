@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7412590461895237095, guid: ccaca7a2e97ba2549b1541f7089d4e67, type: 3}
       propertyPath: m_Name
-      value: Star3
+      value: StarDefense
       objectReference: {fileID: 0}
     - target: {fileID: 7901900611179485607, guid: ccaca7a2e97ba2549b1541f7089d4e67, type: 3}
       propertyPath: endX

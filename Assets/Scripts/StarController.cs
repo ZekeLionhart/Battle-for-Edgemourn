@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class StarController : MonoBehaviour
 {
+    [SerializeField] private Transform star;
     [SerializeField] private AudioSource starHitSFX;
-    [SerializeField] private float startX;
-    [SerializeField] private float endX;
     [SerializeField] private float position;
+    [SerializeField] private float startX;
+    private readonly float endX = 0f;
 
     private void Update()
     {
-        transform.localPosition = Vector3.Lerp(
-            new Vector3(startX, transform.localPosition.y, 0),
-            new Vector3(endX, transform.localPosition.y, 0),
+        star.localPosition = Vector3.Lerp(
+            new Vector3(startX, star.localPosition.y, 0),
+            new Vector3(endX, star.localPosition.y, 0),
             position
         );
     }

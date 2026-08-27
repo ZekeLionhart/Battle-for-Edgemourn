@@ -263,10 +263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e49d489c964d944a8fbe7c36c8da28f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  star: {fileID: 7576114724945068574}
   starHitSFX: {fileID: 1119992251913071984}
-  startX: -400
-  endX: -45.5
   position: 0
+  startX: -400
 --- !u!95 &7971422853086725359
 Animator:
   serializedVersion: 5
