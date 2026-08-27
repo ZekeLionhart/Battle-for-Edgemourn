@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class StarController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform star;
     [SerializeField] private AudioSource starHitSFX;
     [SerializeField] private TextMeshProUGUI tooltip;
@@ -30,6 +31,16 @@ public class StarController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         tooltip.text = TextDB.GetTextByKey(tooltiptext);
     }
 
+    private void OnEnable()
+    {
+        ResultViewer.CallStarDespawn += FadeAway;
+    }
+
+    private void OnDisable()
+    {
+        ResultViewer.CallStarDespawn -= FadeAway;
+    }
+
     private void Update()
     {
         star.localPosition = Vector3.Lerp(
@@ -48,5 +59,10 @@ public class StarController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private void PlayStarHitSFX()
     {
         starHitSFX.Play();
+    }
+
+    private void FadeAway()
+    {
+        animator.SetTrigger(ParameterNames.Disappear);
     }
 }

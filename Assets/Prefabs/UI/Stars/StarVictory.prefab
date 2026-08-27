@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e49d489c964d944a8fbe7c36c8da28f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7971422853086725359}
   star: {fileID: 7576114724945068574}
   starHitSFX: {fileID: 1119992251913071984}
   tooltip: {fileID: 3016598434879679130}

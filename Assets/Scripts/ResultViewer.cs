@@ -41,6 +41,7 @@ public class ResultViewer : MonoBehaviour
     private bool isVictory;
 
     public static Action CallMusicStop;
+    public static Action CallStarDespawn;
 
     private void OnEnable()
     {
@@ -228,6 +229,12 @@ public class ResultViewer : MonoBehaviour
     {
         if (defenseStar.gameObject.activeInHierarchy)
             defenseStar.SetTrigger(ParameterNames.Spawn);
+    }
+
+    private void HideStars()
+    {
+        if (victoryStar.gameObject.activeInHierarchy)
+            CallStarDespawn();
     }
 
     private void ResumeTime()

@@ -127,11 +127,14 @@ public class GameManager : MonoBehaviour
         bool metTargetScore = false;
         bool isPerfectDefense = false;
 
-        if (totalScore >= currentLevel.targetScore) 
-            metTargetScore = true;
+        if (isVictory)
+        {
+            if (totalScore >= currentLevel.targetScore)
+                metTargetScore = true;
 
-        if (HealthManager.Instance.CurrentHealth >= HealthManager.Instance.MaxHealth)
-            isPerfectDefense = true;
+            if (HealthManager.Instance.CurrentHealth >= HealthManager.Instance.MaxHealth)
+                isPerfectDefense = true;
+        }
 
         OnScoreCalculated(isVictory, metTargetScore, isPerfectDefense, killScore, earlyScore, streakScore, hpScore);
 
