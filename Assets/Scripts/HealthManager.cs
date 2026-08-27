@@ -27,7 +27,6 @@ public class HealthManager : MonoBehaviour
         Instance = this;
 
         currentHealth = maxHealth;
-        OnHealthChanged(currentHealth);
     }
 
     private void OnEnable()
@@ -37,6 +36,11 @@ public class HealthManager : MonoBehaviour
     private void OnDisable()
     {
         EnemyBase.OnDamageDealt -= DecreaseHealth;
+    }
+
+    private void Start()
+    {
+        OnHealthChanged(currentHealth);
     }
 
     private void DecreaseHealth(GameObject target, int damage)
