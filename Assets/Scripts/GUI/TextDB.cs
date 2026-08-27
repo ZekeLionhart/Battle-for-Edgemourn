@@ -9,10 +9,12 @@ public enum UITextKey {
     GameSubtitle = 5,
     GameTitle = 0, 
     Morale = 8,
+    PerfectDefense = 17,
     Quit = 15,
     Restart = 2,
     ScoreEarly = 9,
     ScoreHP = 10,
+    ScoreGoal = 16,
     ScoreKill = 11,
     ScoreStreak = 12,
     ScoreTotal = 13,
@@ -31,6 +33,8 @@ public static class TextDB
     public static string AppVersion = "Version: " + Application.version;
     public const string Victory = "Victory!";
     public const string Defeat = "Defeat!";
+    public const string ScoreGoal = "Score Goal!";
+    public const string PerfectDefense = "Perfect Defense!";
     public const string KillScore = "Kill Score:";
     public const string EarlyScore = "Early Kill Bonus:";
     public const string StreakScore = "Streak Bonus:";
@@ -55,6 +59,8 @@ public static class TextDB
             case UITextKey.AppVersion: return TextDB.AppVersion;
             case UITextKey.Victory: return TextDB.Victory;
             case UITextKey.Defeat: return TextDB.Defeat;
+            case UITextKey.ScoreGoal: return TextDB.ScoreGoal;
+            case UITextKey.PerfectDefense: return TextDB.PerfectDefense;
             case UITextKey.ScoreKill: return TextDB.KillScore;
             case UITextKey.ScoreEarly: return TextDB.EarlyScore;
             case UITextKey.ScoreStreak: return TextDB.StreakScore;
