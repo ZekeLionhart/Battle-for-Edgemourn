@@ -69,4 +69,5 @@ public static class ParameterNames
     public const string Unpause = "Unpause";
     public const string Spawn = "Spawn";
     public const string Disappear = "Disappear";
+    public const string LevelChosen = "LevelChosen";
 }

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,8 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private Image defenseIcon;
     private LevelData levelData;
     private LevelProgress levelProgress;
+
+    public static Action<string> OnLevelChosen;
 
     private void Awake()
     {
@@ -59,7 +62,7 @@ public class LevelButton : MonoBehaviour
     public void StartLevel()
     {
         if (levelProgress.state != LevelStates.Locked)
-            SceneManager.LoadScene(levelData.sceneName);
+            OnLevelChosen(levelData.sceneName);
     }
 
     public void SetName(string name)

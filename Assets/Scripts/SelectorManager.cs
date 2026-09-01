@@ -1,9 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectorManager : MonoBehaviour
 {
     [SerializeField] private CampaignData campaign;
+    [SerializeField] private Animator animator;
     [SerializeField] private LevelPack[] chapters;
+    private string sceneName;
+
+    private void OnEnable()
+    {
+        LevelButton.OnLevelChosen += TransitionToLevel;
+    }
+
+    private void OnDisable()
+    {
+        LevelButton.OnLevelChosen -= TransitionToLevel;
+    }
 
     private void Start()
     {
@@ -26,5 +39,16 @@ public class SelectorManager : MonoBehaviour
             }
 
         return pack;
+    }
+
+    private void TransitionToLevel(string sceneName)
+    {
+        this.sceneName = sceneName;
+        animator.SetTrigger(ParameterNames.LevelChosen);
+    }
+
+    private void StartTransitionToLevel()
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
