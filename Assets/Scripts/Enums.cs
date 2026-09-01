@@ -8,7 +8,7 @@ public enum LevelIDs { OuterGates001 = 0, OuterGates002 = 1, OuterGates003 = 2,
                        MidLayer001 = 6, MidLayer002 = 7, MidLayer003 = 8,
                        InnerLayer001 = 9, InnerLayer002 = 10, InnerLayer003 = 11,
                        EndlessMode = 12 };
-//public enum TransitionSources { MainMenu, RestartMatch, QuitToSelection };
+public enum Chapters { Tutorial, OuterWalls, FirstLayer, MidLayer, InnerLayer };
 
 public static class SettingNames
 {

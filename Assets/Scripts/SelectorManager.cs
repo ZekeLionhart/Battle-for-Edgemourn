@@ -2,18 +2,29 @@ using UnityEngine;
 
 public class SelectorManager : MonoBehaviour
 {
-    [SerializeField] private LevelButton buttonPrefab;
-    [SerializeField] private Transform parentLayout;
+    [SerializeField] private CampaignData campaign;
+    [SerializeField] private LevelPack[] chapters;
 
     private void Start()
     {
-        foreach (LevelData level in ProgressManager.Instance.Levels)
+        foreach (LevelData level in campaign.levels)
         {
-            LevelProgress progress = ProgressManager.Instance.FindLevelProgress(level);
-
-            LevelButton button = Instantiate(buttonPrefab, parentLayout);
-
-            button.Initialize(level, progress);
+            LevelPack pack = GetLevelPack(level.chapter);
+            pack.AddLevel(level);
         }
+    }
+
+    private LevelPack GetLevelPack(Chapters chapterKey)
+    {
+        LevelPack pack = chapters[0];
+
+        foreach (LevelPack chapter in chapters)
+            if (chapter.Chapter == chapterKey)
+            {
+                pack = chapter;
+                break;
+            }
+
+        return pack;
     }
 }

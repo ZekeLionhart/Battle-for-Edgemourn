@@ -2002,7 +2002,7 @@ PrefabInstance:
     - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 2fc380cb66cbf19488957f6775674d4e, type: 2}
+      objectReference: {fileID: 11400000, guid: 33b3961d07dfc92429c7f83a4d015896, type: 2}
     - target: {fileID: 3851270056583433955, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: m_Name
       value: WaveSpawner

@@ -39,7 +39,7 @@ public class StreakManager : MonoBehaviour
         }
     }
 
-    public int RegisterKill(EnemyBase enemy, Transform popupCoord)
+    public int RegisterKill(EnemyBase enemy, Transform popupCoord)//tirar o popupCoord?
     {
         if (enemy == previousEnemy) return 0;
         

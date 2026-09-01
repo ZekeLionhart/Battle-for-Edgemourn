@@ -13,5 +13,5 @@ public class LevelData : ScriptableObject
 
     public bool unlockedByDefault;
 
-    public int chapter;
+    public Chapters chapter;
 }
