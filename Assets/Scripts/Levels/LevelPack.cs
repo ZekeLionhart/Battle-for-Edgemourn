@@ -16,6 +16,7 @@ public class LevelPack : MonoBehaviour
 
     public void OpenChapter()
     {
-        popupDisplay.OpenChapter(levels);
+        if (levels.Count > 0)
+            popupDisplay.OpenChapter(levels);
     }
 }
