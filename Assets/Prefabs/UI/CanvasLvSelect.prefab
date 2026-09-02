@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.4392157}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.4745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531d724f43fe1c44b8b787617e409388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 2469312664731836868}
+  animator: {fileID: 4828183530319433375}
   popup: {fileID: 8674017617558290511}
   buttonContainer: {fileID: 1692523277963203539}
   buttonPrefab: {fileID: 3471239433410289998, guid: 547734d938868f14a88212cda8ff53bb, type: 3}
@@ -1267,7 +1267,7 @@ GameObject:
   - component: {fileID: 1080549020707997030}
   - component: {fileID: 6044922095139572359}
   - component: {fileID: 8674017617558290511}
-  - component: {fileID: 4310292705498967401}
+  - component: {fileID: 2378849149574726222}
   m_Layer: 5
   m_Name: PopupBg
   m_TagString: Untagged
@@ -1292,7 +1292,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3532078820012075426
 CanvasRenderer:
@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4310292705498967401
+--- !u!114 &2378849149574726222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1381,11 +1381,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7267278201103661253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
+  m_Padding: {x: 20, y: 20, z: 20, w: 20}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &7335133435196993345
 GameObject:
   m_ObjectHideFlags: 0

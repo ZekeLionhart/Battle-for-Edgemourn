@@ -70,4 +70,6 @@ public static class ParameterNames
     public const string Spawn = "Spawn";
     public const string Disappear = "Disappear";
     public const string LevelChosen = "LevelChosen";
+    public const string OpenPopup = "OpenPopup";
+    public const string ClosePopup = "ClosePopup";
 }
