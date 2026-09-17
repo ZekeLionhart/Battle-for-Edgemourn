@@ -24,6 +24,11 @@ public class ChapterPopupDisplay : MonoBehaviour
         LevelButton.OnLevelChosen += CloseChapter;
     }
 
+    private void OnDisable()
+    {
+        LevelButton.OnLevelChosen -= CloseChapter;
+    }
+
     private void BuildButtons(List<LevelData> newLevels)
     {
         foreach (LevelData level in newLevels)
