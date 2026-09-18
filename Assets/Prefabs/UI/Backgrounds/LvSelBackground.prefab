@@ -503,6 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8089122406591459454}
+  - component: {fileID: 616375155806902785}
   m_Layer: 0
   m_Name: LvSelBackground
   m_TagString: Untagged
@@ -535,6 +536,21 @@ Transform:
   - {fileID: 7961594777599569851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &616375155806902785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425740848063539692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100354e8f17de274691047781c720748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animators:
+  - {fileID: 1184035129327771078}
+  - {fileID: 4348035071674415286}
 --- !u!1 &3484021196196796067
 GameObject:
   m_ObjectHideFlags: 0

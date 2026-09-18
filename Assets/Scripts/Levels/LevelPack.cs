@@ -13,7 +13,7 @@ public class LevelPack : MonoBehaviour
 
     public static Action<Chapters, LevelStates> SetFlagPattern;
 
-    private void Awake()
+    private void Start()
     {
         CalculateFlagPattern();
     }
