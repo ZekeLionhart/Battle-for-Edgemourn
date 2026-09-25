@@ -23,4 +23,15 @@ public class CampaignData : ScriptableObject
 
         return levels[nextIndex];
     }
+
+    public LevelData FindLevelByID(LevelIDs iD)
+    {
+        LevelData level = null;
+
+        foreach (LevelData levelData in levels)
+            if (levelData.levelID == iD)
+                level = levelData;
+
+        return level;
+    }
 }

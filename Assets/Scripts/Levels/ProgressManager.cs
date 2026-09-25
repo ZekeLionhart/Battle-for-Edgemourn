@@ -125,4 +125,9 @@ public class ProgressManager : MonoBehaviour
 
         return new LevelProgress();
     }
+
+    public LevelProgress GetLevelProgress(LevelIDs levelID)
+    {
+        return progressData.levels.Find(p => p.levelID == levelID);
+    }
 }
