@@ -7,12 +7,10 @@ public class MapNotesManager : MonoBehaviour
     [SerializeField] private Transform enemyLineChapTransform;
     [SerializeField] private Animator animator;
     [SerializeField] private CampaignData campaignData;
-    private ProgressData progressData;
     private Chapters currentChapter;
 
     private void Start()
     {
-        progressData = ProgressManager.Instance.CurrentProgress;
         SetUpAllAnnotations();
     }
 
@@ -50,7 +48,6 @@ public class MapNotesManager : MonoBehaviour
 
     private void SetLineAnimation(int levelsCompleted)
     {
-        Debug.Log(levelsCompleted);
         switch (levelsCompleted)
         {
             case 0:
