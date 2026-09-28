@@ -9,6 +9,7 @@ public class ChapterPopupDisplay : MonoBehaviour
     [SerializeField] private Image popup;
     [SerializeField] private Transform buttonContainer;
     [SerializeField] private LevelButton buttonPrefab;
+    [SerializeField] private AudioSource closePopupSFX;
     private List<LevelButton> buttons = new();
     private RectTransform popupRect;
     private ContentSizeFitter popupFitter;
@@ -27,6 +28,12 @@ public class ChapterPopupDisplay : MonoBehaviour
     private void OnDisable()
     {
         LevelButton.OnLevelChosen -= CloseChapter;
+    }
+
+    private void Update()
+    {
+        if (popup.IsActive() && Input.GetButtonUp(KeyNames.Pause))
+            CloseChapter();
     }
 
     private void BuildButtons(List<LevelData> newLevels)
@@ -92,6 +99,7 @@ public class ChapterPopupDisplay : MonoBehaviour
 
     private IEnumerator CloseAnimation()
     {
+        closePopupSFX.Play();
         animator.SetTrigger(ParameterNames.ClosePopup);
 
         float startingHeight = popupRect.rect.height;

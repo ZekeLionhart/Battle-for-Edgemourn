@@ -10,6 +10,16 @@ public class MenuClick : MonoBehaviour
 
     public static Action<AudioSource, float> OnFadeAudio;
 
+    private void OnEnable()
+    {
+        LevelButton.OnLevelChosen += FadeAudio;
+    }
+
+    private void OnDisable()
+    {
+        LevelButton.OnLevelChosen -= FadeAudio;
+    }
+
     public void StartSceneTransition(string source)
     {
         switch (source)
@@ -27,6 +37,19 @@ public class MenuClick : MonoBehaviour
                 break;
         }
 
+        FadeAudio();
+    }
+
+    private void FadeAudio()
+    {
+        foreach (AudioSource audio in bgm)
+        {
+            OnFadeAudio(audio, audioFadeTime);
+        }
+    }
+
+    private void FadeAudio(string unused)
+    {
         foreach (AudioSource audio in bgm)
         {
             OnFadeAudio(audio, audioFadeTime);

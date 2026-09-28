@@ -11,6 +11,8 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private SettingsData settingsData;
+    [SerializeField] private AudioSource openSFX;
+    [SerializeField] private AudioSource closeSFX;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private TextMeshProUGUI txtBgmSlider;
     [SerializeField] private Slider sfxSlider;
@@ -51,6 +53,7 @@ public class SettingsManager : MonoBehaviour
             OnSettingsOpen();
 
         settingsScreen.SetActive(true);
+        openSFX.Play();
         LoadSettingsValues();
     }
 
@@ -75,6 +78,7 @@ public class SettingsManager : MonoBehaviour
             OnSettingsClose();
         }
         settingsScreen.SetActive(false);
+        closeSFX.Play();
     }
 
     private void LoadSettingsValues()

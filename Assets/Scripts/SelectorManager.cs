@@ -51,4 +51,9 @@ public class SelectorManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    private void BackToMainMenu()
+    {
+        SceneManager.LoadScene(SceneNames.Menu);
+    }
 }
