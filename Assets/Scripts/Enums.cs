@@ -73,3 +73,10 @@ public static class ParameterNames
     public const string OpenPopup = "OpenPopup";
     public const string ClosePopup = "ClosePopup";
 }
+public static class ChapterNames
+{
+    public const string OuterGates = "- Outer Gates -";
+    public const string FirstLayer = "- First Layer -";
+    public const string MidLayer = "- Middle Layer -";
+    public const string InnerLayer = "- Inner Layer -";
+}

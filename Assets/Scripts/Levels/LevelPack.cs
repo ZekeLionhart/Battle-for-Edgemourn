@@ -50,6 +50,6 @@ public class LevelPack : MonoBehaviour
         LevelProgress progress = ProgressManager.Instance.FindLevelProgress(levels[0]);
 
         if (progress.state != LevelStates.Locked)
-            popupDisplay.OpenChapter(levels);
+            popupDisplay.OpenChapter(levels, chapter);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class ChapterPopupDisplay : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Image popup;
+    [SerializeField] private TextMeshProUGUI chapterTitle;
     [SerializeField] private Transform buttonContainer;
     [SerializeField] private LevelButton buttonPrefab;
     [SerializeField] private AudioSource closePopupSFX;
@@ -49,8 +51,28 @@ public class ChapterPopupDisplay : MonoBehaviour
         }
     }
 
-    public void OpenChapter(List<LevelData> newLevels)
+    public void OpenChapter(List<LevelData> newLevels, Chapters chapter)
     {
+        switch (chapter)
+        {
+            case Chapters.Tutorial:
+                break;
+            case Chapters.OuterWalls:
+                chapterTitle.text = ChapterNames.OuterGates;
+                break;
+            case Chapters.FirstLayer:
+                chapterTitle.text = ChapterNames.FirstLayer;
+                break;
+            case Chapters.MidLayer:
+                chapterTitle.text = ChapterNames.MidLayer;
+                break;
+            case Chapters.InnerLayer:
+                chapterTitle.text = ChapterNames.InnerLayer;
+                break;
+            default:
+                break;
+        }
+
         BuildButtons(newLevels);
 
         StartCoroutine(OpenAnimation());
