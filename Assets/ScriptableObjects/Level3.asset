@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   levelID: 2
-  levelName: OuterGates3
+  levelName: Dusk
   sceneName: Lv_3_Scene
   targetScore: 0
   unlockedByDefault: 0

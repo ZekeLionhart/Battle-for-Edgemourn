@@ -40,14 +40,17 @@ public class ChapterPopupDisplay : MonoBehaviour
 
     private void BuildButtons(List<LevelData> newLevels)
     {
+        int levelCount = 1;
+
         foreach (LevelData level in newLevels)
         {
             LevelButton button = Instantiate(buttonPrefab, buttonContainer);
 
             LevelProgress progress = ProgressManager.Instance.FindLevelProgress(level);
 
-            button.Initialize(level, progress);
+            button.Initialize(level, progress, levelCount);
             buttons.Add(button);
+            levelCount++;
         }
     }
 
