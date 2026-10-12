@@ -51,16 +51,16 @@ public class MapNotesManager : MonoBehaviour
         switch (levelsCompleted)
         {
             case 0:
-                animator.SetTrigger("Lv3Complete");
+                animator.SetTrigger(ParameterNames.Lv3Complete);
                 break;
             case 1:
-                animator.SetTrigger("Lv1Complete");
+                animator.SetTrigger(ParameterNames.Lv1Complete);
                 break;
             case 2:
-                animator.SetTrigger("Lv2Complete");
+                animator.SetTrigger(ParameterNames.Lv2Complete);
                 break;
             case 3:
-                animator.SetTrigger("Lv3Complete");
+                animator.SetTrigger(ParameterNames.Lv3Complete);
                 break;
             default:
                 break;

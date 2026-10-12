@@ -72,4 +72,7 @@ public static class ParameterNames
     public const string LevelChosen = "LevelChosen";
     public const string OpenPopup = "OpenPopup";
     public const string ClosePopup = "ClosePopup";
+    public const string Lv1Complete = "Lv1Complete";
+    public const string Lv2Complete = "Lv2Complete";
+    public const string Lv3Complete = "Lv3Complete";
 }
