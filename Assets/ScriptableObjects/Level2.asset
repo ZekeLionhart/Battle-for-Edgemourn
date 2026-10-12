@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   levelID: 1
-  levelName: Noon
+  levelNameKey: 19
   sceneName: Lv_2_Scene
   targetScore: 0
   unlockedByDefault: 0

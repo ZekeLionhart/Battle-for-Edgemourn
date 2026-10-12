@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level6
   m_EditorClassIdentifier: 
   levelID: 9
-  levelName: InnerLayer1
+  levelNameKey: 18
   sceneName: Lv_3_Scene
   targetScore: 0
   unlockedByDefault: 0

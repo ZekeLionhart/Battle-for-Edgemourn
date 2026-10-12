@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level4
   m_EditorClassIdentifier: 
   levelID: 3
-  levelName: FirstLayer1
+  levelNameKey: 18
   sceneName: Lv_1_Scene
   targetScore: 30
   unlockedByDefault: 0
