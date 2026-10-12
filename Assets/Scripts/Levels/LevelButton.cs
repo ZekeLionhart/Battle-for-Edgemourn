@@ -1,9 +1,10 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class LevelButton : MonoBehaviour
+public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI levelNameBox;
@@ -16,14 +17,29 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private Image defenseStar;
     [SerializeField] private Image defenseIcon;
     [SerializeField] private Image[] numerals;
+    [SerializeField] private Image selectionLines;
+    [SerializeField] private Image selectionArrow;
+    [SerializeField] private Color availableColor;
+    [SerializeField] private Color lockedColor;
     private LevelData levelData;
     private LevelProgress levelProgress;
 
     public static Action<string> OnLevelChosen;
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        selectionLines.gameObject.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        selectionLines.gameObject.SetActive(false);
+    }
+
     private void Awake()
     {
         button.onClick.AddListener(StartLevel);
+        selectionLines.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -35,7 +51,7 @@ public class LevelButton : MonoBehaviour
     {
         levelData = level;
         levelProgress = progress;
-        levelNameBox.text = level.levelName;
+        levelNameBox.text = level.DisplayName;
 
         SetSealNumberal(levelCount);
         if (SetLockedState(progress)) return;
@@ -50,11 +66,18 @@ public class LevelButton : MonoBehaviour
 
     private bool SetLockedState(LevelProgress progress)
     {
-        if (progress.state == LevelStates.Locked) return true;
+        if (progress.state == LevelStates.Locked)
+        {
+            selectionLines.color = lockedColor;
+            selectionArrow.color = lockedColor;
+            return true;
+        }
         else
         {
             lockedOverlay.gameObject.SetActive(false);
             lockpad.gameObject.SetActive(false);
+            selectionLines.color = availableColor;
+            selectionArrow.color = availableColor;
             return false;
         }
     }

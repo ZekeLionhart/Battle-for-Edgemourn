@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 public class LevelData : ScriptableObject
 {
     public LevelIDs levelID;
-    public string levelName;
+    public UITextKey levelNameKey;
     public string sceneName;
     public int targetScore;
 
@@ -14,4 +14,6 @@ public class LevelData : ScriptableObject
     public bool unlockedByDefault;
 
     public Chapters chapter;
+
+    public string DisplayName => TextDB.GetTextByKey(levelNameKey);
 }

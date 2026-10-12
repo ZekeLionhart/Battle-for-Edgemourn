@@ -7,7 +7,10 @@ public enum UITextKey {
     Defeat = 7,
     GameOver = 4,
     GameSubtitle = 5,
-    GameTitle = 0, 
+    GameTitle = 0,
+    Level1 = 18,
+    Level2 = 19,
+    Level3 = 20, 
     Morale = 8,
     PerfectDefense = 17,
     Quit = 15,
@@ -31,6 +34,13 @@ public static class TextDB
     public const string GameTitle = "Battle for Edgemourn";
     public const string GameSubtitle = "Chronicles of Archana";
     public static string AppVersion = "Version: " + Application.version;
+    public const string Chapter1 = "Outer Gates";
+    public const string Chapter2 = "First Layer";
+    public const string Chapter3 = "Middle Layer";
+    public const string Chapter4 = "Inner Layer";
+    public const string Level1 = "Dawn";
+    public const string Level2 = "Noon";
+    public const string Level3 = "Dusk";
     public const string Victory = "Victory!";
     public const string Defeat = "Defeat!";
     public const string ScoreGoal = "Score Goal!";
@@ -57,6 +67,9 @@ public static class TextDB
             case UITextKey.GameTitle: return TextDB.GameTitle;
             case UITextKey.GameSubtitle: return TextDB.GameSubtitle;
             case UITextKey.AppVersion: return TextDB.AppVersion;
+            case UITextKey.Level1: return TextDB.Level1;
+            case UITextKey.Level2: return TextDB.Level2;
+            case UITextKey.Level3: return TextDB.Level3;
             case UITextKey.Victory: return TextDB.Victory;
             case UITextKey.Defeat: return TextDB.Defeat;
             case UITextKey.ScoreGoal: return TextDB.ScoreGoal;

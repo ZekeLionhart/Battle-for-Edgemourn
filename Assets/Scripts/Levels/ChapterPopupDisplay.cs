@@ -61,16 +61,16 @@ public class ChapterPopupDisplay : MonoBehaviour
             case Chapters.Tutorial:
                 break;
             case Chapters.OuterWalls:
-                chapterTitle.text = ChapterNames.OuterGates;
+                chapterTitle.text = TextDB.Chapter1;
                 break;
             case Chapters.FirstLayer:
-                chapterTitle.text = ChapterNames.FirstLayer;
+                chapterTitle.text = TextDB.Chapter2;
                 break;
             case Chapters.MidLayer:
-                chapterTitle.text = ChapterNames.MidLayer;
+                chapterTitle.text = TextDB.Chapter3;
                 break;
             case Chapters.InnerLayer:
-                chapterTitle.text = ChapterNames.InnerLayer;
+                chapterTitle.text = TextDB.Chapter4;
                 break;
             default:
                 break;
