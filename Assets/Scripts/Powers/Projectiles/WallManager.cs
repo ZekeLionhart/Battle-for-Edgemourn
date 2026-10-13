@@ -8,6 +8,7 @@ public class WallManager : MonoBehaviour
     private float damage;
     private float shakeDuration;
     private float shakeIntensity;
+    private bool canBeDamaged = false;
     private PowerTypes powerType;
     private DamageTypes damageType;
 
@@ -42,16 +43,23 @@ public class WallManager : MonoBehaviour
 
     private void TakeDamage(GameObject target, int damage)
     {
-        if (target == gameObject)
-        {
-            hitpoints -= damage;
-            hitSfx.Play();
+        if (target != gameObject || hitpoints <= 0) return;
 
-            if (hitpoints <= 0)
-                animator.SetTrigger(ParameterNames.Destroy);
-            else
-                animator.SetTrigger(ParameterNames.Hit);
-        }
+        hitSfx.Play();
+
+        if (!canBeDamaged) return;
+
+        hitpoints -= damage;
+
+        if (hitpoints <= 0)
+            animator.SetTrigger(ParameterNames.Destroy);
+        else
+            animator.SetTrigger(ParameterNames.Hit);
+    }
+
+    private void SummoningEnded()
+    {
+        canBeDamaged = true;
     }
 
     private void CallCameraShake()
