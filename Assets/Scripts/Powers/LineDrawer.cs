@@ -12,7 +12,6 @@ public class LineDrawer : MonoBehaviour
     private Vector3 prevStartPos;
     private Vector3 prevEndPos;
     private int currentPull;
-    private bool isMouseInside;
     private bool wasFirstClickInside = false;
 
     public static Action<Vector3, bool> OnMouseUp;
@@ -27,13 +26,19 @@ public class LineDrawer : MonoBehaviour
     private void OnEnable()
     {
         PowerController.OnPowerShoot += SavePreviousShot;
-        PowerShooter.IsInsideArea += UpdateMouseState;
+        PowerShooter.OnAimStarted += StartAim;
+        PauseManager.OnPause += CancelAim;
+        PowerManager.OnSwitchPowers += CancelAimOnPowerSwitch;
     }
 
     private void OnDisable()
     {
         PowerController.OnPowerShoot -= SavePreviousShot;
-        PowerShooter.IsInsideArea -= UpdateMouseState;
+        PowerShooter.OnAimStarted -= StartAim;
+        PauseManager.OnPause -= CancelAim;
+        PowerManager.OnSwitchPowers -= CancelAimOnPowerSwitch;
+
+        CancelAim();
     }
 
     void Update()
@@ -42,24 +47,24 @@ public class LineDrawer : MonoBehaviour
             DrawAimingLine();
     }
 
-    private void UpdateMouseState(bool value)
+    private void StartAim(Vector2 screenPosition)
     {
-        isMouseInside = value;
+        if (PauseManager.isPaused || wasFirstClickInside)
+            return;
+
+        startPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, 0f));
+        startPos.z = 0f;
+
+        endPos = startPos;
+        currentPull = 1;
+        wasFirstClickInside = true;
+
+        OnBowPull(currentPull);
+        ShowPreviousShot();
     }
 
     private void DrawAimingLine()
     {
-        if (Input.GetButtonDown(KeyNames.Fire) && isMouseInside)
-        {
-            startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            startPos.z = 0f;
-            currentPull = 1;
-            wasFirstClickInside = true;
-            OnBowPull(currentPull);
-
-            ShowPreviousShot();
-        }
-
         if (Input.GetButton(KeyNames.Fire) && wasFirstClickInside)
         {
             endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -125,6 +130,27 @@ public class LineDrawer : MonoBehaviour
             angle = (180f + angle);
 
         return angle;
+    }
+    private void CancelAim()
+    {
+        if (!wasFirstClickInside)
+            return;
+
+        wasFirstClickInside = false;
+        currentPull = 0;
+        startPos = Vector3.zero;
+        endPos = Vector3.zero;
+
+        lineRend.SetPosition(0, Vector3.zero);
+        lineRend.SetPosition(1, Vector3.zero);
+        HidePreviousShot();
+
+        OnBowPull?.Invoke(0);
+    }
+
+    private void CancelAimOnPowerSwitch(PowerController power)
+    {
+        CancelAim();
     }
 
     private void ShowPreviousShot()

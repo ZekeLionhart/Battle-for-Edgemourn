@@ -71,6 +71,9 @@ public class BowController : PowerController
 
         switch (strength)
         {
+            case 0:
+                ResetSprite();
+                break;
             case 1:
                 animator.SetBool(ParameterNames.BowPullWeak, true);
                 animator.SetBool(ParameterNames.BowPullMed, false);

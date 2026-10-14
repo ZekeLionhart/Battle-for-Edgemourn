@@ -2,13 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     [SerializeField] private GameObject lineRenderer;
     private bool isPointerInside;
 
-    public static Action OnScreenClick;
     public static Action<bool> IsInsideArea;
+    public static Action<Vector2> OnAimStarted;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -18,6 +18,14 @@ public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerExit(PointerEventData eventData)
     {
         isPointerInside = false;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
+        OnAimStarted?.Invoke(eventData.position);
     }
 
     private void Update()
