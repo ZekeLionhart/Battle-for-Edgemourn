@@ -892,7 +892,7 @@ MonoBehaviour:
   fireMultiplier: 1.5
   thunderMultiplier: 2
   earthMultiplier: 2
-  ammo: {fileID: 5205078567594977183, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
+  ammo: {fileID: -5690577488487531995, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
   ammoSpawn: {fileID: 3676179479713334986}
   onReloadSfx: {fileID: 6555318111688981696}
 --- !u!50 &4137500561695387349

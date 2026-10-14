@@ -1,14 +1,11 @@
-using System;
 using UnityEngine;
 
 public class TrebuchetManager : EnemyBase
 {
     [Header("--Individual Fields--")]
-    [SerializeField] private Rigidbody2D ammo;
+    [SerializeField] private BoulderManager ammo;
     [SerializeField] private Transform ammoSpawn;
     [SerializeField] private AudioSource onReloadSfx;
-
-    public static Action<Rigidbody2D, int, float, float> OnBoulderInstantiated;
 
     protected override void Awake()
     {
@@ -18,10 +15,9 @@ public class TrebuchetManager : EnemyBase
 
     protected override void Attack()
     {
-        Rigidbody2D shotRigid = Instantiate(ammo, ammoSpawn.position, ammoSpawn.rotation);
-        shotRigid.velocity = CalculateBallisticVelocity(new Vector2(-6.5f, -0.5f));
-
-        OnBoulderInstantiated(shotRigid, damage, shakeDuration, shakeIntensity);
+        BoulderManager boulder = Instantiate(ammo, ammoSpawn.position, ammoSpawn.rotation);
+        Vector3 velocity = CalculateBallisticVelocity(new Vector2(-6.5f, -0.5f));
+        boulder.Initialize(damage, shakeDuration, shakeIntensity, velocity);
     }
 
     private void PlayReloadSfx()

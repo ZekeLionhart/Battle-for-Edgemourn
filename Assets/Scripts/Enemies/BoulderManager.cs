@@ -9,16 +9,6 @@ public class BoulderManager : MonoBehaviour
     private float shakeDuration;
     private float shakeIntensity;
 
-    protected virtual void OnEnable()
-    {
-        TrebuchetManager.OnBoulderInstantiated += SetVariables;
-    }
-
-    protected virtual void OnDisable()
-    {
-        TrebuchetManager.OnBoulderInstantiated -= SetVariables;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag(TagNames.Tower) || collision.collider.CompareTag(TagNames.Player))
@@ -29,14 +19,12 @@ public class BoulderManager : MonoBehaviour
         }
     }
 
-    private void SetVariables(Rigidbody2D shot, int damage, float shakeDuration, float shakeIntensity)
+    public void Initialize(int damage, float shakeDuration, float shakeIntensity, Vector3 velocity)
     {
-        if (shot.gameObject == gameObject)
-        {
-            this.damage = damage;
-            this.shakeDuration = shakeDuration;
-            this.shakeIntensity = shakeIntensity;
-        }
+        this.damage = damage;
+        this.shakeDuration = shakeDuration;
+        this.shakeIntensity = shakeIntensity;
+        rigidBody.velocity = velocity;
     }
 
     private void CallCameraShake()
