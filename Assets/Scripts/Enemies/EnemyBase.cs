@@ -217,6 +217,8 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Attack()
     {
+        if (target == null) return;
+
         OnDamageDealt(target, damage);
         CameraShake.CallShake(shakeDuration, shakeIntensity);
     }
