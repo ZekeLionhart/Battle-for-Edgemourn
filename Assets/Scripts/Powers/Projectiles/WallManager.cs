@@ -14,13 +14,11 @@ public class WallManager : MonoBehaviour
 
     private void OnEnable()
     {
-        StoneWallController.OnWallSummon += SetStats;
         EnemyBase.OnDamageDealt += TakeDamage;
     }
 
     private void OnDisable()
     {
-        StoneWallController.OnWallSummon -= SetStats;
         EnemyBase.OnDamageDealt -= TakeDamage;
     }
 
@@ -30,7 +28,7 @@ public class WallManager : MonoBehaviour
             ProjectileManager.OnEnemyHit(gameObject, collision.gameObject, powerType, damageType, damage);
     }
 
-    private void SetStats(int hitpoints, float duration, float damage, PowerTypes powerType, DamageTypes damageType, float shakeDuration, float shakeIntensity)
+    public void Initialize(int hitpoints, float duration, float damage, PowerTypes powerType, DamageTypes damageType, float shakeDuration, float shakeIntensity)
     {
         this.powerType = powerType;
         this.hitpoints = hitpoints;

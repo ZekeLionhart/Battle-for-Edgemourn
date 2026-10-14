@@ -179,6 +179,7 @@ MonoBehaviour:
   aimSpeed: 5
   leftLimit: {fileID: 1599239275338662846}
   rightLimit: {fileID: 1599239275869122081}
+  wallPrefab: {fileID: 7169083511623344339, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
   hitpoints: 8
   duration: 10
   floor: {fileID: 0}
