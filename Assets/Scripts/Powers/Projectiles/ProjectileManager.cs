@@ -25,14 +25,17 @@ public class ProjectileManager : MonoBehaviour
     private void SetVariables(GameObject shot, PowerTypes powerType, DamageTypes damageType, float damage, float speed, float shakeDuration, float shakeIntensity)
     {
         if (shot == gameObject)
-        {
-            this.powerType = powerType;
-            this.damageType = damageType;
-            this.damage = damage;
-            this.speed = speed;
-            this.shakeDuration = shakeDuration;
-            this.shakeIntensity = shakeIntensity;
-        }
+            Initialize(powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
+    }
+
+    public void Initialize(PowerTypes powerType, DamageTypes damageType, float damage, float speed, float shakeDuration, float shakeIntensity)
+    {
+        this.powerType = powerType;
+        this.damageType = damageType;
+        this.damage = damage;
+        this.speed = speed;
+        this.shakeDuration = shakeDuration;
+        this.shakeIntensity = shakeIntensity;
     }
 
     private void CallCameraShake()
