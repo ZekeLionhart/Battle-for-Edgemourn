@@ -299,9 +299,10 @@ MonoBehaviour:
   aimSpeed: 25
   leftLimit: {fileID: 472467558340508863}
   rightLimit: {fileID: 472467559109346852}
+  fireballPrefab: {fileID: 4359149594660312549, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
   speed: 5
   direction: {fileID: 472467557421772862}
-  explosion: {fileID: 5205078567594977181, guid: ccdd679886cc72c4abe528a9b1271335, type: 3}
+  explosion: {fileID: 6509116511973393642, guid: ccdd679886cc72c4abe528a9b1271335, type: 3}
 --- !u!1 &472467558272964569
 GameObject:
   m_ObjectHideFlags: 0

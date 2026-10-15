@@ -7,8 +7,8 @@ public class ProjectileManager : MonoBehaviour
     protected DamageTypes damageType;
     protected float damage;
     protected float speed;
-    private float shakeDuration;
-    private float shakeIntensity;
+    protected float shakeDuration;
+    protected float shakeIntensity;
 
     public static Action<GameObject, GameObject, PowerTypes, DamageTypes, float> OnEnemyHit;
     

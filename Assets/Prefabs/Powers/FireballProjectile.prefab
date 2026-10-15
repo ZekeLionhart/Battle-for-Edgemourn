@@ -9859,6 +9859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c61d21e1f9c324b8019d41d5ab60c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 5205078567594977183}
   sparkParticle: {fileID: 8722994410440352823}
   sparkFrequency: 0.02
   smokeParticle: {fileID: 100476185173553471}
