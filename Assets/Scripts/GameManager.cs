@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     private void UnregisterEnemy(int newKillScore, bool isEarlyKill, EnemyBase enemy, Transform popupCoord)
     {
         int newEarlyBonus = 0;
-        int currentStreak = StreakManager.Instance.RegisterKill(enemy, popupCoord);
+        int currentStreak = StreakManager.Instance.RegisterKill(enemy);
 
         if (isEarlyKill)
             newEarlyBonus = (int)(newKillScore * earlyScoreMultiplier);
