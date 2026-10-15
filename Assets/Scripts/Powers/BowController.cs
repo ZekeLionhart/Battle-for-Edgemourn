@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BowController : PowerController
 {
+    [SerializeField] protected ArrowManager arrowPrefab;
     [SerializeField] protected GameObject bowShockwave;
     [SerializeField] private AudioSource onPullSfx;
     [SerializeField] protected float arrowSpeed;
@@ -39,7 +40,7 @@ public class BowController : PowerController
         {
             Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
             CallShotAnalytics();
-            CreateArrow(vector, shot, aimingPoint.position);
+            CreateArrow(vector, aimingPoint.position);
             CameraShake.CallShake(shakeDuration, shakeIntensity);
             OnPowerShoot(this, cooldown);
         }
@@ -52,13 +53,15 @@ public class BowController : PowerController
         animator.SetBool(ParameterNames.BowPullStrong, false);
     }
 
-    protected void CreateArrow(Vector3 vector, Rigidbody2D arrow, Vector3 position)
+    protected void CreateArrow(Vector3 vector, Vector3 position)
     {
-        Rigidbody2D shotRigid = Instantiate(arrow, position, aimingPoint.rotation);
-        Vector3 force = -1f * arrowSpeed * vector;
-        shotRigid.velocity = force;
+        ArrowManager arrow = Instantiate(arrowPrefab, position, aimingPoint.rotation);
 
-        OnShotInstantiated(shotRigid.gameObject, powerType, damageType, damage, 0f, shakeDuration, shakeIntensity);
+        arrow.Initialize(powerType, damageType, damage, 0f, shakeDuration, shakeIntensity);
+
+        Vector3 velocity = -arrowSpeed * vector;
+        arrow.Launch(velocity);
+
         offCooldown = false;
     }
 

@@ -6,7 +6,6 @@ public class VolleyController : BowController
     [SerializeField] private int numOfArrows;
     [SerializeField] private float spreadMultiplier;
     [SerializeField] private float arrowDelay;
-    private Rigidbody2D[] arrows;
     private int arrowCounter = 0;
     private int rand = 0;
     private WaitForSeconds delayWFS;
@@ -15,9 +14,6 @@ public class VolleyController : BowController
     protected override void Awake()
     {
         base.Awake();
-        arrows = new Rigidbody2D[numOfArrows];
-        for (int i = 0; i < numOfArrows; i++)
-            arrows[i] = shot;
         delayWFS = new WaitForSeconds(arrowDelay);
     }
 
@@ -33,7 +29,7 @@ public class VolleyController : BowController
             Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
             CallShotAnalytics();
             arrowCounter = 1;
-            CreateArrow(vector, arrows[arrowCounter], aimingPoint.position);
+            CreateArrow(vector, aimingPoint.position);
             OnPowerShoot(this, cooldown);
             arrowRotation = this.transform.rotation;
             CameraShake.CallShake(shakeDuration, shakeIntensity);
@@ -46,7 +42,7 @@ public class VolleyController : BowController
         yield return delayWFS;
 
         rand = Random.Range(1, numOfArrows);
-        CreateArrow(vector, arrows[arrowCounter], aimingPoint.position + rand * spreadMultiplier * Vector3.left);
+        CreateArrow(vector, aimingPoint.position + rand * spreadMultiplier * Vector3.left);
 
         GameObject tempShockwave = Instantiate(bowShockwave, aimingPoint.position + rand * spreadMultiplier * Vector3.left, arrowRotation);
         tempShockwave.transform.localScale *= 0.5f;

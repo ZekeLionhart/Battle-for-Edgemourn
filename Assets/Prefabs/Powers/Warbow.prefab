@@ -453,6 +453,7 @@ MonoBehaviour:
   cooldown: 1
   shakeDuration: 0.05
   shakeIntensity: 0.03
+  arrowPrefab: {fileID: 1630199801917483144, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
   bowShockwave: {fileID: 3509964316922946487, guid: 77b853ef8e605054598578b3bae6f8cc, type: 3}
   onPullSfx: {fileID: 3945977258034505211}
   arrowSpeed: 2.75

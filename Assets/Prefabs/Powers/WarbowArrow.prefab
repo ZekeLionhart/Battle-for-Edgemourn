@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cb100df5a30674aae24d020a5af490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 5205078567594977183}
   arrowLooseSfx: {fileID: 3122610075189585993}
   groundHitSfx: {fileID: 629109177977362957}
   lifespan: 10
