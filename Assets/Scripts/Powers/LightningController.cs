@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class LightningController : CrosshairPower
 {
+    [SerializeField] private ExplosionManager lightningPrefab;
+
     protected override void Shoot()
     {
-        GameObject newShot = Instantiate(shot.gameObject, new Vector2(aimingPoint.transform.position.x, 1.35f)
-            , Quaternion.identity);
+        Vector2 position = new(aimingPoint.position.x, 1.35f);
 
-        OnShotInstantiated(newShot, powerType, damageType, damage, 0f, shakeDuration, shakeIntensity);
+        ExplosionManager lightning = Instantiate(lightningPrefab, position, Quaternion.identity);
+
+        lightning.Initialize(powerType, damageType, damage, 0f, shakeDuration, shakeIntensity);
+
         base.Shoot();
     }
 }

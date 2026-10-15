@@ -263,6 +263,7 @@ MonoBehaviour:
   aimSpeed: 4
   leftLimit: {fileID: 2841594701232932207}
   rightLimit: {fileID: 2841594700714969055}
+  lightningPrefab: {fileID: 4286106396977675633, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
 --- !u!1 &2841594700714969054
 GameObject:
   m_ObjectHideFlags: 0
