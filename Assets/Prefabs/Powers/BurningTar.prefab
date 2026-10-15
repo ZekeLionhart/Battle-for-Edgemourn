@@ -177,6 +177,7 @@ MonoBehaviour:
   cooldown: 30
   shakeDuration: 0
   shakeIntensity: 0
+  tarPrefab: {fileID: 6898701813269071313, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
   speed: 3
   particles: {fileID: 8974963196069790261, guid: 0377bad505521214891594bf9c2875d5, type: 3}
   smokeParticles: {fileID: 5962471452972766260}
