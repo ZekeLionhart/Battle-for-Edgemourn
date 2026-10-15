@@ -9,7 +9,6 @@ public class PowerController : MonoBehaviour
     [SerializeField] protected AudioSource wakeUpSfx;
     [SerializeField] protected AudioSource wakeUpSfx2;
     [SerializeField] protected AudioSource idleSfx;
-    [SerializeField] protected Rigidbody2D shot;
     [SerializeField] protected Animator animator;
     [SerializeField] protected PowerTypes powerType;
     [SerializeField] protected DamageTypes damageType;
@@ -23,7 +22,6 @@ public class PowerController : MonoBehaviour
     protected WaitForSeconds shotDelayWFS;
 
     public static Action<PowerController, float> OnPowerShoot;
-    public static Action<GameObject, PowerTypes, DamageTypes, float, float, float, float> OnShotInstantiated;
 
     protected virtual void Awake()
     {

@@ -11,7 +11,7 @@ public class StoneWallController : CrosshairPower
     {
         Vector2 position = new (
             aimingPoint.transform.position.x,
-            floor.position.y + floor.localScale.y / 2 + shot.transform.localScale.y);
+            floor.position.y + floor.localScale.y / 2 + wallPrefab.transform.localScale.y);
 
         WallManager wall = Instantiate(wallPrefab, position, wallPrefab.transform.rotation);
 

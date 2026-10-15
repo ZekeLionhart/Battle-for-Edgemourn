@@ -11,22 +11,6 @@ public class ProjectileManager : MonoBehaviour
     protected float shakeIntensity;
 
     public static Action<GameObject, GameObject, PowerTypes, DamageTypes, float> OnEnemyHit;
-    
-    protected virtual void OnEnable()
-    {
-        PowerController.OnShotInstantiated += SetVariables;
-    }
-
-    protected virtual void OnDisable()
-    {
-        PowerController.OnShotInstantiated -= SetVariables;
-    }
-
-    private void SetVariables(GameObject shot, PowerTypes powerType, DamageTypes damageType, float damage, float speed, float shakeDuration, float shakeIntensity)
-    {
-        if (shot == gameObject)
-            Initialize(powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
-    }
 
     public void Initialize(PowerTypes powerType, DamageTypes damageType, float damage, float speed, float shakeDuration, float shakeIntensity)
     {

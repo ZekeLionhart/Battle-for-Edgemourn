@@ -40,8 +40,8 @@ public class BurningTarController : PowerController
     {
         BurningTarManager tar = Instantiate(
             tarPrefab, 
-            aimingPoint.transform.position + new Vector3(0.4f, 0f), 
-            shot.transform.rotation);   
+            aimingPoint.transform.position + new Vector3(0.4f, 0f),
+            tarPrefab.transform.rotation);   
 
         Instantiate(particles, aimingPoint.transform.position, particles.transform.rotation);
         
