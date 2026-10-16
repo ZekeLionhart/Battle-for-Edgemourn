@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,8 +11,6 @@ public class ArrowManager : ProjectileManager
     private bool canDamage = true;
     private bool canRotate = true;
 
-    public static Action<GameObject, GameObject, Vector2, Quaternion, Rigidbody2D, PowerTypes, DamageTypes, float> OnEnemyHitWithArrow;
-
     private void Awake()
     {
         arrowLooseSfx.pitch = Random.Range(0.9f, 1.1f);
@@ -22,13 +19,17 @@ public class ArrowManager : ProjectileManager
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag(TagNames.Enemy) && canDamage)
-        {
-            Vector2 hitPoint = collision.GetContact(0).point;
-            OnEnemyHitWithArrow(gameObject, collision.collider.gameObject, hitPoint, this.transform.rotation
-                , rigidBody, powerType, damageType, damage);
-            canDamage = false;
-        }
+        if (!canDamage) return;
+
+        canDamage = false;
+
+        Vector2 hitPoint = collision.GetContact(0).point;
+
+        rigidBody.simulated = false;
+        canRotate = false;
+        trailRenderer.enabled = false;
+
+        Destroy(gameObject, lifespan);
 
         if (collision.collider.CompareTag(TagNames.Floor))
         {
@@ -36,11 +37,15 @@ public class ArrowManager : ProjectileManager
             groundHitSfx.Play();
         }
 
-        rigidBody.simulated = false;
-        canRotate = false;
-        trailRenderer.enabled = false;
+        bool shouldDamage = true;
 
-        Destroy(gameObject, lifespan);
+        if (collision.collider.TryGetComponent<IArrowHitReceiver>(out IArrowHitReceiver receiver))
+            shouldDamage = receiver.PinArrow(hitPoint, transform.rotation, rigidBody);
+        else
+            transform.SetParent(collision.collider.transform, true);
+            
+        if (shouldDamage && collision.collider.TryGetComponent<IDamageableEnemy>(out IDamageableEnemy damageable))
+            damageable.TakeDamage(gameObject, powerType, damageType, damage);
     }
 
     private void FixedUpdate()

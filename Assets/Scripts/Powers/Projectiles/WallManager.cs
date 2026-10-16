@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WallManager : MonoBehaviour
+public class WallManager : MonoBehaviour, IDamageable
 {
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource hitSfx;
@@ -12,20 +12,10 @@ public class WallManager : MonoBehaviour
     private PowerTypes powerType;
     private DamageTypes damageType;
 
-    private void OnEnable()
-    {
-        EnemyBase.OnDamageDealt += TakeDamage;
-    }
-
-    private void OnDisable()
-    {
-        EnemyBase.OnDamageDealt -= TakeDamage;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(TagNames.Enemy))
-            ProjectileManager.OnEnemyHit(gameObject, collision.gameObject, powerType, damageType, damage);
+        if (collision.TryGetComponent<IDamageableEnemy>(out IDamageableEnemy receiver))
+            receiver.TakeDamage(gameObject, powerType, damageType, damage);
     }
 
     public void Initialize(int hitpoints, float duration, float damage, PowerTypes powerType, DamageTypes damageType, float shakeDuration, float shakeIntensity)
@@ -39,9 +29,9 @@ public class WallManager : MonoBehaviour
         Invoke(nameof(ForceDeath), duration);
     }
 
-    private void TakeDamage(GameObject target, int damage)
+    public void TakeDamage(int damage)
     {
-        if (target != gameObject || hitpoints <= 0) return;
+        if (hitpoints <= 0) return;
 
         hitSfx.Play();
 
@@ -67,7 +57,7 @@ public class WallManager : MonoBehaviour
 
     private void ForceDeath()
     {
-        TakeDamage(gameObject, 1000);
+        TakeDamage(1000);
     }
 
     private void Die()

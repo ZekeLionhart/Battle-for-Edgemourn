@@ -14,8 +14,8 @@ public class ExplosionManager : ProjectileManager
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(TagNames.Enemy))
-            OnEnemyHit(gameObject, collision.gameObject, powerType, damageType, damage);
+        if (collision.TryGetComponent<IDamageableEnemy>(out IDamageableEnemy receiver))
+            receiver.TakeDamage(gameObject, powerType, damageType, damage);
     }
 
     private void PlaceBurnMark()

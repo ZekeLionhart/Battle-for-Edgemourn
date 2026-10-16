@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
 {
     [Header("------References------")]
     [SerializeField] private Rigidbody2D rigidBody;
@@ -55,7 +55,6 @@ public class EnemyBase : MonoBehaviour
     public float Lifetime => Time.time - spawnTime;
     public int CoinsReward => scoreValue;
 
-    public static Action<GameObject, int> OnDamageDealt;
     public static Action<int, bool, EnemyBase, Transform> OnEnemyDeath;
 
     protected virtual void Awake()
@@ -70,15 +69,11 @@ public class EnemyBase : MonoBehaviour
 
     private void OnEnable()
     {
-        ProjectileManager.OnEnemyHit += TakeDamage;
-        ArrowManager.OnEnemyHitWithArrow += PinArrow;
         GameManager.OnGameEnded += EndGame;
     }
 
     private void OnDisable()
     {
-        ProjectileManager.OnEnemyHit -= TakeDamage;
-        ArrowManager.OnEnemyHitWithArrow -= PinArrow;
         GameManager.OnGameEnded -= EndGame;
     }
 
@@ -144,9 +139,9 @@ public class EnemyBase : MonoBehaviour
         return damageReceived;
     }
 
-    protected void TakeDamage(GameObject power, GameObject target, PowerTypes powerType, DamageTypes damageType, float damageReceived)
+    public void TakeDamage(GameObject power, PowerTypes powerType, DamageTypes damageType, float damageReceived)
     {
-        if (target != gameObject || power == previousHit) return;
+        if (power == previousHit) return;
 
         previousHit = power;
         damageReceived = MultiplyDamage(damageType, damageReceived);
@@ -170,16 +165,15 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    protected virtual void PinArrow(GameObject power, GameObject target, Vector2 hitPoint, Quaternion rotation, Rigidbody2D arrow, PowerTypes powerType, DamageTypes damageType, float damageReceived)
+    public virtual bool PinArrow(Vector2 hitPoint, Quaternion rotation, Rigidbody2D arrow)
     {
-        if (target != gameObject) return;
-        
         arrow.transform.parent = mainBone.transform;
 
-        if (isDead) return;
+        if (isDead) return false;
 
-        TakeDamage(power, target, powerType, damageType, damageReceived);
         SprayGore(rotation, hitPoint);
+
+        return true;
     }
 
     protected virtual void SprayGore(Quaternion rotation, Vector2 hitPoint)
@@ -219,7 +213,9 @@ public class EnemyBase : MonoBehaviour
     {
         if (target == null) return;
 
-        OnDamageDealt(target, damage);
+        if (target.TryGetComponent<IDamageable>(out IDamageable receiver))
+            receiver.TakeDamage(damage);
+
         CameraShake.CallShake(shakeDuration, shakeIntensity);
     }
 

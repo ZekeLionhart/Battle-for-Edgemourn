@@ -9,8 +9,8 @@ public class BurningTarManager : ProjectileManager
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag(TagNames.Enemy))
-            OnEnemyHit(gameObject, collision.collider.gameObject, powerType, damageType, damage);
+        if (collision.collider.TryGetComponent<IDamageableEnemy>(out IDamageableEnemy receiver))
+            receiver.TakeDamage(gameObject, powerType, damageType, damage);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

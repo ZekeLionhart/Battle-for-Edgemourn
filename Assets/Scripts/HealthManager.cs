@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class HealthManager : MonoBehaviour, IDamageable
 {
     public static HealthManager Instance { get; private set; }
 
@@ -29,35 +29,25 @@ public class HealthManager : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    private void OnEnable()
-    {
-        EnemyBase.OnDamageDealt += DecreaseHealth;
-    }
-    private void OnDisable()
-    {
-        EnemyBase.OnDamageDealt -= DecreaseHealth;
-    }
-
     private void Start()
     {
         OnHealthChanged(currentHealth);
     }
 
-    private void DecreaseHealth(GameObject target, int damage)
+    public void TakeDamage(int damage)
     {
-        if (target.CompareTag(TagNames.Tower) && isAlive)
-        { 
-            currentHealth -= damage;
-            hitSfx.Play();
+        if (!isAlive) return;
 
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                isAlive = false;
-                OnZeroHealth();
-            }
+        currentHealth -= damage;
+        hitSfx.Play();
 
-            OnHealthChanged(currentHealth);
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            isAlive = false;
+            OnZeroHealth();
         }
+
+        OnHealthChanged(currentHealth);
     }
 }

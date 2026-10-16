@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
@@ -9,8 +8,6 @@ public class ProjectileManager : MonoBehaviour
     protected float speed;
     protected float shakeDuration;
     protected float shakeIntensity;
-
-    public static Action<GameObject, GameObject, PowerTypes, DamageTypes, float> OnEnemyHit;
 
     public void Initialize(PowerTypes powerType, DamageTypes damageType, float damage, float speed, float shakeDuration, float shakeIntensity)
     {

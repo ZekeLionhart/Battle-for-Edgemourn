@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BoulderManager : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class BoulderManager : MonoBehaviour
     {
         if (collision.collider.CompareTag(TagNames.Tower) || collision.collider.CompareTag(TagNames.Player))
         {
-            EnemyBase.OnDamageDealt(collision.gameObject, damage);
+            if (collision.collider.TryGetComponent<IDamageable>(out IDamageable receiver))
+                receiver.TakeDamage(damage);
+
             animator.SetTrigger(ParameterNames.Destroy);
             Destroy(rigidBody);
         }
