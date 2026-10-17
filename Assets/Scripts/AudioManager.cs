@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
         SettingsManager.UpdateSettings += SetVolume;
         MenuClick.OnFadeAudio += FadeOut;
         PauseManager.SetPauseVolume += SetPauseVolume;
+        ResultViewer.CallSFXStop += StopSFX;
     }
 
     private void OnDisable()
@@ -21,6 +22,7 @@ public class AudioManager : MonoBehaviour
         SettingsManager.UpdateSettings -= SetVolume;
         MenuClick.OnFadeAudio -= FadeOut;
         PauseManager.SetPauseVolume -= SetPauseVolume;
+        ResultViewer.CallSFXStop -= StopSFX;
     }
 
     private void Start()
@@ -68,6 +70,14 @@ public class AudioManager : MonoBehaviour
                 this.pauseMultiplier = pauseMultiplier;
                 break;
         }
+
+        ApplyVolume();
+    }
+
+    private void StopSFX()
+    {
+        if (audioType == AudioTypes.SFX)
+            pauseMultiplier = 0f;
 
         ApplyVolume();
     }

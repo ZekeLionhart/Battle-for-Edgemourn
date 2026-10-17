@@ -9,13 +9,14 @@ public class HealthManager : MonoBehaviour, IDamageable
     [SerializeField] private int maxHealth;
     private int currentHealth;
     private bool isAlive = true;
+    private bool hasGameEnded = false;
 
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
 
     public static Action<int> OnHealthChanged;
     public static Action OnZeroHealth;
-
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -29,6 +30,16 @@ public class HealthManager : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnGameEnded += FreezeHealth;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameEnded -= FreezeHealth;
+    }
+
     private void Start()
     {
         OnHealthChanged(currentHealth);
@@ -36,7 +47,7 @@ public class HealthManager : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (!isAlive) return;
+        if (!isAlive || hasGameEnded) return;
 
         currentHealth -= damage;
         hitSfx.Play();
@@ -49,5 +60,10 @@ public class HealthManager : MonoBehaviour, IDamageable
         }
 
         OnHealthChanged(currentHealth);
+    }
+
+    private void FreezeHealth()
+    {
+        hasGameEnded = true;
     }
 }

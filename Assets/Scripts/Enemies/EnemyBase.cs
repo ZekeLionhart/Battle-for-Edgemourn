@@ -48,7 +48,7 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
     private bool canAttack = true;
     private bool canMove = false;
     protected bool isDead = false;
-    private bool hasGameEnded = false;
+    protected bool hasGameEnded = false;
     private float spawnTime;
     protected float bonusWindow = 15f;
 
@@ -211,7 +211,7 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
 
     protected virtual void Attack()
     {
-        if (target == null) return;
+        if (target == null || hasGameEnded) return;
 
         if (target.TryGetComponent<IDamageable>(out IDamageable receiver))
             receiver.TakeDamage(damage);
@@ -254,11 +254,10 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
 
     private void PlayAttackSfx()
     {
-        if (onAttackSfx != null)
-        {
-            onAttackSfx.pitch = Random.Range(0.9f, 1.1f);
-            onAttackSfx.Play();
-        }
+        if (onAttackSfx == null) return;
+
+        onAttackSfx.pitch = Random.Range(0.9f, 1.1f);
+        onAttackSfx.Play();
     }
 
     protected virtual void CallDamageAnalytics(PowerTypes power, float damage)

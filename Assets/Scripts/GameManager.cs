@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int hpScoreMultiplier;
     private readonly HashSet<EnemyBase> enemiesAlive = new();
     private bool hasSpawningFinished = false;
+    private bool hasGameEnded = false;
     private int killScore = 0;
     private int earlyScore = 0;
     private int hpScore;
@@ -66,14 +67,21 @@ public class GameManager : MonoBehaviour
 
     private void WinGame()
     {
+        if (hasGameEnded) return;
+
+        hasGameEnded = true;
         victorySFX.Play();
         Time.timeScale = 0.3f;
+        OnGameEnded();
         DisableAction();
         CalculateResult(true);
     }
 
     private void FailGame()
     {
+        if (hasGameEnded) return;
+
+        hasGameEnded = true;
         defeatSFX.Play();
         Time.timeScale = 0.3f;
         OnGameEnded();
@@ -88,6 +96,8 @@ public class GameManager : MonoBehaviour
 
     private void UnregisterEnemy(int newKillScore, bool isEarlyKill, EnemyBase enemy, Transform popupCoord)
     {
+        if (hasGameEnded) return;
+
         int newEarlyBonus = 0;
         int currentStreak = StreakManager.Instance.RegisterKill(enemy);
 

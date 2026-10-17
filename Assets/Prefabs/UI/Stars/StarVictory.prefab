@@ -219,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8625215562411092489}
   - component: {fileID: 1119992251913071984}
+  - component: {fileID: 703837840400818945}
   m_Layer: 0
   m_Name: StarHitSFX
   m_TagString: Untagged
@@ -337,6 +338,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &703837840400818945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817244323764372095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25734413b41b4787341f11797f155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 1119992251913071984}
+  volumeModifier: 1
+  audioType: 2
 --- !u!1 &7412590461895237095
 GameObject:
   m_ObjectHideFlags: 0

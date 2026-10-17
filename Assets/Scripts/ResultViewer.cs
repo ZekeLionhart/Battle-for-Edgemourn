@@ -21,7 +21,6 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private AudioSource victoryBGM;
     [SerializeField] private AudioSource defeatBGM;
     [SerializeField] private AudioSource scoreSFX;
-    [SerializeField] private AudioSource starHitSFX;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI killScore;
     [SerializeField] private TextMeshProUGUI earlyScore;
@@ -41,6 +40,7 @@ public class ResultViewer : MonoBehaviour
     private bool isVictory;
 
     public static Action CallMusicStop;
+    public static Action CallSFXStop;
     public static Action CallStarDespawn;
 
     private void OnEnable()
@@ -104,6 +104,11 @@ public class ResultViewer : MonoBehaviour
             banner.color = bannerDefeatColor;
             defeatBGM.Play();
         }
+    }
+
+    private void StopSFX()
+    {
+        CallSFXStop();
     }
 
     public void RunKillScore()

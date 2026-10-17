@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class BoulderManager : MonoBehaviour
 {
@@ -9,16 +8,32 @@ public class BoulderManager : MonoBehaviour
     private int damage;
     private float shakeDuration;
     private float shakeIntensity;
+    private bool hasGameEnded = false;
+
+    private void OnEnable()
+    {
+        GameManager.OnGameEnded += StopGame;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameEnded -= StopGame;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag(TagNames.Tower) || collision.collider.CompareTag(TagNames.Player))
         {
+            animator.SetTrigger(ParameterNames.Destroy);
+            Destroy(rigidBody);
+
+            if (hasGameEnded) return;
+
             if (collision.collider.TryGetComponent<IDamageable>(out IDamageable receiver))
                 receiver.TakeDamage(damage);
 
-            animator.SetTrigger(ParameterNames.Destroy);
-            Destroy(rigidBody);
+            hitSFX.Play();
+            CameraShake.CallShake(shakeDuration, shakeIntensity);
         }
     }
 
@@ -30,14 +45,9 @@ public class BoulderManager : MonoBehaviour
         rigidBody.velocity = velocity;
     }
 
-    private void CallCameraShake()
+    private void StopGame()
     {
-        CameraShake.CallShake(shakeDuration, shakeIntensity);
-    }
-
-    public void PlayHitSound()
-    {
-        hitSFX.Play();
+        hasGameEnded = true;
     }
 
     private void DestroySelf()

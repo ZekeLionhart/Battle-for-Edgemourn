@@ -15,6 +15,8 @@ public class TrebuchetManager : EnemyBase
 
     protected override void Attack()
     {
+        if (hasGameEnded) return;
+
         BoulderManager boulder = Instantiate(ammo, ammoSpawn.position, ammoSpawn.rotation);
         Vector3 velocity = CalculateBallisticVelocity(new Vector2(-6.5f, -0.5f));
         boulder.Initialize(damage, shakeDuration, shakeIntensity, velocity);
@@ -22,8 +24,9 @@ public class TrebuchetManager : EnemyBase
 
     private void PlayReloadSfx()
     {
-        if (onReloadSfx != null)
-            onReloadSfx.Play();
+        if (onReloadSfx == null) return;
+
+        onReloadSfx.Play();
     }
 
     private Vector3 CalculateBallisticVelocity(Vector3 targetPosition)
