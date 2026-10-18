@@ -52,7 +52,7 @@ public class WallManager : MonoBehaviour, IDamageable
 
     private void CallCameraShake()
     {
-        CameraShake.CallShake(shakeDuration, shakeIntensity);
+        CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
     }
 
     private void ForceDeath()

@@ -1,30 +1,36 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class CameraShake : MonoBehaviour
 {
+    public static CameraShake Instance { get; private set; }
+
     private Vector3 originalPosition;
     private bool canShake = true;
 
-    public static Action<float, float> CallShake;
-
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogError("Only one CameraShake component should exist.", this);
+
+            enabled = false;
+            return;
+        }
+
+        Instance = this;
         originalPosition = transform.localPosition;
     }
 
     private void OnEnable()
     {
         SettingsManager.UpdateSettings += ToggleShake;
-        CallShake += Shake;
     }
 
     private void OnDisable()
     {
         SettingsManager.UpdateSettings -= ToggleShake;
-        CallShake -= Shake;
     }
 
     private void Start()
@@ -32,14 +38,23 @@ public class CameraShake : MonoBehaviour
         SetUpShake(SettingsManager.Instance.CurrentSettings);
     }
 
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+
     private void SetUpShake(SettingsData data)
     {
         canShake = data.screenShake;
     }
 
-    private void Shake(float duration, float intensity)
+    public void Shake(float duration, float intensity)
     {
+        if (!isActiveAndEnabled) return;
+
         StopAllCoroutines();
+
         if (canShake) StartCoroutine(ShakeCoroutine(duration, intensity));
     }
 

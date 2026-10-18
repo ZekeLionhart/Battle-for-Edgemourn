@@ -32,7 +32,7 @@ public class VolleyController : BowController
             CreateArrow(vector, aimingPoint.position);
             OnPowerShoot(this, cooldown);
             arrowRotation = this.transform.rotation;
-            CameraShake.CallShake(shakeDuration, shakeIntensity);
+            CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
             StartCoroutine(DelayShot(vector));
         }
     }
@@ -47,7 +47,7 @@ public class VolleyController : BowController
         GameObject tempShockwave = Instantiate(bowShockwave, aimingPoint.position + rand * spreadMultiplier * Vector3.left, arrowRotation);
         tempShockwave.transform.localScale *= 0.5f;
 
-        CameraShake.CallShake(shakeDuration, shakeIntensity);
+        CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
 
         arrowCounter++;
 

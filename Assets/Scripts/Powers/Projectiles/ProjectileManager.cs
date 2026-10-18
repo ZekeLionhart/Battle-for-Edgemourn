@@ -21,6 +21,6 @@ public class ProjectileManager : MonoBehaviour
 
     private void CallCameraShake()
     {
-        CameraShake.CallShake(shakeDuration, shakeIntensity);
+        CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
     }
 }

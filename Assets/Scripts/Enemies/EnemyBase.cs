@@ -216,7 +216,7 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
         if (target.TryGetComponent<IDamageable>(out IDamageable receiver))
             receiver.TakeDamage(damage);
 
-        CameraShake.CallShake(shakeDuration, shakeIntensity);
+        CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
     }
 
     protected IEnumerator AttackCooldown()

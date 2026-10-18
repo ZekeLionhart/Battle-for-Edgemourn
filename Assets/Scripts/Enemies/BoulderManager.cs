@@ -33,7 +33,7 @@ public class BoulderManager : MonoBehaviour
                 receiver.TakeDamage(damage);
 
             hitSFX.Play();
-            CameraShake.CallShake(shakeDuration, shakeIntensity);
+            CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
         }
     }
 
