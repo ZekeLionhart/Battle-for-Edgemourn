@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelData currentLevel;
-    [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private AudioSource bgm;
     [SerializeField] private AudioSource victorySFX;
     [SerializeField] private AudioSource defeatSFX;
@@ -27,11 +26,6 @@ public class GameManager : MonoBehaviour
     public static Action<bool, bool, bool, int, int, int, int> OnScoreCalculated;
     public static Action<MatchResult> OnResultCalculated;
     public static Action OnGameEnded;
-
-    private void Start()
-    {
-        SettingsManager.UpdateSettings(saveSystem.LoadSettings());
-    }
 
     private void OnEnable()
     {

@@ -26,7 +26,7 @@ public class SettingsManager : MonoBehaviour
 
     public static Action OnSettingsOpen;
     public static Action OnSettingsClose;
-    public static Action<SettingsData> UpdateSettings;
+    public static event Action<SettingsData> UpdateSettings;
 
     private void Awake()
     {
@@ -66,7 +66,7 @@ public class SettingsManager : MonoBehaviour
         settingsData.manualAim = aimStyleToggle.isOn;
         settingsData.screenShake = shakeToggle.isOn;
 
-        UpdateSettings(settingsData);
+        UpdateSettings?.Invoke(settingsData);
         saveSystem.SaveSettings(settingsData);
     }
 
