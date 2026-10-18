@@ -1,14 +1,11 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuClick : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioSource[] bgm;
+    [SerializeField] private AudioManager[] bgm;
     [SerializeField] private float audioFadeTime;
-
-    public static Action<AudioSource, float> OnFadeAudio;
 
     private void OnEnable()
     {
@@ -42,18 +39,15 @@ public class MenuClick : MonoBehaviour
 
     private void FadeAudio()
     {
-        foreach (AudioSource audio in bgm)
+        foreach (AudioManager audio in bgm)
         {
-            OnFadeAudio(audio, audioFadeTime);
+            audio.FadeOut(audioFadeTime);
         }
     }
 
     private void FadeAudio(string unused)
     {
-        foreach (AudioSource audio in bgm)
-        {
-            OnFadeAudio(audio, audioFadeTime);
-        }
+        FadeAudio();
     }
 
     private void SelectLevel()

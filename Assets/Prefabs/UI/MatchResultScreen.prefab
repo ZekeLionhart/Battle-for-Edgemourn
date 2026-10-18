@@ -2792,7 +2792,6 @@ MonoBehaviour:
   victoryBGM: {fileID: 2469516887924235098}
   defeatBGM: {fileID: 6320475865063670111}
   scoreSFX: {fileID: 5910030276982182187}
-  starHitSFX: {fileID: 0}
   title: {fileID: 576155655267765030}
   killScore: {fileID: 3162206496066244344}
   earlyScore: {fileID: 7097171008143371363}
@@ -2838,8 +2837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1546277239184117904}
   bgm:
-  - {fileID: 2469516887924235098}
-  - {fileID: 6320475865063670111}
+  - {fileID: 4448175363424916469}
+  - {fileID: 401850796474908691}
   audioFadeTime: 1
 --- !u!1 &6430047417736217361
 GameObject:

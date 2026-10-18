@@ -3378,7 +3378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4828183530319433375}
   bgm:
-  - {fileID: 2819455924649465802}
+  - {fileID: 7954622279901722589}
   audioFadeTime: 1
 --- !u!95 &4828183530319433375 stripped
 Animator:
