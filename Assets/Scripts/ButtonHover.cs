@@ -1,20 +1,17 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Chapters chapter;
-
-    public static Action<Chapters, bool> OnFlagHover;
+    [SerializeField] private FlagController targetFlag;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        OnFlagHover(chapter, true);
+        targetFlag.SwitchShine(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        OnFlagHover(chapter, false);
+        targetFlag.SwitchShine(false);
     }
 }

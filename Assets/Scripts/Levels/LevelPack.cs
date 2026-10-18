@@ -1,17 +1,15 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelPack : MonoBehaviour
 {
     [SerializeField] private Chapters chapter;
+    [SerializeField] private FlagController flag;
     [SerializeField] private ChapterPopupDisplay popupDisplay;
     private List<LevelData> levels = new();
     private LevelStates state = LevelStates.Locked;
 
     public Chapters Chapter => chapter;
-
-    public static Action<Chapters, LevelStates> SetFlagPattern;
 
     private void Start()
     {
@@ -42,7 +40,7 @@ public class LevelPack : MonoBehaviour
                 state = LevelStates.Completed;
         }
 
-        SetFlagPattern(chapter, state);
+        flag.SetFlagPattern(state);
     }
 
     public void OpenChapter()
