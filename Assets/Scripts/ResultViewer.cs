@@ -40,7 +40,6 @@ public class ResultViewer : MonoBehaviour
     private int stashedMoraleScore;
     private bool isVictory;
 
-    public static Action CallMusicStop;
     public static Action CallSFXStop;
 
     private void OnEnable()
@@ -82,7 +81,6 @@ public class ResultViewer : MonoBehaviour
         maxHPScore = newHPScore;
         maxTotalScore = maxKillScore + maxEarlyScore + maxStreakScore + maxHPScore;
 
-        CallMusicStop();
         animator.SetTrigger(ParameterNames.MatchEnded);
     }
 

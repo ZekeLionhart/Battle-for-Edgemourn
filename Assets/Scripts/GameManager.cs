@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,7 +40,6 @@ public class GameManager : MonoBehaviour
         WaveSpawner.OnEnemySpawn += RegisterEnemy;
         WaveSpawner.OnFinishedSpawning += SpawnFinished;
         EnemyBase.OnEnemyDeath += UnregisterEnemy;
-        ResultViewer.CallMusicStop += StopMusic;
     }
 
     private void OnDisable()
@@ -50,7 +48,6 @@ public class GameManager : MonoBehaviour
         WaveSpawner.OnEnemySpawn -= RegisterEnemy;
         WaveSpawner.OnFinishedSpawning -= SpawnFinished;
         EnemyBase.OnEnemyDeath -= UnregisterEnemy;
-        ResultViewer.CallMusicStop -= StopMusic;
     }
 
     private void EnableAction()
@@ -146,6 +143,7 @@ public class GameManager : MonoBehaviour
                 isPerfectDefense = true;
         }
 
+        StopMusic();
         OnScoreCalculated(isVictory, metTargetScore, isPerfectDefense, killScore, earlyScore, streakScore, hpScore);
 
         MatchResult result = new()
