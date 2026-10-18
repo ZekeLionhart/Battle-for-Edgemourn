@@ -15,6 +15,7 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private Animator victoryStar;
     [SerializeField] private Animator scoreStar;
     [SerializeField] private Animator defenseStar;
+    [SerializeField] private StarController[] starControllers;
     [SerializeField] private Image banner;
     [SerializeField] private Color bannerVictoryColor;
     [SerializeField] private Color bannerDefeatColor;
@@ -41,7 +42,6 @@ public class ResultViewer : MonoBehaviour
 
     public static Action CallMusicStop;
     public static Action CallSFXStop;
-    public static Action CallStarDespawn;
 
     private void OnEnable()
     {
@@ -238,8 +238,9 @@ public class ResultViewer : MonoBehaviour
 
     private void HideStars()
     {
-        if (victoryStar.gameObject.activeInHierarchy)
-            CallStarDespawn();
+        foreach(StarController star in starControllers)
+            if(star.isActiveAndEnabled)
+                star.FadeAway();
     }
 
     private void ResumeTime()
