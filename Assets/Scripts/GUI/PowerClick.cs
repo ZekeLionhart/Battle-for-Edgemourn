@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class PowerClick : MonoBehaviour
 {
-    public static Action<int> OnPowerSelect;
+    [SerializeField] private PowerManager powerManager;
 
     public void OnPowerClick(int index)
     {
-        OnPowerSelect(index);
+        powerManager.SwitchPowers(index);
     }
 }

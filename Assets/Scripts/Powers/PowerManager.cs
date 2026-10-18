@@ -24,7 +24,6 @@ public class PowerManager : MonoBehaviour
     {
         PowerController.OnPowerShoot += StartPowerCooldown;
         CooldownManager.OnCooldownEnded += EndPowerCooldown;
-        PowerClick.OnPowerSelect += SwitchPowers;
         SettingsManager.UpdateSettings += UpdateReturnToBow;
     }
 
@@ -32,7 +31,6 @@ public class PowerManager : MonoBehaviour
     {
         PowerController.OnPowerShoot -= StartPowerCooldown;
         CooldownManager.OnCooldownEnded -= EndPowerCooldown;
-        PowerClick.OnPowerSelect -= SwitchPowers;
         SettingsManager.UpdateSettings -= UpdateReturnToBow;
     }
 
@@ -64,8 +62,10 @@ public class PowerManager : MonoBehaviour
             power.SetUpStartingPower(activePower);
     }
 
-    private void SwitchPowers(int index)
+    public void SwitchPowers(int index)
     {
+        if (!isActiveAndEnabled) return;
+
         if (activePower != powers[index])
         {
             lineRenderer.SetActive(index == 0 || index == 1);

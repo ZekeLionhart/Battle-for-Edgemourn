@@ -627,6 +627,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6704895451131858224, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: powerManager
+      value: 
+      objectReference: {fileID: 1084549657}
+    - target: {fileID: 6704895451205734322, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: powerManager
+      value: 
+      objectReference: {fileID: 1084549657}
+    - target: {fileID: 6704895451464172029, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: powerManager
+      value: 
+      objectReference: {fileID: 1084549657}
+    - target: {fileID: 6704895452150885028, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: powerManager
+      value: 
+      objectReference: {fileID: 1084549657}
+    - target: {fileID: 6704895453060909988, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: powerManager
+      value: 
+      objectReference: {fileID: 1084549657}
     - target: {fileID: 6819857761254620279, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -645,6 +665,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6873288280490317189, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: disabledButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1084549657}
+    - target: {fileID: 6890035672478091227, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: powerManager
       value: 
       objectReference: {fileID: 1084549657}
     - target: {fileID: 6954358774134324553, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
