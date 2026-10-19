@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/LevelPlay Test.unity
-    guid: 0e27ee0bd0ad2cb4b86c822eea9bd76b
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 62d7946995d06e849850936caa1e3d51
@@ -17,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Lv_Selector_Scene.unity
     guid: 2048b72b1e07ff1468e9d74201d3c630
-  - enabled: 1
-    path: Assets/Scenes/GameOverScene.unity
-    guid: a448bb3c80a486246bd09534592bcd4e
   - enabled: 1
     path: Assets/Scenes/Levels/Lv_1_Scene.unity
     guid: 1a51ac566f165e94ca302d5a909301e1
