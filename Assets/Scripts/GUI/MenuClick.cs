@@ -55,16 +55,6 @@ public class MenuClick : MonoBehaviour
         SceneManager.LoadScene(SceneNames.LevelSelector);
     }
 
-    private void ChangeSceneWithAd()
-    {
-#if UNITY_WEBGL
-        SceneManager.LoadScene(SceneNames.LevelSelector);
-        
-#else
-        LevelPlayAdsManager.CallInterstitial(true);
-#endif
-    }
-
     public void CloseApplication()
     {
 #if UNITY_EDITOR

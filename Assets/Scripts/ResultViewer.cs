@@ -32,6 +32,7 @@ public class ResultViewer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moraleScore;
     [SerializeField] private TextMeshProUGUI restartButton;
     [SerializeField] private TextMeshProUGUI quitButton;
+    [SerializeField] private LevelPlayAdsManager adsManager;
     private int maxKillScore;
     private int maxEarlyScore;
     private int maxStreakScore;
@@ -249,9 +250,13 @@ public class ResultViewer : MonoBehaviour
     private void Restart()
     {
         PlayerPrefs.SetString("Restart", SceneManager.GetActiveScene().name);
+        adsManager.ShowInterstitialAd(RestartLevel);
+    }
 
-#if UNITY_ANDROID
-        LevelPlayAdsManager.CallInterstitial(true);
+    private void RestartLevel()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        SceneManager.LoadScene(PlayerPrefs.GetString("Restart"));
 #else
         SceneManager.LoadScene(SceneNames.RestartTransition);
 #endif
@@ -259,10 +264,11 @@ public class ResultViewer : MonoBehaviour
 
     private void QuitLevel()
     {
-#if UNITY_ANDROID
-        LevelPlayAdsManager.CallInterstitial(false);
-#else
+        adsManager.ShowInterstitialAd(OpenLevelSelector);
+    }
+
+    private void OpenLevelSelector()
+    {
         SceneManager.LoadScene(SceneNames.LevelSelector);
-#endif
     }
 }

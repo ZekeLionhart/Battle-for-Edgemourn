@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using TMPro;
 using Unity.Services.LevelPlay;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelPlayAdsManager : MonoBehaviour
 {
@@ -29,58 +27,59 @@ public class LevelPlayAdsManager : MonoBehaviour
     private LevelPlayBannerAd bannerAd;
     private LevelPlayInterstitialAd interstitialAd;
     private LevelPlayRewardedAd rewardedAd;
-    private bool isRestart;
+    private Action onInterstitialFinished;
+    private bool interstitialRequestActive;
 
     private string AppKey
     {
         get
         {
-            #if UNITY_ANDROID
-                return androidAppKey;
-            #elif UNITY_IOS
-                return iosAppKey;
-            #else
-                return string.Empty;
-            #endif
+#if UNITY_ANDROID
+            return androidAppKey;
+#elif UNITY_IOS
+            return iosAppKey;
+#else
+            return string.Empty;
+#endif
         }
     }
     private string BannerAdUnitId
     {
         get
         {
-            #if UNITY_ANDROID
-                return androidBannerAdUnitId;
-            #elif UNITY_IOS
-                return iosBannerAdUnitId;
-            #else
-                return string.Empty;
-            #endif
+#if UNITY_ANDROID
+            return androidBannerAdUnitId;
+#elif UNITY_IOS
+            return iosBannerAdUnitId;
+#else
+            return string.Empty;
+#endif
         }
     }
     private string InterstitialAdUnitId
     {
         get
         {
-            #if UNITY_ANDROID
-                return androidInterstitialAdUnitId;
-            #elif UNITY_IOS
-                return iosInterstitialAdUnitId;
-            #else
-                return string.Empty;
-            #endif
+#if UNITY_ANDROID
+            return androidInterstitialAdUnitId;
+#elif UNITY_IOS
+            return iosInterstitialAdUnitId;
+#else
+            return string.Empty;
+#endif
         }
     }
     private string RewardedAdUnitId
     {
         get
         {
-            #if UNITY_ANDROID
-                return androidRewardedAdUnitId;
-            #elif UNITY_IOS
-                return iosRewardedAdUnitId;
-            #else
-                return string.Empty;
-            #endif
+#if UNITY_ANDROID
+            return androidRewardedAdUnitId;
+#elif UNITY_IOS
+            return iosRewardedAdUnitId;
+#else
+            return string.Empty;
+#endif
         }
     }
 
@@ -94,18 +93,6 @@ public class LevelPlayAdsManager : MonoBehaviour
 
             UpdateCoin();
         }
-    }
-
-    public static Action<bool> CallInterstitial;
-
-    private void OnEnable()
-    {
-        CallInterstitial += ShowInterstitialAd;
-    }
-
-    private void OnDisable()
-    {
-        CallInterstitial -= ShowInterstitialAd;
     }
 
     public void Start()
@@ -125,13 +112,6 @@ public class LevelPlayAdsManager : MonoBehaviour
         {
             coinsText.text = Coins.ToString();
         }
-    }
-
-    private void ContinueToGame()
-    {
-        LoadInterstitialAd();
-        if (isRestart) SceneManager.LoadScene(PlayerPrefs.GetString("Restart"));
-        else SceneManager.LoadScene(SceneNames.LevelSelector);
     }
 
     private void SdkInitializationCompletedEvent(LevelPlayConfiguration config)
@@ -217,16 +197,34 @@ public class LevelPlayAdsManager : MonoBehaviour
         Debug.Log("#BfE Interstitial Ad Loaded");
     }
 
-    public void ShowInterstitialAd(bool isRestart)
+    public void ShowInterstitialAd(Action onFinished)
     {
-        this.isRestart = isRestart;
+        if (interstitialRequestActive) return;
 
-        if (interstitialAd.IsAdReady())
+        interstitialRequestActive = true;
+        onInterstitialFinished = onFinished;
+
+#if UNITY_ANDROID
+        if (interstitialAd != null && interstitialAd.IsAdReady())
         {
             interstitialAd.ShowAd();
-            Debug.Log("#BfE Interstitial Ad Showing");
+            return;
         }
-        else ContinueToGame();
+#endif
+
+        FinishInterstitialRequest();
+    }
+
+    private void FinishInterstitialRequest()
+    {
+        if (!interstitialRequestActive) return;
+
+        Action callback = onInterstitialFinished;
+
+        onInterstitialFinished = null;
+        interstitialRequestActive = false;
+
+        callback?.Invoke();
     }
 
     // Implement the events
@@ -238,12 +236,12 @@ public class LevelPlayAdsManager : MonoBehaviour
     void InterstitialOnAdDisplayedEvent(LevelPlayAdInfo adInfo) { }
     void InterstitialOnAdDisplayFailedEvent(LevelPlayAdInfo adInfo, LevelPlayAdError error)
     {
-        ContinueToGame();
+        FinishInterstitialRequest();
     }
     void InterstitialOnAdClickedEvent(LevelPlayAdInfo adInfo) { }
     void InterstitialOnAdClosedEvent(LevelPlayAdInfo adInfo)
     {
-        ContinueToGame();
+        FinishInterstitialRequest();
     }
     void InterstitialOnAdInfoChangedEvent(LevelPlayAdInfo adInfo) { }
 

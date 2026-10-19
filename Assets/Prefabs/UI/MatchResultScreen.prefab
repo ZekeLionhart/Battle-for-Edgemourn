@@ -2806,6 +2806,7 @@ MonoBehaviour:
   moraleScore: {fileID: 431426737023873643}
   restartButton: {fileID: 2853844172450087514}
   quitButton: {fileID: 301732231495755241}
+  adsManager: {fileID: 9137047445835122084}
 --- !u!95 &1546277239184117904
 Animator:
   serializedVersion: 5
