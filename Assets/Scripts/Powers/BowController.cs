@@ -38,6 +38,7 @@ public class BowController : PowerController
 
         if (offCooldown && willShoot)
         {
+            StartCooldown();
             Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
             CallShotAnalytics();
             CreateArrow(vector, aimingPoint.position);
@@ -61,8 +62,6 @@ public class BowController : PowerController
 
         Vector3 velocity = -arrowSpeed * vector;
         arrow.Launch(velocity);
-
-        offCooldown = false;
     }
 
     private void PullBow(int strength)

@@ -11,9 +11,8 @@ public class CrosshairPower : PowerController
     private int directionMult = 1;
     private bool aimStyleManual;
 
-    protected override void Awake()
+    protected virtual void Awake()
     {
-        base.Awake();
         startingPos = new Vector2(aimingPoint.position.x, aimingPoint.position.y);
         startingRot = Quaternion.Euler(0f, 0f, aimingPoint.eulerAngles.z);
         aimingPoint.SetPositionAndRotation(startingPos, startingRot);

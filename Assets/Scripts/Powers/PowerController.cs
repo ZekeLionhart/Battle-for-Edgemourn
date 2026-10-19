@@ -19,33 +19,23 @@ public class PowerController : MonoBehaviour
     protected bool isActive;
     protected bool isMouseInside;
     protected bool offCooldown = true;
-    protected WaitForSeconds shotDelayWFS;
+    private bool hasStopped;
+    private Coroutine cooldownRoutine;
+
+    public float CooldownProgress { get; private set; } = 1f;
 
     public static Action<PowerController, float> OnPowerShoot;
-
-    protected virtual void Awake()
-    {
-        shotDelayWFS = new WaitForSeconds(cooldown);
-    }
 
     protected virtual void OnEnable()
     {
         PowerManager.OnSwitchPowers += DeActivate;
-        CooldownManager.OnCooldownEnded += AllowShooting;
         HealthManager.OnZeroHealth += CeaseFunction;
     }
 
     protected virtual void OnDisable()
     {
         PowerManager.OnSwitchPowers -= DeActivate;
-        CooldownManager.OnCooldownEnded -= AllowShooting;
         HealthManager.OnZeroHealth -= CeaseFunction;
-    }
-
-    protected void AllowShooting(PowerController power)
-    {
-        if (power == this)
-            offCooldown = true;
     }
 
     protected bool TryShoot()
@@ -56,19 +46,42 @@ public class PowerController : MonoBehaviour
 
     protected virtual void Shoot()
     {
+        StartCooldown();
+        isMouseInside = false;
+
         CallShotAnalytics();
         OnPowerShoot(this, cooldown);
-        offCooldown = false;
-        isMouseInside = false;
     }
 
-    protected IEnumerator ShotDelay()
+    protected void StartCooldown()
     {
+        if (hasStopped) return;
+
+        if (cooldownRoutine != null)
+            StopCoroutine(cooldownRoutine);
+
         offCooldown = false;
+        CooldownProgress = 0f;
 
-        yield return shotDelayWFS;
+        cooldownRoutine = StartCoroutine(RunCooldown());
+    }
 
+    private IEnumerator RunCooldown()
+    {
+        float duration = cooldown;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            yield return null;
+
+            elapsed += Time.deltaTime;
+            CooldownProgress = Mathf.Clamp01(elapsed / duration);
+        }
+
+        CooldownProgress = 1f;
         offCooldown = true;
+        cooldownRoutine = null;
     }
 
     public void SetUpStartingPower(PowerController activePower)
@@ -108,7 +121,14 @@ public class PowerController : MonoBehaviour
 
     private void CeaseFunction()
     {
+        hasStopped = true;
         offCooldown = false;
+
+        if (cooldownRoutine != null)
+        {
+            StopCoroutine(cooldownRoutine);
+            cooldownRoutine = null;
+        }
     }
 
     protected void CallShotAnalytics()

@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerManager : MonoBehaviour
 {
     [SerializeField] private GameObject lineRenderer;
     [SerializeField] private PowerController[] powers;
-    private readonly List<bool> cooldowns = new();
     private PowerController activePower;
     private bool isReturnToWarbow;
 
@@ -15,22 +13,17 @@ public class PowerManager : MonoBehaviour
     private void Awake()
     {
         SetUpStartingPower();
-
-        for (int i = 0; i < powers.Length; i++)
-            cooldowns.Add(false);
     }
 
     private void OnEnable()
     {
-        PowerController.OnPowerShoot += StartPowerCooldown;
-        CooldownManager.OnCooldownEnded += EndPowerCooldown;
+        PowerController.OnPowerShoot += HandlePowerShot;
         SettingsManager.UpdateSettings += UpdateReturnToBow;
     }
 
     private void OnDisable()
     {
-        PowerController.OnPowerShoot -= StartPowerCooldown;
-        CooldownManager.OnCooldownEnded -= EndPowerCooldown;
+        PowerController.OnPowerShoot -= HandlePowerShot;
         SettingsManager.UpdateSettings -= UpdateReturnToBow;
     }
 
@@ -73,37 +66,13 @@ public class PowerManager : MonoBehaviour
             activePower = powers[index];
 
             OnSwitchPowers(activePower);
-
-            if (!cooldowns[index])
-                CooldownManager.OnCooldownEnded(powers[index]);
         }
     }
 
-    private void StartPowerCooldown(PowerController power, float cooldown)
+    private void HandlePowerShot(PowerController power, float cooldown)
     {
         if (isReturnToWarbow && activePower != powers[0])
             SwitchPowers(0);
-
-        for (int i = 0; i < powers.Length; i++)
-        {
-            if (power == powers[i])
-            {
-                cooldowns[i] = true;
-                break;
-            }
-        }
-    }
-
-    private void EndPowerCooldown(PowerController power)
-    {
-        for (int i = 0; i < powers.Length; i++)
-        {
-            if (power == powers[i])
-            {
-                cooldowns[i] = false;
-                break;
-            }
-        }
     }
 
     private void UpdateReturnToBow(SettingsData data)

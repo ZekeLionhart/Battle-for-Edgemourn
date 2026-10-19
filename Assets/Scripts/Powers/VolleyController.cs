@@ -11,9 +11,8 @@ public class VolleyController : BowController
     private WaitForSeconds delayWFS;
     private Quaternion arrowRotation;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         delayWFS = new WaitForSeconds(arrowDelay);
     }
 
@@ -26,6 +25,7 @@ public class VolleyController : BowController
 
         if (offCooldown && willShoot)
         {
+            StartCooldown();
             Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
             CallShotAnalytics();
             arrowCounter = 1;
