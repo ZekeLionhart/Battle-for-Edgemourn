@@ -95,20 +95,49 @@ public class LevelPlayAdsManager : MonoBehaviour
         }
     }
 
+    private enum InitializationState
+    {
+        NotStarted,
+        Initializing,
+        Initialized,
+        Failed
+    }
+
+    private static InitializationState initializationState;
+    private static bool initializationTrackingRegistered;
+
     public void Start()
     {
-        LevelPlay.ValidateIntegration();
+#if UNITY_ANDROID || UNITY_IOS
+        if (!initializationTrackingRegistered)
+        {
+            LevelPlay.OnInitSuccess += TrackInitializationSuccess;
+            LevelPlay.OnInitFailed += TrackInitializationFailure;
 
-        // Register OnInitFailed and OnInitSuccess listeners
+            initializationTrackingRegistered = true;
+        }
+
+        if (initializationState == InitializationState.Initialized)
+        {
+            CreateSceneAds();
+            return;
+        }
+
         LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
         LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
-        // SDK init
+
+        if (initializationState == InitializationState.Initializing)
+            return;
+
+        initializationState = InitializationState.Initializing;
+
+        LevelPlay.ValidateIntegration();
         LevelPlay.Init(AppKey);
+#endif
     }
     private void OnDestroy()
     {
-        LevelPlay.OnInitSuccess -= SdkInitializationCompletedEvent;
-        LevelPlay.OnInitFailed -= SdkInitializationFailedEvent;
+        StopWaitingForInitialization();
 
         onInterstitialFinished = null;
         interstitialRequestActive = false;
@@ -116,6 +145,28 @@ public class LevelPlayAdsManager : MonoBehaviour
         DestroyBanner();
         DestroyInterstitial();
         DestroyRewarded();
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetInitializationState()
+    {
+        LevelPlay.OnInitSuccess -= TrackInitializationSuccess;
+        LevelPlay.OnInitFailed -= TrackInitializationFailure;
+
+        initializationState = InitializationState.NotStarted;
+        initializationTrackingRegistered = false;
+    }
+
+    private static void TrackInitializationSuccess(LevelPlayConfiguration config)
+    {
+        initializationState = InitializationState.Initialized;
+        Debug.Log("#BfE LevelPlay Initialized Successfully");
+    }
+
+    private static void TrackInitializationFailure(LevelPlayInitError error)
+    {
+        initializationState = InitializationState.Failed;
+        Debug.LogError("#BfE LevelPlay Initialization Failed: " + error);
     }
 
     public void UpdateCoin()
@@ -128,15 +179,26 @@ public class LevelPlayAdsManager : MonoBehaviour
 
     private void SdkInitializationCompletedEvent(LevelPlayConfiguration config)
     {
-        CreateBannerAd();
-        CreateInterstitialAd();
-        CreateRewardedAd();
-        Debug.Log("#BfE LevelPlay Initialized Successfully");
+        StopWaitingForInitialization();
+        CreateSceneAds();
     }
 
     private void SdkInitializationFailedEvent(LevelPlayInitError error)
     {
-        Debug.LogError("#BfE LevelPlay Initialization Failed: " + error);
+        StopWaitingForInitialization();
+    }
+
+    private void StopWaitingForInitialization()
+    {
+        LevelPlay.OnInitSuccess -= SdkInitializationCompletedEvent;
+        LevelPlay.OnInitFailed -= SdkInitializationFailedEvent;
+    }
+
+    private void CreateSceneAds()
+    {
+        CreateBannerAd();
+        CreateInterstitialAd();
+        CreateRewardedAd();
     }
 
     #region bannerAds
