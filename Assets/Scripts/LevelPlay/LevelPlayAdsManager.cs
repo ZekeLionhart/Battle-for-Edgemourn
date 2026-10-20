@@ -105,6 +105,18 @@ public class LevelPlayAdsManager : MonoBehaviour
         // SDK init
         LevelPlay.Init(AppKey);
     }
+    private void OnDestroy()
+    {
+        LevelPlay.OnInitSuccess -= SdkInitializationCompletedEvent;
+        LevelPlay.OnInitFailed -= SdkInitializationFailedEvent;
+
+        onInterstitialFinished = null;
+        interstitialRequestActive = false;
+
+        DestroyBanner();
+        DestroyInterstitial();
+        DestroyRewarded();
+    }
 
     public void UpdateCoin()
     {
@@ -155,7 +167,19 @@ public class LevelPlayAdsManager : MonoBehaviour
 
     public void DestroyBanner()
     {
+        if (bannerAd == null) return;
+
+        bannerAd.OnAdLoaded -= BannerOnAdLoadedEvent;
+        bannerAd.OnAdLoadFailed -= BannerOnAdLoadFailedEvent;
+        bannerAd.OnAdDisplayed -= BannerOnAdDisplayedEvent;
+        bannerAd.OnAdDisplayFailed -= BannerOnAdDisplayFailedEvent;
+        bannerAd.OnAdClicked -= BannerOnAdClickedEvent;
+        bannerAd.OnAdCollapsed -= BannerOnAdCollapsedEvent;
+        bannerAd.OnAdLeftApplication -= BannerOnAdLeftApplicationEvent;
+        bannerAd.OnAdExpanded -= BannerOnAdExpandedEvent;
+
         bannerAd.DestroyAd();
+        bannerAd = null;
     }
 
     // Implement the events
@@ -226,6 +250,21 @@ public class LevelPlayAdsManager : MonoBehaviour
 
         callback?.Invoke();
     }
+    private void DestroyInterstitial()
+    {
+        if (interstitialAd == null) return;
+
+        interstitialAd.OnAdLoaded -= InterstitialOnAdLoadedEvent;
+        interstitialAd.OnAdLoadFailed -= InterstitialOnAdLoadFailedEvent;
+        interstitialAd.OnAdDisplayed -= InterstitialOnAdDisplayedEvent;
+        interstitialAd.OnAdDisplayFailed -= InterstitialOnAdDisplayFailedEvent;
+        interstitialAd.OnAdClicked -= InterstitialOnAdClickedEvent;
+        interstitialAd.OnAdClosed -= InterstitialOnAdClosedEvent;
+        interstitialAd.OnAdInfoChanged -= InterstitialOnAdInfoChangedEvent;
+
+        interstitialAd.DestroyAd();
+        interstitialAd = null;
+    }
 
     // Implement the events
     void InterstitialOnAdLoadedEvent(LevelPlayAdInfo adInfo) { }
@@ -280,6 +319,23 @@ public class LevelPlayAdsManager : MonoBehaviour
             rewardedAd.ShowAd();
             Debug.Log("#BfE Rewarded Ad Showing");
         }
+    }
+
+    private void DestroyRewarded()
+    {
+        if (rewardedAd == null) return;
+
+        rewardedAd.OnAdLoaded -= RewardedOnAdLoadedEvent;
+        rewardedAd.OnAdLoadFailed -= RewardedOnAdLoadFailedEvent;
+        rewardedAd.OnAdDisplayed -= RewardedOnAdDisplayedEvent;
+        rewardedAd.OnAdDisplayFailed -= RewardedOnAdDisplayFailedEvent;
+        rewardedAd.OnAdRewarded -= RewardedOnAdRewardedEvent;
+        rewardedAd.OnAdClosed -= RewardedOnAdClosedEvent;
+        rewardedAd.OnAdClicked -= RewardedOnAdClickedEvent;
+        rewardedAd.OnAdInfoChanged -= RewardedOnAdInfoChangedEvent;
+
+        rewardedAd.DestroyAd();
+        rewardedAd = null;
     }
 
     // Implement the events
