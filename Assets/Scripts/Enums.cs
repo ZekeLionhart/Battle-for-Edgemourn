@@ -25,7 +25,6 @@ public static class SceneNames
     public const string Menu = "MenuScene";
     public const string LevelSelector = "Lv_Selector_Scene";
     public const string LevelInfinite = "SampleScene";
-    public const string RestartTransition = "TransitionScene";
 }
 
 public static class KeyNames

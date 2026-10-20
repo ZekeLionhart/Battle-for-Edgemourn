@@ -76,8 +76,7 @@ public class PauseManager : MonoBehaviour
     public void Retry()
     {
         Resume();
-        PlayerPrefs.SetString("Restart", SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene(SceneNames.RestartTransition);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitToMenu()

@@ -9,10 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 62d7946995d06e849850936caa1e3d51
   - enabled: 1
-    path: Assets/Scenes/Levels/TransitionScene.unity
-    guid: 326b3db8a566e394a8d80667be70e60b
-  - enabled: 1
-    path: Assets/Scenes/Levels/Lv_Selector_Scene.unity
+    path: Assets/Scenes/Lv_Selector_Scene.unity
     guid: 2048b72b1e07ff1468e9d74201d3c630
   - enabled: 1
     path: Assets/Scenes/Levels/Lv_1_Scene.unity
@@ -24,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Lv_3_Scene.unity
     guid: 2b3d93b571eed254eab7607d29cd5fba
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Levels/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}

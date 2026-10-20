@@ -249,17 +249,12 @@ public class ResultViewer : MonoBehaviour
 
     private void Restart()
     {
-        PlayerPrefs.SetString("Restart", SceneManager.GetActiveScene().name);
         adsManager.ShowInterstitialAd(RestartLevel);
     }
 
     private void RestartLevel()
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        SceneManager.LoadScene(PlayerPrefs.GetString("Restart"));
-#else
-        SceneManager.LoadScene(SceneNames.RestartTransition);
-#endif
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void QuitLevel()
