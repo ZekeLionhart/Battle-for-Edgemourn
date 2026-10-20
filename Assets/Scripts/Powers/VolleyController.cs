@@ -16,9 +16,9 @@ public class VolleyController : BowController
         delayWFS = new WaitForSeconds(arrowDelay);
     }
 
-    protected override void Shoot(Vector3 vector, bool willShoot)
+    protected override void Shoot(PowerController shootingPower, Vector3 vector, bool willShoot)
     {
-        if (!isActive) return;
+        if (this != shootingPower || !isActive) return;
 
         ResetSprite();
         animator.SetTrigger(ParameterNames.Shoot);

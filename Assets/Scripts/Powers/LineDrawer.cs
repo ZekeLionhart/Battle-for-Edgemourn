@@ -4,6 +4,7 @@ using UnityEngine;
 public class LineDrawer : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRend;
+    [SerializeField] private PowerManager powerManager;
     [SerializeField] private float maxLength;
     [SerializeField] private Transform origin;
     [SerializeField] private Transform back;
@@ -14,7 +15,7 @@ public class LineDrawer : MonoBehaviour
     private int currentPull;
     private bool wasFirstClickInside = false;
 
-    public static event Action<Vector3, bool> OnMouseUp;
+    public static event Action<PowerController, Vector3, bool> OnMouseUp;
     public static event Action<float> OnAimUpdate;
     public static event Action<int> OnBowPull;
 
@@ -111,7 +112,8 @@ public class LineDrawer : MonoBehaviour
 
             wasFirstClickInside = false;
             HidePreviousShot();
-            OnMouseUp(endPos - startPos, willShoot);
+            PowerController shootingPower = powerManager.ActivePower;
+            OnMouseUp(shootingPower, endPos - startPos, willShoot);
         }
     }
 
@@ -166,6 +168,8 @@ public class LineDrawer : MonoBehaviour
 
     private void SavePreviousShot(PowerController power, float cooldown)
     {
+        if (power is not BowController) return;
+
         float angle = CalculateAngle();
 
         origin.rotation = Quaternion.identity;

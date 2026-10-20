@@ -8,7 +8,9 @@ public class PowerManager : MonoBehaviour
     private PowerController activePower;
     private bool isReturnToWarbow;
 
-    public static event Action<PowerController> OnSwitchPowers;
+	public PowerController ActivePower => activePower;
+
+	public static event Action<PowerController> OnSwitchPowers;
 
     private void Awake()
     {

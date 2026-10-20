@@ -30,9 +30,9 @@ public class BowController : PowerController
         aimingPoint.Rotate(0, 0, angle);
     }
 
-    protected virtual void Shoot(Vector3 vector, bool willShoot)
+    protected virtual void Shoot(PowerController shootingPower, Vector3 vector, bool willShoot)
     {
-        if (!isActive) return;
+        if (this != shootingPower || !isActive) return;
 
         ResetSprite();
 
@@ -49,6 +49,7 @@ public class BowController : PowerController
 
     protected void ResetSprite()
     {
+        currentState = 0;
         animator.SetBool(ParameterNames.BowPullWeak, false);
         animator.SetBool(ParameterNames.BowPullMed, false);
         animator.SetBool(ParameterNames.BowPullStrong, false);
@@ -66,6 +67,14 @@ public class BowController : PowerController
 
     private void PullBow(int strength)
     {
+        if (strength == 0)
+        {
+            ResetSprite();
+            return;
+        }
+
+        if (!isActive) return;
+
         if (currentState < strength)
             onPullSfx.Play();
 
