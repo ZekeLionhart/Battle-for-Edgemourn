@@ -55,7 +55,7 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
     public float Lifetime => Time.time - spawnTime;
     public int CoinsReward => scoreValue;
 
-    public static Action<int, bool, EnemyBase, Transform> OnEnemyDeath;
+    public static event Action<int, bool, EnemyBase, Transform> OnEnemyDeath;
 
     protected virtual void Awake()
     {

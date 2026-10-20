@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
     private int streakScore;
     private int totalScore;
 
-    public static Action<int> OnScoreChanged;
-    public static Action<int, Transform> OnScoreEarned;
-    public static Action<bool, bool, bool, int, int, int, int> OnScoreCalculated;
-    public static Action<MatchResult> OnResultCalculated;
-    public static Action OnGameEnded;
+    public static event Action<int> OnScoreChanged;
+    public static event Action<int, Transform> OnScoreEarned;
+    public static event Action<bool, bool, bool, int, int, int, int> OnScoreCalculated;
+    public static event Action<MatchResult> OnResultCalculated;
+    public static event Action OnGameEnded;
 
     private void OnEnable()
     {

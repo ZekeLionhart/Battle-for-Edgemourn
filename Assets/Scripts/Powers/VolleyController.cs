@@ -30,8 +30,8 @@ public class VolleyController : BowController
             CallShotAnalytics();
             arrowCounter = 1;
             CreateArrow(vector, aimingPoint.position);
-            OnPowerShoot(this, cooldown);
             arrowRotation = this.transform.rotation;
+            NotifyPowerShot();
             CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
             StartCoroutine(DelayShot(vector));
         }

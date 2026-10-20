@@ -43,7 +43,7 @@ public class BowController : PowerController
             CallShotAnalytics();
             CreateArrow(vector, aimingPoint.position);
             CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
-            OnPowerShoot(this, cooldown);
+            NotifyPowerShot();
         }
     }
 

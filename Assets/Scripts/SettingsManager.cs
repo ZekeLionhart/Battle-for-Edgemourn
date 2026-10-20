@@ -24,8 +24,8 @@ public class SettingsManager : MonoBehaviour
 
     public SettingsData CurrentSettings => settingsData;
 
-    public static Action OnSettingsOpen;
-    public static Action OnSettingsClose;
+    public static event Action OnSettingsOpen;
+    public static event Action OnSettingsClose;
     public static event Action<SettingsData> UpdateSettings;
 
     private void Awake()

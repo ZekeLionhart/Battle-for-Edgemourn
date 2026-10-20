@@ -7,8 +7,8 @@ public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] private GameObject lineRenderer;
     private bool isPointerInside;
 
-    public static Action<bool> IsInsideArea;
-    public static Action<Vector2> OnAimStarted;
+    public static event Action<bool> IsInsideArea;
+    public static event Action<Vector2> OnAimStarted;
 
     public void OnPointerEnter(PointerEventData eventData)
     {

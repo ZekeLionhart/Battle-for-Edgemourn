@@ -24,7 +24,7 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private LevelData levelData;
     private LevelProgress levelProgress;
 
-    public static Action<string> OnLevelChosen;
+    public static event Action<string> OnLevelChosen;
 
     public void OnPointerEnter(PointerEventData eventData)
     {

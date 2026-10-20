@@ -8,8 +8,8 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private List<Wave> waves;
     private WaitForSeconds waveWFS;
 
-    public static Action<EnemyBase> OnEnemySpawn;
-    public static Action OnFinishedSpawning;
+    public static event Action<EnemyBase> OnEnemySpawn;
+    public static event Action OnFinishedSpawning;
 
     private void Awake()
     {

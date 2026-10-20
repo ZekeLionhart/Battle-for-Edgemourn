@@ -16,8 +16,8 @@ public class StreakManager : MonoBehaviour
     public float StreakWindow => streakWindow;
     public float Timer => timer;
 
-    public static Action<int> OnStreakIncreased;
-    public static Action OnStreakEnded;
+    public static event Action<int> OnStreakIncreased;
+    public static event Action OnStreakEnded;
 
     private void Awake()
     {

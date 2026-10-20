@@ -14,8 +14,8 @@ public class HealthManager : MonoBehaviour, IDamageable
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
 
-    public static Action<int> OnHealthChanged;
-    public static Action OnZeroHealth;
+    public static event Action<int> OnHealthChanged;
+    public static event Action OnZeroHealth;
     
     private void Awake()
     {

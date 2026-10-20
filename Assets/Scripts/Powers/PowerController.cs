@@ -24,7 +24,7 @@ public class PowerController : MonoBehaviour
 
     public float CooldownProgress { get; private set; } = 1f;
 
-    public static Action<PowerController, float> OnPowerShoot;
+    public static event Action<PowerController, float> OnPowerShoot;
 
     protected virtual void OnEnable()
     {
@@ -36,6 +36,11 @@ public class PowerController : MonoBehaviour
     {
         PowerManager.OnSwitchPowers -= DeActivate;
         HealthManager.OnZeroHealth -= CeaseFunction;
+    }
+
+    protected void NotifyPowerShot()
+    {
+        OnPowerShoot(this, cooldown);
     }
 
     protected bool TryShoot()
@@ -50,7 +55,7 @@ public class PowerController : MonoBehaviour
         isMouseInside = false;
 
         CallShotAnalytics();
-        OnPowerShoot(this, cooldown);
+        NotifyPowerShot();
     }
 
     protected void StartCooldown()

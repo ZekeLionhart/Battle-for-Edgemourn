@@ -12,8 +12,8 @@ public class PauseManager : MonoBehaviour
     public static bool isPaused;
     private bool isSettingsOpen;
 
-    public static Action OnPause;
-    public static Action<float> SetPauseVolume;
+    public static event Action OnPause;
+    public static event Action<float> SetPauseVolume;
 
     private void OnEnable()
     {

@@ -14,9 +14,9 @@ public class LineDrawer : MonoBehaviour
     private int currentPull;
     private bool wasFirstClickInside = false;
 
-    public static Action<Vector3, bool> OnMouseUp;
-    public static Action<float> OnAimUpdate;
-    public static Action<int> OnBowPull;
+    public static event Action<Vector3, bool> OnMouseUp;
+    public static event Action<float> OnAimUpdate;
+    public static event Action<int> OnBowPull;
 
     private void Awake()
     {

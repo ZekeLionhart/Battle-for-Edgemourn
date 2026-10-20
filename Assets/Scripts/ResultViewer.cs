@@ -41,7 +41,7 @@ public class ResultViewer : MonoBehaviour
     private int stashedMoraleScore;
     private bool isVictory;
 
-    public static Action CallSFXStop;
+    public static event Action CallSFXStop;
 
     private void OnEnable()
     {
