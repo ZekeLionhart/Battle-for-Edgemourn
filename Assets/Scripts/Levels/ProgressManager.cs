@@ -91,11 +91,11 @@ public class ProgressManager : MonoBehaviour
                     break;
                 }
             }
+
+            UnlockNextLevel(result.level);
         }
 
         progressData.coins += result.coinsEarned;
-
-        UnlockNextLevel(result.level);
 
         SaveProgress();
     }
