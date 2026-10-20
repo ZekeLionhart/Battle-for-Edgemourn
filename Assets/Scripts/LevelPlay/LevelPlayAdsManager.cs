@@ -95,6 +95,7 @@ public class LevelPlayAdsManager : MonoBehaviour
         }
     }
 
+#if UNITY_ANDROID || UNITY_IOS
     private enum InitializationState
     {
         NotStarted,
@@ -105,6 +106,7 @@ public class LevelPlayAdsManager : MonoBehaviour
 
     private static InitializationState initializationState;
     private static bool initializationTrackingRegistered;
+#endif
 
     public void Start()
     {
@@ -135,6 +137,7 @@ public class LevelPlayAdsManager : MonoBehaviour
         LevelPlay.Init(AppKey);
 #endif
     }
+
     private void OnDestroy()
     {
         StopWaitingForInitialization();
@@ -147,6 +150,7 @@ public class LevelPlayAdsManager : MonoBehaviour
         DestroyRewarded();
     }
 
+#if UNITY_ANDROID || UNITY_IOS
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ResetInitializationState()
     {
@@ -168,6 +172,7 @@ public class LevelPlayAdsManager : MonoBehaviour
         initializationState = InitializationState.Failed;
         Debug.LogError("#BfE LevelPlay Initialization Failed: " + error);
     }
+#endif
 
     public void UpdateCoin()
     {
