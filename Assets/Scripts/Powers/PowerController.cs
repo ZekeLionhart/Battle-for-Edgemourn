@@ -21,6 +21,12 @@ public class PowerController : MonoBehaviour
     protected bool offCooldown = true;
     private bool hasStopped;
     private Coroutine cooldownRoutine;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    private float savedCooldown;
+    private bool fastCooldownEnabled;
+    private float savedDamage;
+    private bool highDamageEnabled;
+#endif
 
     public float CooldownProgress { get; private set; } = 1f;
 
@@ -140,4 +146,53 @@ public class PowerController : MonoBehaviour
     {
         Analytics.OnPowerUsed(powerType);
     }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public void DebugEnableFastCooldown()
+    {
+        if (hasStopped) return;
+
+        if (!fastCooldownEnabled)
+        {
+            savedCooldown = cooldown;
+            fastCooldownEnabled = true;
+        }
+
+        cooldown = 0.5f;
+        if (cooldownRoutine != null)
+            StopCoroutine(cooldownRoutine);
+        CooldownProgress = 1f;
+        offCooldown = true;
+        cooldownRoutine = null;
+    }
+
+    public void DebugDisableFastCooldown()
+    {
+        if (!fastCooldownEnabled) return;
+
+        cooldown = savedCooldown;
+        fastCooldownEnabled = false;
+    }
+
+    public void DebugEnableHighDamage()
+    {
+        if (hasStopped) return;
+
+        if (!highDamageEnabled)
+        {
+            savedDamage = damage;
+            highDamageEnabled = true;
+        }
+
+        damage = 1000f;
+    }
+
+    public void DebugDisableHighDamage()
+    {
+        if (!highDamageEnabled) return;
+
+        damage = savedDamage;
+        highDamageEnabled = false;
+    }
+#endif
 }

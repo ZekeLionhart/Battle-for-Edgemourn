@@ -41,4 +41,11 @@ public class WaveSpawner : MonoBehaviour
 
         OnFinishedSpawning();
     }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public void DebugSpawnEnemy(EnemyBase prefab)
+    {
+        OnEnemySpawn(Instantiate(prefab, transform.position, transform.rotation));
+    }
+#endif
 }

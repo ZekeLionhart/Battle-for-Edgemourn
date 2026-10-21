@@ -62,6 +62,18 @@ public class HealthManager : MonoBehaviour, IDamageable
         OnHealthChanged(currentHealth);
     }
 
+    public void Heal(int amount)
+    {
+        if (!isAlive || hasGameEnded) return;
+
+        currentHealth += amount;
+
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        OnHealthChanged(currentHealth);
+    }
+
     private void FreezeHealth()
     {
         hasGameEnded = true;

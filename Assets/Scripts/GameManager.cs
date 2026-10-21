@@ -68,6 +68,13 @@ public class GameManager : MonoBehaviour
         CalculateResult(true);
     }
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public void DebugForceVictory()
+    {
+        WinGame();
+    }
+#endif
+
     private void FailGame()
     {
         if (hasGameEnded) return;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -51,6 +52,10 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
     protected bool hasGameEnded = false;
     private float spawnTime;
     protected float bonusWindow = 15f;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    private int savedDamage;
+    private bool noDamageEnabled;
+#endif
 
     public float Lifetime => Time.time - spawnTime;
     public int CoinsReward => scoreValue;
@@ -278,4 +283,34 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
         foreach (ParticleSystem particles in dustParticles)
             particles.Play();
     }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public void DebugDeath()
+    {
+        if (isDead) return;
+
+        InitiateDeath();
+    }
+
+    public void DebugEnableNoDamage()
+    {
+        if (isDead) return;
+
+        if (!noDamageEnabled)
+        {
+            savedDamage = damage;
+            noDamageEnabled = true;
+        }
+
+        damage = 0;
+    }
+
+    public void DebugDisableNoDamage()
+    {
+        if (!noDamageEnabled) return;
+
+        damage = savedDamage;
+        noDamageEnabled = false;
+    }
+#endif
 }

@@ -28,4 +28,11 @@ public class UnlimitedSpawner : MonoBehaviour
 
         StartCoroutine(SpawnEnemy());
     }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public void DebugSpawnEnemy(EnemyBase prefab)
+    {
+        Instantiate(prefab, transform.position, transform.rotation);
+    }
+#endif
 }
