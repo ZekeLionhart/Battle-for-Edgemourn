@@ -5,30 +5,26 @@ public class CameraRatio : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Vector2 targetAspect = new(16, 9);
+    [SerializeField] private float referenceSize = 5f;
     [SerializeField] private bool limitGameplayRatio;
     [SerializeField] private bool allowRatioCorrection;
-    [SerializeField] private float referenceSize = 5f;
 
     private int previousWidth;
     private int previousHeight;
 
     void Start()
     {
-        UpdateCrop();
         RefreshFraming();
     }
 
     private void Update()
     {
-        UpdateCrop();
         if (Screen.width != previousWidth || Screen.height != previousHeight)
             RefreshFraming();
     }
 
     private void UpdateCrop()
     {
-        if (allowRatioCorrection || !limitGameplayRatio) return;
-
         float screenRatio = Screen.width / (float)Screen.height;
         float targetRatio = targetAspect.x / targetAspect.y;
 
@@ -52,14 +48,12 @@ public class CameraRatio : MonoBehaviour
 
     private void RefreshFraming()
     {
-        if (!allowRatioCorrection) return;
-
         previousWidth = Screen.width;
         previousHeight = Screen.height;
 
         if (allowRatioCorrection)
             FixRatioAdaptation();
-        else
+        else if (limitGameplayRatio)
         {
             mainCamera.orthographicSize = referenceSize;
             UpdateCrop();
