@@ -16,6 +16,16 @@ public class WaveSpawner : MonoBehaviour
         waveWFS = new WaitForSeconds(0f);
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnGameEnded += StopSpawning;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameEnded -= StopSpawning;
+    }
+
     private void Start()
     {
         StartCoroutine(SpawnWave());
@@ -40,6 +50,11 @@ public class WaveSpawner : MonoBehaviour
         }
 
         OnFinishedSpawning();
+    }
+
+    private void StopSpawning()
+    {
+        StopAllCoroutines();
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

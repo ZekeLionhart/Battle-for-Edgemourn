@@ -14,6 +14,16 @@ public class UnlimitedSpawner : MonoBehaviour
         enemyWFS = new WaitForSeconds(enemyDelay);
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnGameEnded += StopSpawning;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameEnded -= StopSpawning;
+    }
+
     private void Start()
     {
         StartCoroutine(SpawnEnemy());
@@ -27,6 +37,11 @@ public class UnlimitedSpawner : MonoBehaviour
             Instantiate(enemy, transform.position + distBetweenEach * i * Vector3.right, transform.rotation);
 
         StartCoroutine(SpawnEnemy());
+    }
+
+    private void StopSpawning()
+    {
+        StopAllCoroutines();
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
