@@ -42,7 +42,7 @@ public class BoulderManager : MonoBehaviour
         this.damage = damage;
         this.shakeDuration = shakeDuration;
         this.shakeIntensity = shakeIntensity;
-        rigidBody.velocity = velocity;
+        rigidBody.linearVelocity = velocity;
     }
 
     private void StopGame()

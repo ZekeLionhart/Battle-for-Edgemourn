@@ -39,7 +39,7 @@ public class FireballManager : ProjectileManager
     public void Launch(Vector3 velocity, ExplosionManager explosionPrefab)
     {
         this.explosionPrefab = explosionPrefab;
-        rigidBody.velocity = velocity;
+        rigidBody.linearVelocity = velocity;
     }
 
     private void SpawnSparks()

@@ -34,7 +34,7 @@ public class ShielderManager : EnemyBase
             onDefendSfx.Play();
             Rigidbody2D newArrow = Instantiate(deadArrow, transform.position + Vector3.up / 2, rotation, null);
             Destroy(arrow.gameObject);
-            newArrow.velocity = new Vector2(2f, 3f);
+            newArrow.linearVelocity = new Vector2(2f, 3f);
             newArrow.angularVelocity = -360f * (rand * 5);
 
             return false;

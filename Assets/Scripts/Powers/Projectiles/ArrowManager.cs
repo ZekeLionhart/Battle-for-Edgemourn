@@ -56,12 +56,12 @@ public class ArrowManager : ProjectileManager
 
     public void Launch(Vector3 velocity)
     {
-        rigidBody.velocity = velocity;
+        rigidBody.linearVelocity = velocity;
     }
 
     private void RotateMidFlight()
     {
-        Vector2 dir = rigidBody.velocity;
+        Vector2 dir = rigidBody.linearVelocity;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
