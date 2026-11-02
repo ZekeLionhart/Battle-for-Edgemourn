@@ -130,4 +130,28 @@ public class ProgressManager : MonoBehaviour
     {
         return progressData.levels.Find(p => p.levelID == levelID);
     }
+    
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public void WipeSaveData()
+    {
+        foreach (LevelData level in campaign.levels)
+        {
+            LevelProgress progress = new()
+            {
+                levelID = level.levelID,
+                state = LevelStates.Locked,
+                victoryStar = false,
+                scoreStar = false,
+                defenseStar = false
+            };
+
+            if (level.unlockedByDefault) progress.state = LevelStates.Unlocked;
+
+            progressData.levels.Add(progress);
+        }
+
+        SaveProgress();
+        Debug.Log("Save data wiped.");
+    }
+#endif
 }

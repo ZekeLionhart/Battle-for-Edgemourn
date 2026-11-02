@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Diagnostics;
 
 // Created at runtime so gameplay scenes and release builds need no debug UI setup.
 public class DebugPanel : MonoBehaviour
@@ -120,7 +121,7 @@ public class DebugPanel : MonoBehaviour
         window.transform.SetParent(overlay.transform, false);
         RectTransform windowRect = window.GetComponent<RectTransform>();
         windowRect.anchorMin = windowRect.anchorMax = new Vector2(0.5f, 0.5f);
-        windowRect.sizeDelta = new Vector2(560f, 660f);
+        windowRect.sizeDelta = new Vector2(560f, 712f);
         window.GetComponent<Image>().color = new Color(0.07f, 0.09f, 0.13f, 1f);
         VerticalLayoutGroup layout = window.GetComponent<VerticalLayoutGroup>();
         layout.padding = new RectOffset(24, 24, 20, 20);
@@ -137,6 +138,9 @@ public class DebugPanel : MonoBehaviour
         slowerButton = CreateButton(speedRow, "Speed / 2", () => ChangeSpeed(0.5f));
         normalSpeedButton = CreateButton(speedRow, "Reset x1", () => SetSpeed(1f));
         fasterButton = CreateButton(speedRow, "Speed x2", () => ChangeSpeed(2f));
+        Transform debugRow = CreateRow(window.transform);
+        CreateButton(debugRow, "Force crash", ForceCrash);
+        CreateButton(debugRow, "Wipe save data", WipeSaveData);
         CreateLabel(window.transform, "MATCH", 18, 26f);
         Transform matchRow = CreateRow(window.transform);
         dieButton = CreateButton(matchRow, "Die instantly", Die);
@@ -228,6 +232,23 @@ public class DebugPanel : MonoBehaviour
                 aimControl.enabled = true;
         }
         suspendedAimControls.Clear();
+    }
+
+    private void ForceCrash()
+    {
+#if UNITY_EDITOR
+        Debug.LogWarning(
+            "Force Crash pressed. Run a built player to test crash reporting.");
+#else
+        Debug.Log("Diagnostics test: deliberately crashing the game.");
+
+        Utils.ForceCrash(ForcedCrashCategory.AccessViolation);
+#endif
+    }
+
+    private void WipeSaveData()
+    {
+        ProgressManager.Instance.WipeSaveData();
     }
 
     private void Die()
