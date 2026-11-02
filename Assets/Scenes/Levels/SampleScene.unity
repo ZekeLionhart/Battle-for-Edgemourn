@@ -1705,10 +1705,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2105410221}
     m_Modifications:
-    - target: {fileID: 4486905076084532858, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
-      propertyPath: m_DrawMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6538419318125597155, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1752,10 +1748,6 @@ PrefabInstance:
     - target: {fileID: 6538419318125597157, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
       propertyPath: m_Name
       value: Background
-      objectReference: {fileID: 0}
-    - target: {fileID: 8367192262382918007, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
