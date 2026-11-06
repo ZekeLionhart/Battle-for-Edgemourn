@@ -52,8 +52,8 @@ public class DebugPanel : MonoBehaviour
 
     private static void CreateForScene(Scene scene, LoadSceneMode mode)
     {
-        HealthManager sceneHealth = FindObjectOfType<HealthManager>();
-        if (sceneHealth == null || FindObjectOfType<DebugPanel>() != null)
+        HealthManager sceneHealth = FindFirstObjectByType<HealthManager>();
+        if (sceneHealth == null || FindFirstObjectByType<DebugPanel>() != null)
             return;
 
         GameObject panelObject = new GameObject("Debug Panel (Development Only)");
@@ -78,10 +78,10 @@ public class DebugPanel : MonoBehaviour
     private void Start()
     {
         // Development builds receive this component and its prefab references at build time.
-        health = FindObjectOfType<HealthManager>();
-        gameManager = FindObjectOfType<GameManager>();
-        waveSpawner = FindObjectOfType<WaveSpawner>();
-        unlimitedSpawner = FindObjectOfType<UnlimitedSpawner>();
+        health = FindFirstObjectByType<HealthManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        waveSpawner = FindFirstObjectByType<WaveSpawner>();
+        unlimitedSpawner = FindFirstObjectByType<UnlimitedSpawner>();
 #if UNITY_EDITOR
         string[] enemyNames = { "Grunt", "Shielder", "Ram", "Trebuchet" };
         enemyPrefabs = new EnemyBase[enemyNames.Length];
@@ -208,7 +208,7 @@ public class DebugPanel : MonoBehaviour
         if (open)
         {
             // Cancels a bow drag already in progress, using LineDrawer's existing OnDisable.
-            foreach (LineDrawer aimControl in FindObjectsOfType<LineDrawer>())
+            foreach (LineDrawer aimControl in FindObjectsByType<LineDrawer>(FindObjectsSortMode.None))
             {
                 if (!aimControl.enabled)
                     continue;
@@ -266,7 +266,7 @@ public class DebugPanel : MonoBehaviour
             return;
 
         // Snapshot the scene enemies: deaths update GameManager's live enemy collection.
-        foreach (EnemyBase enemy in FindObjectsOfType<EnemyBase>())
+        foreach (EnemyBase enemy in FindObjectsByType<EnemyBase>(FindObjectsSortMode.None))
         {
             if (enemy != null)
                 enemy.DebugDeath();
@@ -296,7 +296,7 @@ public class DebugPanel : MonoBehaviour
             return;
 
         fastCooldownEnabled = !fastCooldownEnabled;
-        foreach (PowerController power in FindObjectsOfType<PowerController>(true))
+        foreach (PowerController power in FindObjectsByType<PowerController>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
             if (fastCooldownEnabled)
                 power.DebugEnableFastCooldown();
@@ -313,7 +313,7 @@ public class DebugPanel : MonoBehaviour
             return;
 
         highDamageEnabled = !highDamageEnabled;
-        foreach (PowerController power in FindObjectsOfType<PowerController>(true))
+        foreach (PowerController power in FindObjectsByType<PowerController>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
             if (highDamageEnabled)
                 power.DebugEnableHighDamage();
@@ -336,7 +336,7 @@ public class DebugPanel : MonoBehaviour
 
     private void ApplyNoDamage()
     {
-        foreach (EnemyBase enemy in FindObjectsOfType<EnemyBase>(true))
+        foreach (EnemyBase enemy in FindObjectsByType<EnemyBase>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
             if (noDamageEnabled)
                 enemy.DebugEnableNoDamage();
