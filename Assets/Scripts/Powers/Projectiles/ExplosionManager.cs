@@ -1,15 +1,26 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class ExplosionManager : ProjectileManager
 {
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform burnMark;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private CircleCollider2D explosionCollider;
+    [SerializeField] private ParticleSystem[] particles;
+
     private readonly float rayDistance = 10f;
+
+    private IObjectPool<ExplosionManager> pool;
+    private Vector3 burnMarkLocalPosition;
+    private Vector3 burnMarkLocalScale;
 
     private void Awake()
     {
-        PlaceBurnMark();
+        if (!burnMark) return;
+
+        burnMarkLocalPosition = burnMark.localPosition;
+        burnMarkLocalScale = burnMark.localScale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,9 +29,28 @@ public class ExplosionManager : ProjectileManager
             receiver.TakeDamage(gameObject, powerType, damageType, damage);
     }
 
+    public void SetPool(IObjectPool<ExplosionManager> pool)
+    {
+        this.pool = pool;
+    }
+
+    public void Play()
+    {
+        gameObject.SetActive(true);
+        animator.Update(0f);
+
+        if (burnMark)
+        {
+            burnMark.localPosition = burnMarkLocalPosition;
+            burnMark.localScale = burnMarkLocalScale;
+        }
+
+        PlaceBurnMark();
+    }
+
     private void PlaceBurnMark()
     {
-        if (burnMark == null) return;
+        if (!burnMark) return;
 
         Vector2 origin = burnMark.transform.position + Vector3.up; //gives some distance to avoid clipping
 
@@ -38,8 +68,11 @@ public class ExplosionManager : ProjectileManager
         }
     }
 
-    private void DestroySelf()
+    private void ReturnToPool()
     {
-        Destroy(gameObject);
+        foreach (ParticleSystem particle in particles)
+            particle.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        pool.Release(this);
     }
 }

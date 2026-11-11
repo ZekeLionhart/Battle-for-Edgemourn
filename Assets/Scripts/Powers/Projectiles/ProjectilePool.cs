@@ -3,51 +3,99 @@ using UnityEngine.Pool;
 
 public sealed class ProjectilePool : MonoBehaviour
 {
-    private const int MaxInactiveArrows = 50;
-
     [SerializeField] private ArrowManager arrowPrefab;
+    [SerializeField, Min(1)] private int maxInactiveArrows = 50;
+    [SerializeField] private FireballManager fireballPrefab;
+    [SerializeField, Min(1)] private int maxInactiveFireballs = 1;
+    [SerializeField] private ExplosionManager explosionPrefab;
+    [SerializeField, Min(1)] private int maxInactiveExplosions = 1;
+    [SerializeField] private ExplosionManager lightningPrefab;
+    [SerializeField, Min(1)] private int maxInactiveBolts = 1;
+    [SerializeField] private WallManager stonewallPrefab;
+    [SerializeField, Min(1)] private int maxInactiveWalls = 1;
+    [SerializeField] private ProjectileManager tarPrefab;
+    [SerializeField, Min(1)] private int maxInactiveTars = 1;
 
     private ObjectPool<ArrowManager> arrowPool;
-    private Transform inactiveArrows;
+    private ObjectPool<FireballManager> fireballPool;
+    private ObjectPool<ExplosionManager> explosionPool;
+    private ObjectPool<ExplosionManager> lightningPool;
+    private ObjectPool<WallManager> stonewallPool;
+    private ObjectPool<ProjectileManager> tarPool;
+
+    private Transform inactiveProjectiles;
 
     private void Awake()
     {
-        GameObject container = new("Inactive Arrows"); // string
+        GameObject container = new("Inactive Projectiles"); // string
         container.SetActive(false);
         container.transform.SetParent(transform, false);
-        inactiveArrows = container.transform;
+        inactiveProjectiles = container.transform;
 
-        arrowPool = new ObjectPool<ArrowManager>(
-            createFunc: CreateArrow,
-            actionOnRelease: StoreArrow,
-            actionOnDestroy: arrow => Destroy(arrow.gameObject),
-            maxSize: MaxInactiveArrows);
+        arrowPool = CreatePool(arrowPrefab, maxInactiveArrows);
+        fireballPool = CreatePool(fireballPrefab, maxInactiveFireballs);
+        explosionPool = CreatePool(explosionPrefab, maxInactiveExplosions);
     }
 
     public ArrowManager GetArrow()
     {
         ArrowManager arrow = arrowPool.Get();
-        arrow.transform.SetParent(null, false);
-        return arrow;
-    }
-
-    private ArrowManager CreateArrow()
-    {
-        ArrowManager arrow = Instantiate(arrowPrefab, inactiveArrows, false);
-        arrow.gameObject.SetActive(false);
         arrow.SetPool(arrowPool);
         return arrow;
     }
 
-    private void StoreArrow(ArrowManager arrow)
+    public FireballManager GetFireball()
     {
-        arrow.gameObject.SetActive(false);
-        arrow.transform.SetParent(inactiveArrows, false);
+        FireballManager fireball = fireballPool.Get();
+        fireball.SetPool(fireballPool);
+        return fireball;
+    }
+
+    public ExplosionManager GetExplosion()
+    {
+        ExplosionManager explosion = explosionPool.Get();
+        explosion.SetPool(explosionPool);
+        return explosion;
+    }
+
+    private ObjectPool<T> CreatePool<T>(T prefab, int maxInactive) where T : ProjectileManager
+    {
+        ObjectPool<T> pool = new ObjectPool<T>(
+            createFunc: () =>
+            {
+                T instance = Instantiate(prefab, inactiveProjectiles, false);
+                instance.gameObject.SetActive(false);
+                return instance;
+            },
+            actionOnGet: instance => instance.transform.SetParent(null, false),
+            actionOnRelease: instance =>
+            {
+                instance.gameObject.SetActive(false);
+                instance.transform.SetParent(inactiveProjectiles, false);
+            },
+            actionOnDestroy: instance => Destroy(instance.gameObject),
+            maxSize: maxInactive);
+
+        Prewarm(pool, maxInactive);
+        return pool;
+    }
+
+    private void Prewarm<T>(ObjectPool<T> pool, int count) where T : class
+    {
+        T[] instances = new T[count];
+
+        for (int i = 0; i < count; i++)
+            instances[i] = pool.Get();
+
+        foreach (T instance in instances)
+            pool.Release(instance);
     }
 
     private void OnDestroy()
     {
         arrowPool.Dispose();
+        fireballPool.Dispose();
+        explosionPool.Dispose();
     }
 
     /*//[ContextMenu("Log Arrow Pool Counts")]
