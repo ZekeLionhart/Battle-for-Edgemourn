@@ -1288,11 +1288,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectilePool
   arrowPrefab: {fileID: 1630199801917483144, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
+  maxInactiveArrows: 50
   fireballPrefab: {fileID: 4359149594660312549, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
+  maxInactiveFireballs: 1
   explosionPrefab: {fileID: 6509116511973393642, guid: ccdd679886cc72c4abe528a9b1271335, type: 3}
+  maxInactiveExplosions: 1
   lightningPrefab: {fileID: 4286106396977675633, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
+  maxInactiveBolts: 1
   stonewallPrefab: {fileID: 7169083511623344339, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
+  maxInactiveWalls: 1
   tarPrefab: {fileID: 0}
+  maxInactiveTars: 1
 --- !u!1 &2105410220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,6 +1648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1084549656}
     m_Modifications:
+    - target: {fileID: 2841594700007315785, guid: 0bd63e2d68c02934c97576e445f647e1, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 2079442797}
     - target: {fileID: 2841594700007315789, guid: 0bd63e2d68c02934c97576e445f647e1, type: 3}
       propertyPath: m_Name
       value: LightningStrike

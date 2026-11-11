@@ -11622,11 +11622,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccbfea8520e51143abfcdb0340b6784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: -6685644357842620086}
   burnMark: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
   explosionCollider: {fileID: 0}
+  particles:
+  - {fileID: 2740623323325270331}
+  - {fileID: 3872419946131330750}
 --- !u!1 &7384362244642571511
 GameObject:
   m_ObjectHideFlags: 0

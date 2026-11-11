@@ -35,6 +35,7 @@ public sealed class ProjectilePool : MonoBehaviour
         arrowPool = CreatePool(arrowPrefab, maxInactiveArrows);
         fireballPool = CreatePool(fireballPrefab, maxInactiveFireballs);
         explosionPool = CreatePool(explosionPrefab, maxInactiveExplosions);
+        lightningPool = CreatePool(lightningPrefab, maxInactiveBolts);
     }
 
     public ArrowManager GetArrow()
@@ -56,6 +57,13 @@ public sealed class ProjectilePool : MonoBehaviour
         ExplosionManager explosion = explosionPool.Get();
         explosion.SetPool(explosionPool);
         return explosion;
+    }
+
+    public ExplosionManager GetLightning()
+    {
+        ExplosionManager lightning = lightningPool.Get();
+        lightning.SetPool(lightningPool);
+        return lightning;
     }
 
     private ObjectPool<T> CreatePool<T>(T prefab, int maxInactive) where T : ProjectileManager
@@ -96,21 +104,6 @@ public sealed class ProjectilePool : MonoBehaviour
         arrowPool.Dispose();
         fireballPool.Dispose();
         explosionPool.Dispose();
+        lightningPool.Dispose();
     }
-
-    /*//[ContextMenu("Log Arrow Pool Counts")]
-    //private void LogArrowPoolCounts()
-    private void Update()
-    {
-        if (arrowPool == null)
-        {
-            Debug.Log("The arrow pool is available in Play Mode.", this);
-            return;
-        }
-
-        Debug.Log(
-            $"Arrows: {arrowPool.CountInactive} inactive, " +
-            $"{arrowPool.CountActive} checked out, {arrowPool.CountAll} total",
-            this);
-    }*/
 }
