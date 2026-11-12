@@ -1297,7 +1297,7 @@ MonoBehaviour:
   maxInactiveBolts: 1
   stonewallPrefab: {fileID: 7169083511623344339, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
   maxInactiveWalls: 1
-  tarPrefab: {fileID: 0}
+  tarPrefab: {fileID: 6898701813269071313, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
   maxInactiveTars: 1
 --- !u!1 &2105410220
 GameObject:
@@ -1456,6 +1456,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 830598145307475662, guid: 402f27feb5dfec54c879f3fb465aa3af, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 2079442797}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

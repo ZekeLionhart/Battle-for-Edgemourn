@@ -13,7 +13,7 @@ public sealed class ProjectilePool : MonoBehaviour
     [SerializeField, Min(1)] private int maxInactiveBolts = 1;
     [SerializeField] private WallManager stonewallPrefab;
     [SerializeField, Min(1)] private int maxInactiveWalls = 1;
-    [SerializeField] private ProjectileManager tarPrefab;
+    [SerializeField] private BurningTarManager tarPrefab;
     [SerializeField, Min(1)] private int maxInactiveTars = 1;
 
     private ObjectPool<ArrowManager> arrowPool;
@@ -21,7 +21,7 @@ public sealed class ProjectilePool : MonoBehaviour
     private ObjectPool<ExplosionManager> explosionPool;
     private ObjectPool<ExplosionManager> lightningPool;
     private ObjectPool<WallManager> stonewallPool;
-    private ObjectPool<ProjectileManager> tarPool;
+    private ObjectPool<BurningTarManager> tarPool;
 
     private Transform inactiveProjectiles;
 
@@ -37,6 +37,7 @@ public sealed class ProjectilePool : MonoBehaviour
         explosionPool = CreatePool(explosionPrefab, maxInactiveExplosions);
         lightningPool = CreatePool(lightningPrefab, maxInactiveBolts);
         stonewallPool = CreatePool(stonewallPrefab, maxInactiveWalls);
+        tarPool = CreatePool(tarPrefab, maxInactiveTars);
     }
 
     public ArrowManager GetArrow()
@@ -72,6 +73,13 @@ public sealed class ProjectilePool : MonoBehaviour
         WallManager wall = stonewallPool.Get();
         wall.SetPool(stonewallPool);
         return wall;
+    }
+
+    public BurningTarManager GetTar()
+    {
+        BurningTarManager tar = tarPool.Get();
+        tar.SetPool(tarPool);
+        return tar;
     }
 
     private ObjectPool<T> CreatePool<T>(T prefab, int maxInactive) where T : MonoBehaviour
@@ -114,5 +122,6 @@ public sealed class ProjectilePool : MonoBehaviour
         explosionPool.Dispose();
         lightningPool.Dispose();
         stonewallPool.Dispose();
+        tarPool.Dispose();
     }
 }

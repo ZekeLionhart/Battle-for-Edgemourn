@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BurningTarController : PowerController
 {
-    [SerializeField] private BurningTarManager tarPrefab;
     [SerializeField] private float speed;
     [SerializeField] private GameObject particles;
     [SerializeField] private ParticleSystem smokeParticles;
@@ -38,14 +37,14 @@ public class BurningTarController : PowerController
 
     protected override void Shoot()
     {
-        BurningTarManager tar = Instantiate(
-            tarPrefab, 
-            aimingPoint.transform.position + new Vector3(0.4f, 0f),
-            tarPrefab.transform.rotation);   
+        BurningTarManager tar = projectilePool.GetTar();
 
-        Instantiate(particles, aimingPoint.transform.position, particles.transform.rotation);
-        
+        Vector2 position = aimingPoint.position + new Vector3(0.4f, 0f);
+        tar.transform.SetPositionAndRotation(position, Quaternion.identity);
         tar.Initialize(powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
+        tar.Launch();
+
+        Instantiate(particles, aimingPoint.position, particles.transform.rotation);
 
         base.Shoot();
     }
