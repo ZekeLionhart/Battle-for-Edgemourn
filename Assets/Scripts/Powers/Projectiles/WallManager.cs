@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class WallManager : MonoBehaviour, IDamageable
 {
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource hitSfx;
+    [SerializeField] private ParticleSystem[] particles;
+
     private int hitpoints = 100;
     private float damage;
     private float shakeDuration;
@@ -11,6 +14,12 @@ public class WallManager : MonoBehaviour, IDamageable
     private bool canBeDamaged = false;
     private PowerTypes powerType;
     private DamageTypes damageType;
+    private IObjectPool<WallManager> pool;
+
+    private void Awake()
+    {
+        animator.writeDefaultValuesOnDisable = true;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,7 +35,16 @@ public class WallManager : MonoBehaviour, IDamageable
         this.damageType = damageType;
         this.shakeDuration = shakeDuration;
         this.shakeIntensity = shakeIntensity;
+        canBeDamaged = false;
+
+        gameObject.SetActive(true);
+        animator.Update(0f);
         Invoke(nameof(ForceDeath), duration);
+    }
+
+    public void SetPool(IObjectPool<WallManager> pool)
+    {
+        this.pool = pool;
     }
 
     public void TakeDamage(int damage)
@@ -60,8 +78,13 @@ public class WallManager : MonoBehaviour, IDamageable
         TakeDamage(1000);
     }
 
-    private void Die()
+    private void ReturnToPool()
     {
-        Destroy(gameObject);
+        CancelInvoke(nameof(ForceDeath));
+
+        foreach (ParticleSystem particle in particles)
+            particle.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        pool.Release(this);
     }
 }

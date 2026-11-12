@@ -622,7 +622,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 2.1
-    functionName: Die
+    functionName: ReturnToPool
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

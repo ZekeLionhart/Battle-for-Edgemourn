@@ -36,6 +36,7 @@ public sealed class ProjectilePool : MonoBehaviour
         fireballPool = CreatePool(fireballPrefab, maxInactiveFireballs);
         explosionPool = CreatePool(explosionPrefab, maxInactiveExplosions);
         lightningPool = CreatePool(lightningPrefab, maxInactiveBolts);
+        stonewallPool = CreatePool(stonewallPrefab, maxInactiveWalls);
     }
 
     public ArrowManager GetArrow()
@@ -66,7 +67,14 @@ public sealed class ProjectilePool : MonoBehaviour
         return lightning;
     }
 
-    private ObjectPool<T> CreatePool<T>(T prefab, int maxInactive) where T : ProjectileManager
+    public WallManager GetStonewall()
+    {
+        WallManager wall = stonewallPool.Get();
+        wall.SetPool(stonewallPool);
+        return wall;
+    }
+
+    private ObjectPool<T> CreatePool<T>(T prefab, int maxInactive) where T : MonoBehaviour
     {
         ObjectPool<T> pool = new ObjectPool<T>(
             createFunc: () =>
@@ -105,5 +113,6 @@ public sealed class ProjectilePool : MonoBehaviour
         fireballPool.Dispose();
         explosionPool.Dispose();
         lightningPool.Dispose();
+        stonewallPool.Dispose();
     }
 }

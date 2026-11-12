@@ -25590,6 +25590,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1638462956721519396}
   hitSfx: {fileID: 1224186684768213500}
+  particles:
+  - {fileID: 3544143504443910558}
+  - {fileID: 8432132367783630574}
+  - {fileID: 8016577064336886553}
+  - {fileID: 1949248525936058059}
+  - {fileID: 5706663409043667900}
 --- !u!1 &7186861070429345224
 GameObject:
   m_ObjectHideFlags: 0
