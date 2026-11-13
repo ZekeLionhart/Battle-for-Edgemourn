@@ -8,10 +8,13 @@ public class ArrowManager : ProjectileManager
     {
         Stored,
         Flying,
+        Deflected,
         Pinned
     }
 
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private CapsuleCollider2D defaultCollider;
+    [SerializeField] private CapsuleCollider2D deflectCollider;
     [SerializeField] private AudioSource arrowLooseSfx;
     [SerializeField] private AudioSource groundHitSfx;
     [SerializeField] private float lifespan;
@@ -20,16 +23,10 @@ public class ArrowManager : ProjectileManager
 
     private IObjectPool<ArrowManager> pool;
     private ArrowState state;
-    private Vector3 spawnScale;
     private Transform pinTarget;
     private Vector3 pinLocalPosition;
     private Quaternion pinLocalRotation;
     private float returnTime;
-
-    private void Awake()
-    {
-        spawnScale = transform.localScale;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -69,7 +66,9 @@ public class ArrowManager : ProjectileManager
 
     private void FixedUpdate()
     {
-        if (PauseManager.isPaused || state != ArrowState.Flying) return;
+        if (PauseManager.isPaused) return;
+
+        if (state != ArrowState.Flying && state != ArrowState.Deflected) return;
 
         if (Time.time >= returnTime)
         {
@@ -77,7 +76,8 @@ public class ArrowManager : ProjectileManager
             return;
         }
 
-        RotateMidFlight();
+        if (state == ArrowState.Flying)
+            RotateMidFlight();
     }
 
     private void LateUpdate()
@@ -106,6 +106,10 @@ public class ArrowManager : ProjectileManager
         returnTime = Time.time + maxFlightTime;
         gameObject.SetActive(true);
 
+        defaultCollider.enabled = true;
+        deflectCollider.enabled = false;
+
+        rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         rigidBody.simulated = true;
         rigidBody.linearVelocity = velocity;
         rigidBody.angularVelocity = 0f;
@@ -128,7 +132,6 @@ public class ArrowManager : ProjectileManager
         trailRenderer.enabled = false;
         arrowLooseSfx.Stop();
         groundHitSfx.Stop();
-        transform.localScale = spawnScale;
 
         pool.Release(this);
     }
@@ -138,5 +141,20 @@ public class ArrowManager : ProjectileManager
         Vector2 dir = rigidBody.linearVelocity;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    public void Deflect(float rand)
+    {
+        state = ArrowState.Deflected;
+
+        trailRenderer.enabled = false;
+
+        defaultCollider.enabled = false;
+        deflectCollider.enabled = true;
+
+        rigidBody.constraints = RigidbodyConstraints2D.None;
+        rigidBody.simulated = true;
+        rigidBody.linearVelocity = new Vector2(2f, 3f);
+        rigidBody.angularVelocity = -360f * (rand * 5);
     }
 }

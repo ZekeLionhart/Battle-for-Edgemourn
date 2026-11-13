@@ -4,7 +4,6 @@ public class ShielderManager : EnemyBase
 {
     [Header("--Individual Fields--")]
     [SerializeField] private AudioSource onDefendSfx;
-    [SerializeField] private Rigidbody2D deadArrow;
 
     protected override float MultiplyDamage(DamageTypes damageType, float damageReceived)
     {
@@ -32,10 +31,8 @@ public class ShielderManager : EnemyBase
         else
         {
             onDefendSfx.Play();
-            Rigidbody2D newArrow = Instantiate(deadArrow, transform.position + Vector3.up / 2, rotation, null);
-            arrow.GetComponent<ArrowManager>().ReturnToPool();
-            newArrow.linearVelocity = new Vector2(2f, 3f);
-            newArrow.angularVelocity = -360f * (rand * 5);
+            ArrowManager deflectedArrow = arrow.GetComponent<ArrowManager>();
+            deflectedArrow.Deflect(rand);
 
             return false;
         }

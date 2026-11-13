@@ -27,7 +27,7 @@ public sealed class ProjectilePool : MonoBehaviour
 
     private void Awake()
     {
-        GameObject container = new("Inactive Projectiles"); // string
+        GameObject container = new(ObjectNames.ProjectilePool);
         container.SetActive(false);
         container.transform.SetParent(transform, false);
         inactiveProjectiles = container.transform;

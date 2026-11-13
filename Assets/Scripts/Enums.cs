@@ -74,3 +74,8 @@ public static class ParameterNames
     public const string Lv2Complete = "Lv2Complete";
     public const string Lv3Complete = "Lv3Complete";
 }
+
+public static class ObjectNames
+{
+    public const string ProjectilePool = "Inactive Projectiles";
+}
