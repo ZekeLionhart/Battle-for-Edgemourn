@@ -3,6 +3,7 @@ using UnityEngine.Pool;
 
 public sealed class ProjectilePool : MonoBehaviour
 {
+    [Header("----Player Projectiles----")]
     [SerializeField] private ArrowManager arrowPrefab;
     [SerializeField, Min(1)] private int maxInactiveArrows = 50;
     [SerializeField] private FireballManager fireballPrefab;
@@ -16,12 +17,17 @@ public sealed class ProjectilePool : MonoBehaviour
     [SerializeField] private BurningTarManager tarPrefab;
     [SerializeField, Min(1)] private int maxInactiveTars = 1;
 
+    [Header("----Enemy Projectiles----")]
+    [SerializeField] private BoulderManager boulderPrefab;
+    [SerializeField, Min(1)] private int maxInactiveBoulders = 1;
+
     private ObjectPool<ArrowManager> arrowPool;
     private ObjectPool<FireballManager> fireballPool;
     private ObjectPool<ExplosionManager> explosionPool;
     private ObjectPool<ExplosionManager> lightningPool;
     private ObjectPool<WallManager> stonewallPool;
     private ObjectPool<BurningTarManager> tarPool;
+    private ObjectPool<BoulderManager> boulderPool;
 
     private Transform inactiveProjectiles;
 
@@ -38,6 +44,7 @@ public sealed class ProjectilePool : MonoBehaviour
         lightningPool = CreatePool(lightningPrefab, maxInactiveBolts);
         stonewallPool = CreatePool(stonewallPrefab, maxInactiveWalls);
         tarPool = CreatePool(tarPrefab, maxInactiveTars);
+        boulderPool = CreatePool(boulderPrefab, maxInactiveBoulders);
     }
 
     public ArrowManager GetArrow()
@@ -82,6 +89,13 @@ public sealed class ProjectilePool : MonoBehaviour
         return tar;
     }
 
+    public BoulderManager GetBoulder()
+    {
+        BoulderManager boulder = boulderPool.Get();
+        boulder.SetPool(boulderPool);
+        return boulder;
+    }
+
     private ObjectPool<T> CreatePool<T>(T prefab, int maxInactive) where T : MonoBehaviour
     {
         ObjectPool<T> pool = new ObjectPool<T>(
@@ -123,5 +137,6 @@ public sealed class ProjectilePool : MonoBehaviour
         lightningPool.Dispose();
         stonewallPool.Dispose();
         tarPool.Dispose();
+        boulderPool.Dispose();
     }
 }

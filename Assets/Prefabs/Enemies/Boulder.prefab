@@ -198,6 +198,7 @@ MonoBehaviour:
   animator: {fileID: 4987808655586837315}
   rigidBody: {fileID: 5205078567594977183}
   hitSFX: {fileID: 476617034083746719}
+  dustParticles: {fileID: 3003245998369214091}
 --- !u!96 &93210093214633727
 TrailRenderer:
   serializedVersion: 4

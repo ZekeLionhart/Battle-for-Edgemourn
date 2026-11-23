@@ -1050,7 +1050,6 @@ Transform:
   - {fileID: 1612007639}
   - {fileID: 520569539}
   - {fileID: 2112512955}
-  - {fileID: 2079442796}
   m_Father: {fileID: 2105410221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1084549657
@@ -1268,12 +1267,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079442795}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1084549656}
+  m_Father: {fileID: 2105410221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2079442797
 MonoBehaviour:
@@ -1299,6 +1298,8 @@ MonoBehaviour:
   maxInactiveWalls: 1
   tarPrefab: {fileID: 6898701813269071313, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
   maxInactiveTars: 1
+  boulderPrefab: {fileID: -5690577488487531995, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
+  maxInactiveBoulders: 1
 --- !u!1 &2105410220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1330,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1084549656}
+  - {fileID: 2079442796}
   - {fileID: 235671668}
   - {fileID: 1353358256}
   m_Father: {fileID: 0}
@@ -1603,6 +1605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnlimitedSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 2741227415307129560, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 2079442797}
     - target: {fileID: 2741227415307129561, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -1643,6 +1649,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2741227415307129562, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 2079442797}
+    - target: {fileID: 2741227415307129563, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 2079442797}
+    - target: {fileID: 2741227415307129565, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 2079442797}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

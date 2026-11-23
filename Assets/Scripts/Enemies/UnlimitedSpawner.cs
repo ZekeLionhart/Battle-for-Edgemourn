@@ -7,6 +7,8 @@ public class UnlimitedSpawner : MonoBehaviour
     [SerializeField] private int squadSize;
     [SerializeField] private float distBetweenEach;
     [SerializeField] private float enemyDelay;
+    [SerializeField] private ProjectilePool projectilePool;
+
     private WaitForSeconds enemyWFS;
 
     private void Awake()
@@ -29,12 +31,22 @@ public class UnlimitedSpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
+    private EnemyBase CreateEnemy(EnemyBase prefab, Vector3 position)
+    {
+        EnemyBase instance = Instantiate(prefab, position, transform.rotation);
+
+        if (instance is TrebuchetManager trebuchet)
+            trebuchet.SetProjectilePool(projectilePool);
+
+        return instance;
+    }
+
     private IEnumerator SpawnEnemy()
     {
         yield return enemyWFS;
 
         for (int i = 0; i < squadSize; i++)
-            Instantiate(enemy, transform.position + distBetweenEach * i * Vector3.right, transform.rotation);
+            CreateEnemy(enemy, transform.position + distBetweenEach * i * Vector3.right);
 
         StartCoroutine(SpawnEnemy());
     }
@@ -47,7 +59,7 @@ public class UnlimitedSpawner : MonoBehaviour
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
     public void DebugSpawnEnemy(EnemyBase prefab)
     {
-        Instantiate(prefab, transform.position, transform.rotation);
+        CreateEnemy(prefab, transform.position);
     }
 #endif
 }

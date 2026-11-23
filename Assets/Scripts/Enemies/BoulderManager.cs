@@ -1,14 +1,24 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class BoulderManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private AudioSource hitSFX;
+    [SerializeField] private ParticleSystem dustParticles;
+
+    private IObjectPool<BoulderManager> pool;
     private int damage;
     private float shakeDuration;
     private float shakeIntensity;
-    private bool hasGameEnded = false;
+    private bool hasGameEnded;
+    private bool inFlight;
+
+    private void Awake()
+    {
+        animator.writeDefaultValuesOnDisable = true;//???
+    }
 
     private void OnEnable()
     {
@@ -22,19 +32,24 @@ public class BoulderManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag(TagNames.Tower) || collision.collider.CompareTag(TagNames.Player))
-        {
-            animator.SetTrigger(ParameterNames.Destroy);
-            Destroy(rigidBody);
+        if (!inFlight) return;
 
-            if (hasGameEnded) return;
+        Collider2D hit = collision.collider;
 
-            if (collision.collider.TryGetComponent<IDamageable>(out IDamageable receiver))
-                receiver.TakeDamage(damage);
+        if (!hit.CompareTag(TagNames.Tower) && !hit.CompareTag(TagNames.Player))
+            return;
 
-            hitSFX.Play();
-            CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
-        }
+        inFlight = false;
+        rigidBody.simulated = false;
+        animator.SetTrigger(ParameterNames.Destroy);
+
+        if (hasGameEnded) return;
+
+        if (collision.collider.TryGetComponent<IDamageable>(out IDamageable receiver))
+            receiver.TakeDamage(damage);
+
+        hitSFX.Play();
+        CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
     }
 
     public void Initialize(int damage, float shakeDuration, float shakeIntensity, Vector3 velocity)
@@ -42,7 +57,21 @@ public class BoulderManager : MonoBehaviour
         this.damage = damage;
         this.shakeDuration = shakeDuration;
         this.shakeIntensity = shakeIntensity;
+
+        hasGameEnded = false;
+        inFlight = true;
+
+        gameObject.SetActive(true);
+        animator.Update(0f);
+
+        rigidBody.simulated = true;
         rigidBody.linearVelocity = velocity;
+        rigidBody.angularVelocity = 0f;
+    }
+
+    public void SetPool(IObjectPool<BoulderManager> pool)
+    {
+        this.pool = pool;
     }
 
     private void StopGame()
@@ -50,8 +79,13 @@ public class BoulderManager : MonoBehaviour
         hasGameEnded = true;
     }
 
-    private void DestroySelf()
+    private void ReturnToPool()
     {
-        Destroy(gameObject);
+        inFlight = false;
+        rigidBody.simulated = false;
+        dustParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        hitSFX.Stop();
+
+        pool.Release(this);
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private List<Wave> waves;
+    [SerializeField] private ProjectilePool projectilePool;
+
     private WaitForSeconds waveWFS;
 
     public static event Action<EnemyBase> OnEnemySpawn;
@@ -31,6 +33,16 @@ public class WaveSpawner : MonoBehaviour
         StartCoroutine(SpawnWave());
     }
 
+    private EnemyBase CreateEnemy(EnemyBase prefab, Vector3 position)
+    {
+        EnemyBase instance = Instantiate(prefab, position, transform.rotation);
+
+        if (instance is TrebuchetManager trebuchet)
+            trebuchet.SetProjectilePool(projectilePool);
+
+        return instance;
+    }
+
     private IEnumerator SpawnWave()
     {
         foreach (Wave wave in waves)
@@ -40,7 +52,7 @@ public class WaveSpawner : MonoBehaviour
             for (int i = 0; i < wave.amount; i++)
             {
                 if (!wave.IsDelayOnly)
-                    OnEnemySpawn(Instantiate(wave.enemy, transform.position, transform.rotation));
+                    OnEnemySpawn(CreateEnemy(wave.enemy, transform.position));
 
                 if (i < wave.amount - 1)
                     yield return waveWFS;
@@ -60,7 +72,7 @@ public class WaveSpawner : MonoBehaviour
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
     public void DebugSpawnEnemy(EnemyBase prefab)
     {
-        OnEnemySpawn(Instantiate(prefab, transform.position, transform.rotation));
+        OnEnemySpawn(CreateEnemy(prefab, transform.position));
     }
 #endif
 }
