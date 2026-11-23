@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 
 public class PowerShooter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    [SerializeField] private GameObject lineRenderer;
     private bool isPointerInside;
 
     public static event Action<bool> IsInsideArea;
