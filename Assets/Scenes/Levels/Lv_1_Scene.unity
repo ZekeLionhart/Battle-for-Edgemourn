@@ -1642,6 +1642,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff48359aafdb3f345becb59c81ba70d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectilePool
+--- !u!114 &1963940639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1257603701944632849, guid: 6927afbdf13ac27478e7403f34cb3187, type: 3}
+  m_PrefabInstance: {fileID: 1963940637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba2c375daedd95458658460d24c1ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
 --- !u!114 &1982689036 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2280785057194870109, guid: 6927afbdf13ac27478e7403f34cb3187, type: 3}
@@ -1722,6 +1733,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1596778193}
     m_Modifications:
+    - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
+      propertyPath: enemyPool
+      value: 
+      objectReference: {fileID: 1963940639}
     - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: projectilePool
       value: 

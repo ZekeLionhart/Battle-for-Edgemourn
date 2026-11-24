@@ -78,4 +78,5 @@ public static class ParameterNames
 public static class ObjectNames
 {
     public const string ProjectilePool = "Inactive Projectiles";
+    public const string EnemyPool = "Inactive Enemies";
 }

@@ -17,7 +17,7 @@ public class BoulderManager : MonoBehaviour
 
     private void Awake()
     {
-        animator.writeDefaultValuesOnDisable = true;//???
+        animator.writeDefaultValuesOnDisable = true;
     }
 
     private void OnEnable()

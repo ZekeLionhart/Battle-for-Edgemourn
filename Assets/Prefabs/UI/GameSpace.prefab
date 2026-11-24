@@ -90,8 +90,61 @@ Transform:
   m_Children:
   - {fileID: 7334585995667602565}
   - {fileID: 2533409525641208929}
+  - {fileID: 3897739423922302022}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3967525720195517259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3897739423922302022}
+  - component: {fileID: 1257603701944632849}
+  m_Layer: 0
+  m_Name: EnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3897739423922302022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967525720195517259}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8139902545092818905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1257603701944632849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967525720195517259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba2c375daedd95458658460d24c1ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
+  gruntPrefab: {fileID: -163331265691283065, guid: 42fc219d165052a468fcb000d4e18a64, type: 3}
+  maxInactiveGrunts: 20
+  shielderPrefab: {fileID: 3909368127585934619, guid: 5b3beaea652d1424f8c029b2d32cddf5, type: 3}
+  maxInactiveShielders: 15
+  ramPrefab: {fileID: -6790633900081757478, guid: e71af7c7970c93644a859ce2adf47621, type: 3}
+  maxInactiveRams: 3
+  trebuchetPrefab: {fileID: -7301758324021147790, guid: a0ae97081b822e1409a6785c609d74ce, type: 3}
+  maxInactiveTrebuchets: 3
 --- !u!1 &8026089801556421650
 GameObject:
   m_ObjectHideFlags: 0

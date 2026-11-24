@@ -1197,6 +1197,17 @@ Transform:
   - {fileID: 1353358256}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1946640452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1257603701944632849, guid: 6927afbdf13ac27478e7403f34cb3187, type: 3}
+  m_PrefabInstance: {fileID: 9006908021396944190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba2c375daedd95458658460d24c1ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
 --- !u!114 &2079442797 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 162251480856614394, guid: 6927afbdf13ac27478e7403f34cb3187, type: 3}
@@ -1287,6 +1298,10 @@ PrefabInstance:
       value: UnlimitedSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 2741227415307129560, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: enemyPool
+      value: 
+      objectReference: {fileID: 1946640452}
+    - target: {fileID: 2741227415307129560, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 2079442797}
@@ -1331,13 +1346,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2741227415307129562, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: enemyPool
+      value: 
+      objectReference: {fileID: 1946640452}
+    - target: {fileID: 2741227415307129562, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 2079442797}
     - target: {fileID: 2741227415307129563, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: enemyPool
+      value: 
+      objectReference: {fileID: 1946640452}
+    - target: {fileID: 2741227415307129563, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 2079442797}
+    - target: {fileID: 2741227415307129565, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: enemyPool
+      value: 
+      objectReference: {fileID: 1946640452}
     - target: {fileID: 2741227415307129565, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: projectilePool
       value: 

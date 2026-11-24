@@ -26,6 +26,7 @@ public class ArrowManager : ProjectileManager
     private Transform pinTarget;
     private Vector3 pinLocalPosition;
     private Quaternion pinLocalRotation;
+    private EnemyBase pinnedEnemy;
     private float returnTime;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,6 +57,11 @@ public class ArrowManager : ProjectileManager
         if (state != ArrowState.Pinned) return;
 
         pinTarget = transform.parent;
+        pinnedEnemy = pinTarget.GetComponentInParent<EnemyBase>();
+
+        if (pinnedEnemy != null)
+            pinnedEnemy.OnReturnedToPool += ReturnToPool;
+
         pinLocalPosition = transform.localPosition;
         pinLocalRotation = transform.localRotation;
         transform.SetParent(null, true);
@@ -124,6 +130,12 @@ public class ArrowManager : ProjectileManager
     public void ReturnToPool()
     {
         if (state == ArrowState.Stored) return;
+
+        if (pinnedEnemy != null)
+        {
+            pinnedEnemy.OnReturnedToPool -= ReturnToPool;
+            pinnedEnemy = null;
+        }
 
         state = ArrowState.Stored;
         pinTarget = null;

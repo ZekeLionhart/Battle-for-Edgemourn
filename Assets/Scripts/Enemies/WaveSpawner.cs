@@ -6,6 +6,7 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private List<Wave> waves;
+    [SerializeField] private EnemyPool enemyPool;
     [SerializeField] private ProjectilePool projectilePool;
 
     private WaitForSeconds waveWFS;
@@ -35,12 +36,14 @@ public class WaveSpawner : MonoBehaviour
 
     private EnemyBase CreateEnemy(EnemyBase prefab, Vector3 position)
     {
-        EnemyBase instance = Instantiate(prefab, position, transform.rotation);
+        EnemyBase enemy = enemyPool.GetEnemy(prefab);
+        enemy.transform.SetPositionAndRotation(position, transform.rotation);
 
-        if (instance is TrebuchetManager trebuchet)
+        if (enemy is TrebuchetManager trebuchet)
             trebuchet.SetProjectilePool(projectilePool);
 
-        return instance;
+        enemy.SpawnEnemy();
+        return enemy;
     }
 
     private IEnumerator SpawnWave()

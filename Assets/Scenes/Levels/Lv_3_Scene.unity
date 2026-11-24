@@ -334,6 +334,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331813328}
   m_CullTransparentMesh: 1
+--- !u!114 &578456649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1257603701944632849, guid: 6927afbdf13ac27478e7403f34cb3187, type: 3}
+  m_PrefabInstance: {fileID: 2037531368}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba2c375daedd95458658460d24c1ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
 --- !u!1 &588852603
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +573,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3391261914338188132, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 3583662598485103597, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -685,6 +700,10 @@ PrefabInstance:
     - target: {fileID: 6279173562410664454, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6416715466954891559, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 6604980883136165607, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1383,6 +1402,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1194264232}
     m_Modifications:
+    - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
+      propertyPath: enemyPool
+      value: 
+      objectReference: {fileID: 578456649}
     - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: projectilePool
       value: 

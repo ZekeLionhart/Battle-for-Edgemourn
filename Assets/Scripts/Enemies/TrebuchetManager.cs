@@ -46,4 +46,10 @@ public class TrebuchetManager : EnemyBase
         float vel = Mathf.Sqrt(dist * Physics.gravity.magnitude);
 	    return vel * dir.normalized;  // returns Vector3 velocity
     }
+
+    protected override void ReturnToPool()
+    {
+        onReloadSfx.Stop();
+        base.ReturnToPool();
+    }
 }

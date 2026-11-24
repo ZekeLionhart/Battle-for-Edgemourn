@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 using Random = UnityEngine.Random;
 
 public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
@@ -42,14 +42,16 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
     [SerializeField] protected float thunderMultiplier;
     [SerializeField] protected float earthMultiplier;
 
+    private IObjectPool<EnemyBase> pool;
     private GameObject previousHit;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private List<string> targetStrings;
-    private bool canAttack = true;
-    private bool canMove = false;
-    protected bool isDead = false;
-    protected bool hasGameEnded = false;
+    private float currentHitpoints;
+    private bool canAttack;
+    private bool canMove;
+    protected bool isDead;
+    protected bool hasGameEnded;
     private float spawnTime;
     protected float bonusWindow = 15f;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
@@ -61,12 +63,14 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
     public int CoinsReward => scoreValue;
 
     public static event Action<int, bool, EnemyBase, Transform> OnEnemyDeath;
+    public event Action OnReturnedToPool;
 
     protected virtual void Awake()
     {
-        spawnTime = Time.time;
         attackCooldownWFS = new WaitForSeconds(attackCooldown);
         targetStrings = new List<string>();
+
+        animator.writeDefaultValuesOnDisable = true;
 
         foreach (TargetTypes targetEnum in targets)
             targetStrings.Add(Enum.GetName(typeof(TargetTypes), targetEnum));
@@ -88,6 +92,30 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
             WalkForwards();
 
         CalculateDistanceToTarget();
+    }
+
+    public void SetPool(IObjectPool<EnemyBase> pool)
+    {
+        this.pool = pool;
+    }
+
+    public void SpawnEnemy()
+    {
+        currentHitpoints = hitpoints;
+        canAttack = true;
+        canMove = false;
+        isDead = false;
+        hasGameEnded = false;
+        target = null;
+        previousHit = null;
+        spawnTime = Time.time;
+
+        gameObject.SetActive(true);
+        animator.Update(0f);
+
+        rigidBody.simulated = true;
+        rigidBody.linearVelocity = Vector2.zero;
+        rigidBody.angularVelocity = 0;
     }
 
     private bool VerifyEarlyKill()
@@ -153,10 +181,10 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
         onHitSfx.pitch = Random.Range(0.9f, 1.1f);
         if (damageType == DamageTypes.Pierce)
             onHitSfx.Play();
-        hitpoints -= damageReceived;
+        currentHitpoints -= damageReceived;
         CallDamageAnalytics(powerType, damageReceived);
 
-        if (hitpoints <= 0 && !isDead)
+        if (currentHitpoints <= 0 && !isDead)
         {
             VerifyEarlyKill();
 
@@ -239,17 +267,35 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
 
     private void InitiateDeath()
     {
+        StopAllCoroutines();
         isDead = true;
-        Destroy(rigidBody);
+        rigidBody.simulated = false;
         animator.SetTrigger(ParameterNames.OnHpEmpty);
         onDeathSfx.pitch = Random.Range(0.9f, 1.1f);
         onDeathSfx.Play();
         OnEnemyDeath(scoreValue, VerifyEarlyKill(), this, scoreVFXOrigin);
     }
 
-    private void Die()
+    protected virtual void ReturnToPool()
     {
-        Destroy(gameObject);
+        OnReturnedToPool?.Invoke();
+
+        foreach (ParticleSystem particle in dustParticles)
+            particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        if (onMoveSfx != null)
+            foreach (AudioSource sfx in onMoveSfx)
+                sfx.Stop();
+        if (onAttackSfx)
+            onAttackSfx.Stop();
+        if (onHitSfx)
+            onHitSfx.Stop();
+        if (gruntSfx)
+            gruntSfx.Stop();
+        if (onDeathSfx)
+            onDeathSfx.Stop();
+
+        pool.Release(this);
     }
 
     private void EndGame()
@@ -267,8 +313,8 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
 
     protected virtual void CallDamageAnalytics(PowerTypes power, float damage)
     {
-        if (hitpoints < 0)
-            damage += hitpoints;
+        if (currentHitpoints < 0)
+            damage += currentHitpoints;
 
         Analytics.OnPowerDamage(power, damage);
     }

@@ -37,4 +37,10 @@ public class ShielderManager : EnemyBase
             return false;
         }
     }
+
+    protected override void ReturnToPool()
+    {
+        onDefendSfx.Stop();
+        base.ReturnToPool();
+    }
 }
