@@ -10,7 +10,7 @@ public class PowerController : MonoBehaviour
     [SerializeField] protected AudioSource wakeUpSfx2;
     [SerializeField] protected AudioSource idleSfx;
     [SerializeField] protected Animator animator;
-    [SerializeField] protected ProjectilePool projectilePool;
+    [SerializeField] protected PoolManager projectilePool;
     [SerializeField] protected PowerTypes powerType;
     [SerializeField] protected DamageTypes damageType;
     [SerializeField] protected float damage;

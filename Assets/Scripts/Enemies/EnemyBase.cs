@@ -2,10 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 using Random = UnityEngine.Random;
 
-public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
+public class EnemyBase : PoolableObject, IDamageableEnemy, IArrowHitReceiver
 {
     [Header("------References------")]
     [SerializeField] private Rigidbody2D rigidBody;
@@ -42,8 +41,8 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
     [SerializeField] protected float thunderMultiplier;
     [SerializeField] protected float earthMultiplier;
 
-    private IObjectPool<EnemyBase> pool;
-    private GameObject previousHit;
+    private PoolableObject previousHit;
+    private ulong previousHitUseId;
     private GameObject target;
     private WaitForSeconds attackCooldownWFS;
     private List<string> targetStrings;
@@ -88,15 +87,12 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
 
     private void FixedUpdate()
     {
+        if (isDead) return;
+
         if (canMove)
             WalkForwards();
 
         CalculateDistanceToTarget();
-    }
-
-    public void SetPool(IObjectPool<EnemyBase> pool)
-    {
-        this.pool = pool;
     }
 
     public void SpawnEnemy()
@@ -172,11 +168,13 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
         return damageReceived;
     }
 
-    public void TakeDamage(GameObject power, PowerTypes powerType, DamageTypes damageType, float damageReceived)
+    public void TakeDamage(PoolableObject power, PowerTypes powerType, DamageTypes damageType, float damageReceived)
     {
-        if (power == previousHit) return;
+        if (power == previousHit && power.UseId == previousHitUseId)
+            return;
 
         previousHit = power;
+        previousHitUseId = power.UseId;
         damageReceived = MultiplyDamage(damageType, damageReceived);
         onHitSfx.pitch = Random.Range(0.9f, 1.1f);
         if (damageType == DamageTypes.Pierce)
@@ -254,9 +252,10 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
 
     protected IEnumerator AttackCooldown()
     {
+        canMove = false;
+
         if (canAttack)
         {
-            canMove = false;
             canAttack = false;
             yield return attackCooldownWFS;
 
@@ -268,6 +267,7 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
     private void InitiateDeath()
     {
         StopAllCoroutines();
+        canMove = false;
         isDead = true;
         rigidBody.simulated = false;
         animator.SetTrigger(ParameterNames.OnHpEmpty);
@@ -295,7 +295,7 @@ public class EnemyBase : MonoBehaviour, IDamageableEnemy, IArrowHitReceiver
         if (onDeathSfx)
             onDeathSfx.Stop();
 
-        pool.Release(this);
+        ReleaseToPool();
     }
 
     private void EndGame()

@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IDamageableEnemy
 {
-    void TakeDamage(GameObject power, PowerTypes powerType, DamageTypes damageType, float damageReceived);
+    void TakeDamage(PoolableObject power, PowerTypes powerType, DamageTypes damageType, float damageReceived);
 }

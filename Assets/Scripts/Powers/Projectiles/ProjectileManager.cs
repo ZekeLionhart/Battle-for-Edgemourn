@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileManager : MonoBehaviour
+public class ProjectileManager : PoolableObject
 {
     protected PowerTypes powerType;
     protected DamageTypes damageType;

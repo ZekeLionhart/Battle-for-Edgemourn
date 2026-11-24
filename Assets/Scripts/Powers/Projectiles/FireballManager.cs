@@ -1,9 +1,9 @@
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class FireballManager : ProjectileManager
 {
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private ExplosionManager explosionPrefab;
     [SerializeField] private GameObject sparkParticle;
     [SerializeField] private float sparkFrequency;
     [SerializeField] private GameObject smokeParticle;
@@ -11,8 +11,7 @@ public class FireballManager : ProjectileManager
     [SerializeField] private GameObject muzzleFlash;
     [SerializeField, Min(0.1f)] private float maxFlightTime = 5f;
 
-    private IObjectPool<FireballManager> pool;
-    private ProjectilePool explosionPool;
+    private PoolManager explosionPool;
     private bool inFlight;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,20 +25,15 @@ public class FireballManager : ProjectileManager
             return;
 
 
-        ExplosionManager explosion = explosionPool.GetExplosion();
+        ExplosionManager explosion = explosionPool.Get(explosionPrefab);
         explosion.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
         explosion.Initialize(powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
         explosion.Play();
 
         ReturnToPool();
-}
-
-    public void SetPool(IObjectPool<FireballManager> pool)
-    {
-        this.pool = pool;
     }
 
-    public void Launch(Vector3 velocity, ProjectilePool projectilePool)
+    public void Launch(Vector3 velocity, PoolManager projectilePool)
     {
         this.explosionPool = projectilePool;
         inFlight = true;
@@ -58,7 +52,7 @@ public class FireballManager : ProjectileManager
     {
         inFlight = false;
         CancelInvoke();
-        pool.Release(this);
+        ReleaseToPool();
     }
 
     private void SpawnSparks()

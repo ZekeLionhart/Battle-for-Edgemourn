@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Pool;
 using Random = UnityEngine.Random;
 
 public class ArrowManager : ProjectileManager
@@ -21,7 +20,6 @@ public class ArrowManager : ProjectileManager
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField, Min(0.1f)] private float maxFlightTime = 15f;
 
-    private IObjectPool<ArrowManager> pool;
     private ArrowState state;
     private Transform pinTarget;
     private Vector3 pinLocalPosition;
@@ -67,7 +65,7 @@ public class ArrowManager : ProjectileManager
         transform.SetParent(null, true);
 
         if (shouldDamage && collision.collider.TryGetComponent<IDamageableEnemy>(out IDamageableEnemy damageable))
-            damageable.TakeDamage(gameObject, powerType, damageType, damage);
+            damageable.TakeDamage(this, powerType, damageType, damage);
     }
 
     private void FixedUpdate()
@@ -99,11 +97,6 @@ public class ArrowManager : ProjectileManager
         transform.SetPositionAndRotation(
             pinTarget.TransformPoint(pinLocalPosition),
             pinTarget.rotation * pinLocalRotation);
-    }
-
-    public void SetPool(IObjectPool<ArrowManager> pool)
-    {
-        this.pool = pool;
     }
 
     public void Launch(Vector3 velocity)
@@ -145,7 +138,7 @@ public class ArrowManager : ProjectileManager
         arrowLooseSfx.Stop();
         groundHitSfx.Stop();
 
-        pool.Release(this);
+        ReleaseToPool();
     }
 
     private void RotateMidFlight()

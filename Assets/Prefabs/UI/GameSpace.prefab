@@ -91,6 +91,7 @@ Transform:
   - {fileID: 7334585995667602565}
   - {fileID: 2533409525641208929}
   - {fileID: 3897739423922302022}
+  - {fileID: 9044274059362117018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3967525720195517259
@@ -102,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3897739423922302022}
-  - component: {fileID: 1257603701944632849}
+  - component: {fileID: 7007420100373777167}
   m_Layer: 0
   m_Name: EnemyPool
   m_TagString: Untagged
@@ -125,7 +126,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8139902545092818905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1257603701944632849
+--- !u!114 &7007420100373777167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,17 +135,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3967525720195517259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba2c375daedd95458658460d24c1ee8, type: 3}
+  m_Script: {fileID: 11500000, guid: 459c353890188a64da54dba55c9c617a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
-  gruntPrefab: {fileID: -163331265691283065, guid: 42fc219d165052a468fcb000d4e18a64, type: 3}
-  maxInactiveGrunts: 20
-  shielderPrefab: {fileID: 3909368127585934619, guid: 5b3beaea652d1424f8c029b2d32cddf5, type: 3}
-  maxInactiveShielders: 15
-  ramPrefab: {fileID: -6790633900081757478, guid: e71af7c7970c93644a859ce2adf47621, type: 3}
-  maxInactiveRams: 3
-  trebuchetPrefab: {fileID: -7301758324021147790, guid: a0ae97081b822e1409a6785c609d74ce, type: 3}
-  maxInactiveTrebuchets: 3
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  entries:
+  - prefab: {fileID: -163331265691283065, guid: 42fc219d165052a468fcb000d4e18a64, type: 3}
+    capacity: 20
+  - prefab: {fileID: 3909368127585934619, guid: 5b3beaea652d1424f8c029b2d32cddf5, type: 3}
+    capacity: 15
+  - prefab: {fileID: -6790633900081757478, guid: e71af7c7970c93644a859ce2adf47621, type: 3}
+    capacity: 3
+  - prefab: {fileID: -7301758324021147790, guid: a0ae97081b822e1409a6785c609d74ce, type: 3}
+    capacity: 3
 --- !u!1 &8026089801556421650
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2533409525641208929}
-  - component: {fileID: 162251480856614394}
+  - component: {fileID: 7542037371146175977}
   m_Layer: 0
   m_Name: ProjectilePool
   m_TagString: Untagged
@@ -177,7 +179,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8139902545092818905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &162251480856614394
+--- !u!114 &7542037371146175977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,23 +188,69 @@ MonoBehaviour:
   m_GameObject: {fileID: 8026089801556421650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff48359aafdb3f345becb59c81ba70d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 459c353890188a64da54dba55c9c617a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjectilePool
-  arrowPrefab: {fileID: 1630199801917483144, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
-  maxInactiveArrows: 50
-  fireballPrefab: {fileID: 4359149594660312549, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
-  maxInactiveFireballs: 1
-  explosionPrefab: {fileID: 6509116511973393642, guid: ccdd679886cc72c4abe528a9b1271335, type: 3}
-  maxInactiveExplosions: 1
-  lightningPrefab: {fileID: 4286106396977675633, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
-  maxInactiveBolts: 1
-  stonewallPrefab: {fileID: 7169083511623344339, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
-  maxInactiveWalls: 1
-  tarPrefab: {fileID: 6898701813269071313, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
-  maxInactiveTars: 1
-  boulderPrefab: {fileID: -5690577488487531995, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
-  maxInactiveBoulders: 5
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  entries:
+  - prefab: {fileID: 1630199801917483144, guid: 3a1531fd2fef5ca4499b6afb32966ced, type: 3}
+    capacity: 50
+  - prefab: {fileID: 4359149594660312549, guid: 1de6c1063edbbc94aa3f538647154568, type: 3}
+    capacity: 1
+  - prefab: {fileID: 6509116511973393642, guid: ccdd679886cc72c4abe528a9b1271335, type: 3}
+    capacity: 1
+  - prefab: {fileID: 4286106396977675633, guid: 26ed712e9bec4bb469940f215657772d, type: 3}
+    capacity: 1
+  - prefab: {fileID: 7169083511623344339, guid: 8ba0a18b331c420478ddc2c1c549fe9f, type: 3}
+    capacity: 1
+  - prefab: {fileID: 6898701813269071313, guid: 350fa875dfbd7b147a4f6c13cb520855, type: 3}
+    capacity: 1
+--- !u!1 &8050669037744337926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9044274059362117018}
+  - component: {fileID: 4418692789304133254}
+  m_Layer: 0
+  m_Name: EnemyProjPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9044274059362117018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050669037744337926}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8139902545092818905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4418692789304133254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050669037744337926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459c353890188a64da54dba55c9c617a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  entries:
+  - prefab: {fileID: -5690577488487531995, guid: 36ca0c180fb387a438f77d371cb4ecf9, type: 3}
+    capacity: 5
 --- !u!1001 &691120338884480068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,7 +306,7 @@ PrefabInstance:
     - target: {fileID: 1599239274968860953, guid: 92a0f88e12e31f04e8abc8c3f87af298, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 162251480856614394}
+      objectReference: {fileID: 7542037371146175977}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -335,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 7385550456352134715, guid: 0e1ea90a51b82a54da34d52dee4755ef, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 162251480856614394}
+      objectReference: {fileID: 7542037371146175977}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -408,7 +456,7 @@ PrefabInstance:
     - target: {fileID: 472467558219623201, guid: 0cf919c363b526947bd440e4d48023be, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 162251480856614394}
+      objectReference: {fileID: 7542037371146175977}
     - target: {fileID: 472467558219623207, guid: 0cf919c363b526947bd440e4d48023be, type: 3}
       propertyPath: m_Name
       value: Fireball
@@ -489,7 +537,7 @@ PrefabInstance:
     - target: {fileID: 830598145307475662, guid: 402f27feb5dfec54c879f3fb465aa3af, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 162251480856614394}
+      objectReference: {fileID: 7542037371146175977}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -566,7 +614,7 @@ PrefabInstance:
     - target: {fileID: 7235869135344049742, guid: 134bac5bb2d9dbe408e5200722bae0f6, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 162251480856614394}
+      objectReference: {fileID: 7542037371146175977}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -670,7 +718,7 @@ PrefabInstance:
     - target: {fileID: 2841594700007315785, guid: 0bd63e2d68c02934c97576e445f647e1, type: 3}
       propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 162251480856614394}
+      objectReference: {fileID: 7542037371146175977}
     - target: {fileID: 2841594700007315789, guid: 0bd63e2d68c02934c97576e445f647e1, type: 3}
       propertyPath: m_Name
       value: LightningStrike

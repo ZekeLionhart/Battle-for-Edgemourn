@@ -8,6 +8,7 @@ public class StreakManager : MonoBehaviour
     [SerializeField] private float streakWindow;
     [SerializeField] private float streakMultiplier;
     private EnemyBase previousEnemy;
+    private ulong previousEnemyUseId;
     private int currentStreak;
     private float startTime;
     private float timer;
@@ -41,12 +42,16 @@ public class StreakManager : MonoBehaviour
 
     public int RegisterKill(EnemyBase enemy)
     {
-        if (enemy == previousEnemy) return 0;
+        if (enemy == previousEnemy && enemy.UseId == previousEnemyUseId)
+            return 0;
 
         previousEnemy = enemy;
+        previousEnemyUseId = enemy.UseId;
 
-        if (!timerIsRunning) StartStreak();
-        else ContinueStreak();
+        if (!timerIsRunning)
+            StartStreak();
+        else
+            ContinueStreak();
 
         return currentStreak;
     }

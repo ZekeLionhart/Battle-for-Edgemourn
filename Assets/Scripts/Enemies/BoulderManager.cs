@@ -1,14 +1,12 @@
 using UnityEngine;
-using UnityEngine.Pool;
 
-public class BoulderManager : MonoBehaviour
+public class BoulderManager : PoolableObject
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private AudioSource hitSFX;
     [SerializeField] private ParticleSystem dustParticles;
 
-    private IObjectPool<BoulderManager> pool;
     private int damage;
     private float shakeDuration;
     private float shakeIntensity;
@@ -69,11 +67,6 @@ public class BoulderManager : MonoBehaviour
         rigidBody.angularVelocity = 0f;
     }
 
-    public void SetPool(IObjectPool<BoulderManager> pool)
-    {
-        this.pool = pool;
-    }
-
     private void StopGame()
     {
         hasGameEnded = true;
@@ -86,6 +79,6 @@ public class BoulderManager : MonoBehaviour
         dustParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         hitSFX.Stop();
 
-        pool.Release(this);
+        ReleaseToPool();
     }
 }

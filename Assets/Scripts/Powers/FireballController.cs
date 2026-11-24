@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FireballController : CrosshairPower
 {
+    [SerializeField] private FireballManager fireballPrefab;
     [SerializeField] private float speed;
     [SerializeField] private Transform direction;
 
@@ -14,7 +15,7 @@ public class FireballController : CrosshairPower
 
     protected override void Shoot()
     {
-        FireballManager fireball = projectilePool.GetFireball();
+        FireballManager fireball = projectilePool.Get(fireballPrefab);
         fireball.transform.SetPositionAndRotation(transform.position, aimingPoint.rotation);
         fireball.Initialize(powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
 

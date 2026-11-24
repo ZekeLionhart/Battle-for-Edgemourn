@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BowController : PowerController
 {
+    [SerializeField] protected ArrowManager arrowPrefab;
     [SerializeField] protected GameObject bowShockwave;
     [SerializeField] private AudioSource onPullSfx;
     [SerializeField] protected float arrowSpeed;
@@ -56,7 +57,7 @@ public class BowController : PowerController
 
     protected void CreateArrow(Vector3 vector, Vector3 position)
     {
-        ArrowManager arrow = projectilePool.GetArrow();
+        ArrowManager arrow = projectilePool.Get(arrowPrefab);
         arrow.transform.SetPositionAndRotation(position, aimingPoint.rotation);
         arrow.Initialize(powerType, damageType, damage, 0f, shakeDuration, shakeIntensity);
 

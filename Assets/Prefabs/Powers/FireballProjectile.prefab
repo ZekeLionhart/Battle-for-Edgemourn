@@ -9873,6 +9873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 5205078567594977183}
+  explosionPrefab: {fileID: 6509116511973393642, guid: ccdd679886cc72c4abe528a9b1271335, type: 3}
   sparkParticle: {fileID: 8722994410440352823}
   sparkFrequency: 0.02
   smokeParticle: {fileID: 100476185173553471}

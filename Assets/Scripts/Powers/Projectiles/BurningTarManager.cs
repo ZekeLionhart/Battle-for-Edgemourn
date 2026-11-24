@@ -1,11 +1,9 @@
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class BurningTarManager : ProjectileManager
 {
     [SerializeField] private Rigidbody2D rigidBody;
 
-    private IObjectPool<BurningTarManager> pool;
     private bool inFlight;
 
     private void Update()
@@ -20,17 +18,12 @@ public class BurningTarManager : ProjectileManager
         if (collision.CompareTag(TagNames.Floor))
         {
             inFlight = false;
-            pool.Release(this);
+            ReleaseToPool();
             return;
         }
 
         if (collision.TryGetComponent(out IDamageableEnemy receiver))
-            receiver.TakeDamage(gameObject, powerType, damageType, damage);
-    }
-
-    public void SetPool(IObjectPool<BurningTarManager> pool)
-    {
-        this.pool = pool;
+            receiver.TakeDamage(this, powerType, damageType, damage);
     }
 
     public void Launch()

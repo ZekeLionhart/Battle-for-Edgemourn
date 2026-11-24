@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class StoneWallController : CrosshairPower
 {
+    [SerializeField] private WallManager wallPrefab;
     [SerializeField] private int hitpoints;
     [SerializeField] private int duration;
     [SerializeField] private Transform floor;
 
     protected override void Shoot()
     {
-        WallManager wall = projectilePool.GetStonewall();
+        WallManager wall = projectilePool.Get(wallPrefab);
 
         Vector2 position = new (
             aimingPoint.position.x,

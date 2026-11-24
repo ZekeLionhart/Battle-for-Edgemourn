@@ -7,8 +7,8 @@ public class UnlimitedSpawner : MonoBehaviour
     [SerializeField] private int squadSize;
     [SerializeField] private float distBetweenEach;
     [SerializeField] private float enemyDelay;
-    [SerializeField] private EnemyPool enemyPool;
-    [SerializeField] private ProjectilePool projectilePool;
+    [SerializeField] private PoolManager enemyPool;
+    [SerializeField] private PoolManager enemyProjecPool;
 
     private WaitForSeconds enemyWFS;
 
@@ -34,11 +34,11 @@ public class UnlimitedSpawner : MonoBehaviour
 
     private EnemyBase CreateEnemy(EnemyBase prefab, Vector3 position)
     {
-        EnemyBase enemy = enemyPool.GetEnemy(prefab);
+        EnemyBase enemy = enemyPool.Get(prefab);
         enemy.transform.SetPositionAndRotation(position, transform.rotation);
 
         if (enemy is TrebuchetManager trebuchet)
-            trebuchet.SetProjectilePool(projectilePool);
+            trebuchet.SetProjectilePool(enemyProjecPool);
 
         enemy.SpawnEnemy();
         return enemy;

@@ -3,10 +3,11 @@ using UnityEngine;
 public class TrebuchetManager : EnemyBase
 {
     [Header("--Individual Fields--")]
+    [SerializeField] private BoulderManager boulderPrefab;
     [SerializeField] private Transform ammoSpawn;
     [SerializeField] private AudioSource onReloadSfx;
 
-    private ProjectilePool projectilePool;
+    private PoolManager projectilePool;
 
     protected override void Awake()
     {
@@ -14,7 +15,7 @@ public class TrebuchetManager : EnemyBase
         bonusWindow = 10f;
     }
 
-    public void SetProjectilePool(ProjectilePool projectilePool)
+    public void SetProjectilePool(PoolManager projectilePool)
     {
         this.projectilePool = projectilePool;
     }
@@ -23,7 +24,7 @@ public class TrebuchetManager : EnemyBase
     {
         if (hasGameEnded) return;
 
-        BoulderManager boulder = projectilePool.GetBoulder();
+        BoulderManager boulder = projectilePool.Get(boulderPrefab);
         boulder.transform.SetPositionAndRotation(ammoSpawn.position, ammoSpawn.rotation);
 
         Vector3 velocity = CalculateBallisticVelocity(new Vector2(-6.5f, -0.5f));

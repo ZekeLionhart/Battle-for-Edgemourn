@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class ExplosionManager : ProjectileManager
 {
@@ -11,7 +10,6 @@ public class ExplosionManager : ProjectileManager
 
     private readonly float rayDistance = 10f;
 
-    private IObjectPool<ExplosionManager> pool;
     private Vector3 burnMarkLocalPosition;
     private Vector3 burnMarkLocalScale;
 
@@ -26,12 +24,7 @@ public class ExplosionManager : ProjectileManager
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<IDamageableEnemy>(out IDamageableEnemy receiver))
-            receiver.TakeDamage(gameObject, powerType, damageType, damage);
-    }
-
-    public void SetPool(IObjectPool<ExplosionManager> pool)
-    {
-        this.pool = pool;
+            receiver.TakeDamage(this, powerType, damageType, damage);
     }
 
     public void Play()
@@ -73,6 +66,6 @@ public class ExplosionManager : ProjectileManager
         foreach (ParticleSystem particle in particles)
             particle.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
 
-        pool.Release(this);
+        ReleaseToPool();
     }
 }
