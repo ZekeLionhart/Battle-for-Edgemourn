@@ -1,17 +1,26 @@
 using TMPro;
 using UnityEngine;
 
-public class ScoreVFX : MonoBehaviour
+public class ScoreVFX : PoolableObject
 {
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private Animator animator;
 
-    public void SetScoreText(int score)
+    private void Awake()
     {
-        text.text = "+" + score;
+        animator.writeDefaultValuesOnDisable = true;
     }
 
-    public void Die()
+    public void Initialize(int score)
     {
-        Destroy(gameObject);
+        text.text = "+" + score;
+
+        gameObject.SetActive(true);
+        animator.Update(0f);
+    }
+
+    private void ReturnToPool()
+    {
+        ReleaseToPool();
     }
 }

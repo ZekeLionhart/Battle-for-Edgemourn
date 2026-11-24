@@ -124,6 +124,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6538419318125597155, guid: fe1563589ae46bb4580f15e25d95d992, type: 3}
   m_PrefabInstance: {fileID: 6538419318359687575}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &237390473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8152390997568914159, guid: 6927afbdf13ac27478e7403f34cb3187, type: 3}
+  m_PrefabInstance: {fileID: 9006908021396944190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459c353890188a64da54dba55c9c617a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
 --- !u!1 &277890740
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +551,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4326256243927939982, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: vfxPool
+      value: 
+      objectReference: {fileID: 237390473}
     - target: {fileID: 4507623296562773807, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542

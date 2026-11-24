@@ -571,6 +571,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &640964899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8152390997568914159, guid: 6927afbdf13ac27478e7403f34cb3187, type: 3}
+  m_PrefabInstance: {fileID: 489830634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459c353890188a64da54dba55c9c617a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
 --- !u!1001 &1010546098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,6 +810,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4326256243927939982, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
+      propertyPath: vfxPool
+      value: 
+      objectReference: {fileID: 640964899}
     - target: {fileID: 4771131056918984566, guid: 2409d6e1696ebd2409f18431cc5b8fea, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
