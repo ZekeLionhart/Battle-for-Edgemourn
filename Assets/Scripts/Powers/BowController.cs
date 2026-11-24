@@ -3,7 +3,8 @@ using UnityEngine;
 public class BowController : PowerController
 {
     [SerializeField] protected ArrowManager arrowPrefab;
-    [SerializeField] protected GameObject bowShockwave;
+    [SerializeField] protected BowShockwaveVFX bowShockwave;
+    [SerializeField] protected PoolManager vfxPool;
     [SerializeField] private AudioSource onPullSfx;
     [SerializeField] protected float arrowSpeed;
     private int currentState = 0;
@@ -39,7 +40,7 @@ public class BowController : PowerController
         if (offCooldown && willShoot)
         {
             StartCooldown();
-            Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
+            CreateShockwave(transform.position, transform.rotation, 1f);
             CallShotAnalytics();
             CreateArrow(vector, aimingPoint.position);
             CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
@@ -63,6 +64,13 @@ public class BowController : PowerController
 
         Vector3 velocity = -arrowSpeed * vector;
         arrow.Launch(velocity);
+    }
+
+    protected void CreateShockwave(Vector3 position, Quaternion rotation, float scaleMultiplier)
+    {
+        BowShockwaveVFX shockwave = vfxPool.Get(bowShockwave);
+        shockwave.transform.SetPositionAndRotation(position, rotation);
+        shockwave.Initialize(bowShockwave.transform.localScale * scaleMultiplier);
     }
 
     private void PullBow(int strength)

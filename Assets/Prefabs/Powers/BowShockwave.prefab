@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3566978339269850358}
   - component: {fileID: 692212929612532202}
-  - component: {fileID: 1727723856808880610}
+  - component: {fileID: 3095947196824343417}
   m_Layer: 0
   m_Name: BowShockwave
   m_TagString: Untagged
@@ -56,7 +56,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1727723856808880610
+--- !u!114 &3095947196824343417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,10 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3509964316922946487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aebc0d97f0b6fcb4b83c2f3f702dc480, type: 3}
+  m_Script: {fileID: 11500000, guid: aa9ec65876ea5a3459485ca7913627b6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 2
+  m_EditorClassIdentifier: Assembly-CSharp::BowShockwaveVFX
+  animator: {fileID: 692212929612532202}
 --- !u!1 &5456532648708282736
 GameObject:
   m_ObjectHideFlags: 0

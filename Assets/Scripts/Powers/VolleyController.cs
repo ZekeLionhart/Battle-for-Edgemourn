@@ -26,7 +26,7 @@ public class VolleyController : BowController
         if (offCooldown && willShoot)
         {
             StartCooldown();
-            Instantiate(bowShockwave, this.transform.position, this.transform.rotation);
+            CreateShockwave(transform.position, transform.rotation, 1f);
             CallShotAnalytics();
             arrowCounter = 1;
             CreateArrow(vector, aimingPoint.position);
@@ -44,8 +44,7 @@ public class VolleyController : BowController
         rand = Random.Range(1, numOfArrows);
         CreateArrow(vector, aimingPoint.position + rand * spreadMultiplier * Vector3.left);
 
-        GameObject tempShockwave = Instantiate(bowShockwave, aimingPoint.position + rand * spreadMultiplier * Vector3.left, arrowRotation);
-        tempShockwave.transform.localScale *= 0.5f;
+        CreateShockwave(aimingPoint.position + rand * spreadMultiplier * Vector3.left, arrowRotation, 0.5f);
 
         CameraShake.Instance.Shake(shakeDuration, shakeIntensity);
 
