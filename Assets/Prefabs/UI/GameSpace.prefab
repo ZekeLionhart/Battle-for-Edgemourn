@@ -201,6 +201,10 @@ MonoBehaviour:
     capacity: 20
   - prefab: {fileID: 8666361340996100756, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
     capacity: 20
+  - prefab: {fileID: 307067413262640527, guid: 0377bad505521214891594bf9c2875d5, type: 3}
+    capacity: 2
+  - prefab: {fileID: 6486153872867310619, guid: a99442b23dfeabb4598bf2ba631997dc, type: 3}
+    capacity: 20
 --- !u!1 &8026089801556421650
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 830598145307475662, guid: 402f27feb5dfec54c879f3fb465aa3af, type: 3}
+      propertyPath: vfxPool
+      value: 
+      objectReference: {fileID: 8152390997568914159}
     - target: {fileID: 830598145307475662, guid: 402f27feb5dfec54c879f3fb465aa3af, type: 3}
       propertyPath: projectilePool
       value: 

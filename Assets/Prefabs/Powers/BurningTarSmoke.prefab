@@ -9759,6 +9759,7 @@ GameObject:
   - component: {fileID: 8116868477076687195}
   - component: {fileID: 2868723284584492858}
   - component: {fileID: 2440517217730099940}
+  - component: {fileID: 6486153872867310619}
   m_Layer: 0
   m_Name: BurningTarSmoke
   m_TagString: Untagged
@@ -14644,3 +14645,16 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &6486153872867310619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981211419087663943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e291ad7517a6648920be0b1c4b15cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TarSmokeVFX
+  particles: {fileID: 2868723284584492858}

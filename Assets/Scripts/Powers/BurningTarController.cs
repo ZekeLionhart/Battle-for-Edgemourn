@@ -4,8 +4,9 @@ public class BurningTarController : PowerController
 {
     [SerializeField] private BurningTarManager tarPrefab;
     [SerializeField] private float speed;
-    [SerializeField] private GameObject particles;
+    [SerializeField] private TarParticles particles;
     [SerializeField] private ParticleSystem smokeParticles;
+    [SerializeField] private PoolManager vfxPool;
 
     protected override void OnEnable()
     {
@@ -45,7 +46,10 @@ public class BurningTarController : PowerController
         tar.Initialize(powerType, damageType, damage, speed, shakeDuration, shakeIntensity);
         tar.Launch();
 
-        Instantiate(particles, aimingPoint.position, particles.transform.rotation);
+        TarParticles effect = vfxPool.Get(particles);
+        effect.transform.SetPositionAndRotation(
+            aimingPoint.position, particles.transform.rotation);
+        effect.Initialize(vfxPool);
 
         base.Shoot();
     }

@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4904,7 +4904,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -10173,7 +10173,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -15293,7 +15293,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -20110,6 +20110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tarParticles: {fileID: 8974963196069790256}
-  smokeParticles: {fileID: 2868723284584492858, guid: a99442b23dfeabb4598bf2ba631997dc, type: 3}
+  smokeParticles: {fileID: 6486153872867310619, guid: a99442b23dfeabb4598bf2ba631997dc, type: 3}
   hissing: {fileID: 1492088658723298627}
   timer: 5
