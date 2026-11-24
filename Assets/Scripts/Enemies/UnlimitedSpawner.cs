@@ -9,6 +9,7 @@ public class UnlimitedSpawner : MonoBehaviour
     [SerializeField] private float enemyDelay;
     [SerializeField] private PoolManager enemyPool;
     [SerializeField] private PoolManager enemyProjecPool;
+    [SerializeField] private PoolManager vfxPool;
 
     private WaitForSeconds enemyWFS;
 
@@ -36,6 +37,7 @@ public class UnlimitedSpawner : MonoBehaviour
     {
         EnemyBase enemy = enemyPool.Get(prefab);
         enemy.transform.SetPositionAndRotation(position, transform.rotation);
+        enemy.SetVFXPool(vfxPool);
 
         if (enemy is TrebuchetManager trebuchet)
             trebuchet.SetProjectilePool(enemyProjecPool);

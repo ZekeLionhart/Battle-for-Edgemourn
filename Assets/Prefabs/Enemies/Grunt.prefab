@@ -468,7 +468,7 @@ MonoBehaviour:
   shakeDuration: 0.1
   shakeIntensity: 0.07
   scoreVFXOrigin: {fileID: 4813608807510465114}
-  gore: {fileID: 6354823605687495958, guid: dee54a508e22bcc44aab5b4644f26a36, type: 3}
+  gore: {fileID: 7131670144993947805, guid: dee54a508e22bcc44aab5b4644f26a36, type: 3}
   dustParticles:
   - {fileID: 6961210472224957437}
   onMoveSfx:

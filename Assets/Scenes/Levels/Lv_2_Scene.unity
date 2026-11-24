@@ -1418,6 +1418,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 587465896}
     m_Modifications:
     - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
+      propertyPath: vfxPool
+      value: 
+      objectReference: {fileID: 640964899}
+    - target: {fileID: 2681525027583389653, guid: 826de618836c4f148886999d01a6a1c5, type: 3}
       propertyPath: enemyPool
       value: 
       objectReference: {fileID: 53599675}

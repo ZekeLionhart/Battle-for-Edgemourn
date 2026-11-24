@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private List<Wave> waves;
     [SerializeField] private PoolManager enemyPool;
     [SerializeField] private PoolManager enemyProjecPool;
+    [SerializeField] private PoolManager vfxPool;
 
     private WaitForSeconds waveWFS;
 
@@ -38,6 +39,7 @@ public class WaveSpawner : MonoBehaviour
     {
         EnemyBase enemy = enemyPool.Get(prefab);
         enemy.transform.SetPositionAndRotation(position, transform.rotation);
+        enemy.SetVFXPool(vfxPool);
 
         if (enemy is TrebuchetManager trebuchet)
             trebuchet.SetProjectilePool(enemyProjecPool);

@@ -1291,6 +1291,10 @@ PrefabInstance:
       value: UnlimitedSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 2741227415307129560, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: vfxPool
+      value: 
+      objectReference: {fileID: 237390473}
+    - target: {fileID: 2741227415307129560, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: enemyPool
       value: 
       objectReference: {fileID: 9006908021396944192}
@@ -1343,6 +1347,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2741227415307129562, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: vfxPool
+      value: 
+      objectReference: {fileID: 237390473}
+    - target: {fileID: 2741227415307129562, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: enemyPool
       value: 
       objectReference: {fileID: 9006908021396944192}
@@ -1355,6 +1363,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9006908021396944193}
     - target: {fileID: 2741227415307129563, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: vfxPool
+      value: 
+      objectReference: {fileID: 237390473}
+    - target: {fileID: 2741227415307129563, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: enemyPool
       value: 
       objectReference: {fileID: 9006908021396944192}
@@ -1366,6 +1378,10 @@ PrefabInstance:
       propertyPath: enemyProjecPool
       value: 
       objectReference: {fileID: 9006908021396944193}
+    - target: {fileID: 2741227415307129565, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
+      propertyPath: vfxPool
+      value: 
+      objectReference: {fileID: 237390473}
     - target: {fileID: 2741227415307129565, guid: 123a09a8e1c44474dba245f0787b3582, type: 3}
       propertyPath: enemyPool
       value: 

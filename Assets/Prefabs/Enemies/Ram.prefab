@@ -683,7 +683,7 @@ MonoBehaviour:
   shakeDuration: 0.2
   shakeIntensity: 0.2
   scoreVFXOrigin: {fileID: 172587271659213963}
-  gore: {fileID: 2115766130640322734, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
+  gore: {fileID: 8666361340996100756, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
   dustParticles:
   - {fileID: 4286310067860567932}
   - {fileID: 3353435348232350638}

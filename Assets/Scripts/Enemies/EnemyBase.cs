@@ -16,7 +16,7 @@ public class EnemyBase : PoolableObject, IDamageableEnemy, IArrowHitReceiver
     [SerializeField] protected float shakeDuration;
     [SerializeField] protected float shakeIntensity;
     [SerializeField] private Transform scoreVFXOrigin;
-    [SerializeField] protected GameObject gore;
+    [SerializeField] protected GoreVFX gore;
     [SerializeField] protected ParticleSystem[] dustParticles;
 
     [Header("---------SFX---------")]
@@ -41,6 +41,7 @@ public class EnemyBase : PoolableObject, IDamageableEnemy, IArrowHitReceiver
     [SerializeField] protected float thunderMultiplier;
     [SerializeField] protected float earthMultiplier;
 
+    private PoolManager vfxPool;
     private PoolableObject previousHit;
     private ulong previousHitUseId;
     private GameObject target;
@@ -93,6 +94,11 @@ public class EnemyBase : PoolableObject, IDamageableEnemy, IArrowHitReceiver
             WalkForwards();
 
         CalculateDistanceToTarget();
+    }
+
+    public void SetVFXPool(PoolManager vfxPool)
+    {
+        this.vfxPool = vfxPool;
     }
 
     public void SpawnEnemy()
@@ -209,7 +215,11 @@ public class EnemyBase : PoolableObject, IDamageableEnemy, IArrowHitReceiver
 
     protected virtual void SprayGore(Quaternion rotation, Vector2 hitPoint)
     {
-        if (gore != null) Instantiate(gore, hitPoint, rotation);
+        if (gore == null) return;
+
+        GoreVFX effect = vfxPool.Get(gore);
+        effect.transform.SetPositionAndRotation(hitPoint, rotation);
+        effect.Initialize();
     }
 
     private void StartMove()

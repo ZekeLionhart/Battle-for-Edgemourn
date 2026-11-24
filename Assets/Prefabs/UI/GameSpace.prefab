@@ -197,6 +197,10 @@ MonoBehaviour:
     capacity: 20
   - prefab: {fileID: 3095947196824343417, guid: 77b853ef8e605054598578b3bae6f8cc, type: 3}
     capacity: 20
+  - prefab: {fileID: 7131670144993947805, guid: dee54a508e22bcc44aab5b4644f26a36, type: 3}
+    capacity: 20
+  - prefab: {fileID: 8666361340996100756, guid: 6409c1af0c86db54abb9f732afef6048, type: 3}
+    capacity: 20
 --- !u!1 &8026089801556421650
 GameObject:
   m_ObjectHideFlags: 0
