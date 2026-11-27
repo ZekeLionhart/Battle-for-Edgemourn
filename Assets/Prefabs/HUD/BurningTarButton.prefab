@@ -104,13 +104,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: BurningTarButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7451722334386695299, guid: 6fc5b6e676e922e4ca0d12c29e628fa8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451722334386695299, guid: 6fc5b6e676e922e4ca0d12c29e628fa8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451722334386695299, guid: 6fc5b6e676e922e4ca0d12c29e628fa8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679728505751256623, guid: 6fc5b6e676e922e4ca0d12c29e628fa8, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8679728505751256623, guid: 6fc5b6e676e922e4ca0d12c29e628fa8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7de33f5f046f28b469f6431b62891f74, type: 3}
+      objectReference: {fileID: 21300000, guid: 75bd796a7da187642bf12bdbfae8e6df, type: 3}
     - target: {fileID: 9155576699070866789, guid: 6fc5b6e676e922e4ca0d12c29e628fa8, type: 3}
       propertyPath: m_text
       value: D
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155576699070866789, guid: 6fc5b6e676e922e4ca0d12c29e628fa8, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

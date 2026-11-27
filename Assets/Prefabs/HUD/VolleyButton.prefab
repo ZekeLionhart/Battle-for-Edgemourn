@@ -120,6 +120,10 @@ PrefabInstance:
       propertyPath: m_text
       value: W
       objectReference: {fileID: 0}
+    - target: {fileID: 9155576699070866789, guid: 6fc5b6e676e922e4ca0d12c29e628fa8, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
